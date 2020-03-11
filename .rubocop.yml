@@ -1,0 +1,42 @@
+AllCops:
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ParameterLists:
+  Max: 6
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'

@@ -1,0 +1,179 @@
+# frozen_string_literal: true
+
+module FrontendHelpers
+  class FormBuilder < ActionView::Helpers::FormBuilder
+    include BuilderHtmlUtils
+    include FieldGroupBuilders
+    include SharedFormBuilderUtils
+
+    def text_field(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    def text_area(method, options = {})
+      options[:class] = field_class_name(method, "textarea #{options[:class]}")
+
+      field_helper(method, super(method, options), options)
+    end
+
+    def email_field(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    def password_field(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    def file_field(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    def date_field(method, options = {})
+      clear_btn = if options.delete(:clear)
+                    content_tag(:div, class: 'control') do
+                      content_tag(:a, class: 'button', data: { action: 'datepicker#clear' }) do
+                        @template.icon_tag('times-circle')
+                      end
+                    end
+                  end
+
+      options[:control_class] = "is-fullwidth #{options[:control_class]}"
+
+      wrapper_options = {
+        class: 'field has-addons',
+        data: { controller: 'datepicker' }
+      }.merge!(options.delete(:wrapper_options) || {})
+
+      content_tag(:div, wrapper_options) do
+        text_field(method, options) + clear_btn
+      end
+    end
+
+    def datetime_field(method, options = {})
+      options[:wrapper_options] = { 'data-datepicker-enable-time': true }
+      date_field(method, options)
+    end
+
+    def number_field(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    def phone_field(method, options = {})
+      options[:data] ||= {}
+      options[:data][:controller] = 'phone-input'
+
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
+    # Uses the Choices.js library
+    #
+    def select_multiple_field(method, values, options = {}, html_options = {})
+      html_options.with_defaults!(multiple: true)
+
+      class_name = "select choices-custom #{html_options.delete(:select_class)}"
+      select_class = field_class_name(method, class_name)
+      select_data = html_options.delete(:select_data) || {}
+      select_id = "#{method}_select_div"
+
+      select_data[:controller] = [select_data[:controller], 'select-field'].compact.join(' ')
+
+      if (position_value = html_options.delete(:dropdown_position))
+        select_data['select-field-position'] = position_value
+      end
+
+      field = content_tag(:div, id: select_id, class: select_class, data: select_data) do
+        select(method, values, options, html_options)
+      end
+
+      field_helper(method, field, html_options)
+    end
+
+    # Uses the Choices.js library
+    #
+    def select_single_field(method, values, options = {}, html_options = {})
+      html_options[:multiple] = false
+      select_multiple_field(method, values, options, html_options)
+    end
+
+    def boolean_field(method, options = {})
+      label_text = options.delete(:label) || method.to_s.humanize
+
+      label(method, options.delete(:label_options) || {}) do
+        check_box(method, options) + ' ' + label_text
+      end
+    end
+
+    def radio_field(method, values, options = {}, html_options = {})
+      field_name = [object.model_name.singular, method].join('_')
+      data = html_options.delete(:data)
+
+      tags = values.map do |display_value|
+        display, value, radio_options = display_value
+        radio_options ||= {}
+
+        label(method, class: 'radio', for: [field_name, value].join('_')) do
+          radio_button(method, value, radio_options.merge(data: data)) + display
+        end
+      end
+
+      field = @template.safe_join(tags)
+      field_helper(method, field, options)
+    end
+
+    def time_zone_select(method, priority_zones = nil, options = {}, html_options = {})
+      select_class = field_class_name(method, "select #{html_options.delete(:select_class)}")
+
+      field = content_tag(:div, class: select_class) do
+        super(method, priority_zones, options, field_options(method, html_options))
+      end
+
+      field_helper(method, field, options)
+    end
+
+    def submit_actions(value, options = {})
+      cancel_path = options.delete(:cancel_path) || ''
+      cancel_options = options.delete(:cancel_options) || {}
+
+      field_data = options.delete(:field_data)
+      field_id = options.delete(:field_id)
+
+      if options.delete(:remote_modal)
+        options[:data] ||= {}
+        options[:data][:action] = ['remote-modal#submit', options[:data][:action]].join(' ')
+
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'remote-modal#close',
+          cancel_options[:data][:action]
+        ].join(' ')
+      end
+
+      @template.content_tag(:div, id: field_id,
+                                  class: 'field is-grouped is-grouped-right', data: field_data) do
+        submit = @template.content_tag(:div, class: 'control') do
+          submit(value, options)
+        end
+
+        if cancel_path.present? || cancel_options.present?
+          cancel_options.with_defaults!(class: 'button is-secondary')
+          cancel = @template.content_tag(:div, class: 'control') do
+            @template.link_to('Cancel', cancel_path, cancel_options)
+          end
+
+          submit + cancel
+        else
+          submit
+        end
+      end
+    end
+
+    # Included from SharedFormBuilderUtils
+    #
+    # def label(method, text, options, &block)
+    #
+    # def select_field(method, values, options, html_options)
+    #
+    # def submit(value, options)
+    #
+  end
+end
