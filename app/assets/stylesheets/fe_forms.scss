@@ -1,0 +1,98 @@
+.input.is-very-short {
+  width: 4rem;
+}
+
+.input.is-short {
+  width: 100px;
+}
+
+.input.is-medium-short {
+  width: 140px;
+}
+
+.input.is-long {
+  width: 16rem;
+}
+
+.select.full-width {
+  width: 100%;
+
+  select,
+  .select2-container {
+    width: 100% !important;
+  }
+}
+
+.control.is-small {
+  width: 10rem;
+}
+
+.is-danger .select2-container .select2-selection--multiple {
+  border-color: $danger;
+}
+
+.label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.inline-label {
+  line-height: 32px;
+  margin-right: 0.75rem;
+
+  &:not(:first-child) {
+    margin-left: 1.5rem;
+  }
+}
+
+.form-subsection {
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid $background;
+
+  .delete {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.field-body > .field {
+  flex: 1;
+}
+
+.field-body > .field.flex-2 {
+  flex: 2;
+}
+
+.delete-column {
+  padding-top: 1.2rem;
+}
+
+.control {
+  display: flex;
+}
+
+.control.inline {
+  margin-right: 0.5rem;
+}
+
+.control > .v-center {
+  align-self: center;
+}
+
+.control > .is-5 {
+  margin-top: 0.375rem;
+}
+
+.radio input {
+  margin-right: 0.375rem;
+}
+
+.field_with_errors {
+  width: 100%;
+
+  & > label.label {
+    margin-bottom: 0.5rem;
+  }
+}

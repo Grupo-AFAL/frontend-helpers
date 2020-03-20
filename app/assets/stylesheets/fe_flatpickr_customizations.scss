@@ -1,0 +1,29 @@
+.flatpickr-months {
+  padding: 10px 0;
+  background: $link;
+  border-radius: 5px 5px 0 0;
+
+  .flatpickr-month {
+    color: $white;
+  }
+
+  .flatpickr-next-month,
+  .flatpickr-prev-month {
+    padding: 20px;
+    fill: $white;
+  }
+}
+
+.flatpickr-current-month {
+  padding: 5px 0 0 0;
+}
+
+.flatpickr-calendar.arrowTop:after {
+  border-bottom-color: $link;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+  background: $link;
+  border-color: $link;
+}

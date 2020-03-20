@@ -1,0 +1,61 @@
+#side-menu {
+  position: fixed;
+  width: $side-menu-width;
+  height: 100%;
+  top: $navbar-height;
+  left: -$side-menu-width;
+  padding: 1rem;
+  background: $white;
+  z-index: 5;
+  box-shadow: $box-shadow;
+
+  &.is-active {
+    left: 0;
+  }
+
+  transition: 0.2s ease-in-out;
+
+  @include desktop {
+    left: 0;
+  }
+
+  .dropdown {
+    display: block;
+
+    &.is-right .dropdown-menu {
+      left: 140px;
+    }
+  }
+
+  .dropdown-trigger > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .icon {
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 4px;
+      padding: 9px;
+    }
+  }
+}
+
+.menu-overlay {
+  transition: 0.2s ease-in-out;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  display: none;
+}
+
+#side-menu.is-active ~ .menu-overlay {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  pointer-events: auto;
+}

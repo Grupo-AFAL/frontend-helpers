@@ -1,0 +1,19 @@
+.box > ul {
+  .box-row:first-child {
+    padding-top: 0;
+  }
+
+  .box-row:last-child {
+    border-bottom: 0;
+  }
+}
+
+.box-row {
+  border-bottom: 1px solid whitesmoke;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.box-action {
+  float: right;
+}

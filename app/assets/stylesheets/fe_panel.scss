@@ -1,0 +1,12 @@
+.panel > div .panel-block:first-child {
+  border-top: 0;
+}
+
+.panel-block {
+  & > .delete {
+    position: absolute;
+    right: 0.5rem;
+  }
+
+  position: relative;
+}

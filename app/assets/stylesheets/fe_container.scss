@@ -1,0 +1,21 @@
+#app-frame {
+  padding-top: $frame-padding-top;
+
+  // @include desktop {
+  //   padding-left: $side-menu-width + 1.5rem;
+  // }
+}
+
+.container.is-not-fluid {
+  @include desktop {
+    max-width: $desktop - $container-offset;
+  }
+
+  @include widescreen {
+    max-width: $desktop - $container-offset;
+  }
+
+  @include fullhd {
+    max-width: $desktop - $container-offset;
+  }
+}

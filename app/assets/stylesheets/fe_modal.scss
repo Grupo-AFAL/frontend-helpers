@@ -1,0 +1,18 @@
+.modal {
+  .box.is-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+
+    .loader {
+      @include loader;
+    }
+  }
+}
+
+.modal-content.wide {
+  @include tablet {
+    width: $modal-content-width + $modal-content-width/4;
+  }
+}

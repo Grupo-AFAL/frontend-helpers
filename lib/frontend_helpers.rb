@@ -11,6 +11,7 @@ require 'frontend_helpers/field_group_builders'
 require 'frontend_helpers/form_builder'
 
 module FrontendHelpers
+  class Engine < ::Rails::Engine; end
   class Error < StandardError; end
   # Your code goes here...
 end

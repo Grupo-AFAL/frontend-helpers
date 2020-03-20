@@ -1,0 +1,10 @@
+a {
+  &[disabled] {
+    color: $grey-lighter;
+    cursor: not-allowed;
+  }
+
+  &.with-icon {
+    display: flex;
+  }
+}

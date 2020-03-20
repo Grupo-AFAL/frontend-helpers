@@ -1,0 +1,51 @@
+.navbar {
+  box-shadow: $box-shadow;
+}
+
+.navbar-link.navbar-link-with-contents {
+  padding-right: 3.5rem;
+}
+
+$user-icon-size: 1.62rem;
+$user-icon-padding: 0.815rem;
+
+.user-icon {
+  width: $user-icon-size;
+  height: $user-icon-size;
+  border-radius: $user-icon-size;
+  margin-right: $user-icon-size / 2;
+  background-color: $purple;
+  text-align: center;
+
+  &:hover {
+    background-color: darken($purple, 10%);
+  }
+
+  &.navbar-burger {
+    margin-top: $user-icon-padding;
+    margin-right: $user-icon-padding;
+  }
+}
+
+.left-burger {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.navbar-link-title {
+  font-size: $size-6-5;
+}
+
+.navbar-link-subtitle {
+  font-size: $size-7;
+}
+
+.navbar-brand {
+  .navbar-item.app-logo {
+    display: none;
+
+    @include desktop {
+      display: flex;
+    }
+  }
+}

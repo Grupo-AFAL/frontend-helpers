@@ -1,0 +1,22 @@
+.card-footer-item.aligned-right {
+  justify-content: flex-end;
+}
+
+.card-row {
+  width: 100%;
+}
+
+.card-row:first-child,
+.card-row.first-row {
+  padding-top: 0;
+}
+
+.card-row:last-child {
+  border-bottom: 0;
+}
+
+.card-row {
+  border-bottom: 1px solid whitesmoke;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

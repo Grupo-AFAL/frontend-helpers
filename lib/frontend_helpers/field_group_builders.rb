@@ -107,6 +107,8 @@ module FrontendHelpers
       end
     end
 
+    alias check_box_group boolean_field_group
+
     def radio_field_group(method, values, options = {}, html_options = {})
       FieldGroupWrapper.render @template, self, method, options do
         radio_field(method, values, options, html_options)
