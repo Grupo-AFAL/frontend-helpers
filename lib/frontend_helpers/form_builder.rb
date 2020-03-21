@@ -96,7 +96,7 @@ module FrontendHelpers
     end
 
     def boolean_field(method, options = {})
-      label_text = options.delete(:label) || method.to_s.humanize
+      label_text = options.delete(:label) || translate_attribute(method)
 
       label(method, options.delete(:label_options) || {}) do
         check_box(method, options) + ' ' + label_text
@@ -157,7 +157,7 @@ module FrontendHelpers
         if cancel_path.present? || cancel_options.present?
           cancel_options.with_defaults!(class: 'button is-secondary')
           cancel = @template.content_tag(:div, class: 'control') do
-            @template.link_to('Cancel', cancel_path, cancel_options)
+            @template.link_to(I18n.t(:cancel, 'Cancel'), cancel_path, cancel_options)
           end
 
           submit + cancel

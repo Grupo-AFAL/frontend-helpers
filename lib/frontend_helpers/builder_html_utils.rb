@@ -44,5 +44,10 @@ module FrontendHelpers
     def content_tag(name, content_or_options_with_block = nil, options = nil, escape = true, &block)
       @template.content_tag(name, content_or_options_with_block, options, escape, &block)
     end
+
+    def translate_attribute(method)
+      model_name = object.model_name.singular
+      I18n.t("activerecord.attributes.#{model_name}.#{method}", method.to_s.humanize)
+    end
   end
 end

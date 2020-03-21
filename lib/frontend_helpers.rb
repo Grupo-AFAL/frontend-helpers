@@ -9,6 +9,8 @@ require 'frontend_helpers/shared_form_builder_utils'
 require 'frontend_helpers/field_group_wrapper'
 require 'frontend_helpers/field_group_builders'
 require 'frontend_helpers/form_builder'
+require 'frontend_helpers/components'
+require 'frontend_helpers/utils'
 
 module FrontendHelpers
   class Engine < ::Rails::Engine; end
