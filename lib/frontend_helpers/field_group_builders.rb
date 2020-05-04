@@ -56,6 +56,8 @@ module FrontendHelpers
       end
     end
 
+    alias date_select_group date_field_group
+
     def datetime_field_group(method, options = {})
       FieldGroupWrapper.render @template, self, method, options do
         datetime_field(method, options)

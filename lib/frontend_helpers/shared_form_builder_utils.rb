@@ -28,7 +28,7 @@ module FrontendHelpers
         wrapper_class: 'inline',
         data: {},
         type: 'submit',
-        class: 'button is-link'
+        class: 'button is-primary'
       )
 
       options[:data][:action] ||= 'submit-button#submit'

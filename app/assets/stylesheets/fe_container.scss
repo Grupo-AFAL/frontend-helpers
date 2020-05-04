@@ -1,9 +1,9 @@
 #app-frame {
   padding-top: $frame-padding-top;
 
-  // @include desktop {
-  //   padding-left: $side-menu-width + 1.5rem;
-  // }
+  @include desktop {
+    padding-left: $side-menu-width + 1.5rem;
+  }
 }
 
 .container.is-not-fluid {
