@@ -64,9 +64,17 @@ module FrontendHelpers
       end
     end
 
+    alias datetime_select_group datetime_field_group
+
     def number_field_group(method, options = {})
       FieldGroupWrapper.render @template, self, method, options do
         number_field(method, options)
+      end
+    end
+
+    def step_number_field_group(method, options = {})
+      FieldGroupWrapper.render @template, self, method, options do
+        step_number_field(method, options)
       end
     end
 

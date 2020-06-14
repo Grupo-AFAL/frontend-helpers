@@ -10,6 +10,7 @@ require 'frontend_helpers/field_group_wrapper'
 require 'frontend_helpers/field_group_builders'
 require 'frontend_helpers/form_builder'
 require 'frontend_helpers/layout_concern'
+require 'frontend_helpers/dynamic_fields_helper'
 require 'frontend_helpers/components'
 require 'frontend_helpers/utils'
 

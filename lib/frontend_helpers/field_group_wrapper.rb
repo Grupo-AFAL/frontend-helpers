@@ -14,8 +14,8 @@ module FrontendHelpers
       @options = options
 
       @label_text = options.delete(:label)
-      @addon_text = options.delete(:addon_text)
-      @addon_position = options.delete(:addon_position) || 'left'
+      @addon_left = options.delete(:addon_left)
+      @addon_right = options.delete(:addon_right)
       @field_class = options.delete(:field_class)
       @data = options.delete(:field_data)
     end
@@ -23,7 +23,7 @@ module FrontendHelpers
     def render(block)
       field_id = "field-#{@method}"
       class_name = "field #{@field_class}"
-      class_name += ' has-addons' if @addon_text.present?
+      class_name += ' has-addons' if @addon_left.present? || @addon_right.present?
 
       @template.content_tag(:div, id: field_id, class: class_name, data: @data) do
         contents = [generate_label_html, addon_left, block.call, addon_right]
@@ -34,22 +34,22 @@ module FrontendHelpers
     private
 
     def addon_left
-      return if @addon_position != 'left'
+      return if @addon_left.blank?
 
-      generate_addon_html
+      generate_addon_html(@addon_left)
     end
 
     def addon_right
-      return if @addon_position != 'right'
+      return if @addon_right.blank?
 
-      generate_addon_html
+      generate_addon_html(@addon_right)
     end
 
-    def generate_addon_html
-      return if @addon_text.blank?
+    def generate_addon_html(addon_content)
+      return if addon_content.blank?
 
       @template.content_tag(:div, class: 'control') do
-        @template.content_tag(:a, @addon_text, class: 'button is-static')
+        addon_content
       end
     end
 

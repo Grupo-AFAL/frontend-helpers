@@ -58,6 +58,27 @@ module FrontendHelpers
       field_helper(method, super(method, field_options(method, options)), options)
     end
 
+    def step_number_field(method, options = {})
+      options[:data] ||= {}
+      options[:data][:target] = 'step-number-input.input'
+
+      @template.content_tag(:div, class: 'field has-addons', data: { controller: 'step-number-input' }) do
+        addon_left = @template.content_tag(:div, class: 'control') do
+          @template.link_to '-', '', class: 'button', data: { action: 'step-number-input#subtract', target: 'step-number-input.subtract' }
+        end
+
+        input = @template.content_tag(:div, class: 'control') do
+          number_field(method, options)
+        end
+
+        addon_right = @template.content_tag(:div, class: 'control') do
+          @template.link_to '+', '', class: 'button', data: { action: 'step-number-input#add', target: 'step-number-input.add' }
+        end
+
+        @template.safe_join([addon_left, input, addon_right])
+      end
+    end
+
     def phone_field(method, options = {})
       options[:data] ||= {}
       options[:data][:controller] = 'phone-input'
