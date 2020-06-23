@@ -60,11 +60,24 @@ module FrontendHelpers
 
     def step_number_field(method, options = {})
       options[:data] ||= {}
-      options[:data][:target] = 'step-number-input.input'
+      options[:data][:target] = [
+        'step-number-input.input',
+        options[:data][:target]
+      ].compact.join(' ')
+
+      subtract_button_data = {
+        action: ['step-number-input#subtract', options.dig(:subtract_data, :action)].compact.join(' '),
+        target: ['step-number-input.subtract', options.dig(:subtract_data, :target)].compact.join(' ')
+      }
+
+      add_button_data = {
+        action: ['step-number-input#add', options.dig(:add_data, :action)].compact.join(' '),
+        target: ['step-number-input.add', options.dig(:add_data, :target)].compact.join(' ')
+      }
 
       @template.content_tag(:div, class: 'field has-addons', data: { controller: 'step-number-input' }) do
         addon_left = @template.content_tag(:div, class: 'control') do
-          @template.link_to '-', '', class: 'button', data: { action: 'step-number-input#subtract', target: 'step-number-input.subtract' }
+          @template.link_to '-', '', class: 'button', data: subtract_button_data
         end
 
         input = @template.content_tag(:div, class: 'control') do
@@ -72,7 +85,7 @@ module FrontendHelpers
         end
 
         addon_right = @template.content_tag(:div, class: 'control') do
-          @template.link_to '+', '', class: 'button', data: { action: 'step-number-input#add', target: 'step-number-input.add' }
+          @template.link_to '+', '', class: 'button', data: add_button_data
         end
 
         @template.safe_join([addon_left, input, addon_right])
