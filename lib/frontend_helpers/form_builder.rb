@@ -5,6 +5,7 @@ module FrontendHelpers
     include BuilderHtmlUtils
     include FieldGroupBuilders
     include SharedFormBuilderUtils
+    include Utils
 
     def text_field(method, options = {})
       field_helper(method, super(method, field_options(method, options)), options)
@@ -75,9 +76,11 @@ module FrontendHelpers
         target: ['step-number-input.add', options.dig(:add_data, :target)].compact.join(' ')
       }
 
+      button_class = "button #{options[:button_class]}"
+
       @template.content_tag(:div, class: 'field has-addons', data: { controller: 'step-number-input' }) do
         addon_left = @template.content_tag(:div, class: 'control') do
-          @template.link_to '-', '', class: 'button', data: subtract_button_data
+          @template.link_to '-', '', class: button_class, data: subtract_button_data
         end
 
         input = @template.content_tag(:div, class: 'control') do
@@ -85,7 +88,7 @@ module FrontendHelpers
         end
 
         addon_right = @template.content_tag(:div, class: 'control') do
-          @template.link_to '+', '', class: 'button', data: add_button_data
+          @template.link_to '+', '', class: button_class, data: add_button_data
         end
 
         @template.safe_join([addon_left, input, addon_right])
@@ -170,6 +173,7 @@ module FrontendHelpers
 
       field_data = options.delete(:field_data)
       field_id = options.delete(:field_id)
+      field_class = options.delete(:field_class) || 'field is-grouped is-grouped-right'
 
       if options.delete(:remote_modal)
         options[:data] ||= {}
@@ -182,8 +186,7 @@ module FrontendHelpers
         ].join(' ')
       end
 
-      @template.content_tag(:div, id: field_id,
-                                  class: 'field is-grouped is-grouped-right', data: field_data) do
+      @template.content_tag(:div, id: field_id, class: field_class, data: field_data) do
         submit = @template.content_tag(:div, class: 'control') do
           submit(value, options)
         end
