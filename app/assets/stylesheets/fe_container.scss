@@ -1,8 +1,10 @@
 #app-frame {
   padding-top: $frame-padding-top;
 
-  @include desktop {
-    padding-left: $side-menu-width + 1.5rem;
+  &.with-side-bar {
+    @include desktop {
+      padding-left: $side-menu-width + 1.5rem;
+    }
   }
 }
 

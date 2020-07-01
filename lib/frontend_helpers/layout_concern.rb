@@ -9,11 +9,12 @@ module FrontendHelpers
     extend ActiveSupport::Concern
 
     included do
+      class_attribute :conditional_layout
       layout :conditionally_skip_layout
     end
 
     def conditionally_skip_layout
-      params[:layout] == 'false' ? false : nil
+      params[:layout] == 'false' ? false : self.class.conditional_layout
     end
   end
 end
