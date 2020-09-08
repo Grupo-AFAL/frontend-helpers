@@ -7,7 +7,13 @@ module FrontendHelpers
     end
 
     def class_names(names, conditional_names = {})
-      classes = Array(names)
+      if names.is_a?(Hash)
+        conditional_names = names
+        classes = []
+      else
+        classes = Array(names)
+      end
+
       conditional_names.each do |key, condition|
         classes.push(key) if condition
       end
