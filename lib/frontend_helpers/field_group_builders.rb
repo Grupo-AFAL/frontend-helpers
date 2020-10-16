@@ -52,11 +52,15 @@ module FrontendHelpers
 
       choose_file_text = options.delete(:choose_file_text) || 'Choose file'
       non_selected_text = options.delete(:non_selected_text) || 'No file selected'
-      file_icon = options.delete(:icon) || 'upload'
+      file_icon_name = options.delete(:icon) || 'upload'
 
       file_cta = @template.content_tag(:span, class: 'file-cta') do
         file_icon = @template.content_tag(:span, class: 'file-icon') do
-          @template.content_tag(:i, nil, class: "fas fa-#{file_icon}")
+          if file_icon_name == 'upload'
+            Icons::UPLOAD_SVG.html_safe
+          else
+            @template.content_tag(:i, nil, class: "fas fa-#{file_icon_name}")
+          end
         end
 
         file_label = @template.content_tag(:span, choose_file_text, class: 'file-label')
