@@ -2,6 +2,8 @@
 
 module FrontendHelpers
   module Components
+    include Utils
+
     def icon_tag(name, options = {})
       options.merge!(class: "icon #{options[:class]}")
 
@@ -10,26 +12,30 @@ module FrontendHelpers
       end
     end
 
-    def ellipsis_dropdown(html_options = {}, &block)
+    def dropdown(html_options = {}, &block)
       html_options.with_defaults!(class: '', data: { controller: 'dropdown' })
       html_options[:class] += ' dropdown is-right'
+      button_class = class_names(['button', html_options.delete(:button_class)])
+      button_content = html_options.delete(:button_content) || Icons::ELLIPSIS_SVG.html_safe
 
       content_tag(:div, html_options) do
-        trigger = content_tag(:div, class: 'dropdown-trigger') do
-          content_tag(:button, class: 'button', data: { action: 'dropdown#toggleMenu' }) do
-            Icons::ELLIPSIS_SVG.html_safe
+        trigger_tag = content_tag(:div, class: 'dropdown-trigger') do
+          content_tag(:button, class: button_class, data: { action: 'dropdown#toggleMenu' }) do
+            button_content
           end
         end
 
-        dropdown = content_tag(:div, class: 'dropdown-menu', role: 'menu') do
+        dropdown_tag = content_tag(:div, class: 'dropdown-menu', role: 'menu') do
           content_tag(:div, class: 'dropdown-content') do
             block.call
           end
         end
 
-        trigger + dropdown
+        trigger_tag + dropdown_tag
       end
     end
+
+    alias ellipsis_dropdown dropdown
 
     def boolean_icon(value)
       value ? icon_tag('check-circle') : icon_tag('times-circle')
