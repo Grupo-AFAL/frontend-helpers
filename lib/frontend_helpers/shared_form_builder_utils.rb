@@ -68,14 +68,17 @@ module FrontendHelpers
         options[:data][:target]
       ].compact.join(' ')
 
+      subtract_data = options.delete(:subtract_data) || {}
+      add_data = options.delete(:add_data) || {}
+
       subtract_button_data = {
-        action: ['step-number-input#subtract', options.dig(:subtract_data, :action)].compact.join(' '),
-        target: ['step-number-input.subtract', options.dig(:subtract_data, :target)].compact.join(' ')
+        action: ['step-number-input#subtract', subtract_data[:action]].compact.join(' '),
+        target: ['step-number-input.subtract', subtract_data[:target]].compact.join(' ')
       }
 
       add_button_data = {
-        action: ['step-number-input#add', options.dig(:add_data, :action)].compact.join(' '),
-        target: ['step-number-input.add', options.dig(:add_data, :target)].compact.join(' ')
+        action: ['step-number-input#add', add_data[:action]].compact.join(' '),
+        target: ['step-number-input.add', add_data[:target]].compact.join(' ')
       }
 
       disabled = options[:disabled]
@@ -162,12 +165,13 @@ module FrontendHelpers
     def radio_field(method, values, options = {}, html_options = {})
       field_name = [object.model_name.singular, method].join('_')
       data = html_options.delete(:data)
+      label_class = class_names(['radio', html_options.delete(:radio_label_class)])
 
       tags = values.map do |display_value|
         display, value, radio_options = display_value
         radio_options ||= {}
 
-        label(method, class: 'radio', for: [field_name, value].join('_')) do
+        label(method, class: label_class, for: [field_name, value].join('_')) do
           radio_button(method, value, radio_options.merge(data: data)) + display
         end
       end
