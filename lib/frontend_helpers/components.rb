@@ -20,7 +20,7 @@ module FrontendHelpers
 
       content_tag(:div, html_options) do
         trigger_tag = content_tag(:div, class: 'dropdown-trigger') do
-          content_tag(:button, class: button_class, data: { action: 'dropdown#toggleMenu' }) do
+          content_tag(:button, title: 'dropdown-button', class: button_class, data: { action: 'dropdown#toggleMenu' }) do
             button_content
           end
         end
