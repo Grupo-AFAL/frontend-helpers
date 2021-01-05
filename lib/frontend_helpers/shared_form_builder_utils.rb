@@ -198,14 +198,7 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
-      options[:data][:action] ||= 'submit-button#submit'
-
-      wrapper_options = {
-        class: options.delete(:wrapper_class),
-        data: { controller: 'submit-button' }
-      }
-
-      content_tag(:div, wrapper_options) do
+      content_tag(:div, class: options.delete(:wrapper_class)) do
         content_tag(:button, value, options)
       end
     end
@@ -225,6 +218,14 @@ module FrontendHelpers
         cancel_options[:data] ||= {}
         cancel_options[:data][:action] = [
           'remote-modal#close',
+          cancel_options[:data][:action]
+        ].join(' ')
+      end
+
+      if options.delete(:modal)
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'click->turbo-stream-modal#close',
           cancel_options[:data][:action]
         ].join(' ')
       end
