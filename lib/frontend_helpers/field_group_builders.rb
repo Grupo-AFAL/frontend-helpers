@@ -68,7 +68,7 @@ module FrontendHelpers
       end
 
       filename = @template.content_tag(
-        :span, non_selected_text, class: 'file-name', data: { target: 'file-input.value' }
+        :span, non_selected_text, class: 'file-name', data: { 'file-input-target': 'value' }
       )
 
       wrapper_options = {

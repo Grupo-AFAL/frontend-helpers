@@ -28,7 +28,7 @@ module FrontendHelpers
 
       content_tag(:div) do
         content_tag(:a, name, html_options) +
-          content_tag(:template, fields, data: { target: 'dynamic-fields.template' })
+          content_tag(:template, fields, data: { 'dynamic-fields-target': 'template' })
       end
     end
 
