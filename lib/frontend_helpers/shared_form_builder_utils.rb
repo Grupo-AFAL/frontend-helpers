@@ -63,22 +63,19 @@ module FrontendHelpers
 
     def step_number_field(method, options = {})
       options[:data] ||= {}
-      options[:data][:target] = [
-        'step-number-input.input',
-        options[:data][:target]
-      ].compact.join(' ')
+      options[:data]['step-number-input-target'] = 'input'
 
       subtract_data = options.delete(:subtract_data) || {}
       add_data = options.delete(:add_data) || {}
 
       subtract_button_data = {
         action: ['step-number-input#subtract', subtract_data[:action]].compact.join(' '),
-        target: ['step-number-input.subtract', subtract_data[:target]].compact.join(' ')
+        'step-number-input-target': 'subtract'
       }
 
       add_button_data = {
         action: ['step-number-input#add', add_data[:action]].compact.join(' '),
-        target: ['step-number-input.add', add_data[:target]].compact.join(' ')
+        'step-number-input-target': 'add'
       }
 
       disabled = options[:disabled]
