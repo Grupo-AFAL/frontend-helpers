@@ -23,5 +23,26 @@ module FrontendHelpers
     def current_relative_url
       request.fullpath
     end
+
+    def custom_dom_id(model)
+      "#{model.class.name.tableize.singularize.gsub('/', '_')}_#{model.id}"
+    end
+
+    def test_id_attr(params)
+      return unless params
+
+      test_id = case params
+                when ActiveRecord::Base
+                  custom_dom_id(params)
+                when String
+                  params
+                end
+
+      "test-id=\"#{test_id}\"".html_safe
+    end
+
+    def app_module
+      controller.class.module_parent
+    end
   end
 end
