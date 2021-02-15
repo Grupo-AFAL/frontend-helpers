@@ -57,6 +57,14 @@ module FrontendHelpers
       date_field(method, options)
     end
 
+    def time_field(method, options = {})
+      options[:wrapper_options] = {
+        'data-datepicker-enable-time': true,
+        'data-datepicker-no-calendar': true
+      }
+      date_field(method, options)
+    end
+
     def number_field(method, options = {})
       field_helper(method, super(method, field_options(method, options)), options)
     end
@@ -195,6 +203,11 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
+      if options.delete(:remote_modal)
+        options[:data] ||= {}
+        options[:data][:action] = ['remote-modal#submit', options[:data][:action]].join(' ')
+      end
+
       content_tag(:div, class: options.delete(:wrapper_class)) do
         content_tag(:button, value, options)
       end
@@ -208,10 +221,7 @@ module FrontendHelpers
       field_id = options.delete(:field_id)
       field_class = options.delete(:field_class) || 'field is-grouped is-grouped-right'
 
-      if options.delete(:remote_modal)
-        options[:data] ||= {}
-        options[:data][:action] = ['remote-modal#submit', options[:data][:action]].join(' ')
-
+      if options[:remote_modal]
         cancel_options[:data] ||= {}
         cancel_options[:data][:action] = [
           'remote-modal#close',
