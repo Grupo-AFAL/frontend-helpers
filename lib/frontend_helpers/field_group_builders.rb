@@ -2,6 +2,8 @@
 
 module FrontendHelpers
   module FieldGroupBuilders
+    include IconComponents
+
     def text_field_group(method, options = {})
       FieldGroupWrapper.render @template, self, method, options do
         text_field(method, options)
@@ -56,11 +58,7 @@ module FrontendHelpers
 
       file_cta = @template.content_tag(:span, class: 'file-cta') do
         file_icon = @template.content_tag(:span, class: 'file-icon') do
-          if file_icon_name == 'upload'
-            Icons::UPLOAD_SVG.html_safe
-          else
-            @template.content_tag(:i, nil, class: "fas fa-#{file_icon_name}")
-          end
+          icon_svgs(file_icon_name)
         end
 
         file_label = @template.content_tag(:span, choose_file_text, class: 'file-label')
