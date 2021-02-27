@@ -89,7 +89,8 @@ module FrontendHelpers
       disabled = options[:disabled]
       button_class = class_names(['button', options[:button_class]], 'is-static': disabled)
 
-      @template.content_tag(:div, class: 'field has-addons', data: { controller: 'step-number-input' }) do
+      @template.content_tag(:div, class: 'field has-addons',
+                                  data: { controller: 'step-number-input' }) do
         addon_left = @template.content_tag(:div, class: 'control') do
           @template.link_to '-', '', class: button_class, disabled: disabled,
                                      data: disabled ? {} : subtract_button_data
@@ -248,7 +249,7 @@ module FrontendHelpers
             @template.link_to(I18n.t(:cancel, default: 'Cancel'), cancel_path, cancel_options)
           end
 
-          submit + cancel
+          cancel + submit
         else
           submit
         end
