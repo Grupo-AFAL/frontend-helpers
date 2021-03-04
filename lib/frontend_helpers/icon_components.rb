@@ -302,6 +302,22 @@ module IconComponents
     </svg>
   )
 
+  SEARCH = %(
+    <svg viewBox="0 0 512 512" class="svg-inline">
+      <path fill="currentColor"
+        d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z"
+        class=""></path>
+    </svg>
+  )
+
+  CHEVRON_DOWN = %(
+    <svg viewBox="0 0 512 512" class="svg-inline">
+      <path fill="currentColor"
+        d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"
+        class=""></path>
+    </svg>
+  )
+
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
@@ -335,7 +351,9 @@ module IconComponents
     'truck' => TRUCK,
     'user-plus' => USER_PLUS,
     'print' => PRINT,
-    'times-circle' => TIMES_CIRCLE
+    'times-circle' => TIMES_CIRCLE,
+    'search' => SEARCH,
+    'chevron-down' => CHEVRON_DOWN
   }.freeze
 
   class IconNotAvailable < StandardError; end
