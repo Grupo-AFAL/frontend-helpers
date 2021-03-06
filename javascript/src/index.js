@@ -7,7 +7,7 @@
 
 // import DatepickerController from './controllers/datepicker-controller'
 import DropdownController from './controllers/dropdown-controller.js'
-// import DynamicFieldsController from './controllers/dynamic-fields-controller'
+import DynamicFieldsController from './controllers/dynamic-fields-controller'
 // import LocalModalController from './controllers/local-modal-controller'
 // import NavbarController from './controllers/navbar-controller'
 // import NotificationController from './controllers/notification-controller'
@@ -31,8 +31,8 @@ export {
   // time,
   // url,
   // DatepickerController,
-  DropdownController
-  // DynamicFieldsController,
+  DropdownController,
+  DynamicFieldsController
   // LocalModalController,
   // NavbarController,
   // NotificationController,
