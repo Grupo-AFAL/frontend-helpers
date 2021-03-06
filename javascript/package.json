@@ -2,13 +2,13 @@
   "name": "frontend-helpers",
   "version": "0.1.3",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
-  "main": "src/index.js",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "exports": "./dist/index.modern.js",
   "module": "src/index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
-    "start": "snowpack dev",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Grupo-AFAL/ruby-frontend-helpers#readme",
   "devDependencies": {
-    "snowpack": "^3.0.13"
+    "microbundle": "^0.13.0"
   },
   "dependencies": {
     "bulma-tooltip": "^3.0.2",
