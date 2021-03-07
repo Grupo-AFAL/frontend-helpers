@@ -1,8 +1,9 @@
-import flatpickr from 'flatpickr'
 import { Controller } from 'stimulus'
 
 export class DatepickerController extends Controller {
-  connect () {
+  async connect () {
+    const { default: flatpickr } = await import('flatpickr')
+
     const enableTime = Boolean(this.data.get('enableTime'))
     const noCalendar = Boolean(this.data.get('noCalendar'))
 

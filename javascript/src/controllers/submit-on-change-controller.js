@@ -1,8 +1,11 @@
 import { Controller } from 'stimulus'
-import { navigator } from '@hotwired/turbo'
-
 export class SubmitOnChangeController extends Controller {
+  async connect () {
+    const { default: navigator } = await import('@hotwired/turbo')
+    this.navigator = navigator
+  }
+
   submit () {
-    navigator.submitForm(this.element)
+    this.navigator.submitForm(this.element)
   }
 }
