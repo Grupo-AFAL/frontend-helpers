@@ -1,4 +1,4 @@
-var stimulus = require('stimulus');
+import { Controller } from 'stimulus';
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -52,7 +52,7 @@ var DropdownController = /*#__PURE__*/function (_Controller) {
   };
 
   return DropdownController;
-}(stimulus.Controller);
+}(Controller);
 
 /**
  * Returns a 13 digit timestamp + random number between 1 and 100
@@ -218,10 +218,9 @@ var DynamicFieldsController = /*#__PURE__*/function (_Controller) {
   };
 
   return DynamicFieldsController;
-}(stimulus.Controller);
+}(Controller);
 
 DynamicFieldsController.targets = ['template', 'container', 'button'];
 
-exports.DropdownController = DropdownController;
-exports.DynamicFieldsController = DynamicFieldsController;
-//# sourceMappingURL=index.js.map
+export { DropdownController, DynamicFieldsController };
+//# sourceMappingURL=index.module.js.map
