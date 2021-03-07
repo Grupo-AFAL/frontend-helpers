@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
+    "choices.js": "^9.0.1",
     "stimulus": ">=1.1.1 <3"
   }
 }
