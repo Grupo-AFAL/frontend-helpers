@@ -1,0 +1,22 @@
+{
+  "name": "frontend-helpers",
+  "version": "0.1.3",
+  "description": "Collection of Stimulus controllers and utilities for building web apps",
+  "main": "javascript/src/index.js",
+  "module": "javascript/src/index.js",
+  "sideEffects": false,
+  "files": [
+    "javascript"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "@hotwired/turbo": "^7.0.0-beta.4",
+    "choices.js": "^9.0.1",
+    "flatpickr": "^4.6.9",
+    "lodash.camelcase": "^4.3.0",
+    "phone": "^2.4.21",
+    "stimulus": ">=1.1.1 <3"
+  }
+}

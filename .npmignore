@@ -11,5 +11,20 @@
 # rspec failure tracking
 .rspec_status
 
+app
+bin
+lib
 node_modules
+pkg
+spec
+.rspec
+.rubocop.yml
+.ruby-version
+.travis.yml
+CODE_OF_CONDUCT.md
+frontend_helpers.gemspec
+Gemfile
+Gemfile.lock
+LICENSE.txt
 package-lock.json
+Rakefile
