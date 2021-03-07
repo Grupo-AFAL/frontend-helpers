@@ -2,17 +2,12 @@
   "name": "frontend-helpers",
   "version": "0.1.3",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
-  "source": "javascript/src/index.js",
   "main": "javascript/src/index.js",
   "files": [
     "javascript"
   ],
   "scripts": {
-    "build": "microbundle --globals stimulus=Stimulus --no-compress",
-    "dev": "microbundle watch"
-  },
-  "devDependencies": {
-    "microbundle": "^0.13.0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
     "stimulus": ">=1.1.1 <3"
