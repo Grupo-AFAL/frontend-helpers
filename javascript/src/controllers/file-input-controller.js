@@ -24,7 +24,7 @@ import { Controller } from 'stimulus'
     </div>
  */
 
-export default class FileInputController extends Controller {
+export class FileInputController extends Controller {
   static targets = ['value', 'input']
 
   onChange (event) {

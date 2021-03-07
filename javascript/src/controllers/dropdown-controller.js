@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class DropdownController extends Controller {
+export class DropdownController extends Controller {
   connect () {
     document.addEventListener('click', this.closeDropdowns)
   }

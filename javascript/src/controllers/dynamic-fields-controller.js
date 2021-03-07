@@ -7,7 +7,7 @@ import {
   nextSibling
 } from '../utils/domHelpers'
 
-export default class DynamicFieldsController extends Controller {
+export class DynamicFieldsController extends Controller {
   static targets = ['template', 'container', 'button']
 
   connect () {

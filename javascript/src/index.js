@@ -6,8 +6,8 @@
 // import * as url from './utils/url'
 
 // import DatepickerController from './controllers/datepicker-controller'
-import DropdownController from './controllers/dropdown-controller.js'
-import DynamicFieldsController from './controllers/dynamic-fields-controller'
+// import DropdownController from './controllers/dropdown-controller.js'
+// import DynamicFieldsController from './controllers/dynamic-fields-controller'
 // import LocalModalController from './controllers/local-modal-controller'
 // import NavbarController from './controllers/navbar-controller'
 // import NotificationController from './controllers/notification-controller'
@@ -23,28 +23,31 @@ import DynamicFieldsController from './controllers/dynamic-fields-controller'
 // import TooltipController from './controllers/tooltip-controller'
 // import FileInputController from './controllers/file-input-controller'
 
-export {
-  // domHelpers,
-  // form,
-  // formatters,
-  // GoogleMapsLoader,
-  // time,
-  // url,
-  // DatepickerController,
-  DropdownController,
-  DynamicFieldsController
-  // LocalModalController,
-  // NavbarController,
-  // NotificationController,
-  // PhoneInputController,
-  // RadioGroupController,
-  // RemoteModalController,
-  // SelectFieldController,
-  // SideMenuController,
-  // StepNumberInputController,
-  // SubmitButtonController,
-  // SubmitOnChangeController,
-  // TabsController,
-  // TooltipController,
-  // FileInputController
-}
+// export {
+// domHelpers,
+// form,
+// formatters,
+// GoogleMapsLoader,
+// time,
+// url,
+// DatepickerController,
+// DropdownController,
+// DynamicFieldsController
+// LocalModalController,
+// NavbarController,
+// NotificationController,
+// PhoneInputController,
+// RadioGroupController,
+// RemoteModalController,
+// SelectFieldController,
+// SideMenuController,
+// StepNumberInputController,
+// SubmitButtonController,
+// SubmitOnChangeController,
+// TabsController,
+// TooltipController,
+// FileInputController
+// }
+
+export { DropdownController } from './controllers/dropdown-controller'
+export { FileInputController } from './controllers/file-input-controller'
