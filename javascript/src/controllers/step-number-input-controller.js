@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class StepNumberInputController extends Controller {
+export class StepNumberInputController extends Controller {
   static targets = ['input', 'add', 'subtract']
 
   connect () {

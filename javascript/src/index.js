@@ -1,53 +1,25 @@
-// import * as domHelpers from './utils/domHelpers'
-// import * as formatters from './utils/formatters'
-// import * as form from './utils/form'
-// import GoogleMapsLoader from './utils/google-maps-loader'
-// import * as time from './utils/time'
-// import * as url from './utils/url'
+import * as domHelpers from './utils/domHelpers'
+import * as formatters from './utils/formatters'
+import * as form from './utils/form'
+import GoogleMapsLoader from './utils/google-maps-loader'
+import * as time from './utils/time'
+import * as url from './utils/url'
 
-// import DatepickerController from './controllers/datepicker-controller'
-// import DropdownController from './controllers/dropdown-controller.js'
-// import DynamicFieldsController from './controllers/dynamic-fields-controller'
-// import LocalModalController from './controllers/local-modal-controller'
-// import NavbarController from './controllers/navbar-controller'
-// import NotificationController from './controllers/notification-controller'
-// import PhoneInputController from './controllers/phone-input-controller'
-// import RadioGroupController from './controllers/radio-group-controller'
-// import RemoteModalController from './controllers/remote-modal-controller'
-// import SelectFieldController from './controllers/select-field-controller'
-// import SideMenuController from './controllers/side-menu-controller'
-// import StepNumberInputController from './controllers/step-number-input-controller'
-// import SubmitButtonController from './controllers/submit-button-controller'
-// import SubmitOnChangeController from './controllers/submit-on-change-controller'
-// import TabsController from './controllers/tabs-controller'
-// import TooltipController from './controllers/tooltip-controller'
-// import FileInputController from './controllers/file-input-controller'
-
-// export {
-// domHelpers,
-// form,
-// formatters,
-// GoogleMapsLoader,
-// time,
-// url,
-// DatepickerController,
-// DropdownController,
-// DynamicFieldsController
-// LocalModalController,
-// NavbarController,
-// NotificationController,
-// PhoneInputController,
-// RadioGroupController,
-// RemoteModalController,
-// SelectFieldController,
-// SideMenuController,
-// StepNumberInputController,
-// SubmitButtonController,
-// SubmitOnChangeController,
-// TabsController,
-// TooltipController,
-// FileInputController
-// }
-
-export { DropdownController } from './controllers/dropdown-controller'
+export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
+// export { DatepickerController } from './controllers/datepicker-controller'
+export { DropdownController } from './controllers/dropdown-controller.js'
+export { DynamicFieldsController } from './controllers/dynamic-fields-controller'
+export { LocalModalController } from './controllers/local-modal-controller'
+export { NavbarController } from './controllers/navbar-controller'
+export { NotificationController } from './controllers/notification-controller'
+// export { PhoneInputController } from './controllers/phone-input-controller'
+export { RadioGroupController } from './controllers/radio-group-controller'
+// export { RemoteModalController } from './controllers/remote-modal-controller'
+// export { SelectFieldController } from './controllers/select-field-controller'
+export { SideMenuController } from './controllers/side-menu-controller'
+export { StepNumberInputController } from './controllers/step-number-input-controller'
+export { SubmitButtonController } from './controllers/submit-button-controller'
+// export { SubmitOnChangeController } from './controllers/submit-on-change-controller'
+export { TabsController } from './controllers/tabs-controller'
+export { TooltipController } from './controllers/tooltip-controller'
 export { FileInputController } from './controllers/file-input-controller'

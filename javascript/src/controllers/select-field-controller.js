@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 import Choices from 'choices.js'
 
-export default class SelectFieldController extends Controller {
+export class SelectFieldController extends Controller {
   defaultPosition = 'auto'
   shouldSort = false
 

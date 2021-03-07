@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class SideMenuController extends Controller {
+export class SideMenuController extends Controller {
   static targets = ['container', 'overlay']
 
   connect () {

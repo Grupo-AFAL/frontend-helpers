@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class NavbarController extends Controller {
+export class NavbarController extends Controller {
   static targets = ['menu', 'burger']
 
   toggleMenu (event) {

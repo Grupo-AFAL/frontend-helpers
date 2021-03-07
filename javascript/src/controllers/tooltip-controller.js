@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class TooltipController extends Controller {
+export class TooltipController extends Controller {
   static targets = ['subject']
 
   connect () {

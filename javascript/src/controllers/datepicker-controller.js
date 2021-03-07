@@ -1,7 +1,7 @@
 import flatpickr from 'flatpickr'
 import { Controller } from 'stimulus'
 
-export default class DatepickerController extends Controller {
+export class DatepickerController extends Controller {
   connect () {
     const enableTime = Boolean(this.data.get('enableTime'))
     const noCalendar = Boolean(this.data.get('noCalendar'))

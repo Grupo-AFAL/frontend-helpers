@@ -16,7 +16,7 @@ import camelCase from 'lodash.camelcase'
  *   </div>
  * </section>
  */
-export default class RemoteModalController extends Controller {
+export class RemoteModalController extends Controller {
   connect () {
     this.isWide = true
     this.modal = document.getElementById('modal-template')

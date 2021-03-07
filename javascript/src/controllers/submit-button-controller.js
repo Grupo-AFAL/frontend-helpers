@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class SubmitButtonController extends Controller {
+export class SubmitButtonController extends Controller {
   connect () {
     this.element.addEventListener('turbo:submit-start', e => {
       this.disableButton(e.detail.formSubmission.submitter)

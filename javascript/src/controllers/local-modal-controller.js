@@ -19,7 +19,7 @@ import { Controller } from 'stimulus'
  *   </div>
  * </section>
  */
-export default class LocalModalController extends Controller {
+export class LocalModalController extends Controller {
   static targets = ['modal', 'modalContent']
 
   open (event) {

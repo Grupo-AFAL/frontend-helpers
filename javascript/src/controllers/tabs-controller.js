@@ -25,7 +25,7 @@ import { Controller } from 'stimulus'
  * </div>
  */
 
-export default class TabsController extends Controller {
+export class TabsController extends Controller {
   open (event) {
     const index = event.currentTarget.getAttribute('data-tab-index')
 

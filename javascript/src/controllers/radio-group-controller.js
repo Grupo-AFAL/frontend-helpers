@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 
-export default class RadioGroupController extends Controller {
+export class RadioGroupController extends Controller {
   connect () {
     this.lowestValue = parseInt(this.element.dataset.start) || 0
 

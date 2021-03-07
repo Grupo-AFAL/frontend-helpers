@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 import phone from 'phone'
 
-export default class PhoneInputController extends Controller {
+export class PhoneInputController extends Controller {
   connect () {
     this.element.addEventListener('blur', this.replaceWithFormattedNumber)
     this.replaceWithFormattedNumber()
