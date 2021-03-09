@@ -16,17 +16,14 @@ import camelCase from 'lodash.camelcase'
  *   </div>
  * </section>
  */
-export class RemoteModalController extends Controller {
+export default class RemoteModalController extends Controller {
+  static targets = ['template', 'background', 'wrapper', 'content', 'closeBtn']
+
   connect () {
     this.isWide = true
-    this.modal = document.getElementById('modal-template')
-    this.background = this.modal.querySelector('.modal-background')
-    this.contentWrapper = this.modal.querySelector('.modal-content')
-    this.content = this.modal.querySelector('.modal-content > div')
-    this.closeBtn = this.modal.querySelector('.modal-close')
 
-    this.background.addEventListener('click', this._closeModal)
-    this.closeBtn.addEventListener('click', this._closeModal)
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+    this.closeBtnTarget.addEventListener('click', this._closeModal)
 
     document.addEventListener('openModal', e => {
       this.setOptions(e.detail.options)
@@ -35,19 +32,19 @@ export class RemoteModalController extends Controller {
   }
 
   disconnect () {
-    this.background.removeEventListener('click', this._closeModal)
-    this.closeBtn.removeEventListener('click', this._closeModal)
+    this.backgroundTarget.removeEventListener('click', this._closeModal)
+    this.closeBtnTarget.removeEventListener('click', this._closeModal)
   }
 
   openModal (content) {
     this.isWide
-      ? this.contentWrapper.classList.add('wide')
-      : this.contentWrapper.classList.remove('wide')
+      ? this.wrapperTarget.classList.add('wide')
+      : this.wrapperTarget.classList.remove('wide')
 
-    this.contentWrapper.classList.add(this.wrapperClass)
+    this.wrapperTarget.classList.add(this.wrapperClass)
 
-    this.modal.classList.add('is-active')
-    this.content.innerHTML = content
+    this.templateTarget.classList.add('is-active')
+    this.contentTarget.innerHTML = content
   }
 
   setOptions (options) {
@@ -58,9 +55,9 @@ export class RemoteModalController extends Controller {
   }
 
   _closeModal = () => {
-    this.modal.classList.remove('is-active')
-    this.contentWrapper.classList.remove(this.wrapperClass)
-    this.content.innerHTML = ''
+    this.templateTarget.classList.remove('is-active')
+    this.wrapperTarget.classList.remove(this.wrapperClass)
+    this.contentTarget.innerHTML = ''
   }
 
   _buildURL = (path, redirectTo = null) => {
@@ -136,6 +133,7 @@ export class RemoteModalController extends Controller {
 
     const form = event.target.closest('form')
     const formURL = form.getAttribute('action')
+    const enableTurbo = event.target.dataset.turbo
 
     const url = this._buildURL(formURL, this.redirectTo)
     const options = {
@@ -146,9 +144,15 @@ export class RemoteModalController extends Controller {
       body: new FormData(form)
     }
 
+    if (enableTurbo) {
+      options.headers = {
+        Accept: 'text/html; turbo-stream, text/html, application/xhtml+xml'
+      }
+    }
+
     let redirected = false
     let redirectURL = null
-    let redirectData = this.extraProps || {}
+    const redirectData = this.extraProps || {}
 
     fetch(url, options)
       .then(response => {
