@@ -1,3 +1,5 @@
+import './index.scss'
+
 import { Application } from 'stimulus'
 
 import { DropdownController } from '../src/controllers/dropdown-controller'

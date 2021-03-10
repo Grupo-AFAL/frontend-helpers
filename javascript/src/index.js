@@ -6,7 +6,7 @@ import * as time from './utils/time'
 import * as url from './utils/url'
 
 export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
-export { ChartController } from './controllers/chart_controller'
+export { ChartController } from './controllers/chart-controller'
 export { DatepickerController } from './controllers/datepicker-controller'
 export { DropdownController } from './controllers/dropdown-controller'
 export { DynamicFieldsController } from './controllers/dynamic-fields-controller'
@@ -23,5 +23,5 @@ export { StepNumberInputController } from './controllers/step-number-input-contr
 export { SubmitButtonController } from './controllers/submit-button-controller'
 export { SubmitOnChangeController } from './controllers/submit-on-change-controller'
 export { TabsController } from './controllers/tabs-controller'
-export { TagsController } from './controllers/tags_controller'
+export { TagsController } from './controllers/tags-controller'
 export { TooltipController } from './controllers/tooltip-controller'

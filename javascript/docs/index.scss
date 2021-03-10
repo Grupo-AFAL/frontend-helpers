@@ -1,0 +1,25 @@
+// FIX: There is an issue when reloads don't always happen when saving
+// files other than this one.
+
+@import '../../app/assets/stylesheets/fe_variables.scss';
+
+@import 'node_modules/bulma/bulma.sass';
+
+@import '../../app/assets/stylesheets/fe_base.scss';
+@import '../../app/assets/stylesheets/fe_box.scss';
+@import '../../app/assets/stylesheets/fe_card.scss';
+@import '../../app/assets/stylesheets/fe_choices_customizations.scss';
+@import '../../app/assets/stylesheets/fe_container.scss';
+@import '../../app/assets/stylesheets/fe_dropdown.scss';
+@import '../../app/assets/stylesheets/fe_flatpickr_customizations.scss';
+@import '../../app/assets/stylesheets/fe_forms.scss';
+@import '../../app/assets/stylesheets/fe_generic.scss';
+@import '../../app/assets/stylesheets/fe_icons.scss';
+@import '../../app/assets/stylesheets/fe_modal.scss';
+@import '../../app/assets/stylesheets/fe_navbar.scss';
+@import '../../app/assets/stylesheets/fe_page_nav.scss';
+@import '../../app/assets/stylesheets/fe_panel.scss';
+@import '../../app/assets/stylesheets/fe_side_menu.scss';
+@import '../../app/assets/stylesheets/fe_tag.scss';
+@import '../../app/assets/stylesheets/fe_tags_input.scss';
+@import '../../app/assets/stylesheets/fe_typography.scss';
