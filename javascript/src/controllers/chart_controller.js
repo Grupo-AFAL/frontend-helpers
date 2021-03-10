@@ -21,7 +21,7 @@ import { Controller } from 'stimulus'
  *   Cargando...
  * </div>
  */
-export default class ChartController extends Controller {
+export class ChartController extends Controller {
   async connect () {
     const { default: Chartkick } = await import('chartkick')
     const { default: Chart } = await import('chart.js') // eslint-disable-line

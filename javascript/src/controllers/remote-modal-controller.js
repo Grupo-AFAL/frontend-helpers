@@ -16,7 +16,7 @@ import camelCase from 'lodash.camelcase'
  *   </div>
  * </section>
  */
-export default class RemoteModalController extends Controller {
+export class RemoteModalController extends Controller {
   static targets = ['template', 'background', 'wrapper', 'content', 'closeBtn']
 
   connect () {

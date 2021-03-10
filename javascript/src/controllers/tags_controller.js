@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 
 const notAvailableMessage = 'No hay opciones disponibles'
 
-export default class TagsController extends Controller {
+export class TagsController extends Controller {
   static targets = ['input', 'results', 'hidden', 'fakeInput', 'container']
 
   static values = {
