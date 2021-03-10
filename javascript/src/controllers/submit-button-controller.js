@@ -1,6 +1,13 @@
 import { Controller } from 'stimulus'
 
-export default class SubmitButtonController extends Controller {
+/**
+ * SubmitButton Controller
+ * Displays a loading button state when a form submission is started
+ * It relies on @hotwired/turbo events to display and hide the loading state
+ *
+ * https://bulma.io/documentation/elements/button/#states
+ */
+export class SubmitButtonController extends Controller {
   connect () {
     this.element.addEventListener('turbo:submit-start', e => {
       this.disableButton(e.detail.formSubmission.submitter)
