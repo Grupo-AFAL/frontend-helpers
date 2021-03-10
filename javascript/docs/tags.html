@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frontend Helpers" />
+  <title>Frontend Helpers</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <script type="module" src="/docs/index.js"></script>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <a href="/">Back to home</a>
+
+      <hr />
+
+      <h1 class="title">
+        Tags Input
+      </h1>
+      <p class="subtitle">
+        Tags Input component
+      </p>
+
+      <div class="tags" data-controller="tags" data-items-value="['One', 'Two', 'Three']">
+        <div class="field">
+          <div class="input" data-tags-target="fakeInput">
+            <div data-tags-target="container"></div>
+            <input type="text" data-tags-target="input">
+          </div>
+          <input type="hidden" data-tags-target="hidden">
+        </div>
+        <ul class="results is-hidden" data-tags-target="results"></ul>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -2,6 +2,12 @@ import { Controller } from 'stimulus'
 
 const notAvailableMessage = 'No hay opciones disponibles'
 
+/**
+ * Tags Controller
+ *
+ * Converts a text input into a multi select input with the ability to
+ * autocomplete existing items and create new ones.
+ */
 export class TagsController extends Controller {
   static targets = ['input', 'results', 'hidden', 'fakeInput', 'container']
 

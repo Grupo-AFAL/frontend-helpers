@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require 'frontend_helpers/version'
-# require 'action_view'
-# require 'action_pack'
-
 require 'frontend_helpers/utils'
 require 'frontend_helpers/icon_components'
 require 'frontend_helpers/builder_html_utils'
@@ -20,5 +17,4 @@ module FrontendHelpers
   class Engine < ::Rails::Engine; end
 
   class Error < StandardError; end
-  # Your code goes here...
 end
