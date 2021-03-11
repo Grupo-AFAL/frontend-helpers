@@ -53,6 +53,9 @@ export class TagsController extends Controller {
       case 'Escape':
         this.hideResults()
         break
+      case 'Backspace':
+        this.removeLastItem()
+        break
       case 'Tab':
       case 'Enter':
       case ',':
@@ -177,8 +180,9 @@ export class TagsController extends Controller {
     const closeBtn = document.createElement('span')
     closeBtn.append('X')
     closeBtn.classList.add('close-btn')
-    closeBtn.addEventListener('click', this.removeItem(value, span))
+    closeBtn.addEventListener('click', this.removeItem(value))
 
+    span.dataset.value = value
     span.append(value)
     span.append(closeBtn)
     span.classList.add('input-tag')
@@ -186,8 +190,15 @@ export class TagsController extends Controller {
     this.containerTarget.append(span)
   }
 
-  removeItem (value, span) {
+  removeLastItem () {
+    const lastItem = this.selectedItems[this.selectedItems.length - 1]
+    this.removeItem(lastItem)()
+    this.hideResults()
+  }
+
+  removeItem (value) {
     return () => {
+      const span = this.containerTarget.querySelector(`[data-value=${value}]`)
       this.containerTarget.removeChild(span)
       this.selectedItems = this.selectedItems.filter(i => i !== value)
       this.hiddenTarget.value = this.selectedItems.join(',')
