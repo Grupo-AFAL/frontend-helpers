@@ -7,12 +7,35 @@ $size-6: 1rem;
 $size-6-5: 0.87rem;
 $size-7: 0.75rem;
 
-$afal-blue: #00b3ee;
-$white: #ffffff;
+// Colors
 $black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$grey-lightest: hsl(0, 0%, 93%);
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+$orange: hsl(14, 100%, 53%);
+$yellow: hsl(48, 100%, 67%);
+$green: hsl(141, 53%, 53%);
+$turquoise: hsl(171, 100%, 41%);
+// $cyan:         hsl(204, 71%,  53%);
+$blue: hsl(217, 71%, 53%);
+$purple: hsl(271, 100%, 71%);
+$red: hsl(348, 86%, 61%);
+
+$afal-blue: hsl(195, 100%, 47%);
 
 $primary: $afal-blue;
-$body-background-color: #f5f6f8;
+$body-background-color: hsl(220, 18%, 97%);
 $box-shadow: 0px 3px 18px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.03);
 $sharp-box-shadow: 3px 3px 3px rgba(10, 10, 10, 0.1);
 

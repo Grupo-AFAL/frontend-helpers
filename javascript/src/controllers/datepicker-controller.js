@@ -1,5 +1,14 @@
 import { Controller } from 'stimulus'
 
+/**
+ * Datepicker Controller
+ * Uses the flatpickr library to render a Date Picker
+ * https://flatpickr.js.org/
+ *
+ * How to use:
+ *
+ * <input type="text" data-controller="datepicker">
+ */
 export class DatepickerController extends Controller {
   async connect () {
     const { default: flatpickr } = await import('flatpickr')
