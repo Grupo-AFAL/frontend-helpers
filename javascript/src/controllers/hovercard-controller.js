@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import stringToDOMNode  from './utils/domHelpers'
+import { stringToDOMNode } from '../utils/domHelpers'
 
 export class HovercardController extends Controller {
   static values = { url: String }
