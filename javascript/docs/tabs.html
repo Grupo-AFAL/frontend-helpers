@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frontend Helpers" />
+  <title>Frontend Helpers</title>
+  <script type="module" src="/docs/index.js"></script>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <a href="/">Back to home</a>
+
+      <hr />
+
+      <h1 class="title">
+        Tabs
+      </h1>
+      <p class="subtitle">
+        Tabs component
+      </p>
+
+      <div data-controller="tabs">
+        <div class="tabs">
+          <ul>
+            <li class="is-active" data-tab-index="1" data-action="click->tabs#open">
+              <a>Activities</a>
+            </li>
+            <li data-tab-index="2" data-action="click->tabs#open">
+              <a>Other tab</a>
+            </li>
+          </ul>
+          </div>
+          <div class="content">
+            <div data-content-index="1">
+              Activities tab content
+            </div>
+            <div data-content-index="2" class="is-hidden">
+              Other tab content
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

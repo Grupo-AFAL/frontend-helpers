@@ -1,0 +1,21 @@
+.hovercard {
+  max-width: 205px;
+  z-index: 100;
+  overflow: visible;
+
+  .card-content {
+    padding: $size-7;
+  }
+
+  svg {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - 10px);
+  }
+
+  p,
+  strong {
+    font-size: $size-7;
+    display: block;
+  }
+}
