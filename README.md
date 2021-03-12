@@ -1,5 +1,8 @@
 # Grupo AFAL FrontEnd Helpers
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/969fbe0a6dfa323f51da/maintainability)](https://codeclimate.com/github/Grupo-AFAL/frontend-helpers/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/969fbe0a6dfa323f51da/test_coverage)](https://codeclimate.com/github/Grupo-AFAL/frontend-helpers/test_coverage)
+
 Collection of components and utilities to facilitate developing web applications integrating Ruby helpers to facilitate the generation of HTML templates, Bulma componentes with some customizations and StimulusJS controllers to provide the functionality to those components.
 
 ## Ruby/Rails Helpers
@@ -53,7 +56,7 @@ The javascript code live under the `javascript` folder.
 #### Start development server
 
 ```
-yarn run start
+npm run start
 ```
 
 A browser window will open at `localhost:8080`
