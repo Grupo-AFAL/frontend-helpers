@@ -2,23 +2,9 @@ import { Controller } from 'stimulus'
 import { stringToDOMNode } from '../utils/domHelpers'
 
 /* 
-  Hovercard component:
-    <a data-controller="hovercard"
-      data-hovercard-url-value="<%= cafeteria_product_item_path(@product_item) %>"
-      class="button has-text-danger is-text" disabled>Eliminar
-    </a> 
-    
-  Hovercard content:
-    <%= hovercard do %>
-      <div class="card-content">
-        <div class="content">
-          <p>Este elemento forma parte de un producto, no puede ser eliminado</p>
-          <% @products_in_use.each do |product| %>
-            <strong><%= product.name %></strong>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+  Hovercard controller:
+    It generates a hovercard component to show some content
+    obtained via a fetch request. 
 */
 
 export class HovercardController extends Controller {

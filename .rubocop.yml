@@ -5,6 +5,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+  SuggestExtensions: false
 
 Layout/LineLength:
   Max: 100
@@ -37,7 +38,7 @@ Style/HashTransformValues:
   Enabled: true
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']
 
 Naming/VariableNumber:
   EnforcedStyle: 'snake_case'

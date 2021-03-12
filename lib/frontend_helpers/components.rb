@@ -102,11 +102,14 @@ module FrontendHelpers
 
     def hovercard(&block)
       html_content = capture(&block)
-      tag.div class: 'card hovercard' do
-        html_content + card_notch
+      card_content = tag.div class: 'card-content' do
+        tag.div html_content, class: 'content'
+      end
+      tag.div class: 'hovercard card' do
+        safe_join([card_content, card_notch])
       end
     end
-  
+
     def card_notch
       tag.svg width: 20, height: 8, viewBox: '0 0 20 8', fill: 'none' do
         tag.path 'fill-rule': 'evenodd',
