@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frontend Helpers" />
+  <title>Frontend Helpers</title>
+  <script type="module" src="/docs/index.js"></script>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <a href="/">Back to home</a>
+
+      <hr />
+
+      <h1 class="title is-1">
+        Charts component
+      </h1>
+      <p class="subtitle">
+        Uses chartkick and Chart.js libraries
+      </p>
+
+      <hr />
+
+      <h3 class="title is-3">LineChart</h3>
+      <div id="line-chart" class="chart" data-controller="chart"
+        data-chart-data='{"2018-05-13":2,"2018-05-14":5,"2018-05-15":3,"2018-05-16":8,"2018-05-17":6,"2018-05-18":6}'
+        data-chart-type="LineChart">
+        Cargando...
+      </div>
+
+      <hr />
+
+      <h3 class="title is-3">PieChart</h3>
+      <div id="pie-chart" class="chart" data-controller="chart"
+        data-chart-data='[["Blueberry",44],["Strawberry",23],["Banana",22],["Apple",21],["Grape",13]]'
+        data-chart-type="PieChart">
+        Cargando...
+      </div>
+
+      <hr />
+
+      <h3 class="title is-3">ColumnChart</h3>
+      <div id="column-chart" class="chart" data-controller="chart"
+        data-chart-data='[["Sun",32],["Mon",46],["Tue",28],["Wed",21],["Thu",20],["Fri",13],["Sat",27]]'
+        data-chart-type="ColumnChart">
+        Cargando...
+      </div>
+
+      <hr />
+
+      <h3 class="title is-3">AreaChart</h3>
+      <div id="area-chart" class="chart" data-controller="chart"
+        data-chart-data='{"2013-07-27 07:00:00 UTC":2,"2013-07-27 07:01:00 UTC":5,"2013-07-27 07:02:00 UTC":3,"2013-07-27 07:03:00 UTC":3,"2013-07-27 07:04:00 UTC":2,"2013-07-27 07:05:00 UTC":5,"2013-07-27 07:06:00 UTC":1}'
+        data-chart-type="AreaChart">
+        Cargando...
+      </div>
+
+      <hr />
+
+      <h3 class="title is-3">Multiple Series Chart</h3>
+      <div id="multi-line-chart" class="chart" data-controller="chart"
+        data-chart-data='[{"name":"Workout","data":{"2013-02-10":3,"2013-02-17":3,"2013-02-24":3,"2013-03-03":1,"2013-03-10":4,"2013-03-17":3,"2013-03-24":2,"2013-03-31":3}},{"name":"Go to concert","data":{"2013-02-10":0,"2013-02-17":0,"2013-02-24":0,"2013-03-03":0,"2013-03-10":2,"2013-03-17":1,"2013-03-24":0,"2013-03-31":0}},{"name":"Wash face","data":{"2013-02-10":0,"2013-02-17":1,"2013-02-24":0,"2013-03-03":0,"2013-03-10":0,"2013-03-17":1,"2013-03-24":0,"2013-03-31":1}},{"name":"Call parents","data":{"2013-02-10":5,"2013-02-17":3,"2013-02-24":2,"2013-03-03":0,"2013-03-10":0,"2013-03-17":1,"2013-03-24":1,"2013-03-31":0}},{"name":"Eat breakfast","data":{"2013-02-10":3,"2013-02-17":2,"2013-02-24":1,"2013-03-03":0,"2013-03-10":2,"2013-03-17":2,"2013-03-24":3,"2013-03-31":0}}]'
+        data-chart-type="LineChart">
+        Cargando...
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
