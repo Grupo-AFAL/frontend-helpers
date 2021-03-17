@@ -46,6 +46,12 @@ module FrontendHelpers
       end
     end
 
+    def custom_select_field_group(method, values, options = {}, html_options = {})
+      FrontendHelpers::FieldGroupWrapper.render @template, self, method, options do
+        custom_select_field(method, values, options, html_options)
+      end
+    end
+
     def file_field_group(method, options = {})
       options.with_defaults!(
         class: 'file-input',
