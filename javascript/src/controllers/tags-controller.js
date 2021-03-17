@@ -26,6 +26,9 @@ export class TagsController extends Controller {
     this.inputTarget.setAttribute('spellcheck', 'false')
 
     if (!this.hasAddItemsValue) this.addItemsValue = true
+    if (!this.hasInputNameValue) {
+      console.warn('TagsController: data-tags-input-name is missing')
+    }
 
     this.initializeItems()
     this.initializeListeners()
