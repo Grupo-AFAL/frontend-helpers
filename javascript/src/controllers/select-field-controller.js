@@ -13,6 +13,13 @@ export class SelectFieldController extends Controller {
     const shouldSort =
       Boolean(selectField.getAttribute('should-sort')) || this.shouldSort
 
+    if (selectField.dataset.choice === 'active') {
+      console.info(
+        'SelectFieldController: Already initialized, skipping Choices.js initialization'
+      )
+      return
+    }
+
     this.choicesInstance = new Choices(selectField, {
       removeItemButton: multiple,
       position,
@@ -25,6 +32,7 @@ export class SelectFieldController extends Controller {
   }
 
   disconnect () {
+    if (!this.choicesInstance) return
     this.choicesInstance.destroy()
   }
 }
