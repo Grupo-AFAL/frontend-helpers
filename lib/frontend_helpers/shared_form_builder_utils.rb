@@ -160,6 +160,36 @@ module FrontendHelpers
       select_multiple_field(method, values, options, html_options)
     end
 
+    # Uses the Stimulus TagsController
+    #
+    def custom_select_field(method, values, options = {}, _html_options = {})
+      options.with_defaults!(add_items: true)
+  
+      param_key = object.class.model_name.param_key
+      field_id = "#{param_key}_#{method}"
+      field_name = "#{param_key}[#{method}]"
+  
+      container = tag.div(data: { 'tags-target': 'container' })
+      input = tag.input(id: field_id, type: 'text', data: { 'tags-target': 'input' })
+  
+      tags_data = {
+        controller: 'tags',
+        'tags-items-value': values,
+        'tags-selected-items-value': object.send(method),
+        'tags-input-name-value': field_name,
+        'tags-add-items-value': options[:add_items]
+      }
+  
+      tag.div(class: 'tags', data: tags_data) do
+        safe_join([
+                    tag.div(class: 'input', data: { 'tags-target': 'fakeInput' }) do
+                      safe_join([container, input])
+                    end,
+                    tag.ul(class: 'results is-hidden', data: { 'tags-target': 'results' })
+                  ])
+      end
+    end
+
     def boolean_field(method, options = {})
       label_text = options.delete(:label) || translate_attribute(method)
 

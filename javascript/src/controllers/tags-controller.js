@@ -9,10 +9,13 @@ const notAvailableMessage = 'No hay opciones disponibles'
  * autocomplete existing items and create new ones.
  */
 export class TagsController extends Controller {
-  static targets = ['input', 'results', 'hidden', 'fakeInput', 'container']
+  static targets = ['input', 'results', 'fakeInput', 'container']
 
   static values = {
-    items: Array
+    items: Array,
+    selectedItems: Array,
+    addItems: Boolean,
+    inputName: String
   }
 
   async connect () {
@@ -22,8 +25,37 @@ export class TagsController extends Controller {
     this.inputTarget.setAttribute('autocomplete', 'off')
     this.inputTarget.setAttribute('spellcheck', 'false')
 
-    this.initializeItems()
+    if (!this.hasAddItemsValue) this.addItemsValue = true
+    if (!this.hasInputNameValue) {
+      console.warn('TagsController: data-tags-input-name is missing')
+    }
 
+    this.initializeItems()
+    this.initializeListeners()
+  }
+
+  disconnect () {
+    document.removeEventListener('scroll', this.hideResults)
+  }
+
+  initializeItems () {
+    this.selectedItems = this.selectedItemsValue
+    this.hiddenContainerTarget = document.createElement('div')
+    this.element.appendChild(this.hiddenContainerTarget)
+    this.commit()
+
+    this.itemsValue = this.itemsValue.map(this.normalizeItem)
+    this.itemsById = this.itemsValue.reduce((accumulator, item) => {
+      const [name, value] = item
+      accumulator[value] = name
+      return accumulator
+    }, {})
+
+    this.selectedItems.forEach(i => this.renderSelectedItem(i))
+  }
+
+  initializeListeners () {
+    document.addEventListener('scroll', this.hideResults)
     this.inputTarget.addEventListener('focus', this.onFocusOrClick.bind(this))
     this.inputTarget.addEventListener('click', this.onFocusOrClick.bind(this))
     this.inputTarget.addEventListener('keydown', this.onKeydown.bind(this))
@@ -33,15 +65,6 @@ export class TagsController extends Controller {
       'mousedown',
       this.onResultsMouseDown.bind(this)
     )
-  }
-
-  initializeItems () {
-    this.selectedItems = this.hiddenTarget.value
-      .split(',')
-      .filter(i => i.length > 0)
-      .map(i => i.trim())
-
-    this.selectedItems.forEach(i => this.renderSelectedItem(i))
   }
 
   windowResize () {
@@ -77,14 +100,15 @@ export class TagsController extends Controller {
     const item = this.firstAvailableItem(this.inputTarget.value)
 
     if (item) {
-      this.addSelectedItem(item)
+      this.addSelectedItem(item[1])
       this.renderAvailableItems()
-    } else {
+    } else if (this.addItemsValue) {
       this.createNewItem()
     }
   }
 
   createNewItem () {
+    this.itemsById[this.inputTarget.value] = this.inputTarget.value
     this.addSelectedItem(this.inputTarget.value)
     this.hideResults()
   }
@@ -93,7 +117,9 @@ export class TagsController extends Controller {
     this.addSelectedItem(event.target.dataset.value)
   }
 
-  hideResults () {
+  hideResults = () => {
+    if (!this.resultsTarget.innerHTML) return
+
     this.inputTarget.value = ''
     this.resultsTarget.classList.add('is-hidden')
     this.resultsTarget.innerHTML = null
@@ -104,9 +130,9 @@ export class TagsController extends Controller {
     if (!value || value.length === 0) return
 
     this.selectedItems.push(value)
-    this.hiddenTarget.value = this.selectedItems.join(',')
     this.renderSelectedItem(value)
     this.inputTarget.value = ''
+    this.commit()
   }
 
   firstAvailableItem (searchText = null) {
@@ -119,10 +145,13 @@ export class TagsController extends Controller {
 
   searchFunction (searchText) {
     return item => {
-      const notIncluded = !this.selectedItems.includes(item)
+      const [name, value] = item
+      const notIncluded = !this.selectedItems.includes(value)
 
       if (searchText) {
-        return notIncluded && item.includes(searchText)
+        return (
+          notIncluded && name.toLowerCase().includes(searchText.toLowerCase())
+        )
       } else {
         return notIncluded
       }
@@ -137,13 +166,15 @@ export class TagsController extends Controller {
       this.resultsTarget.append(this.unvailableItemTag(searchText))
     } else {
       items.forEach(item => {
-        this.resultsTarget.append(this.availableItemTag(item))
+        if (!this.selectedItems.includes(item[1].toString())) {
+          this.resultsTarget.append(this.availableItemTag(item))
+        }
       })
     }
 
     const rect = this.fakeInputTarget.getBoundingClientRect()
-    const top = rect.top + window.pageYOffset + 50
-    const left = rect.left + window.pageXOffset
+    const top = rect.top + 50
+    const left = rect.left
     const width = rect.width
 
     this.resultsTarget.setAttribute(
@@ -157,15 +188,16 @@ export class TagsController extends Controller {
 
   availableItemTag (item) {
     const li = document.createElement('li')
-    li.dataset.value = item
-    li.append(item)
+    const [name, value] = item
+    li.dataset.value = value
+    li.append(name)
     return li
   }
 
   unvailableItemTag (searchText) {
     const li = document.createElement('li')
 
-    if (searchText && searchText.length > 0) {
+    if (this.addItemsValue && searchText && searchText.length > 0) {
       li.append(`Agregar elemento: ${searchText}`)
       li.dataset.value = searchText
     } else {
@@ -183,7 +215,7 @@ export class TagsController extends Controller {
     closeBtn.addEventListener('click', this.removeItem(value))
 
     span.dataset.value = value
-    span.append(value)
+    span.append(this.itemsById[value])
     span.append(closeBtn)
     span.classList.add('input-tag')
 
@@ -191,6 +223,8 @@ export class TagsController extends Controller {
   }
 
   removeLastItem () {
+    if (this.inputTarget.value) return
+
     const lastItem = this.selectedItems[this.selectedItems.length - 1]
     this.removeItem(lastItem)()
     this.hideResults()
@@ -198,10 +232,41 @@ export class TagsController extends Controller {
 
   removeItem (value) {
     return () => {
-      const span = this.containerTarget.querySelector(`[data-value=${value}]`)
+      const span = this.containerTarget.querySelector(`[data-value='${value}']`)
       this.containerTarget.removeChild(span)
       this.selectedItems = this.selectedItems.filter(i => i !== value)
-      this.hiddenTarget.value = this.selectedItems.join(',')
+      this.commit()
     }
+  }
+
+  commit () {
+    this.hiddenContainerTarget.innerHTML = ''
+
+    if (this.selectedItems.length === 0) {
+      this.hiddenContainerTarget.append(this.generateInput(null))
+    }
+
+    this.selectedItems.forEach(value => {
+      this.hiddenContainerTarget.append(this.generateInput(value))
+    })
+  }
+
+  generateInput (value) {
+    const input = document.createElement('input')
+    input.setAttribute('type', 'hidden')
+
+    if (value) {
+      input.setAttribute('value', value)
+    }
+
+    input.setAttribute('name', `${this.inputNameValue}[]`)
+    input.dataset.tagsTarget = 'hidden'
+
+    return input
+  }
+
+  normalizeItem (item) {
+    if (Array.isArray(item)) return item
+    return [item, item]
   }
 }
