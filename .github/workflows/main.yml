@@ -8,12 +8,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - run: npm run install-peer-deps
+
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
-          install: npm install && npm run install-peer-deps
+          install: npm install
           start: npm start
           wait-on: 'http://localhost:8080'
