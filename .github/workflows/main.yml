@@ -14,6 +14,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
-          install: npm install
+          install: npm install && npm run install-peer-deps
           start: npm start
           wait-on: 'http://localhost:8080'
