@@ -11,7 +11,7 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "install-peer-deps": "npm install -g @hotwired/turbo bulma chart.js chartkick choices.js flatpickr lodash.camelcase phone stimulus stimulus-use",
+    "install-peer-deps": "npm install @hotwired/turbo bulma chart.js chartkick choices.js flatpickr lodash.camelcase phone stimulus stimulus-use",
     "test": "start-server-and-test start http://localhost:8080 cy:run",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
