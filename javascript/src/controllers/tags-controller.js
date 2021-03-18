@@ -39,9 +39,10 @@ export class TagsController extends Controller {
   }
 
   initializeItems () {
+    this.containerTarget.innerHTML = null
+
     this.selectedItems = this.selectedItemsValue
-    this.hiddenContainerTarget = document.createElement('div')
-    this.element.appendChild(this.hiddenContainerTarget)
+    this.createHiddenInputContainer()
     this.commit()
 
     this.itemsValue = this.itemsValue.map(this.normalizeItem)
@@ -52,6 +53,20 @@ export class TagsController extends Controller {
     }, {})
 
     this.selectedItems.forEach(i => this.renderSelectedItem(i))
+  }
+
+  createHiddenInputContainer () {
+    const existingContainer = this.element.querySelector(
+      '.hidden-input-container'
+    )
+
+    if (existingContainer) {
+      this.hiddenContainerTarget = existingContainer
+    } else {
+      this.hiddenContainerTarget = document.createElement('div')
+      this.hiddenContainerTarget.classList.add('hidden-input-container')
+      this.element.appendChild(this.hiddenContainerTarget)
+    }
   }
 
   initializeListeners () {
