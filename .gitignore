@@ -13,4 +13,5 @@
 .rspec_status
 
 node_modules
-package-lock.json
+# package-lock.json
+cypress/videos/
