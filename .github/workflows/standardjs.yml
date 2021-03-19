@@ -12,4 +12,5 @@ jobs:
         with:
           node-version: 15.x
 
+      - run: npm install
       - run: npm exec standard
