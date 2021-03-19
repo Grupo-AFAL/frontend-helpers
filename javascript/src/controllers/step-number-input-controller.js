@@ -12,7 +12,7 @@ export class StepNumberInputController extends Controller {
     this.inputTarget.addEventListener('change', e => {
       const newValue = parseInt(e.target.value) || 0
 
-      if (newValue == this.value) return
+      if (newValue === this.value) return
 
       this.value = newValue
       this.setValue()

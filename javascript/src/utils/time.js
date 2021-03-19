@@ -24,7 +24,7 @@ export const waitUntil = async (f, timeoutMs = 2000) => {
         resolve(result)
       } else if (new Date() - timeWas > timeoutMs) {
         clearInterval(wait)
-        reject()
+        reject(new Error('Timed out after 2 seconds'))
       }
     }, checkEveryMs)
   })

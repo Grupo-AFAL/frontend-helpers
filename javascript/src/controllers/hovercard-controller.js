@@ -1,10 +1,10 @@
 import { Controller } from 'stimulus'
 import { stringToDOMNode } from '../utils/domHelpers'
 
-/* 
+/*
   Hovercard controller:
     It generates a hovercard component to show some content
-    obtained via a fetch request. 
+    obtained via a fetch request.
 */
 
 export class HovercardController extends Controller {
