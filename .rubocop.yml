@@ -5,6 +5,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+    - 'vendor/**/*'
   SuggestExtensions: false
 
 Layout/LineLength:
