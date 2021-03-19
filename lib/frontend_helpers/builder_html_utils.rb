@@ -42,13 +42,20 @@ module FrontendHelpers
       object.errors.full_messages_for(method).join(', ').html_safe
     end
 
+    # rubocop:disable Style/OptionalBooleanParameter
+    #
+    # This method is just a passthrough for the Rails method, so we can't really change the
+    # signature of the method.
     def content_tag(name, content_or_options_with_block = nil, options = nil, escape = true, &block)
       @template.content_tag(name, content_or_options_with_block, options, escape, &block)
     end
+    # rubocop:enable Style/OptionalBooleanParameter
 
+    # rubocop:disable Metrics/ParameterLists, Style/OptionalBooleanParameter
     def tag(name = nil, options = nil, open = false, escape = true)
       @template.tag(name, options, open, escape)
     end
+    # rubocop:enable Metrics/ParameterLists, Style/OptionalBooleanParameter
 
     def safe_join(array)
       @template.safe_join(array)
