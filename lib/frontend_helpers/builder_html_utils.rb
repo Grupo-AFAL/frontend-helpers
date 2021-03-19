@@ -24,6 +24,7 @@ module FrontendHelpers
       div = content_tag(:div, field,
                         class: "control #{options.delete(:control_class)}",
                         data: options.delete(:control_data))
+
       div + help_message
     end
 

@@ -162,7 +162,7 @@ module FrontendHelpers
 
     # Uses the Stimulus TagsController
     #
-    def custom_select_field(method, values, options = {}, _html_options = {})
+    def custom_select_field(method, values, options = {}, html_options = {})
       options.with_defaults!(add_items: true)
   
       param_key = object.class.model_name.param_key
@@ -180,14 +180,17 @@ module FrontendHelpers
         'tags-add-items-value': options[:add_items]
       }
   
-      tag.div(class: 'tags', data: tags_data) do
+      field = tag.div(class: 'tags-wrapper', data: tags_data) do
         safe_join([
-                    tag.div(class: 'input', data: { 'tags-target': 'fakeInput' }) do
+                    tag.div(class: field_class_name(method), data: { 'tags-target': 'fakeInput' }) do
                       safe_join([container, input])
                     end,
                     tag.ul(class: 'results is-hidden', data: { 'tags-target': 'results' })
                   ])
       end
+
+      field_helper(method,field,html_options)
+
     end
 
     def boolean_field(method, options = {})
