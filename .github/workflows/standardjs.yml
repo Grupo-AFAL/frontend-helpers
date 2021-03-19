@@ -12,4 +12,4 @@ jobs:
         with:
           node-version: 15.x
 
-      - run: standard
+      - run: npm exec standard
