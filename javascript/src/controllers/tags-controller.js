@@ -229,6 +229,9 @@ export class TagsController extends Controller {
     closeBtn.classList.add('close-btn')
     closeBtn.addEventListener('click', this.removeItem(value))
 
+    if (!this.itemsById[value]) {
+      this.itemsById[value] = value
+    }
     span.dataset.value = value
     span.append(this.itemsById[value])
     span.append(closeBtn)
@@ -241,8 +244,10 @@ export class TagsController extends Controller {
     if (this.inputTarget.value) return
 
     const lastItem = this.selectedItems[this.selectedItems.length - 1]
-    this.removeItem(lastItem)()
-    this.hideResults()
+    if (this.selectedItems.length > 0) {
+      this.removeItem(lastItem)()
+      this.hideResults()
+    }
   }
 
   removeItem (value) {
