@@ -23,7 +23,7 @@ export const toInt = number => {
 }
 
 export const toBool = boolean => {
-  if (boolean === 'false') return false
+  if (['false', 'f', '0'].includes(boolean)) return false
   return Boolean(boolean)
 }
 
