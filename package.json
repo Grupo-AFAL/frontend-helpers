@@ -49,12 +49,10 @@
       "beforeEach",
       "Cypress",
       "expect",
-      "alert",
       "fetch",
       "history",
       "FormData",
-      "CustomEvent",
-      "Conekta"
+      "CustomEvent"
     ]
   }
 }
