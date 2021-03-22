@@ -28,12 +28,6 @@
         "regenerator": true,
         "corejs": false
       }
-    ],
-    [
-      "@babel/plugin-transform-regenerator",
-      {
-        "async": false
-      }
     ]
   ]
 }
