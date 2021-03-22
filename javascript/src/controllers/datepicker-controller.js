@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus'
+import { toBool } from '../utils/formatters'
 
 /**
  * Datepicker Controller
@@ -13,8 +14,8 @@ export class DatepickerController extends Controller {
   async connect () {
     const { default: flatpickr } = await import('flatpickr')
 
-    const enableTime = Boolean(this.data.get('enableTime'))
-    const noCalendar = Boolean(this.data.get('noCalendar'))
+    const enableTime = toBool(this.data.get('enableTime'))
+    const noCalendar = toBool(this.data.get('noCalendar'))
 
     let altFormat
     let dateFormat
