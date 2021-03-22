@@ -4,16 +4,5 @@
       "@babel/preset-env"
     ]
   ],
-  "plugins": [
-    "babel-plugin-macros",
-    "@babel/plugin-syntax-dynamic-import",
-    "babel-plugin-dynamic-import-node",
-    "@babel/plugin-transform-destructuring",
-    [
-      "@babel/plugin-proposal-class-properties",
-      {
-        "loose": true
-      }
-    ]
-  ]
+  "plugins": []
 }
