@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module FrontendHelpers
   module SharedFormBuilderUtils
     include BuilderHtmlUtils
@@ -164,14 +165,14 @@ module FrontendHelpers
     #
     def custom_select_field(method, values, options = {}, html_options = {})
       options.with_defaults!(add_items: true)
-  
+
       param_key = object.class.model_name.param_key
       field_id = "#{param_key}_#{method}"
       field_name = "#{param_key}[#{method}]"
-  
+
       container = tag.div(data: { 'tags-target': 'container' })
       input = tag.input(id: field_id, type: 'text', data: { 'tags-target': 'input' })
-  
+
       tags_data = {
         controller: 'tags',
         'tags-items-value': values,
@@ -179,25 +180,25 @@ module FrontendHelpers
         'tags-input-name-value': field_name,
         'tags-add-items-value': options[:add_items]
       }
-  
+
       field = tag.div(class: 'tags-wrapper', data: tags_data) do
         safe_join([
-                    tag.div(class: field_class_name(method), data: { 'tags-target': 'fakeInput' }) do
+                    tag.div(class: field_class_name(method),
+                            data: { 'tags-target': 'fakeInput' }) do
                       safe_join([container, input])
                     end,
                     tag.ul(class: 'results is-hidden', data: { 'tags-target': 'results' })
                   ])
       end
 
-      field_helper(method,field,html_options)
-
+      field_helper(method, field, html_options)
     end
 
     def boolean_field(method, options = {})
       label_text = options.delete(:label) || translate_attribute(method)
 
       label(method, options.delete(:label_options) || {}) do
-        check_box(method, options) + ' ' + label_text
+        "#{check_box(method, options)} #{label_text}"
       end
     end
 
@@ -247,6 +248,10 @@ module FrontendHelpers
       end
     end
 
+    # TODO: Fix these lint warning
+    #
+    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+    #
     def submit_actions(value, options = {})
       cancel_path = options.delete(:cancel_path) || ''
       cancel_options = options.delete(:cancel_options) || {}
@@ -288,5 +293,7 @@ module FrontendHelpers
         end
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
   end
 end
+# rubocop:enable Metrics/ModuleLength

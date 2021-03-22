@@ -3,7 +3,7 @@
 module FrontendHelpers
   module DynamicFieldsHelper
     def link_to_add_fields(name, form, association, html_options = {})
-      partial = association.to_s.singularize + '_fields'
+      partial = "#{association.to_s.singularize}_fields"
 
       # When the form.object is a not an ActiveRecord object the nested attributes
       # don't include the sufix "_attributes", so we need to create a new form

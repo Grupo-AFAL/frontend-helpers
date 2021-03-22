@@ -30,7 +30,7 @@ export class FileInputController extends Controller {
   onChange (event) {
     let fileName
 
-    if (event.target.value.length == 0) {
+    if (event.target.value.length === 0) {
       fileName = this.data.get('nonSelectedText')
     } else {
       fileName = event.target.value.split('\\').pop()

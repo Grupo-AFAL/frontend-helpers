@@ -1,10 +1,11 @@
 AllCops:
-  TargetRubyVersion: 2.6.5
+  TargetRubyVersion: 2.7.2
   NewCops: enable
   Exclude:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
+    - 'vendor/**/*'
   SuggestExtensions: false
 
 Layout/LineLength:

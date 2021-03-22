@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module FrontendHelpers
   module FieldGroupBuilders
     include IconComponents
@@ -178,3 +179,4 @@ module FrontendHelpers
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

@@ -75,13 +75,11 @@ export class DynamicFieldsController extends Controller {
   }
 
   swapElements (elm1, elm2) {
-    var parent, next1, next2
-
     if (elm2 == null) return
 
-    parent = elm1.parentNode
-    next1 = elm1.nextElementSibling
-    next2 = elm2.nextElementSibling
+    const parent = elm1.parentNode
+    const next1 = elm1.nextElementSibling
+    const next2 = elm2.nextElementSibling
 
     parent.insertBefore(elm2, next1)
     parent.insertBefore(elm1, next2)

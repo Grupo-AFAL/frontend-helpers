@@ -15,10 +15,10 @@ export class TabsController extends Controller {
   }
 
   _hideAllTabs () {
-    const allContents = this.element.querySelectorAll(`[data-content-index]`)
+    const allContents = this.element.querySelectorAll('[data-content-index]')
     Array.from(allContents).forEach(t => t.classList.add('is-hidden'))
 
-    const allTabs = this.element.querySelectorAll(`[data-tab-index]`)
+    const allTabs = this.element.querySelectorAll('[data-tab-index]')
     Array.from(allTabs).forEach(t => t.classList.remove('is-active'))
   }
 
