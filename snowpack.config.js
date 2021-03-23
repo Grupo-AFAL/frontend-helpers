@@ -12,7 +12,10 @@ module.exports = {
   mount: {
     javascript: '/'
   },
-  plugins: testPlugins.concat('@snowpack/plugin-sass'),
+  plugins: testPlugins.concat(
+    '@snowpack/plugin-sass',
+    './snowpack-markdown-plugin.js'
+  ),
   packageOptions: {
     /* ... */
   },

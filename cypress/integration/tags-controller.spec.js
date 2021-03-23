@@ -1,6 +1,6 @@
 context('TagsController', () => {
   beforeEach(() => {
-    cy.visit('/docs/tags.html')
+    cy.visit('/docs/tags-input.html')
   })
 
   context('tags with text', () => {
