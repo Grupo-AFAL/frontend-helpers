@@ -29,11 +29,15 @@
     "stimulus-use": "^0.23.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/eslint-parser": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.10",
+    "@cypress/code-coverage": "^3.9.2",
+    "@snowpack/plugin-babel": "^2.1.6",
     "@snowpack/plugin-sass": "^1.3.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "cypress": "^6.6.0",
     "snowpack": "^3.0.13",
     "standard": "^16.0.3",

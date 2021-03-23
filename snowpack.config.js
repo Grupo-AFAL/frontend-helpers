@@ -6,7 +6,7 @@ module.exports = {
   mount: {
     javascript: '/'
   },
-  plugins: [['@snowpack/plugin-sass', {}]],
+  plugins: [['@snowpack/plugin-sass', {}], '@snowpack/plugin-babel'],
   packageOptions: {
     /* ... */
   },
