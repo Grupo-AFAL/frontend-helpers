@@ -6,6 +6,7 @@
     top: 100%;
     z-index: 10;
     margin-top: -0.5rem;
+    margin-left: 0;
     max-height: 200px;
     overflow: auto;
 
@@ -13,7 +14,7 @@
     box-shadow: $dropdown-content-shadow;
 
     width: 100%;
-    padding: 0; 
+    padding: 0;
     background-color: $white;
 
     li {
