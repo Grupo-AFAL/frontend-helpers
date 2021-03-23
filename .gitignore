@@ -8,6 +8,7 @@
 /spec/reports/
 /tmp/
 *.tgz
+/.nyc_output/
 
 # rspec failure tracking
 .rspec_status
