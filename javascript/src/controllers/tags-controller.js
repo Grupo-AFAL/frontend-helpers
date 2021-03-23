@@ -113,7 +113,7 @@ export class TagsController extends Controller {
 
   addOrCreateNewItem (itemValue = null) {
     let item = this.firstAvailableItem(this.inputTarget.value)
-    if (itemValue) item = this.firstAvailableItem(itemValue)
+    if (itemValue !== null) item = this.firstAvailableItem(itemValue)
 
     if (item) {
       this.addSelectedItem(item[1])
@@ -130,7 +130,7 @@ export class TagsController extends Controller {
   }
 
   onResultsMouseDown (event) {
-    this.addOrCreateNewItem(event.target.dataset.value)
+    this.addOrCreateNewItem(event.target.textContent)
     //this.addSelectedItem(event.target.dataset.value)
   }
 
@@ -231,9 +231,6 @@ export class TagsController extends Controller {
     closeBtn.classList.add('close-btn')
     closeBtn.addEventListener('click', this.removeItem(value))
 
-    // if (!this.itemsById[value]) {
-    //   this.itemsById[value] = value
-    // }
     span.dataset.value = value
     span.append(this.itemsById[value])
     span.append(closeBtn)
