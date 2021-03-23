@@ -2,11 +2,17 @@
 // See all supported options: https://www.snowpack.dev/reference/configuration
 
 /** @type {import("snowpack").SnowpackUserConfig } */
+
+const testPlugins = []
+if (process.env.NODE_ENV === 'test') {
+  testPlugins.push('@snowpack/plugin-babel')
+}
+
 module.exports = {
   mount: {
     javascript: '/'
   },
-  plugins: [['@snowpack/plugin-sass', {}]],
+  plugins: testPlugins.concat('@snowpack/plugin-sass'),
   packageOptions: {
     /* ... */
   },
@@ -14,6 +20,7 @@ module.exports = {
     /* ... */
   },
   buildOptions: {
-    htmlFragments: true
+    htmlFragments: true,
+    sourcemap: true
   }
 }
