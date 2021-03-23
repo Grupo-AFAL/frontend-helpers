@@ -1,4 +1,3 @@
-import 'highlight.js/styles/github.css'
 import './index.scss'
 
 import { Application } from 'stimulus'
