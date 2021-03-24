@@ -111,9 +111,9 @@ export class TagsController extends Controller {
     this.renderAvailableItems(this.inputTarget.value)
   }
 
-  addOrCreateNewItem (itemValue = null) {
+  addOrCreateNewItem (itemName = null) {
     let item = this.firstAvailableItem(this.inputTarget.value)
-    if (itemValue !== null) item = this.firstAvailableItem(itemValue)
+    if (itemName !== null) item = this.firstAvailableItem(itemName)
 
     if (item) {
       this.addSelectedItem(item[1])
@@ -239,13 +239,11 @@ export class TagsController extends Controller {
   }
 
   removeLastItem () {
-    if (this.inputTarget.value) return
+    if (this.inputTarget.value || this.selectedItems.length === 0) return
 
     const lastItem = this.selectedItems[this.selectedItems.length - 1]
-    if (this.selectedItems.length > 0) {
-      this.removeItem(lastItem)()
-      this.hideResults()
-    }
+    this.removeItem(lastItem)()
+    this.hideResults()
   }
 
   removeItem (value) {
