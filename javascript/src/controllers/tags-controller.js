@@ -131,7 +131,6 @@ export class TagsController extends Controller {
 
   onResultsMouseDown (event) {
     this.addOrCreateNewItem(event.target.textContent)
-    //this.addSelectedItem(event.target.dataset.value)
   }
 
   hideResults = () => {
