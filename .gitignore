@@ -16,5 +16,6 @@
 node_modules
 # package-lock.json
 cypress/videos/
+cypress/screenshots/
 yarn.lock
 cypress/fixtures/example.json

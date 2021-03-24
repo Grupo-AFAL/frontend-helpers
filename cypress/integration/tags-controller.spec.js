@@ -97,6 +97,17 @@ context('TagsController', () => {
       cy.get('@inputTags').should('have.length', 3)
       cy.get('@hiddenInputs').should('have.length', 3)
     })
+
+    it('creates a new item by clicking on it', () => {
+      cy.get('@fakeInput')
+        .click()
+        .find('input')
+        .type('Cien')
+      cy.get('@firstOption').click()
+      cy.get(`${scope} .input-tag:nth-child(3)`).should('contain.text', 'Cien')
+      cy.get('@inputTags').should('have.length', 3)
+      cy.get('@hiddenInputs').should('have.length', 3)
+    })
   })
 
   context('tags with ID and Value', () => {
