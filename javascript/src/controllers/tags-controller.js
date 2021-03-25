@@ -112,8 +112,7 @@ export class TagsController extends Controller {
   }
 
   addOrCreateNewItem (itemName = null) {
-    let item = this.firstAvailableItem(this.inputTarget.value)
-    if (itemName !== null) item = this.firstAvailableItem(itemName)
+    const item = this.firstAvailableItem(itemName || this.inputTarget.value)
 
     if (item) {
       this.addSelectedItem(item[1])
