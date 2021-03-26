@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus'
 import camelCase from 'lodash.camelcase'
+import { autoFocusInput } from '../utils/form'
 
 /**
  * Loads remote content into a modal window and handles form submission
@@ -46,8 +47,7 @@ export class RemoteModalController extends Controller {
     this.templateTarget.classList.add('is-active')
     this.contentTarget.innerHTML = content
 
-    const autofocusNode = this.contentTarget.querySelector('[autofocus]')
-    if (autofocusNode) autofocusNode.focus()
+    autoFocusInput(this.contentTarget)
   }
 
   setOptions (options) {
