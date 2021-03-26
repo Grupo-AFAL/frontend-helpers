@@ -45,6 +45,9 @@ export class RemoteModalController extends Controller {
 
     this.templateTarget.classList.add('is-active')
     this.contentTarget.innerHTML = content
+
+    const autofocusNode = this.contentTarget.querySelector('[autofocus]')
+    if (autofocusNode) autofocusNode.focus()
   }
 
   setOptions (options) {
