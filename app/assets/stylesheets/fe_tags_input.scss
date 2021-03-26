@@ -49,8 +49,8 @@
       cursor: pointer;
     }
   }
-}
 
-.selected {
-  background-color: lighten($grey-lighter, 10%);
+  .selected {
+    background-color: lighten($grey-lighter, 10%);
+  }
 }

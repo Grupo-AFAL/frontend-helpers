@@ -15,8 +15,7 @@ export class TagsController extends Controller {
     items: Array,
     selectedItems: Array,
     addItems: Boolean,
-    inputName: String,
-    selectedItem: Object
+    inputName: String
   }
 
   async connect () {
@@ -107,6 +106,8 @@ export class TagsController extends Controller {
       case 'ArrowUp':
         this.onInputArrowUp()
         break
+      default:
+        this.selectedItem = null
     }
   }
 
@@ -119,10 +120,9 @@ export class TagsController extends Controller {
     } else if (this.selectedItem != results.lastChild) {
       this.updateSelectedItem(this.selectedItem)
       this.selectedItem = this.selectedItem.nextSibling
-      results.scrollTop = this.selectedItem.offsetTop - 50
+      results.scrollTop = this.selectedItem.offsetTop
       this.updateSelectedItem(this.selectedItem)
     }
-    console.log(this.selectedItem)
   }
 
   onInputArrowUp () {
@@ -134,7 +134,6 @@ export class TagsController extends Controller {
       this.updateSelectedItem(this.selectedItem.nextSibling)
       results.scrollTop = this.selectedItem.offsetTop
     }
-    console.log(this.selectedItem)
   }
 
   updateSelectedItem (item) {
@@ -154,9 +153,8 @@ export class TagsController extends Controller {
   }
 
   addOrCreateNewItem (itemName = null) {
-    const results = this.resultsTarget
     const item = this.firstAvailableItem(
-      this.getItemName(this.selectedItem) || itemName || this.inputTarget.value
+      itemName || this.getItemName(this.selectedItem) || this.inputTarget.value
     )
 
     if (item) {
@@ -165,9 +163,9 @@ export class TagsController extends Controller {
     } else if (this.addItemsValue) {
       this.createNewItem()
     }
-    if (results.firstChild) {
+
+    if (this.resultsTarget.firstChild) {
       this.selectedItem = null
-      results.scrollTop = results.firstChild.offsetTop
       this.hideResults()
     }
   }
