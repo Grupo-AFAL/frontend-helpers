@@ -129,6 +129,16 @@ context('TagsController', () => {
       cy.get('@inputTags').should('have.length', 3)
       cy.get('@hiddenInputs').should('have.length', 3)
     })
+
+    // Waiting on Cypress to implement the "sequence" for the TAB key.
+    xit('triggers default TAB behavior when nothing is selected', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{TAB}')
+
+      cy.get('@inputTags').should('have.length', 2)
+      cy.get('@hiddenInputs').should('have.length', 2)
+    })
   })
 
   context('tags with ID and Value', () => {

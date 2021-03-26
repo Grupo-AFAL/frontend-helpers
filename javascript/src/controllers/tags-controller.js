@@ -80,6 +80,10 @@ export class TagsController extends Controller {
       'mousedown',
       this.onResultsMouseDown.bind(this)
     )
+    this.resultsTarget.addEventListener(
+      'mouseover',
+      this.onResultsHover.bind(this)
+    )
   }
 
   windowResize () {
@@ -97,8 +101,10 @@ export class TagsController extends Controller {
       case 'Tab':
       case 'Enter':
       case ',':
-        this.addOrCreateNewItem()
-        event.preventDefault()
+        if (this.inputTarget.value || this.selectedItem) {
+          this.addOrCreateNewItem()
+          event.preventDefault()
+        }
         break
       case 'ArrowDown':
         this.onInputArrowDown()
@@ -113,6 +119,10 @@ export class TagsController extends Controller {
 
   onInputArrowDown () {
     const results = this.resultsTarget
+
+    if (!results.innerHTML) {
+      this.renderAvailableItems()
+    }
 
     if (!this.selectedItem) {
       this.selectedItem = results.firstChild
@@ -178,6 +188,14 @@ export class TagsController extends Controller {
 
   onResultsMouseDown (event) {
     this.addOrCreateNewItem(event.target.textContent)
+  }
+
+  onResultsHover (event) {
+    if (event.target.localName === 'li') {
+      this.updateSelectedItem(this.selectedItem)
+      this.selectedItem = event.target
+      this.updateSelectedItem(this.selectedItem)
+    }
   }
 
   hideResults = () => {
