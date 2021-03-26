@@ -198,7 +198,7 @@ module FrontendHelpers
       label_text = options.delete(:label) || translate_attribute(method)
 
       label(method, options.delete(:label_options) || {}) do
-        "#{check_box(method, options)} #{label_text}"
+        safe_join([check_box(method, options), label_text], ' ')
       end
     end
 
@@ -210,6 +210,7 @@ module FrontendHelpers
       tags = values.map do |display_value|
         display, value, radio_options = display_value
         radio_options ||= {}
+        radio_options.merge!(html_options)
 
         label(method, class: label_class, for: [field_name, value].join('_')) do
           radio_button(method, value, radio_options.merge(data: data)) + display
