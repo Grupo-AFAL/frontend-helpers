@@ -57,8 +57,8 @@ module FrontendHelpers
     end
     # rubocop:enable Metrics/ParameterLists, Style/OptionalBooleanParameter
 
-    def safe_join(array)
-      @template.safe_join(array)
+    def safe_join(array, separator = nil)
+      @template.safe_join(array, separator)
     end
 
     def translate_attribute(method)

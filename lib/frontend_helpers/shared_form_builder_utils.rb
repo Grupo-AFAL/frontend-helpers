@@ -198,7 +198,7 @@ module FrontendHelpers
       label_text = options.delete(:label) || translate_attribute(method)
 
       label(method, options.delete(:label_options) || {}) do
-        "#{check_box(method, options)} #{label_text}"
+        safe_join([check_box(method, options), label_text], ' ')
       end
     end
 
