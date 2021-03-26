@@ -15,7 +15,8 @@ export class TagsController extends Controller {
     items: Array,
     selectedItems: Array,
     addItems: Boolean,
-    inputName: String
+    inputName: String,
+    selectedItem: Object
   }
 
   async connect () {
@@ -100,7 +101,48 @@ export class TagsController extends Controller {
         this.addOrCreateNewItem()
         event.preventDefault()
         break
+      case 'ArrowDown':
+        this.onInputArrowDown()
+        break
+      case 'ArrowUp':
+        this.onInputArrowUp()
+        break
     }
+  }
+
+  onInputArrowDown () {
+    const results = this.resultsTarget
+
+    if (!this.selectedItem) {
+      this.selectedItem = results.firstChild
+      this.updateSelectedItem(this.selectedItem)
+    } else if (this.selectedItem != results.lastChild) {
+      this.updateSelectedItem(this.selectedItem)
+      this.selectedItem = this.selectedItem.nextSibling
+      results.scrollTop = this.selectedItem.offsetTop - 50
+      this.updateSelectedItem(this.selectedItem)
+    }
+    console.log(this.selectedItem)
+  }
+
+  onInputArrowUp () {
+    const results = this.resultsTarget
+
+    if (this.selectedItem && this.selectedItem != results.firstChild) {
+      this.selectedItem = this.selectedItem.previousSibling
+      this.updateSelectedItem(this.selectedItem)
+      this.updateSelectedItem(this.selectedItem.nextSibling)
+      results.scrollTop = this.selectedItem.offsetTop
+    }
+    console.log(this.selectedItem)
+  }
+
+  updateSelectedItem (item) {
+    if (item) item.classList.toggle('selected')
+  }
+
+  getItemName (item) {
+    return item ? item.textContent : ''
   }
 
   onFocusOrClick () {
@@ -112,13 +154,21 @@ export class TagsController extends Controller {
   }
 
   addOrCreateNewItem (itemName = null) {
-    const item = this.firstAvailableItem(itemName || this.inputTarget.value)
+    const results = this.resultsTarget
+    const item = this.firstAvailableItem(
+      this.getItemName(this.selectedItem) || itemName || this.inputTarget.value
+    )
 
     if (item) {
       this.addSelectedItem(item[1])
       this.renderAvailableItems()
     } else if (this.addItemsValue) {
       this.createNewItem()
+    }
+    if (results.firstChild) {
+      this.selectedItem = null
+      results.scrollTop = results.firstChild.offsetTop
+      this.hideResults()
     }
   }
 
@@ -133,6 +183,7 @@ export class TagsController extends Controller {
   }
 
   hideResults = () => {
+    this.selectedItem = null
     if (!this.resultsTarget.innerHTML) return
 
     this.inputTarget.value = ''
