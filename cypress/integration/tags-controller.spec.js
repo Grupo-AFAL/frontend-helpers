@@ -108,6 +108,27 @@ context('TagsController', () => {
       cy.get('@inputTags').should('have.length', 3)
       cy.get('@hiddenInputs').should('have.length', 3)
     })
+
+    it('navigates results with DOWNARROW key and selects first element with ENTER', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{DOWNARROW}')
+        .type('{ENTER}')
+      cy.get(`${scope} .input-tag:nth-child(3)`).should('contain.text', 'Three')
+      cy.get('@inputTags').should('have.length', 3)
+      cy.get('@hiddenInputs').should('have.length', 3)
+    })
+
+    it('navigates through the results with DOWN and UP arrow keys and selects the third element', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{DOWNARROW}{DOWNARROW}{DOWNARROW}{DOWNARROW}')
+        .type('{UPARROW}')
+        .type('{ENTER}')
+      cy.get(`${scope} .input-tag:nth-child(3)`).should('contain.text', 'Five')
+      cy.get('@inputTags').should('have.length', 3)
+      cy.get('@hiddenInputs').should('have.length', 3)
+    })
   })
 
   context('tags with ID and Value', () => {
