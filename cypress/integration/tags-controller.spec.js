@@ -108,19 +108,51 @@ context('TagsController', () => {
       cy.get('@inputTags').should('have.length', 3)
       cy.get('@hiddenInputs').should('have.length', 3)
     })
+
+    it('navigates results with DOWNARROW key and selects first element with ENTER', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{DOWNARROW}')
+        .type('{ENTER}')
+      cy.get(`${scope} .input-tag:nth-child(3)`).should('contain.text', 'Three')
+      cy.get('@inputTags').should('have.length', 3)
+      cy.get('@hiddenInputs').should('have.length', 3)
+    })
+
+    it('navigates through the results with DOWN and UP arrow keys and selects the third element', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{DOWNARROW}{DOWNARROW}{DOWNARROW}{DOWNARROW}')
+        .type('{UPARROW}')
+        .type('{ENTER}')
+      cy.get(`${scope} .input-tag:nth-child(3)`).should('contain.text', 'Five')
+      cy.get('@inputTags').should('have.length', 3)
+      cy.get('@hiddenInputs').should('have.length', 3)
+    })
+
+    // Waiting on Cypress to implement the "sequence" for the TAB key.
+    xit('triggers default TAB behavior when nothing is selected', () => {
+      cy.get('@fakeInput')
+        .click()
+        .type('{TAB}')
+
+      cy.get('@inputTags').should('have.length', 2)
+      cy.get('@hiddenInputs').should('have.length', 2)
+    })
   })
 
   context('tags with ID and Value', () => {
     const scope = '#tags-with-id-value'
 
     beforeEach(() => {
-      cy.get(scope).within(() => {
-        cy.get('.input').click()
-        cy.get('.results li:first-child').click()
-        cy.get('.input-tag:first-child').as('firstSelectedOption')
-        cy.get('.input-tag:nth-child(2)').as('secondSelectedOption')
-        cy.get('input[name="field[]"]').as('hiddenInputs')
-      })
+      cy.get(`${scope} .input`)
+        .as('fakeInput')
+        .click()
+      cy.get(`${scope} .results li:first-child`).click()
+      cy.get(`${scope} .input-tag:first-child`).as('firstSelectedOption')
+      cy.get(`${scope} .input-tag:nth-child(2)`).as('secondSelectedOption')
+      cy.get(`${scope} input[name="field[]"]`).as('hiddenInputs')
+      cy.get(`${scope} .input-tag`).as('inputTags')
     })
 
     it('displays the selected items', () => {
@@ -135,6 +167,24 @@ context('TagsController', () => {
         expect(values).to.have.length(2)
         expect(values).to.deep.eq(['1', '2'])
       })
+    })
+
+    it('removes an item by clicking the X', () => {
+      cy.get('@firstSelectedOption')
+        .find('.close-btn')
+        .click()
+      cy.get('@inputTags').should('have.length', 1)
+      cy.get('@hiddenInputs').should('have.length', 1)
+    })
+
+    it('removes an item by typing BACKSPACE', () => {
+      cy.get('@fakeInput')
+        .click()
+        .find('input')
+        .type('{BACKSPACE}')
+
+      cy.get('@inputTags').should('have.length', 1)
+      cy.get('@hiddenInputs').should('have.length', 1)
     })
   })
 })

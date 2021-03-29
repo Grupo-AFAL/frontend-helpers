@@ -49,4 +49,8 @@
       cursor: pointer;
     }
   }
+
+  .selected {
+    background-color: lighten($grey-lighter, 10%);
+  }
 }

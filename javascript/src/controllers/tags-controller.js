@@ -80,6 +80,10 @@ export class TagsController extends Controller {
       'mousedown',
       this.onResultsMouseDown.bind(this)
     )
+    this.resultsTarget.addEventListener(
+      'mouseover',
+      this.onResultsHover.bind(this)
+    )
   }
 
   windowResize () {
@@ -97,10 +101,58 @@ export class TagsController extends Controller {
       case 'Tab':
       case 'Enter':
       case ',':
-        this.addOrCreateNewItem()
-        event.preventDefault()
+        if (this.inputTarget.value || this.selectedItem) {
+          this.addOrCreateNewItem()
+          event.preventDefault()
+        }
         break
+      case 'ArrowDown':
+        this.onInputArrowDown()
+        break
+      case 'ArrowUp':
+        this.onInputArrowUp()
+        break
+      default:
+        this.selectedItem = null
     }
+  }
+
+  onInputArrowDown () {
+    const results = this.resultsTarget
+
+    if (!results.innerHTML) {
+      this.renderAvailableItems()
+    }
+
+    if (!this.selectedItem) {
+      this.selectedItem = results.firstChild
+      this.updateSelectedItem(this.selectedItem)
+      results.scrollTop = this.selectedItem.offsetTop
+    } else if (this.selectedItem !== results.lastChild) {
+      this.updateSelectedItem(this.selectedItem)
+      this.selectedItem = this.selectedItem.nextSibling
+      results.scrollTop = this.selectedItem.offsetTop
+      this.updateSelectedItem(this.selectedItem)
+    }
+  }
+
+  onInputArrowUp () {
+    const results = this.resultsTarget
+
+    if (this.selectedItem && this.selectedItem !== results.firstChild) {
+      this.selectedItem = this.selectedItem.previousSibling
+      this.updateSelectedItem(this.selectedItem)
+      this.updateSelectedItem(this.selectedItem.nextSibling)
+      results.scrollTop = this.selectedItem.offsetTop
+    }
+  }
+
+  updateSelectedItem (item) {
+    if (item) item.classList.toggle('selected')
+  }
+
+  getItemName (item) {
+    return item ? item.textContent : ''
   }
 
   onFocusOrClick () {
@@ -112,13 +164,20 @@ export class TagsController extends Controller {
   }
 
   addOrCreateNewItem (itemName = null) {
-    const item = this.firstAvailableItem(itemName || this.inputTarget.value)
+    const item = this.firstAvailableItem(
+      itemName || this.getItemName(this.selectedItem) || this.inputTarget.value
+    )
 
     if (item) {
       this.addSelectedItem(item[1])
       this.renderAvailableItems()
     } else if (this.addItemsValue) {
       this.createNewItem()
+    }
+
+    if (this.resultsTarget.firstChild) {
+      this.selectedItem = null
+      this.hideResults()
     }
   }
 
@@ -132,7 +191,16 @@ export class TagsController extends Controller {
     this.addOrCreateNewItem(event.target.textContent)
   }
 
+  onResultsHover (event) {
+    if (event.target.localName === 'li') {
+      this.updateSelectedItem(this.selectedItem)
+      this.selectedItem = event.target
+      this.updateSelectedItem(this.selectedItem)
+    }
+  }
+
   hideResults = () => {
+    this.selectedItem = null
     if (!this.resultsTarget.innerHTML) return
 
     this.inputTarget.value = ''
@@ -247,8 +315,11 @@ export class TagsController extends Controller {
 
   removeItem (value) {
     return () => {
-      const span = this.containerTarget.querySelector(`[data-value='${value}']`)
-      this.containerTarget.removeChild(span)
+      this.containerTarget.childNodes.forEach(span => {
+        if (span.getAttributeNode('data-value').value === value.toString()) {
+          this.containerTarget.removeChild(span)
+        }
+      })
       this.selectedItems = this.selectedItems.filter(i => i !== value)
       this.commit()
     }
