@@ -127,6 +127,7 @@ export class TagsController extends Controller {
     if (!this.selectedItem) {
       this.selectedItem = results.firstChild
       this.updateSelectedItem(this.selectedItem)
+      results.scrollTop = this.selectedItem.offsetTop
     } else if (this.selectedItem != results.lastChild) {
       this.updateSelectedItem(this.selectedItem)
       this.selectedItem = this.selectedItem.nextSibling
@@ -314,8 +315,11 @@ export class TagsController extends Controller {
 
   removeItem (value) {
     return () => {
-      const span = this.containerTarget.querySelector(`[data-value='${value}']`)
-      this.containerTarget.removeChild(span)
+      this.containerTarget.childNodes.forEach(span => {
+        if (span.getAttributeNode('data-value').value == value) {
+          this.containerTarget.removeChild(span)
+        }
+      })
       this.selectedItems = this.selectedItems.filter(i => i !== value)
       this.commit()
     }
