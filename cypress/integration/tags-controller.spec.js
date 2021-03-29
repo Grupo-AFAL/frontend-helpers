@@ -145,7 +145,9 @@ context('TagsController', () => {
     const scope = '#tags-with-id-value'
 
     beforeEach(() => {
-      cy.get(`${scope} .input`).as('fakeInput').click()
+      cy.get(`${scope} .input`)
+        .as('fakeInput')
+        .click()
       cy.get(`${scope} .results li:first-child`).click()
       cy.get(`${scope} .input-tag:first-child`).as('firstSelectedOption')
       cy.get(`${scope} .input-tag:nth-child(2)`).as('secondSelectedOption')
@@ -166,7 +168,7 @@ context('TagsController', () => {
         expect(values).to.deep.eq(['1', '2'])
       })
     })
-    
+
     it('removes an item by clicking the X', () => {
       cy.get('@firstSelectedOption')
         .find('.close-btn')
