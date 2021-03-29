@@ -145,13 +145,12 @@ context('TagsController', () => {
     const scope = '#tags-with-id-value'
 
     beforeEach(() => {
-      cy.get(scope).within(() => {
-        cy.get('.input').click()
-        cy.get('.results li:first-child').click()
-        cy.get('.input-tag:first-child').as('firstSelectedOption')
-        cy.get('.input-tag:nth-child(2)').as('secondSelectedOption')
-        cy.get('input[name="field[]"]').as('hiddenInputs')
-      })
+      cy.get(`${scope} .input`).as('fakeInput').click()
+      cy.get(`${scope} .results li:first-child`).click()
+      cy.get(`${scope} .input-tag:first-child`).as('firstSelectedOption')
+      cy.get(`${scope} .input-tag:nth-child(2)`).as('secondSelectedOption')
+      cy.get(`${scope} input[name="field[]"]`).as('hiddenInputs')
+      cy.get(`${scope} .input-tag`).as('inputTags')
     })
 
     it('displays the selected items', () => {
@@ -166,6 +165,24 @@ context('TagsController', () => {
         expect(values).to.have.length(2)
         expect(values).to.deep.eq(['1', '2'])
       })
+    })
+    
+    it('removes an item by clicking the X', () => {
+      cy.get('@firstSelectedOption')
+        .find('.close-btn')
+        .click()
+      cy.get('@inputTags').should('have.length', 1)
+      cy.get('@hiddenInputs').should('have.length', 1)
+    })
+
+    it('removes an item by typing BACKSPACE', () => {
+      cy.get('@fakeInput')
+        .click()
+        .find('input')
+        .type('{BACKSPACE}')
+
+      cy.get('@inputTags').should('have.length', 1)
+      cy.get('@hiddenInputs').should('have.length', 1)
     })
   })
 })

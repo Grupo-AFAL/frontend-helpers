@@ -128,7 +128,7 @@ export class TagsController extends Controller {
       this.selectedItem = results.firstChild
       this.updateSelectedItem(this.selectedItem)
       results.scrollTop = this.selectedItem.offsetTop
-    } else if (this.selectedItem != results.lastChild) {
+    } else if (this.selectedItem !== results.lastChild) {
       this.updateSelectedItem(this.selectedItem)
       this.selectedItem = this.selectedItem.nextSibling
       results.scrollTop = this.selectedItem.offsetTop
@@ -139,7 +139,7 @@ export class TagsController extends Controller {
   onInputArrowUp () {
     const results = this.resultsTarget
 
-    if (this.selectedItem && this.selectedItem != results.firstChild) {
+    if (this.selectedItem && this.selectedItem !== results.firstChild) {
       this.selectedItem = this.selectedItem.previousSibling
       this.updateSelectedItem(this.selectedItem)
       this.updateSelectedItem(this.selectedItem.nextSibling)
@@ -316,7 +316,7 @@ export class TagsController extends Controller {
   removeItem (value) {
     return () => {
       this.containerTarget.childNodes.forEach(span => {
-        if (span.getAttributeNode('data-value').value == value) {
+        if (span.getAttributeNode('data-value').value === value.toString()) {
           this.containerTarget.removeChild(span)
         }
       })

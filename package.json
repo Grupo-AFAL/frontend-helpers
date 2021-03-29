@@ -51,6 +51,7 @@
     "globals": [
       "cy",
       "it",
+      "xit",
       "context",
       "describe",
       "beforeEach",
