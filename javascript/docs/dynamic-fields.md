@@ -4,17 +4,17 @@ description: Dynamic Fields component
 ---
 
 <div data-controller="dynamic-fields" data-dynamic-fields-size="1" data-dynamic-fields-selector=".fields" data-dynamic-fields-remove-duplicates="true">
-	<a class="button is-primary" data-dynamic-fields-target="button" href=# data-action="dynamic-fields#addFields">Agregar</a>
+	<a class="button is-primary" data-dynamic-fields-target="button" href=# data-action="dynamic-fields#addFields">Add</a>
 	<template data-dynamic-fields-target="template">
 		<div class="columns fields">
 			<div class="column is-5">
 				<div class="control ">
-					<input placeholder="Nombre" type="text" class="input" name="company[users_attributes][new_record][first_name]" />
+					<input placeholder="First name" type="text" class="input" name="company[users_attributes][new_record][first_name]" />
 				</div>
 			</div>
 			<div class="column is-5">
 				<div class="control ">
-					<input placeholder="Apellido" type="text" class="input" name="company[users_attributes][new_record][last_name]" />
+					<input placeholder="Last name" type="text" class="input" name="company[users_attributes][new_record][last_name]" />
 				</div>
 			</div>
 			<div class="column is-2 remove-link-container">
