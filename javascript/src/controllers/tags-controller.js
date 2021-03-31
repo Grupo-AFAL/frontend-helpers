@@ -53,6 +53,19 @@ export class TagsController extends Controller {
     }, {})
 
     this.selectedItems.forEach(i => this.renderSelectedItem(i))
+    this.updateInputPlaceholder()
+  }
+
+  updateInputPlaceholder(){
+    if(!this.inputPlaceholder){
+      this.inputPlaceholder = this.inputTarget.getAttribute('placeholder')
+    }
+
+    if(this.selectedItems.length){
+      this.inputTarget.setAttribute('placeholder','')
+    }else if (this.inputPlaceholder){
+      this.inputTarget.setAttribute('placeholder', this.inputPlaceholder)
+    }
   }
 
   createHiddenInputContainer () {
@@ -164,6 +177,7 @@ export class TagsController extends Controller {
   }
 
   addOrCreateNewItem (itemName = null) {
+
     const item = this.firstAvailableItem(
       itemName || this.getItemName(this.selectedItem) || this.inputTarget.value
     )
@@ -174,6 +188,8 @@ export class TagsController extends Controller {
     } else if (this.addItemsValue) {
       this.createNewItem()
     }
+
+    this.updateInputPlaceholder()
 
     if (this.resultsTarget.firstChild) {
       this.selectedItem = null
@@ -321,6 +337,8 @@ export class TagsController extends Controller {
         }
       })
       this.selectedItems = this.selectedItems.filter(i => i !== value)
+
+      this.updateInputPlaceholder()
       this.commit()
     }
   }

@@ -48,6 +48,11 @@
       padding: 0.25rem;
       cursor: pointer;
     }
+
+    ::placeholder { 
+      color:#D8D8D8;
+      opacity: 1;
+    }
   }
 
   .selected {
