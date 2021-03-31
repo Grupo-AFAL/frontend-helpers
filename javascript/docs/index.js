@@ -10,11 +10,13 @@ import { NavbarController } from '../src/controllers/navbar-controller'
 import { NotificationController } from '../src/controllers/notification-controller'
 import { TabsController } from '../src/controllers/tabs-controller'
 import { TagsController } from '../src/controllers/tags-controller'
+import { DynamicFieldsController } from '../src/controllers/dynamic-fields-controller'
 
 const application = Application.start()
 application.register('chart', ChartController)
 application.register('datepicker', DatepickerController)
 application.register('dropdown', DropdownController)
+application.register('dynamic-fields', DynamicFieldsController)
 application.register('hovercard', HovercardController)
 application.register('navbar', NavbarController)
 application.register('notification', NotificationController)
