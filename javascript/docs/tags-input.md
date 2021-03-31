@@ -25,7 +25,7 @@ Without the option to create new ones
   data-tags-selected-items-value='[1]' data-tags-input-name-value="field" data-tags-add-items-value="false">
   <div class="input" data-tags-target="fakeInput">
     <div data-tags-target="container"></div>
-    <input type="text" data-tags-target="input" placeholder="Select tag">>
+    <input type="text" data-tags-target="input" placeholder="Select tag">
   </div>
   <ul class="results is-hidden" data-tags-target="results"></ul>
 </div>

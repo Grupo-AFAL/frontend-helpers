@@ -24,6 +24,7 @@ export class TagsController extends Controller {
 
     this.inputTarget.setAttribute('autocomplete', 'off')
     this.inputTarget.setAttribute('spellcheck', 'false')
+    this.inputPlaceholder = this.inputTarget.getAttribute('placeholder')
 
     if (!this.hasAddItemsValue) this.addItemsValue = true
     if (!this.hasInputNameValue) {
@@ -57,10 +58,6 @@ export class TagsController extends Controller {
   }
 
   updateInputPlaceholder () {
-    if (!this.inputPlaceholder) {
-      this.inputPlaceholder = this.inputTarget.getAttribute('placeholder')
-    }
-
     if (this.selectedItems.length) {
       this.inputTarget.setAttribute('placeholder', '')
     } else if (this.inputPlaceholder) {
