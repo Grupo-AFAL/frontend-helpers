@@ -5,12 +5,12 @@ import { Application } from 'stimulus'
 import { ChartController } from '../src/controllers/chart-controller'
 import { DatepickerController } from '../src/controllers/datepicker-controller'
 import { DropdownController } from '../src/controllers/dropdown-controller'
+import { DynamicFieldsController } from '../src/controllers/dynamic-fields-controller'
 import { HovercardController } from '../src/controllers/hovercard-controller'
 import { NavbarController } from '../src/controllers/navbar-controller'
 import { NotificationController } from '../src/controllers/notification-controller'
 import { TabsController } from '../src/controllers/tabs-controller'
 import { TagsController } from '../src/controllers/tags-controller'
-import { DynamicFieldsController } from '../src/controllers/dynamic-fields-controller'
 
 const application = Application.start()
 application.register('chart', ChartController)
