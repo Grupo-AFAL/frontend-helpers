@@ -118,6 +118,8 @@ export class DynamicFieldsController extends Controller {
     return this.templateFragment().querySelectorAll('select option').length
   }
 
+  // When removeDuplicates is disabled user can potentially add as
+  // unlimited number of dynamic fields
   isAtMaximumSize () {
     return (
       this.removeDuplicates && this.dropdownOptionsSize() === this.getSize()

@@ -24,6 +24,7 @@ export class TagsController extends Controller {
 
     this.inputTarget.setAttribute('autocomplete', 'off')
     this.inputTarget.setAttribute('spellcheck', 'false')
+    this.inputPlaceholder = this.inputTarget.getAttribute('placeholder')
 
     if (!this.hasAddItemsValue) this.addItemsValue = true
     if (!this.hasInputNameValue) {
@@ -53,6 +54,15 @@ export class TagsController extends Controller {
     }, {})
 
     this.selectedItems.forEach(i => this.renderSelectedItem(i))
+    this.updateInputPlaceholder()
+  }
+
+  updateInputPlaceholder () {
+    if (this.selectedItems.length) {
+      this.inputTarget.setAttribute('placeholder', '')
+    } else if (this.inputPlaceholder) {
+      this.inputTarget.setAttribute('placeholder', this.inputPlaceholder)
+    }
   }
 
   createHiddenInputContainer () {
@@ -174,6 +184,8 @@ export class TagsController extends Controller {
     } else if (this.addItemsValue) {
       this.createNewItem()
     }
+
+    this.updateInputPlaceholder()
 
     if (this.resultsTarget.firstChild) {
       this.selectedItem = null
@@ -321,6 +333,8 @@ export class TagsController extends Controller {
         }
       })
       this.selectedItems = this.selectedItems.filter(i => i !== value)
+
+      this.updateInputPlaceholder()
       this.commit()
     }
   }

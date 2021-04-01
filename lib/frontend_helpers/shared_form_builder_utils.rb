@@ -171,7 +171,8 @@ module FrontendHelpers
       field_name = "#{param_key}[#{method}]"
 
       container = tag.div(data: { 'tags-target': 'container' })
-      input = tag.input(id: field_id, type: 'text', data: { 'tags-target': 'input' })
+      input = tag.input(id: field_id, type: 'text', placeholder: html_options[:placeholder],
+                        data: { 'tags-target': 'input' })
 
       tags_data = {
         controller: 'tags',
