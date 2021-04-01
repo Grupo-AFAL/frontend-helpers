@@ -41,8 +41,10 @@ module FrontendHelpers
       "test-id=\"#{test_id}\"".html_safe
     end
 
+    # The last module parent is always "Object", which means the one before to last
+    # is the actual module/namespace we want. Like "INV", "Cafeteria" or "EK"
     def app_module
-      controller.class.module_parent
+      controller.class.module_parents[-2]
     end
   end
 end
