@@ -8,6 +8,7 @@ import { Controller } from 'stimulus'
 
 export class TabsController extends Controller {
   open (event) {
+    event.preventDefault()
     const index = event.currentTarget.getAttribute('data-tab-index')
 
     this._hideAllTabs()
