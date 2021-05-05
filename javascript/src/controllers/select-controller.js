@@ -16,9 +16,6 @@ export class SelectController extends Controller {
   async connect () {
     this.generateHTML()
 
-    const { useWindowResize } = await import('stimulus-use')
-    useWindowResize(this)
-
     autoCompleteInput(this)
 
     this.selectField = this.element.querySelector('select')
@@ -26,14 +23,6 @@ export class SelectController extends Controller {
 
     this.initializeItems()
     this.initializeListeners()
-  }
-
-  disconnect () {
-    document.removeEventListener('scroll', this.hideResults)
-  }
-
-  windowResize () {
-    this.hideResults()
   }
 
   initializeItems () {
@@ -53,7 +42,6 @@ export class SelectController extends Controller {
   }
 
   initializeListeners () {
-    document.addEventListener('scroll', this.hideResults)
     this.inputTarget.addEventListener('focus', this.onFocusOrClick.bind(this))
     this.inputTarget.addEventListener('click', this.onFocusOrClick.bind(this))
     this.inputTarget.addEventListener('keydown', this.onKeydown.bind(this))

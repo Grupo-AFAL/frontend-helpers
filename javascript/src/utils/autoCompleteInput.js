@@ -1,29 +1,28 @@
-export const autoCompleteInput = controller => {
-  console.log('autoCompleteInput', controller)
+export const autoCompleteInput = async controller => {
+  const { useWindowResize } = await import('stimulus-use')
+  useWindowResize(controller)
 
-  // const callback = () => {
-  //   controller['windowResize'].call(controller)
-  // }
+  const controllerDisconnect = controller.disconnect.bind(controller)
 
-  // const controllerDisconnect = controller.disconnect.bind(controller)
+  const observe = () => {
+    document.addEventListener('scroll', controller.hideResults)
+  }
 
-  // const observe = () => {
-  //   window.addEventListener('resize', callback)
-  //   callback()
-  // }
+  const unobserve = () => {
+    document.removeEventListener('scroll', controller.hideResults)
+  }
 
-  // const unobserve = () => {
-  //   window.removeEventListener('resize', callback)
-  // }
+  Object.assign(controller, {
+    disconnect () {
+      unobserve()
+      controllerDisconnect()
+    },
+    windowResize () {
+      controller.hideResults()
+    }
+  })
 
-  // Object.assign(controller, {
-  //   disconnect () {
-  //     unobserve()
-  //     controllerDisconnect()
-  //   }
-  // })
+  observe()
 
-  // observe()
-
-  // return [observe, unobserve]
+  return [observe, unobserve]
 }
