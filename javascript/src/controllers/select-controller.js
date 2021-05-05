@@ -16,13 +16,12 @@ export class SelectController extends Controller {
   async connect () {
     this.generateHTML()
 
-    autoCompleteInput(this)
-
     this.selectField = this.element.querySelector('select')
     this.selectField.setAttribute('hidden', '')
 
     this.initializeItems()
-    this.initializeListeners()
+
+    autoCompleteInput(this)
   }
 
   initializeItems () {
@@ -39,22 +38,6 @@ export class SelectController extends Controller {
     }, {})
 
     this.renderSelectedItem(this.selectedItem)
-  }
-
-  initializeListeners () {
-    this.inputTarget.addEventListener('focus', this.onFocusOrClick.bind(this))
-    this.inputTarget.addEventListener('click', this.onFocusOrClick.bind(this))
-    this.inputTarget.addEventListener('keydown', this.onKeydown.bind(this))
-    this.inputTarget.addEventListener('blur', this.hideResults.bind(this))
-    this.inputTarget.addEventListener('input', this.onInputChange.bind(this))
-    this.resultsTarget.addEventListener(
-      'mousedown',
-      this.onResultsMouseDown.bind(this)
-    )
-    this.resultsTarget.addEventListener(
-      'mouseover',
-      this.onResultsHover.bind(this)
-    )
   }
 
   generateHTML () {
