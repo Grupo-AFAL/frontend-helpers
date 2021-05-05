@@ -87,14 +87,14 @@ export class SelectController extends Controller {
     }
 
     if (!this.highlightedItem) {
-      this.highlightedItem = results.firstChild
-      this.updateSelectedItem(this.highlightedItem)
+      this.highlightedItem = this.updateHighlightedItem(results.firstChild)
       results.scrollTop = this.highlightedItem.offsetTop
     } else if (this.highlightedItem !== results.lastChild) {
-      this.updateSelectedItem(this.highlightedItem)
-      this.highlightedItem = this.highlightedItem.nextSibling
+      this.updateHighlightedItem(this.highlightedItem)
+      this.highlightedItem = this.updateHighlightedItem(
+        this.highlightedItem.nextSibling
+      )
       results.scrollTop = this.highlightedItem.offsetTop
-      this.updateSelectedItem(this.highlightedItem)
     }
   }
 
@@ -102,15 +102,19 @@ export class SelectController extends Controller {
     const results = this.resultsTarget
 
     if (this.highlightedItem && this.highlightedItem !== results.firstChild) {
-      this.highlightedItem = this.highlightedItem.previousSibling
-      this.updateSelectedItem(this.highlightedItem)
-      this.updateSelectedItem(this.highlightedItem.nextSibling)
+      this.highlightedItem = this.updateHighlightedItem(
+        this.highlightedItem.previousSibling
+      )
+      this.updateHighlightedItem(this.highlightedItem.nextSibling)
       results.scrollTop = this.highlightedItem.offsetTop
     }
   }
 
-  updateSelectedItem (item) {
-    if (item) item.classList.toggle('selected')
+  updateHighlightedItem (item) {
+    if (item) {
+      item.classList.toggle('selected')
+      return item
+    }
   }
 
   getItemName (item) {
@@ -148,11 +152,10 @@ export class SelectController extends Controller {
   }
 
   onResultsHover (event) {
-    if (event.target.localName === 'li') {
-      this.updateSelectedItem(this.highlightedItem)
-      this.highlightedItem = event.target
-      this.updateSelectedItem(this.highlightedItem)
-    }
+    if (event.target.localName !== 'li') return
+
+    this.updateHighlightedItem(this.highlightedItem)
+    this.highlightedItem = this.updateHighlightedItem(event.target)
   }
 
   hideResults = () => {
