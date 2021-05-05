@@ -111,7 +111,7 @@ export class TagsController extends Controller {
       case 'Tab':
       case 'Enter':
       case ',':
-        if (this.inputTarget.value || this.selectedItem) {
+        if (this.inputTarget.value || this.highlightedItem) {
           this.addOrCreateNewItem()
           event.preventDefault()
         }
@@ -123,7 +123,7 @@ export class TagsController extends Controller {
         this.onInputArrowUp()
         break
       default:
-        this.selectedItem = null
+        this.highlightedItem = null
     }
   }
 
@@ -134,30 +134,30 @@ export class TagsController extends Controller {
       this.renderAvailableItems()
     }
 
-    if (!this.selectedItem) {
-      this.selectedItem = results.firstChild
-      this.updateSelectedItem(this.selectedItem)
-      results.scrollTop = this.selectedItem.offsetTop
-    } else if (this.selectedItem !== results.lastChild) {
-      this.updateSelectedItem(this.selectedItem)
-      this.selectedItem = this.selectedItem.nextSibling
-      results.scrollTop = this.selectedItem.offsetTop
-      this.updateSelectedItem(this.selectedItem)
+    if (!this.highlightedItem) {
+      this.highlightedItem = results.firstChild
+      this.updateHighlightedItem(this.highlightedItem)
+      results.scrollTop = this.highlightedItem.offsetTop
+    } else if (this.highlightedItem !== results.lastChild) {
+      this.updateHighlightedItem(this.highlightedItem)
+      this.highlightedItem = this.highlightedItem.nextSibling
+      results.scrollTop = this.highlightedItem.offsetTop
+      this.updateHighlightedItem(this.highlightedItem)
     }
   }
 
   onInputArrowUp () {
     const results = this.resultsTarget
 
-    if (this.selectedItem && this.selectedItem !== results.firstChild) {
-      this.selectedItem = this.selectedItem.previousSibling
-      this.updateSelectedItem(this.selectedItem)
-      this.updateSelectedItem(this.selectedItem.nextSibling)
-      results.scrollTop = this.selectedItem.offsetTop
+    if (this.highlightedItem && this.highlightedItem !== results.firstChild) {
+      this.highlightedItem = this.highlightedItem.previousSibling
+      this.updateHighlightedItem(this.highlightedItem)
+      this.updateHighlightedItem(this.highlightedItem.nextSibling)
+      results.scrollTop = this.highlightedItem.offsetTop
     }
   }
 
-  updateSelectedItem (item) {
+  updateHighlightedItem (item) {
     if (item) item.classList.toggle('selected')
   }
 
@@ -175,7 +175,9 @@ export class TagsController extends Controller {
 
   addOrCreateNewItem (itemName = null) {
     const item = this.firstAvailableItem(
-      itemName || this.getItemName(this.selectedItem) || this.inputTarget.value
+      itemName ||
+        this.getItemName(this.highlightedItem) ||
+        this.inputTarget.value
     )
 
     if (item) {
@@ -188,7 +190,7 @@ export class TagsController extends Controller {
     this.updateInputPlaceholder()
 
     if (this.resultsTarget.firstChild) {
-      this.selectedItem = null
+      this.highlightedItem = null
       this.hideResults()
     }
   }
@@ -205,14 +207,14 @@ export class TagsController extends Controller {
 
   onResultsHover (event) {
     if (event.target.localName === 'li') {
-      this.updateSelectedItem(this.selectedItem)
-      this.selectedItem = event.target
-      this.updateSelectedItem(this.selectedItem)
+      this.updateHighlightedItem(this.highlightedItem)
+      this.highlightedItem = event.target
+      this.updateHighlightedItem(this.highlightedItem)
     }
   }
 
   hideResults = () => {
-    this.selectedItem = null
+    this.highlightedItem = null
     if (!this.resultsTarget.innerHTML) return
 
     this.inputTarget.value = ''
