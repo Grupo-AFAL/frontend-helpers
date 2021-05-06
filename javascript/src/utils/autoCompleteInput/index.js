@@ -1,3 +1,11 @@
+import {
+  onKeydown,
+  onFocusOrClick,
+  onInputChange,
+  onResultsMouseDown,
+  onResultsHover
+} from './eventHandlers'
+
 export default async ctrl => {
   const { useWindowResize } = await import('stimulus-use')
   useWindowResize(ctrl)
@@ -6,19 +14,16 @@ export default async ctrl => {
 
   const observe = () => {
     document.addEventListener('scroll', ctrl.hideResults)
-    ctrl.inputTarget.addEventListener('focus', ctrl.onFocusOrClick.bind(ctrl))
-    ctrl.inputTarget.addEventListener('click', ctrl.onFocusOrClick.bind(ctrl))
-    ctrl.inputTarget.addEventListener('keydown', ctrl.onKeydown.bind(ctrl))
+    ctrl.inputTarget.addEventListener('focus', onFocusOrClick.bind(ctrl))
+    ctrl.inputTarget.addEventListener('click', onFocusOrClick.bind(ctrl))
+    ctrl.inputTarget.addEventListener('keydown', onKeydown.bind(ctrl))
     ctrl.inputTarget.addEventListener('blur', ctrl.hideResults.bind(ctrl))
-    ctrl.inputTarget.addEventListener('input', ctrl.onInputChange.bind(ctrl))
+    ctrl.inputTarget.addEventListener('input', onInputChange.bind(ctrl))
     ctrl.resultsTarget.addEventListener(
       'mousedown',
-      ctrl.onResultsMouseDown.bind(ctrl)
+      onResultsMouseDown.bind(ctrl)
     )
-    ctrl.resultsTarget.addEventListener(
-      'mouseover',
-      ctrl.onResultsHover.bind(ctrl)
-    )
+    ctrl.resultsTarget.addEventListener('mouseover', onResultsHover.bind(ctrl))
   }
 
   const unobserve = () => {
