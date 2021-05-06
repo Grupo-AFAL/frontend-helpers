@@ -1,3 +1,5 @@
+import { stringToDOMNode } from '../domHelpers'
+
 const notAvailableMessage = 'No hay opciones disponibles'
 
 export const unvailableItemTag = (searchText, addItems = false) => {
@@ -19,4 +21,18 @@ export const availableItemTag = item => {
   li.dataset.value = value
   li.append(name)
   return li
+}
+
+export const ulContainerTag = () => {
+  return stringToDOMNode(
+    `<ul class="results is-hidden" data-select-target="results"></ul>`
+  )
+}
+
+export const inputTag = () => {
+  return stringToDOMNode(
+    `<div class="input select" data-select-target="fakeInput">
+       <input type="text" data-select-target="input" placeholder="Select option">
+    </div>`
+  )
 }

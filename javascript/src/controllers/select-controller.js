@@ -3,8 +3,14 @@ import { stringToDOMNode } from '../utils/domHelpers'
 import autoCompleteInput from '../utils/autoCompleteInput'
 import {
   unvailableItemTag,
-  availableItemTag
+  availableItemTag,
+  ulContainerTag,
+  inputTag
 } from '../utils/autoCompleteInput/domElements'
+import {
+  firstAvailableItem,
+  availableItems
+} from '../utils/autoCompleteInput/search'
 
 /**
  * Select Controller
@@ -16,7 +22,8 @@ export class SelectController extends Controller {
   static targets = ['input', 'results', 'fakeInput']
 
   async connect () {
-    this.generateHTML()
+    this.element.prepend(inputTag())
+    this.element.append(ulContainerTag())
 
     this.selectField = this.element.querySelector('select')
     this.selectField.setAttribute('hidden', '')
@@ -40,21 +47,6 @@ export class SelectController extends Controller {
     }, {})
 
     this.renderSelectedItem(this.selectedItem)
-  }
-
-  generateHTML () {
-    const results = stringToDOMNode(
-      `<ul class="results is-hidden" data-select-target="results"></ul>`
-    )
-
-    const input = stringToDOMNode(
-      `<div class="input select" data-select-target="fakeInput">
-         <input type="text" data-select-target="input" placeholder="Select option">
-      </div>`
-    )
-
-    this.element.prepend(input)
-    this.element.append(results)
   }
 
   onKeydown (event) {
@@ -132,11 +124,12 @@ export class SelectController extends Controller {
   }
 
   addNewItem (itemName = null) {
-    const item = this.firstAvailableItem(
+    const searchText =
       itemName ||
-        this.getItemName(this.highlightedItem) ||
-        this.inputTarget.value
-    )
+      this.getItemName(this.highlightedItem) ||
+      this.inputTarget.value
+
+    const item = firstAvailableItem(this.items, searchText)
 
     if (item) {
       this.addSelectedItem(item[1])
@@ -178,26 +171,9 @@ export class SelectController extends Controller {
     this.commit()
   }
 
-  firstAvailableItem (searchText = null) {
-    return this.items.find(this.searchFunction(searchText))
-  }
-
-  availableItems (searchText = null) {
-    return this.items.filter(this.searchFunction(searchText))
-  }
-
-  searchFunction (searchText) {
-    return item => {
-      const [name, value] = item
-
-      if (!searchText) return true
-      return name.toLowerCase().includes(searchText.toLowerCase())
-    }
-  }
-
   renderAvailableItems (searchText = null) {
     this.resultsTarget.innerHTML = null
-    const items = this.availableItems(searchText)
+    const items = availableItems(this.items, searchText)
 
     if (items.length === 0) {
       this.resultsTarget.append(unvailableItemTag(searchText))
