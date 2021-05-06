@@ -1,4 +1,4 @@
-export const autoCompleteInput = async ctrl => {
+export default async ctrl => {
   const { useWindowResize } = await import('stimulus-use')
   useWindowResize(ctrl)
 

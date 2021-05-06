@@ -1,8 +1,10 @@
 import { Controller } from 'stimulus'
 import { stringToDOMNode } from '../utils/domHelpers'
-import { autoCompleteInput } from '../utils/autoCompleteInput'
-
-const notAvailableMessage = 'No hay opciones disponibles'
+import autoCompleteInput from '../utils/autoCompleteInput'
+import {
+  unvailableItemTag,
+  availableItemTag
+} from '../utils/autoCompleteInput/domElements'
 
 /**
  * Select Controller
@@ -198,10 +200,10 @@ export class SelectController extends Controller {
     const items = this.availableItems(searchText)
 
     if (items.length === 0) {
-      this.resultsTarget.append(this.unvailableItemTag(searchText))
+      this.resultsTarget.append(unvailableItemTag(searchText))
     } else {
       items.forEach(item => {
-        this.resultsTarget.append(this.availableItemTag(item))
+        this.resultsTarget.append(availableItemTag(item))
       })
     }
 
@@ -217,27 +219,6 @@ export class SelectController extends Controller {
 
     this.fakeInputTarget.classList.add('is-focused')
     this.resultsTarget.classList.remove('is-hidden')
-  }
-
-  availableItemTag (item) {
-    const li = document.createElement('li')
-    const [name, value] = item
-    li.dataset.value = value
-    li.append(name)
-    return li
-  }
-
-  unvailableItemTag (searchText) {
-    const li = document.createElement('li')
-
-    if (this.addItemsValue && searchText && searchText.length > 0) {
-      li.append(`Agregar elemento: ${searchText}`)
-      li.dataset.value = searchText
-    } else {
-      li.append(notAvailableMessage)
-    }
-
-    return li
   }
 
   renderSelectedItem (value) {
