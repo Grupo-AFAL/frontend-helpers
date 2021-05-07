@@ -351,6 +351,12 @@ module IconComponents
     </svg>
   )
 
+  CALENDAR_DAY = %(
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <rect x="9.5" y="0.5" width="9" height="9" rx="0.5" transform="rotate(90 9.5 0.5)" stroke="white"/>
+    </svg>
+  )
+
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
@@ -390,7 +396,8 @@ module IconComponents
     'calendar-alt' => CALENDAR_ALT,
     'shopping-cart' => SHOPPING_CART,
     'calendar-month' => CALENDAR_MONTH,
-    'calendar-week' => CALENDAR_WEEK
+    'calendar-week' => CALENDAR_WEEK,
+    'calendar-day' => CALENDAR_DAY
   }.freeze
 
   class IconNotAvailable < StandardError; end
