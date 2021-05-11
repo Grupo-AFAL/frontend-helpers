@@ -1,16 +1,6 @@
 import { Controller } from 'stimulus'
-import { stringToDOMNode } from '../utils/domHelpers'
 import autoCompleteInput from '../utils/autoCompleteInput'
-import {
-  unvailableItemTag,
-  availableItemTag,
-  ulContainerTag,
-  inputTag
-} from '../utils/autoCompleteInput/domElements'
-import {
-  firstAvailableItem,
-  availableItems
-} from '../utils/autoCompleteInput/search'
+import { firstAvailableItem } from '../utils/autoCompleteInput/search'
 
 /**
  * Select Controller
@@ -22,15 +12,13 @@ export class SelectController extends Controller {
   static targets = ['input', 'results', 'fakeInput']
 
   async connect () {
-    this.element.prepend(inputTag())
-    this.element.append(ulContainerTag())
+    autoCompleteInput(this)
 
     this.selectField = this.element.querySelector('select')
     this.selectField.setAttribute('hidden', '')
 
     this.initializeItems()
-
-    autoCompleteInput(this)
+    this.renderSelectedItem(this.selectedValue)
   }
 
   initializeItems () {
@@ -45,8 +33,6 @@ export class SelectController extends Controller {
       accumulator[value] = name
       return accumulator
     }, {})
-
-    this.renderSelectedItem(this.selectedValue)
   }
 
   addNewItem (itemName = null) {
@@ -67,47 +53,12 @@ export class SelectController extends Controller {
     }
   }
 
-  hideResults = () => {
-    this.highlightedItem = null
-    if (!this.resultsTarget.innerHTML) return
-
-    this.resultsTarget.classList.add('is-hidden')
-    this.resultsTarget.innerHTML = null
-    this.fakeInputTarget.classList.remove('is-focused')
-  }
-
   addSelectedItem (value) {
     if (!value || value.length === 0) return
 
     this.selectedValue = value
     this.renderSelectedItem(value)
     this.commit()
-  }
-
-  renderAvailableItems (searchText = null) {
-    this.resultsTarget.innerHTML = null
-    const items = availableItems(this.items, searchText)
-
-    if (items.length === 0) {
-      this.resultsTarget.append(unvailableItemTag(searchText))
-    } else {
-      items.forEach(item => {
-        this.resultsTarget.append(availableItemTag(item))
-      })
-    }
-
-    const rect = this.fakeInputTarget.getBoundingClientRect()
-    const top = rect.top + 50
-    const left = rect.left
-    const width = rect.width
-
-    this.resultsTarget.setAttribute(
-      'style',
-      `top:${top}px; left:${left}px; width:${width}px;`
-    )
-
-    this.fakeInputTarget.classList.add('is-focused')
-    this.resultsTarget.classList.remove('is-hidden')
   }
 
   renderSelectedItem (value) {

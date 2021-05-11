@@ -6,18 +6,24 @@ import {
   onResultsHover
 } from './eventHandlers'
 
+import { ulContainerTag, inputTag } from './domElements'
+import { renderAvailableItems, hideResults } from './rendering'
+
 export default async ctrl => {
-  const { useWindowResize } = await import('stimulus-use')
-  useWindowResize(ctrl)
+  ctrl.element.prepend(inputTag())
+  ctrl.element.append(ulContainerTag())
 
   const ctrlDisconnect = ctrl.disconnect.bind(ctrl)
+
+  ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
+  ctrl.hideResults = hideResults.bind(ctrl)
 
   const observe = () => {
     document.addEventListener('scroll', ctrl.hideResults)
     ctrl.inputTarget.addEventListener('focus', onFocusOrClick.bind(ctrl))
     ctrl.inputTarget.addEventListener('click', onFocusOrClick.bind(ctrl))
     ctrl.inputTarget.addEventListener('keydown', onKeydown.bind(ctrl))
-    ctrl.inputTarget.addEventListener('blur', ctrl.hideResults.bind(ctrl))
+    ctrl.inputTarget.addEventListener('blur', ctrl.hideResults)
     ctrl.inputTarget.addEventListener('input', onInputChange.bind(ctrl))
     ctrl.resultsTarget.addEventListener(
       'mousedown',
@@ -41,6 +47,9 @@ export default async ctrl => {
   })
 
   observe()
+
+  const { useWindowResize } = await import('stimulus-use')
+  useWindowResize(ctrl)
 
   return [observe, unobserve]
 }
