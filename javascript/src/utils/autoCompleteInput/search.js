@@ -1,9 +1,7 @@
-export const firstAvailableItem = (
-  items,
-  searchText = null,
-  selectedValues = []
-) => {
-  return items.find(searchFunction(searchText, selectedValues))
+export function findItemToAdd (itemName, highlightedItem, inputTarget, items) {
+  const highlightedText = highlightedItem ? highlightedItem.textContent : ''
+  const searchText = itemName || highlightedText || inputTarget.value
+  return items.find(searchFunction(searchText))
 }
 
 export const availableItems = (
@@ -14,7 +12,7 @@ export const availableItems = (
   return items.filter(searchFunction(searchText, selectedValues))
 }
 
-const searchFunction = (searchText, selectedValues) => {
+const searchFunction = (searchText, selectedValues = []) => {
   return item => {
     const [name, value] = item
     const notIncluded = !selectedValues.includes(value)

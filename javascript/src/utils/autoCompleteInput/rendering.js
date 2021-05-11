@@ -1,5 +1,5 @@
 import { unvailableItemTag, availableItemTag } from './domElements'
-import { availableItems } from './search'
+import { availableItems, findItemToAdd } from './search'
 
 export function renderAvailableItems (searchText = null) {
   this.resultsTarget.innerHTML = null
@@ -34,4 +34,20 @@ export function hideResults () {
   this.resultsTarget.classList.add('is-hidden')
   this.resultsTarget.innerHTML = null
   this.fakeInputTarget.classList.remove('is-focused')
+}
+
+export function addNewItem (itemName = null) {
+  const item = findItemToAdd(
+    itemName,
+    this.highlightedItem,
+    this.inputTarget,
+    this.items
+  )
+
+  if (item) {
+    this.addSelectedItem(item[1])
+    this.renderAvailableItems()
+  }
+
+  this.hideResults()
 }

@@ -7,7 +7,7 @@ import {
 } from './eventHandlers'
 
 import { ulContainerTag, inputTag } from './domElements'
-import { renderAvailableItems, hideResults } from './rendering'
+import { renderAvailableItems, hideResults, addNewItem } from './rendering'
 
 export default async ctrl => {
   ctrl.element.prepend(inputTag())
@@ -17,6 +17,7 @@ export default async ctrl => {
 
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
   ctrl.hideResults = hideResults.bind(ctrl)
+  ctrl.addNewItem = addNewItem.bind(ctrl)
 
   const observe = () => {
     document.addEventListener('scroll', ctrl.hideResults)

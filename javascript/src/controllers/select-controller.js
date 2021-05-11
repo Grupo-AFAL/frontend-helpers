@@ -1,6 +1,5 @@
 import { Controller } from 'stimulus'
 import autoCompleteInput from '../utils/autoCompleteInput'
-import { firstAvailableItem } from '../utils/autoCompleteInput/search'
 
 /**
  * Select Controller
@@ -33,24 +32,6 @@ export class SelectController extends Controller {
       accumulator[value] = name
       return accumulator
     }, {})
-  }
-
-  addNewItem (itemName = null) {
-    const highlightedText = this.highlightedItem
-      ? this.highlightedItem.textContent
-      : ''
-    const searchText = itemName || highlightedText || this.inputTarget.value
-    const item = firstAvailableItem(this.items, searchText)
-
-    if (item) {
-      this.addSelectedItem(item[1])
-      this.renderAvailableItems()
-    }
-
-    if (this.resultsTarget.firstChild) {
-      this.highlightedItem = null
-      this.hideResults()
-    }
   }
 
   addSelectedItem (value) {
