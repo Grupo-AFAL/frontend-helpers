@@ -78,13 +78,13 @@ const onInputArrowDown = ctrl => {
 
   if (!ctrl.highlightedItem) {
     ctrl.highlightedItem = updateHighlightedItem(results.firstChild)
-    results.scrollTop = ctrl.highlightedItem.offsetTop
+    results.scrollTop = ctrl.highlightedItem.offsetTop - 32
   } else if (ctrl.highlightedItem !== results.lastChild) {
     updateHighlightedItem(ctrl.highlightedItem)
     ctrl.highlightedItem = updateHighlightedItem(
       ctrl.highlightedItem.nextSibling
     )
-    results.scrollTop = ctrl.highlightedItem.offsetTop
+    results.scrollTop = ctrl.highlightedItem.offsetTop - 32
   }
 }
 
@@ -96,7 +96,7 @@ const onInputArrowUp = ctrl => {
       ctrl.highlightedItem.previousSibling
     )
     updateHighlightedItem(ctrl.highlightedItem.nextSibling)
-    results.scrollTop = ctrl.highlightedItem.offsetTop
+    results.scrollTop = ctrl.highlightedItem.offsetTop - 32
   }
 }
 
