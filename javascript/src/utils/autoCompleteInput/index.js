@@ -16,7 +16,7 @@ export default async ctrl => {
 
   ctrl.inputContainer = ctrl.element.querySelector('.input')
   ctrl.searchInput = ctrl.inputContainer.querySelector('input')
-  ctrl.dropdownContainer = ctrl.element.querySelector('.results')
+  ctrl.dropdownContainer = ctrl.element.querySelector('.dropdown-container')
 
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
   ctrl.hideResults = hideResults.bind(ctrl)

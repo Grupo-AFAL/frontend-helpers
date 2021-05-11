@@ -182,7 +182,7 @@ module FrontendHelpers
         'tags-add-items-value': options[:add_items]
       }
 
-      field = tag.div(class: 'tags-wrapper', data: tags_data) do
+      field = tag.div(class: 'autocomplete-input-container', data: tags_data) do
         safe_join([
                     tag.div(class: field_class_name(method),
                             data: { 'tags-target': 'fakeInput' }) do

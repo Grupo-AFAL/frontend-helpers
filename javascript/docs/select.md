@@ -7,7 +7,7 @@ description: Custom select with autocomplete
 
 Select a single item from a list
 
-<div data-controller="select" class="tags-wrapper">
+<div data-controller="select" class="autocomplete-input-container">
   <select name="field">
     <option value="1">One</option>
     <option value="2">Two</option>

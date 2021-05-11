@@ -1,6 +1,9 @@
-.tags-wrapper {
+.autocomplete-input-container {
   position: relative;
 
+  // .results is to be backwards compatible with the tags-controller.
+  // TODO: Refactor TagsController to use the autoCompleteInput module.
+  .dropdown-container,
   .results {
     position: fixed;
     top: 100%;

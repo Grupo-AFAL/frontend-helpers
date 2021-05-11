@@ -24,7 +24,7 @@ export const availableItemTag = item => {
 }
 
 export const dropdownContainerTag = () => {
-  return stringToDOMNode(`<ul class="results is-hidden"></ul>`)
+  return stringToDOMNode(`<ul class="dropdown-container is-hidden"></ul>`)
 }
 
 export const inputContainerTag = () => {
