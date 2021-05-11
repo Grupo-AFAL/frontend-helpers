@@ -1,11 +1,4 @@
-import {
-  onKeydown,
-  onFocusOrClick,
-  onInputChange,
-  onResultsMouseDown,
-  onResultsHover
-} from './eventHandlers'
-
+import { setupListeners, removeListeners } from './eventHandlers'
 import { dropdownContainerTag, inputContainerTag } from './domElements'
 import { renderAvailableItems, hideResults, addNewItem } from './rendering'
 
@@ -14,40 +7,21 @@ export default async ctrl => {
   ctrl.element.prepend(inputContainerTag())
   ctrl.element.append(dropdownContainerTag())
 
+  // Setup references to HTML elements
   ctrl.inputContainer = ctrl.element.querySelector('.input')
   ctrl.searchInput = ctrl.inputContainer.querySelector('input')
   ctrl.dropdownContainer = ctrl.element.querySelector('.dropdown-container')
 
+  // Bind rendering functions to the controller
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
   ctrl.hideResults = hideResults.bind(ctrl)
   ctrl.addNewItem = addNewItem.bind(ctrl)
 
   const ctrlDisconnect = ctrl.disconnect.bind(ctrl)
 
-  const observe = () => {
-    document.addEventListener('scroll', ctrl.hideResults)
-    ctrl.searchInput.addEventListener('focus', onFocusOrClick.bind(ctrl))
-    ctrl.searchInput.addEventListener('click', onFocusOrClick.bind(ctrl))
-    ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
-    ctrl.searchInput.addEventListener('blur', ctrl.hideResults)
-    ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
-    ctrl.dropdownContainer.addEventListener(
-      'mousedown',
-      onResultsMouseDown.bind(ctrl)
-    )
-    ctrl.dropdownContainer.addEventListener(
-      'mouseover',
-      onResultsHover.bind(ctrl)
-    )
-  }
-
-  const unobserve = () => {
-    document.removeEventListener('scroll', ctrl.hideResults)
-  }
-
   Object.assign(ctrl, {
     disconnect () {
-      unobserve()
+      removeListeners(ctrl)
       ctrlDisconnect()
     },
     windowResize () {
@@ -55,10 +29,14 @@ export default async ctrl => {
     }
   })
 
-  observe()
+  setupListeners(ctrl)
 
   const { useWindowResize } = await import('stimulus-use')
   useWindowResize(ctrl)
 
-  return [observe, unobserve]
+  return {
+    inputContainer: ctrl.inputContainer,
+    searchInput: ctrl.searchInput,
+    dropdownContainer: ctrl.dropdownContainer
+  }
 }

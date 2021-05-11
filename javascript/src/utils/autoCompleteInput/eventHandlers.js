@@ -1,3 +1,24 @@
+export function setupListeners (ctrl) {
+  document.addEventListener('scroll', ctrl.hideResults)
+  ctrl.searchInput.addEventListener('focus', onFocusOrClick.bind(ctrl))
+  ctrl.searchInput.addEventListener('click', onFocusOrClick.bind(ctrl))
+  ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
+  ctrl.searchInput.addEventListener('blur', ctrl.hideResults)
+  ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
+  ctrl.dropdownContainer.addEventListener(
+    'mousedown',
+    onResultsMouseDown.bind(ctrl)
+  )
+  ctrl.dropdownContainer.addEventListener(
+    'mouseover',
+    onResultsHover.bind(ctrl)
+  )
+}
+
+export function removeListeners (ctrl) {
+  document.removeEventListener('scroll', ctrl.hideResults)
+}
+
 export function onKeydown (event) {
   switch (event.key) {
     case 'Escape':
