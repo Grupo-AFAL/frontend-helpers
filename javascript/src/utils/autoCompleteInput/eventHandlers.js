@@ -1,18 +1,15 @@
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideResults)
-  ctrl.searchInput.addEventListener('focus', onFocusOrClick.bind(ctrl))
-  ctrl.searchInput.addEventListener('click', onFocusOrClick.bind(ctrl))
+  // ctrl.searchInput.addEventListener('focus', onFocusOrClick.bind(ctrl))
+  ctrl.inputContainer.addEventListener('click', onClick.bind(ctrl))
   ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
   ctrl.searchInput.addEventListener('blur', ctrl.hideResults)
   ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
-  ctrl.dropdownContainer.addEventListener(
+  ctrl.dropdownItems.addEventListener(
     'mousedown',
     onResultsMouseDown.bind(ctrl)
   )
-  ctrl.dropdownContainer.addEventListener(
-    'mouseover',
-    onResultsHover.bind(ctrl)
-  )
+  ctrl.dropdownItems.addEventListener('mouseover', onResultsHover.bind(ctrl))
 }
 
 export function removeListeners (ctrl) {
@@ -43,7 +40,16 @@ export function onKeydown (event) {
   }
 }
 
-export function onFocusOrClick () {
+export function onClick () {
+  if (this.dropdownItems.innerHTML) {
+    this.hideResults()
+  } else {
+    this.renderAvailableItems()
+    this.searchInput.focus()
+  }
+}
+
+export function onFocus () {
   this.renderAvailableItems()
 }
 
@@ -64,7 +70,7 @@ export function onResultsHover (event) {
 
 // "Private functions"
 const onInputArrowDown = ctrl => {
-  const results = ctrl.dropdownContainer
+  const results = ctrl.dropdownItems
 
   if (!results.innerHTML) {
     ctrl.renderAvailableItems()
@@ -83,7 +89,7 @@ const onInputArrowDown = ctrl => {
 }
 
 const onInputArrowUp = ctrl => {
-  const results = ctrl.dropdownContainer
+  const results = ctrl.dropdownItems
 
   if (ctrl.highlightedItem && ctrl.highlightedItem !== results.firstChild) {
     ctrl.highlightedItem = updateHighlightedItem(

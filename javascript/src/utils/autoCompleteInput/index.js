@@ -1,21 +1,31 @@
 import { setupListeners, removeListeners } from './eventHandlers'
 import { dropdownContainerTag, inputContainerTag } from './domElements'
-import { renderAvailableItems, hideResults, addNewItem } from './rendering'
+import {
+  renderAvailableItems,
+  hideResults,
+  addNewItem,
+  addSelectedItem,
+  renderSelectedItem
+} from './rendering'
 
-export default async ctrl => {
+export default async (ctrl, { className, placeholder, searchPlaceholder }) => {
   // Generate required HTML for the autocomplete and append it to element
-  ctrl.element.prepend(inputContainerTag())
-  ctrl.element.append(dropdownContainerTag())
+  ctrl.element.prepend(inputContainerTag({ className, placeholder }))
+  ctrl.element.append(dropdownContainerTag({ searchPlaceholder }))
 
   // Setup references to HTML elements
-  ctrl.inputContainer = ctrl.element.querySelector('.input')
-  ctrl.searchInput = ctrl.inputContainer.querySelector('input')
+  ctrl.inputContainer = ctrl.element.querySelector('.input-container')
+  ctrl.customSelect = ctrl.element.querySelector('.custom-select')
   ctrl.dropdownContainer = ctrl.element.querySelector('.dropdown-container')
+  ctrl.dropdownItems = ctrl.element.querySelector('.dropdown-items')
+  ctrl.searchInput = ctrl.element.querySelector('.search-input')
 
   // Bind rendering functions to the controller
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
   ctrl.hideResults = hideResults.bind(ctrl)
   ctrl.addNewItem = addNewItem.bind(ctrl)
+  ctrl.addSelectedItem = addSelectedItem.bind(ctrl)
+  ctrl.renderSelectedItem = renderSelectedItem.bind(ctrl)
 
   const ctrlDisconnect = ctrl.disconnect.bind(ctrl)
 
@@ -30,6 +40,7 @@ export default async ctrl => {
   })
 
   setupListeners(ctrl)
+  ctrl.renderSelectedItem()
 
   const { useWindowResize } = await import('stimulus-use')
   useWindowResize(ctrl)

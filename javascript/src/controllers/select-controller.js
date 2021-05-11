@@ -9,13 +9,12 @@ import autoCompleteInput from '../utils/autoCompleteInput'
  */
 export class SelectController extends Controller {
   async connect () {
-    autoCompleteInput(this)
-
     this.selectField = this.element.querySelector('select')
     this.selectField.setAttribute('hidden', '')
 
     this.initializeItems()
-    this.renderSelectedItem(this.selectedValue)
+
+    autoCompleteInput(this, { className: 'is-fullwidth' })
   }
 
   initializeItems () {
@@ -30,18 +29,6 @@ export class SelectController extends Controller {
       accumulator[value] = name
       return accumulator
     }, {})
-  }
-
-  addSelectedItem (value) {
-    if (!value || value.length === 0) return
-
-    this.selectedValue = value
-    this.renderSelectedItem(value)
-    this.commit()
-  }
-
-  renderSelectedItem (value) {
-    this.searchInput.value = this.itemsByValue[value]
   }
 
   commit () {

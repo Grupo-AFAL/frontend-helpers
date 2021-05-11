@@ -2,14 +2,14 @@ import { unvailableItemTag, availableItemTag } from './domElements'
 import { availableItems, findItemToAdd } from './search'
 
 export function renderAvailableItems (searchText = null) {
-  this.dropdownContainer.innerHTML = null
+  this.dropdownItems.innerHTML = null
   const items = availableItems(this.items, searchText)
 
   if (items.length === 0) {
-    this.dropdownContainer.append(unvailableItemTag(searchText))
+    this.dropdownItems.append(unvailableItemTag(searchText))
   } else {
     items.forEach(item => {
-      this.dropdownContainer.append(availableItemTag(item))
+      this.dropdownItems.append(availableItemTag(item))
     })
   }
 
@@ -29,10 +29,10 @@ export function renderAvailableItems (searchText = null) {
 
 export function hideResults () {
   this.highlightedItem = null
-  if (!this.dropdownContainer.innerHTML) return
+  if (!this.dropdownItems.innerHTML) return
 
   this.dropdownContainer.classList.add('is-hidden')
-  this.dropdownContainer.innerHTML = null
+  this.dropdownItems.innerHTML = null
   this.inputContainer.classList.remove('is-focused')
 }
 
@@ -50,4 +50,17 @@ export function addNewItem (itemName = null) {
   }
 
   this.hideResults()
+}
+
+export function addSelectedItem (value) {
+  if (!value || value.length === 0) return
+
+  this.selectedValue = value
+  this.searchInput.value = ''
+  this.renderSelectedItem()
+  this.commit()
+}
+
+export function renderSelectedItem () {
+  this.customSelect.innerText = this.itemsByValue[this.selectedValue]
 }

@@ -3,34 +3,46 @@ import { stringToDOMNode } from '../domHelpers'
 const notAvailableMessage = 'No hay opciones disponibles'
 
 export const unvailableItemTag = (searchText, addItems = false) => {
-  const li = document.createElement('li')
+  const div = document.createElement('div')
+  div.classList.add('dropdown-item')
 
   if (addItems && searchText && searchText.length > 0) {
-    li.append(`Agregar elemento: ${searchText}`)
-    li.dataset.value = searchText
+    div.append(`Agregar elemento: ${searchText}`)
+    div.dataset.value = searchText
   } else {
-    li.append(notAvailableMessage)
+    div.append(notAvailableMessage)
   }
 
-  return li
+  return div
 }
 
 export const availableItemTag = item => {
-  const li = document.createElement('li')
+  const div = document.createElement('div')
   const [name, value] = item
-  li.dataset.value = value
-  li.append(name)
-  return li
+  div.dataset.value = value
+  div.classList.add('dropdown-item')
+  div.append(name)
+  return div
 }
 
-export const dropdownContainerTag = () => {
-  return stringToDOMNode(`<ul class="dropdown-container is-hidden"></ul>`)
-}
-
-export const inputContainerTag = () => {
+export const dropdownContainerTag = ({
+  searchPlaceholder = 'Search...'
+} = {}) => {
   return stringToDOMNode(
-    `<div class="input select">
-       <input type="text" placeholder="Select option">
+    `<div class="dropdown-container is-hidden">
+      <input class="input search-input" type="text" placeholder="${searchPlaceholder}">
+      <div class="dropdown-items"></div>
+    </div>`
+  )
+}
+
+export const inputContainerTag = ({
+  placeholder = 'Select option',
+  className = ''
+}) => {
+  return stringToDOMNode(
+    `<div class="input-container select ${className}">
+       <div class="input custom-select">${placeholder}</div>
     </div>`
   )
 }
