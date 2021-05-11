@@ -6,31 +6,39 @@ import {
   onResultsHover
 } from './eventHandlers'
 
-import { ulContainerTag, inputTag } from './domElements'
+import { dropdownContainerTag, inputContainerTag } from './domElements'
 import { renderAvailableItems, hideResults, addNewItem } from './rendering'
 
 export default async ctrl => {
-  ctrl.element.prepend(inputTag())
-  ctrl.element.append(ulContainerTag())
+  // Generate required HTML for the autocomplete and append it to element
+  ctrl.element.prepend(inputContainerTag())
+  ctrl.element.append(dropdownContainerTag())
 
-  const ctrlDisconnect = ctrl.disconnect.bind(ctrl)
+  ctrl.inputContainer = ctrl.element.querySelector('.input')
+  ctrl.searchInput = ctrl.inputContainer.querySelector('input')
+  ctrl.dropdownContainer = ctrl.element.querySelector('.results')
 
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
   ctrl.hideResults = hideResults.bind(ctrl)
   ctrl.addNewItem = addNewItem.bind(ctrl)
 
+  const ctrlDisconnect = ctrl.disconnect.bind(ctrl)
+
   const observe = () => {
     document.addEventListener('scroll', ctrl.hideResults)
-    ctrl.inputTarget.addEventListener('focus', onFocusOrClick.bind(ctrl))
-    ctrl.inputTarget.addEventListener('click', onFocusOrClick.bind(ctrl))
-    ctrl.inputTarget.addEventListener('keydown', onKeydown.bind(ctrl))
-    ctrl.inputTarget.addEventListener('blur', ctrl.hideResults)
-    ctrl.inputTarget.addEventListener('input', onInputChange.bind(ctrl))
-    ctrl.resultsTarget.addEventListener(
+    ctrl.searchInput.addEventListener('focus', onFocusOrClick.bind(ctrl))
+    ctrl.searchInput.addEventListener('click', onFocusOrClick.bind(ctrl))
+    ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
+    ctrl.searchInput.addEventListener('blur', ctrl.hideResults)
+    ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
+    ctrl.dropdownContainer.addEventListener(
       'mousedown',
       onResultsMouseDown.bind(ctrl)
     )
-    ctrl.resultsTarget.addEventListener('mouseover', onResultsHover.bind(ctrl))
+    ctrl.dropdownContainer.addEventListener(
+      'mouseover',
+      onResultsHover.bind(ctrl)
+    )
   }
 
   const unobserve = () => {

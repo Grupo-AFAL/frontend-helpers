@@ -23,16 +23,14 @@ export const availableItemTag = item => {
   return li
 }
 
-export const ulContainerTag = () => {
-  return stringToDOMNode(
-    `<ul class="results is-hidden" data-select-target="results"></ul>`
-  )
+export const dropdownContainerTag = () => {
+  return stringToDOMNode(`<ul class="results is-hidden"></ul>`)
 }
 
-export const inputTag = () => {
+export const inputContainerTag = () => {
   return stringToDOMNode(
-    `<div class="input select" data-select-target="fakeInput">
-       <input type="text" data-select-target="input" placeholder="Select option">
+    `<div class="input select">
+       <input type="text" placeholder="Select option">
     </div>`
   )
 }

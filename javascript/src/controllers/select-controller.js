@@ -8,8 +8,6 @@ import autoCompleteInput from '../utils/autoCompleteInput'
  * autocomplete existing items.
  */
 export class SelectController extends Controller {
-  static targets = ['input', 'results', 'fakeInput']
-
   async connect () {
     autoCompleteInput(this)
 
@@ -43,7 +41,7 @@ export class SelectController extends Controller {
   }
 
   renderSelectedItem (value) {
-    this.inputTarget.value = this.itemsByValue[value]
+    this.searchInput.value = this.itemsByValue[value]
   }
 
   commit () {

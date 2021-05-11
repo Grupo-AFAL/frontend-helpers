@@ -6,7 +6,7 @@ export function onKeydown (event) {
     case 'Tab':
     case 'Enter':
     case ',':
-      if (this.inputTarget.value || this.highlightedItem) {
+      if (this.searchInput.value || this.highlightedItem) {
         this.addNewItem()
         event.preventDefault()
       }
@@ -27,7 +27,7 @@ export function onFocusOrClick () {
 }
 
 export function onInputChange () {
-  this.renderAvailableItems(this.inputTarget.value)
+  this.renderAvailableItems(this.searchInput.value)
 }
 
 export function onResultsMouseDown (event) {
@@ -43,7 +43,7 @@ export function onResultsHover (event) {
 
 // "Private functions"
 const onInputArrowDown = ctrl => {
-  const results = ctrl.resultsTarget
+  const results = ctrl.dropdownContainer
 
   if (!results.innerHTML) {
     ctrl.renderAvailableItems()
@@ -62,7 +62,7 @@ const onInputArrowDown = ctrl => {
 }
 
 const onInputArrowUp = ctrl => {
-  const results = ctrl.resultsTarget
+  const results = ctrl.dropdownContainer
 
   if (ctrl.highlightedItem && ctrl.highlightedItem !== results.firstChild) {
     ctrl.highlightedItem = updateHighlightedItem(

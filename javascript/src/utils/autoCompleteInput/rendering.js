@@ -2,45 +2,45 @@ import { unvailableItemTag, availableItemTag } from './domElements'
 import { availableItems, findItemToAdd } from './search'
 
 export function renderAvailableItems (searchText = null) {
-  this.resultsTarget.innerHTML = null
+  this.dropdownContainer.innerHTML = null
   const items = availableItems(this.items, searchText)
 
   if (items.length === 0) {
-    this.resultsTarget.append(unvailableItemTag(searchText))
+    this.dropdownContainer.append(unvailableItemTag(searchText))
   } else {
     items.forEach(item => {
-      this.resultsTarget.append(availableItemTag(item))
+      this.dropdownContainer.append(availableItemTag(item))
     })
   }
 
-  const rect = this.fakeInputTarget.getBoundingClientRect()
+  const rect = this.inputContainer.getBoundingClientRect()
   const top = rect.top + 50
   const left = rect.left
   const width = rect.width
 
-  this.resultsTarget.setAttribute(
+  this.dropdownContainer.setAttribute(
     'style',
     `top:${top}px; left:${left}px; width:${width}px;`
   )
 
-  this.fakeInputTarget.classList.add('is-focused')
-  this.resultsTarget.classList.remove('is-hidden')
+  this.inputContainer.classList.add('is-focused')
+  this.dropdownContainer.classList.remove('is-hidden')
 }
 
 export function hideResults () {
   this.highlightedItem = null
-  if (!this.resultsTarget.innerHTML) return
+  if (!this.dropdownContainer.innerHTML) return
 
-  this.resultsTarget.classList.add('is-hidden')
-  this.resultsTarget.innerHTML = null
-  this.fakeInputTarget.classList.remove('is-focused')
+  this.dropdownContainer.classList.add('is-hidden')
+  this.dropdownContainer.innerHTML = null
+  this.inputContainer.classList.remove('is-focused')
 }
 
 export function addNewItem (itemName = null) {
   const item = findItemToAdd(
     itemName,
     this.highlightedItem,
-    this.inputTarget,
+    this.searchInput,
     this.items
   )
 

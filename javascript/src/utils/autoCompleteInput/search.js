@@ -1,6 +1,6 @@
-export function findItemToAdd (itemName, highlightedItem, inputTarget, items) {
+export function findItemToAdd (itemName, highlightedItem, searchInput, items) {
   const highlightedText = highlightedItem ? highlightedItem.textContent : ''
-  const searchText = itemName || highlightedText || inputTarget.value
+  const searchText = itemName || highlightedText || searchInput.value
   return items.find(searchFunction(searchText))
 }
 
