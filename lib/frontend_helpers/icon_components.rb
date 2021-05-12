@@ -334,6 +334,29 @@ module IconComponents
     </svg>
   )
 
+  CALENDAR_MONTH = %(
+    <svg width="18" height="19" viewBox="0 0 18 19" fill="none">
+      <rect x="17.5" y="0.5" width="7" height="7" rx="0.5" transform="rotate(90 17.5 0.5)" stroke="white"/>
+      <rect x="7.5" y="0.5" width="7" height="7" rx="0.5" transform="rotate(90 7.5 0.5)" stroke="white"/>
+      <rect x="17.5" y="11.5" width="7" height="7" rx="0.5" transform="rotate(90 17.5 11.5)" stroke="white"/>
+      <rect x="7.5" y="11.5" width="7" height="7" rx="0.5" transform="rotate(90 7.5 11.5)" stroke="white"/>
+    </svg>
+  )
+
+  CALENDAR_WEEK = %(
+    <svg width="20" height="19" viewBox="0 0 20 19" fill="none">
+      <rect x="19.5" y="0.5" width="18" height="4" rx="0.5" transform="rotate(90 19.5 0.5)" stroke="white"/>
+      <rect x="12.5" y="0.5" width="18" height="4" rx="0.5" transform="rotate(90 12.5 0.5)" stroke="white"/>
+      <rect x="4.5" y="0.5" width="18" height="4" rx="0.5" transform="rotate(90 4.5 0.5)" stroke="white"/>
+    </svg>
+  )
+
+  CALENDAR_DAY = %(
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <rect x="9.5" y="0.5" width="9" height="9" rx="0.5" transform="rotate(90 9.5 0.5)" stroke="white"/>
+    </svg>
+  )
+
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
@@ -371,7 +394,10 @@ module IconComponents
     'search' => SEARCH,
     'chevron-down' => CHEVRON_DOWN,
     'calendar-alt' => CALENDAR_ALT,
-    'shopping-cart' => SHOPPING_CART
+    'shopping-cart' => SHOPPING_CART,
+    'calendar-month' => CALENDAR_MONTH,
+    'calendar-week' => CALENDAR_WEEK,
+    'calendar-day' => CALENDAR_DAY
   }.freeze
 
   class IconNotAvailable < StandardError; end
