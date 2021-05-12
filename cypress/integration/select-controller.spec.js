@@ -4,7 +4,7 @@ context('SelectController', () => {
   })
 
   it('displays the selected item', () => {
-    cy.get('.custom-select').should('have.text', 'Three')
+    cy.get('.custom-select').should('have.value', 'Three')
     cy.get('select').should('have.value', '3')
   })
 
@@ -23,13 +23,13 @@ context('SelectController', () => {
     cy.get('.custom-select').click()
     cy.get('.dropdown-items div').should('have.length', 6)
 
-    cy.get('.custom-select').type('Fou')
+    cy.get('.search-input').type('Fou')
     cy.get('.dropdown-items div').should('have.length', 1)
   })
 
   it('clears the search input after filtering', () => {
     cy.get('.custom-select').click()
-    cy.get('.custom-select').type('Fou')
+    cy.get('.search-input').type('Fou')
 
     cy.get('.dropdown-items div:first-child').click()
     cy.get('.custom-select').should('have.text', 'Four')
@@ -42,7 +42,7 @@ context('SelectController', () => {
     it('selects an item from the list', () => {
       cy.get('.custom-select').click()
       cy.get('.dropdown-items div:nth-child(2)').click()
-      cy.get('.custom-select').should('have.text', 'Two')
+      cy.get('.custom-select').should('have.value', 'Two')
       cy.get('select').should('have.value', '2')
     })
   })
@@ -53,7 +53,7 @@ context('SelectController', () => {
       cy.get('.search-input')
         .type('{DOWNARROW}')
         .type('{ENTER}')
-      cy.get('.custom-select').should('have.text', 'One')
+      cy.get('.custom-select').should('have.value', 'One')
       cy.get('select').should('have.value', '1')
     })
 
@@ -72,7 +72,7 @@ context('SelectController', () => {
         .type('{UPARROW}')
         .type('{ENTER}')
 
-      cy.get('.custom-select').should('have.text', 'Four')
+      cy.get('.custom-select').should('have.value', 'Four')
       cy.get('select').should('have.value', '4')
     })
   })
