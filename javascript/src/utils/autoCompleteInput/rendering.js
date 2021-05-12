@@ -25,6 +25,7 @@ export function renderAvailableItems (searchText = null) {
 
   this.inputContainer.classList.add('is-focused')
   this.dropdownContainer.classList.remove('is-hidden')
+  this.dropdownItems.scrollTop = 0
 }
 
 export function hideItems () {
@@ -62,5 +63,5 @@ export function addSelectedItem (value) {
 }
 
 export function renderSelectedItem () {
-  this.customSelect.innerText = this.itemsByValue[this.selectedValue]
+  this.customSelect.value = this.itemsByValue[this.selectedValue]
 }

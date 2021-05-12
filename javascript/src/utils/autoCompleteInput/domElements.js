@@ -42,7 +42,7 @@ export const inputContainerTag = ({
 }) => {
   return stringToDOMNode(
     `<div class="input-container select ${className}">
-       <div class="input custom-select">${placeholder}</div>
+       <input type="text" class="input custom-select" placeholder="${placeholder}">
     </div>`
   )
 }

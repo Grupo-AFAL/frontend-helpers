@@ -1,9 +1,9 @@
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideItems)
-  // ctrl.searchInput.addEventListener('focus', onFocus.bind(ctrl))
-  ctrl.inputContainer.addEventListener('click', onClick.bind(ctrl))
+
+  ctrl.customSelect.addEventListener('focus', onFocus.bind(ctrl))
+  ctrl.customSelect.addEventListener('keydown', onKeydown.bind(ctrl))
   ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
-  // ctrl.searchInput.addEventListener('blur', ctrl.hideItems)
   ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
   ctrl.dropdownItems.addEventListener('mousedown', onItemsMouseDown.bind(ctrl))
   ctrl.dropdownItems.addEventListener('mouseover', onItemsHover.bind(ctrl))
@@ -37,17 +37,14 @@ export function onKeydown (event) {
   }
 }
 
-export function onClick () {
+export function onFocus (event) {
   if (this.dropdownItems.innerHTML) {
     this.hideItems()
+    this.customSelect.blur()
   } else {
     this.renderAvailableItems()
     this.searchInput.focus()
   }
-}
-
-export function onFocus () {
-  this.renderAvailableItems()
 }
 
 export function onInputChange () {
