@@ -27,7 +27,7 @@ $dropdown-items-height: calc(
 
     li,
     .dropdown-item {
-      padding: 1rem;
+      padding: $size-7;
 
       &:hover {
         background-color: lighten($grey-lighter, 10%);
@@ -44,6 +44,8 @@ $dropdown-items-height: calc(
     border-radius: 0;
     height: $search-input-height;
     font-size: $size-6-5;
+    box-shadow: none;
+    border-color: $input-border-color;
   }
 
   .input-container {

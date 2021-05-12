@@ -2,7 +2,7 @@ import { setupListeners, removeListeners } from './eventHandlers'
 import { dropdownContainerTag, inputContainerTag } from './domElements'
 import {
   renderAvailableItems,
-  hideResults,
+  hideItems,
   addNewItem,
   addSelectedItem,
   renderSelectedItem
@@ -22,7 +22,7 @@ export default async (ctrl, { className, placeholder, searchPlaceholder }) => {
 
   // Bind rendering functions to the controller
   ctrl.renderAvailableItems = renderAvailableItems.bind(ctrl)
-  ctrl.hideResults = hideResults.bind(ctrl)
+  ctrl.hideItems = hideItems.bind(ctrl)
   ctrl.addNewItem = addNewItem.bind(ctrl)
   ctrl.addSelectedItem = addSelectedItem.bind(ctrl)
   ctrl.renderSelectedItem = renderSelectedItem.bind(ctrl)
@@ -35,7 +35,7 @@ export default async (ctrl, { className, placeholder, searchPlaceholder }) => {
       ctrlDisconnect()
     },
     windowResize () {
-      ctrl.hideResults()
+      ctrl.hideItems()
     }
   })
 

@@ -27,7 +27,7 @@ export function renderAvailableItems (searchText = null) {
   this.dropdownContainer.classList.remove('is-hidden')
 }
 
-export function hideResults () {
+export function hideItems () {
   this.highlightedItem = null
   if (!this.dropdownItems.innerHTML) return
 
@@ -49,7 +49,7 @@ export function addNewItem (itemName = null) {
     this.renderAvailableItems()
   }
 
-  this.hideResults()
+  this.hideItems()
 }
 
 export function addSelectedItem (value) {
