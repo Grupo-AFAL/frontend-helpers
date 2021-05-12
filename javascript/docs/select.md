@@ -9,6 +9,7 @@ Select a single item from a list
 
 <div data-controller="select" class="autocomplete-input-container">
   <select name="field">
+    <option value>Select an option</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3" selected>Three</option>

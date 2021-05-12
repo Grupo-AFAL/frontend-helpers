@@ -35,6 +35,7 @@ export function hideItems () {
   this.dropdownContainer.classList.add('is-hidden')
   this.dropdownItems.innerHTML = null
   this.inputContainer.classList.remove('is-focused')
+  this.searchInput.value = ''
 }
 
 export function addNewItem (itemName = null) {
@@ -57,11 +58,12 @@ export function addSelectedItem (value) {
   if (!value || value.length === 0) return
 
   this.selectedValue = value
-  this.searchInput.value = ''
   this.renderSelectedItem()
   this.commit()
 }
 
 export function renderSelectedItem () {
+  if (this.selectedValue.length === 0) return
+
   this.customSelect.value = this.itemsByValue[this.selectedValue]
 }

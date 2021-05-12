@@ -18,7 +18,9 @@ const searchFunction = (searchText, selectedValues = []) => {
     const notIncluded = !selectedValues.includes(value)
 
     if (searchText) {
-      const textIsMatch = name.toLowerCase().includes(searchText.toLowerCase())
+      const textIsMatch = name
+        .toLowerCase()
+        .includes(searchText.toLowerCase().trim())
       return notIncluded && textIsMatch
     } else {
       return notIncluded

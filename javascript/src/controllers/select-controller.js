@@ -14,15 +14,18 @@ export class SelectController extends Controller {
 
     this.initializeItems()
 
-    autoCompleteInput(this, { className: 'is-fullwidth' })
+    autoCompleteInput(this, {
+      className: 'is-fullwidth',
+      placeholder: this.extractplaceholderText()
+    })
   }
 
   initializeItems () {
     this.selectedValue = this.selectField.selectedOptions[0].value
-    this.items = Array.from(this.selectField.options).map(o => [
-      o.text,
-      o.value
-    ])
+    this.options = Array.from(this.selectField.options)
+    this.items = this.options
+      .filter(o => o.value.length > 0)
+      .map(o => [o.text, o.value])
 
     this.itemsByValue = this.items.reduce((accumulator, item) => {
       const [name, value] = item
@@ -38,5 +41,12 @@ export class SelectController extends Controller {
     this.selectField
       .querySelector(`option[value='${this.selectedValue}']`)
       .setAttribute('selected', '')
+  }
+
+  extractplaceholderText () {
+    const placeholderOption = this.options.filter(o => o.value.length === 0)[0]
+    if (placeholderOption) {
+      return placeholderOption.innerText
+    }
   }
 }
