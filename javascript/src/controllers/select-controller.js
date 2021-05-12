@@ -32,9 +32,8 @@ export class SelectController extends Controller {
   }
 
   commit () {
-    this.selectField
-      .querySelector('option[selected]')
-      .removeAttribute('selected')
+    const selectedOption = this.selectField.querySelector('option[selected]')
+    if (selectedOption) selectedOption.removeAttribute('selected')
 
     this.selectField
       .querySelector(`option[value='${this.selectedValue}']`)

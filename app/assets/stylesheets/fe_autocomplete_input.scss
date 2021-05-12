@@ -43,6 +43,7 @@ $dropdown-items-height: calc(
   .search-input {
     border-radius: 0;
     height: $search-input-height;
+    width: 100%;
     font-size: $size-6-5;
     box-shadow: none;
     border-color: $input-border-color;
@@ -56,6 +57,7 @@ $dropdown-items-height: calc(
       max-width: 100%;
       outline: 0;
       padding-right: 2.5em;
+      box-shadow: none;
     }
   }
 

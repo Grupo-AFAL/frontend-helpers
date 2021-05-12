@@ -3,7 +3,7 @@ export function setupListeners (ctrl) {
   // ctrl.searchInput.addEventListener('focus', onFocus.bind(ctrl))
   ctrl.inputContainer.addEventListener('click', onClick.bind(ctrl))
   ctrl.searchInput.addEventListener('keydown', onKeydown.bind(ctrl))
-  ctrl.searchInput.addEventListener('blur', ctrl.hideItems)
+  // ctrl.searchInput.addEventListener('blur', ctrl.hideItems)
   ctrl.searchInput.addEventListener('input', onInputChange.bind(ctrl))
   ctrl.dropdownItems.addEventListener('mousedown', onItemsMouseDown.bind(ctrl))
   ctrl.dropdownItems.addEventListener('mouseover', onItemsHover.bind(ctrl))

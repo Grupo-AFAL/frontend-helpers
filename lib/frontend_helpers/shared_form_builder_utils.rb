@@ -154,11 +154,22 @@ module FrontendHelpers
       field_helper(method, field, html_options)
     end
 
-    # Uses the Choices.js library
+    # Uses the Stimulus SelectController
     #
     def select_single_field(method, values, options = {}, html_options = {})
       html_options[:multiple] = false
-      select_multiple_field(method, values, options, html_options)
+
+      field_options = {
+        id: "#{method}_select_div",
+        class: 'autocomplete-input-container',
+        data: { controller: 'select' }
+      }
+
+      field = content_tag(:div, field_options) do
+        select(method, values, options, html_options)
+      end
+
+      field_helper(method, field, html_options)
     end
 
     # Uses the Stimulus TagsController
