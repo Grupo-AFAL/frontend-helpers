@@ -32,7 +32,7 @@ context('SelectController', () => {
     cy.get('.search-input').type('Fou')
 
     cy.get('.dropdown-items div:first-child').click()
-    cy.get('.custom-select').should('have.text', 'Four')
+    cy.get('.custom-select').should('have.value', 'Four')
     cy.get('select').should('have.value', '4')
 
     cy.get('.search-input').should('have.value', '')
