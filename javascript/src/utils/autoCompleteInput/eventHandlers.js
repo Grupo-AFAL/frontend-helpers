@@ -1,5 +1,8 @@
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideItems)
+  document.addEventListener('click', ctrl.hideItems)
+
+  ctrl.element.addEventListener('click', e => e.stopPropagation())
 
   ctrl.customSelect.addEventListener('focus', onFocus.bind(ctrl))
   ctrl.customSelect.addEventListener('keydown', onKeydown.bind(ctrl))
@@ -11,6 +14,7 @@ export function setupListeners (ctrl) {
 
 export function removeListeners (ctrl) {
   document.removeEventListener('scroll', ctrl.hideItems)
+  document.removeEventListener('click', ctrl.hideItems)
 }
 
 export function onKeydown (event) {
