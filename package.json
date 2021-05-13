@@ -60,7 +60,8 @@
       "fetch",
       "history",
       "FormData",
-      "CustomEvent"
+      "CustomEvent",
+      "Event"
     ]
   }
 }
