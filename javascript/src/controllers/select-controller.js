@@ -8,9 +8,8 @@ import autoCompleteInput from '../utils/autoCompleteInput'
  * autocomplete existing items.
  */
 export class SelectController extends Controller {
-  static values = {
-    searchPlaceholder: String
-  }
+  static values = { searchPlaceholder: String }
+  static classes = ['container']
 
   async connect () {
     this.selectField = this.element.querySelector('select')
@@ -54,9 +53,13 @@ export class SelectController extends Controller {
   }
 
   autoCompleteOptions () {
-    const options = { className: 'is-fullwidth' }
-    const placeholder = this.extractplaceholderText()
+    const options = {}
 
+    if (this.hasContainerClass) {
+      options.containerClass = this.containerClass
+    }
+
+    const placeholder = this.extractplaceholderText()
     if (placeholder) {
       options.placeholder = placeholder
     }

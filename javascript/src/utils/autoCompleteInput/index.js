@@ -8,9 +8,12 @@ import {
   renderSelectedItem
 } from './rendering'
 
-export default async (ctrl, { className, placeholder, searchPlaceholder }) => {
+export default async (
+  ctrl,
+  { containerClass, placeholder, searchPlaceholder }
+) => {
   // Generate required HTML for the autocomplete and append it to element
-  ctrl.element.prepend(inputContainerTag({ className, placeholder }))
+  ctrl.element.prepend(inputContainerTag({ containerClass, placeholder }))
   ctrl.element.append(dropdownContainerTag({ searchPlaceholder }))
 
   // Setup references to HTML elements
