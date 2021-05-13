@@ -9,7 +9,7 @@ import autoCompleteInput from '../utils/autoCompleteInput'
  */
 export class SelectController extends Controller {
   static values = { searchPlaceholder: String }
-  static classes = ['select']
+  static classes = ['container']
 
   async connect () {
     this.selectField = this.element.querySelector('select')
@@ -55,8 +55,8 @@ export class SelectController extends Controller {
   autoCompleteOptions () {
     const options = {}
 
-    if (this.hasSelectClass) {
-      options.selectClass = this.selectClass
+    if (this.hasContainerClass) {
+      options.containerClass = this.containerClass
     }
 
     const placeholder = this.extractplaceholderText()

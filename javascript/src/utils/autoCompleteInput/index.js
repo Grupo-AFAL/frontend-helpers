@@ -10,10 +10,10 @@ import {
 
 export default async (
   ctrl,
-  { selectClass, placeholder, searchPlaceholder }
+  { containerClass, placeholder, searchPlaceholder }
 ) => {
   // Generate required HTML for the autocomplete and append it to element
-  ctrl.element.prepend(inputContainerTag({ selectClass, placeholder }))
+  ctrl.element.prepend(inputContainerTag({ containerClass, placeholder }))
   ctrl.element.append(dropdownContainerTag({ searchPlaceholder }))
 
   // Setup references to HTML elements
