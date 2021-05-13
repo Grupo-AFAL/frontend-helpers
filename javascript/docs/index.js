@@ -10,6 +10,7 @@ import { HovercardController } from '../src/controllers/hovercard-controller'
 import { NavbarController } from '../src/controllers/navbar-controller'
 import { NotificationController } from '../src/controllers/notification-controller'
 import { SelectController } from '../src/controllers/select-controller'
+import { SubmitOnChangeController } from '../src/controllers/submit-on-change-controller'
 import { TabsController } from '../src/controllers/tabs-controller'
 import { TagsController } from '../src/controllers/tags-controller'
 
@@ -22,5 +23,6 @@ application.register('hovercard', HovercardController)
 application.register('navbar', NavbarController)
 application.register('notification', NotificationController)
 application.register('select', SelectController)
+application.register('submit-on-change', SubmitOnChangeController)
 application.register('tabs', TabsController)
 application.register('tags', TagsController)

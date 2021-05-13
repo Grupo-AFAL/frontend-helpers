@@ -42,6 +42,8 @@ export class SelectController extends Controller {
     this.selectField
       .querySelector(`option[value='${this.selectedValue}']`)
       .setAttribute('selected', '')
+
+    this.selectField.dispatchEvent(new Event('change'))
   }
 
   extractplaceholderText () {
