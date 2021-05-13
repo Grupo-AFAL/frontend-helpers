@@ -161,7 +161,7 @@ module FrontendHelpers
 
       field_options = {
         id: "#{method}_select_div",
-        class: 'autocomplete-input-container',
+        class: "autocomplete-input-container #{html_options[:select_class]}".strip,
         data: { controller: 'select' }
       }
 

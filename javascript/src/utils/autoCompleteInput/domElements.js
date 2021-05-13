@@ -38,10 +38,10 @@ export const dropdownContainerTag = ({
 
 export const inputContainerTag = ({
   placeholder = 'Select option',
-  className = ''
+  selectClass = ''
 }) => {
   return stringToDOMNode(
-    `<div class="input-container select ${className}">
+    `<div class="input-container select ${selectClass}">
        <input type="text" class="input custom-select" placeholder="${placeholder}">
     </div>`
   )
