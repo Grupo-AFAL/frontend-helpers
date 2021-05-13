@@ -28,11 +28,16 @@ $dropdown-items-height: calc(
     li,
     .dropdown-item {
       padding: $size-7;
+      list-style: none;
 
       &:hover {
         background-color: lighten($grey-lighter, 10%);
       }
     }
+  }
+
+  ul.results {
+    overflow-y: scroll;
   }
 
   .dropdown-items {
