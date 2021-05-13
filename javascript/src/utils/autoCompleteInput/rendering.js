@@ -14,7 +14,7 @@ export function renderAvailableItems (searchText = null) {
   }
 
   const rect = this.inputContainer.getBoundingClientRect()
-  const top = rect.top + 50
+  const top = rect.top + this.inputContainer.offsetHeight + 10
   const left = rect.left
   const width = rect.width
 
