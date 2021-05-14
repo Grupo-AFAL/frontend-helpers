@@ -45,6 +45,20 @@ module IconComponents
     </svg>
   )
 
+  COMMENT = %(
+    <svg viewBox="0 0 448 512" class="svg-inline">
+      <path fill="currentColor"
+        d="M258.0 5.42 C399.03 5.42 513.6 111.2 513.2 241.9 c0 56.3 -21.3 108.0 -56.8 148.6 
+        C468.9 447.8 510.5 498.8 511 499.4 c2.1 2.6 2.7 6.48 1.49,9.89 S508.50 514.7 505.3 
+        514.6 c-66.1 0 -115.4 -36.4 -140.4 -58.4 c-32.5 13.9 -68.3 22.6 -107.3 22.9 c-140.5 0 
+        -255.5 -105.9 -255.5 -236.6 S117.6 5.4 258.6 5.5 zM0 432c0 26.5 21.5 48 48 48h480c26.5 
+        0 48-21.5 48-48V256H0v176zm192-68c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12v40c0 6.6-5.4 
+        12-12 12H204c-6.6 0-12-5.4-12-12v-40zm-128 0c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12v40c0 
+        6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM576 80v48H0V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48z"
+        class=""></path>
+    </svg>
+  )
+
   EDIT = %(
     <svg viewBox="0 0 576 512" class="svg-inline">
       <path fill="currentColor"
@@ -362,6 +376,7 @@ module IconComponents
     'arrow-right' => ARROW_RIGHT,
     'check-circle' => CHECK_CIRCLE,
     'credit-card' => CREDIT_CARD,
+    'comment' => COMMENT,
     'edit' => EDIT,
     'expand' => EXPAND,
     'long-arrow-alt-left' => LONG_ARROW_ALT_LEFT,
