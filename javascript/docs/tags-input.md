@@ -7,7 +7,7 @@ description: Custom input for selecting multiple existing values or creating new
 
 With option to create new items
 
-<div id="tags-with-text" class="tags-wrapper" data-controller="tags"
+<div id="tags-with-text" class="autocomplete-input-container" data-controller="tags"
   data-tags-items-value='["One","Two","Three","Four","Five","Six"]' data-tags-input-name-value="field">
   <div class="input" data-tags-target="fakeInput">
     <div data-tags-target="container"></div>
@@ -20,7 +20,7 @@ With option to create new items
 
 Without the option to create new ones
 
-<div id="tags-with-id-value" class="tags-wrapper" data-controller="tags"
+<div id="tags-with-id-value" class="autocomplete-input-container" data-controller="tags"
   data-tags-items-value='[["One", 1],["Two", 2],["Three",3],["Four",4],["Five",5],["Six",6]]'
   data-tags-selected-items-value='[1]' data-tags-input-name-value="field" data-tags-add-items-value="false">
   <div class="input" data-tags-target="fakeInput">

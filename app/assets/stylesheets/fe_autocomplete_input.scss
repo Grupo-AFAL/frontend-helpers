@@ -1,0 +1,103 @@
+$search-input-height: 2rem;
+$dropdown-container-height: 15rem;
+$dropdown-items-height: calc(
+  #{$dropdown-container-height} - #{$search-input-height}
+);
+
+.autocomplete-input-container {
+  position: relative;
+
+  // .results is to be backwards compatible with the tags-controller.
+  // TODO: Refactor TagsController to use the autoCompleteInput module.
+  .dropdown-container,
+  .results {
+    position: fixed;
+    top: 100%;
+    z-index: 10;
+    margin-top: -0.5rem;
+    margin-left: 0;
+    max-height: $dropdown-container-height;
+
+    border-radius: $dropdown-content-radius;
+    box-shadow: $dropdown-content-shadow;
+
+    width: 100%;
+    padding: 0;
+    background-color: $white;
+
+    li,
+    .dropdown-item {
+      padding: $size-7;
+      list-style: none;
+
+      &:hover {
+        background-color: lighten($grey-lighter, 10%);
+      }
+    }
+  }
+
+  ul.results {
+    overflow-y: scroll;
+  }
+
+  .dropdown-items {
+    overflow-y: scroll;
+    max-height: $dropdown-items-height;
+  }
+
+  .search-input {
+    border-radius: 0;
+    height: $search-input-height;
+    width: 100%;
+    font-size: $size-6-5;
+    box-shadow: none;
+    border-color: $input-border-color;
+  }
+
+  .input-container {
+    .custom-select {
+      cursor: pointer;
+      display: block;
+      font-size: 1em;
+      max-width: 100%;
+      outline: 0;
+      padding-right: 2.5em;
+      box-shadow: none;
+      caret-color: transparent;
+    }
+  }
+
+  .input {
+    input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    span.input-tag {
+      background-color: $primary;
+      padding: 0.2rem 0 0.2rem 0.5rem;
+      margin-right: 0.5rem;
+      border-radius: 0.25rem;
+      color: white;
+      white-space: nowrap;
+    }
+
+    span.close-btn {
+      border-left: 1px solid $white;
+      margin-left: 0.25rem;
+      padding: 0.25rem;
+      cursor: pointer;
+    }
+
+    ::placeholder {
+      color: $grey-light;
+      opacity: 1;
+    }
+  }
+
+  .selected {
+    background-color: lighten($grey-lighter, 10%);
+  }
+}
