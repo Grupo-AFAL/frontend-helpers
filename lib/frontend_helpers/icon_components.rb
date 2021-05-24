@@ -394,11 +394,25 @@ module IconComponents
     </svg>
   )
 
+  CHECKLIST = %(
+    <svg viewBox="0 0 13 14" fill="none" class="svg-inline">
+      <path d="M1.33333 3.33317H2.66667V5.33317H9.33333V3.33317H10.6667V6.6665H12V3.33317C12 2.59984 11.4 1.99984 10.6667 1.99984H7.88C7.6 1.2265 6.86667 0.666504 6 0.666504C5.13333 0.666504 4.4 1.2265 4.12 1.99984H1.33333C0.6 1.99984 0 2.59984 0 3.33317V12.6665C0 13.3998 0.6 13.9998 1.33333 13.9998H5.33333V12.6665H1.33333V3.33317ZM6 1.99984C6.36667 1.99984 6.66667 2.29984 6.66667 2.6665C6.66667 3.03317 6.36667 3.33317 6 3.33317C5.63333 3.33317 5.33333 3.03317 5.33333 2.6665C5.33333 2.29984 5.63333 1.99984 6 1.99984Z" fill="#474747" fill-opacity="0.9"/>
+      <path d="M12.0002 7.6665L8.34016 11.3332L6.3335 9.33317L5.3335 10.3332L8.34016 13.3332L13.0002 8.6665L12.0002 7.6665Z" fill="#474747" fill-opacity="0.9"/>
+    </svg>
+  )
+
+  USER = %(
+    <svg viewBox="0 0 12 12" fill="none" class="svg-inline" >
+      <path d="M6 6C7.6575 6 9 4.6575 9 3C9 1.3425 7.6575 0 6 0C4.3425 0 3 1.3425 3 3C3 4.6575 4.3425 6 6 6ZM6 7.5C3.9975 7.5 0 8.505 0 10.5V12H12V10.5C12 8.505 8.0025 7.5 6 7.5Z" fill="#5A5A5A"/>
+    </svg>
+  )
+
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
     'calendar-alt' => CALENDAR_ALT,
     'check-circle' => CHECK_CIRCLE,
+    'checklist' => CHECKLIST,
     'chevron-doble-down' => CHEVRON_DOBLE_DOWN,
     'chevron-doble-up' => CHEVRON_DOBLE_UP,
     'chevron-down' => CHEVRON_DOWN,
@@ -438,6 +452,7 @@ module IconComponents
     'times-circle' => TIMES_CIRCLE,
     'truck' => TRUCK,
     'upload' => UPLOAD,
+    'user' => USER,
     'user-plus' => USER_PLUS,
     'weight' => WEIGHT
   }.freeze
