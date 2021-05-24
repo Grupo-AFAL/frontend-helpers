@@ -43,22 +43,28 @@ module FrontendHelpers
       value ? icon_tag('check-circle') : icon_tag('times-circle')
     end
 
-    def active_link(name, path, options = {})
+    def active_link(name, path, html_options = nil, &block)
       path_without_parmms = path.split('?').first
+      html_options ||= {}
 
-      is_active = case options[:match]
+      is_active = case html_options[:match]
                   when :partial
                     request.path.include?(path)
                   when String
-                    request.path.include?(options[:match])
+                    request.path.include?(html_options[:match])
                   when Array
-                    options[:match].any? { |p| request.path.include?(p) }
+                    html_options[:match].any? { |p| request.path.include?(p) }
                   else
                     path_without_parmms == request.path
                   end
 
-      options[:class] = class_names(options[:class], 'is-active': is_active)
-      link_to name, path, options
+      html_options[:class] = class_names(html_options[:class], 'is-active': is_active)
+
+      if block_given?
+        link_to path, html_options, block.call
+      else
+        link_to name, path, html_options
+      end
     end
 
     def link_with_icon(name, icon_name, path, options = {})
