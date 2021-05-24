@@ -44,6 +44,11 @@ module FrontendHelpers
     end
 
     def active_link(name, path, html_options = nil, &block)
+      if block_given?
+        html_options = path
+        path = name
+      end
+
       path_without_parmms = path.split('?').first
       html_options ||= {}
 
@@ -61,7 +66,9 @@ module FrontendHelpers
       html_options[:class] = class_names(html_options[:class], 'is-active': is_active)
 
       if block_given?
-        link_to path, html_options, block.call
+        link_to path, html_options do
+          block.call
+        end
       else
         link_to name, path, html_options
       end
