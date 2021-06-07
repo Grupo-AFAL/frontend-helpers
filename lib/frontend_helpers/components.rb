@@ -103,6 +103,27 @@ module FrontendHelpers
       content_tag('a', name || url, html_options, &block)
     end
 
+    # Convinience method to launch a link within a drawer.
+    # Appends the data-action="remote-drawer#open" to trigger the RemoteDrawerController
+    #
+    def link_to_drawer(name, options = nil, html_options = nil, &block)
+      if block_given?
+        html_options = options
+        options = name
+        name = block
+      end
+      options ||= {}
+
+      html_options = convert_options_to_data_attributes(options, html_options)
+
+      url = url_for(options)
+      html_options['href'] ||= url
+      html_options['data-redirect-to'] = request.path
+      html_options['data-action'] = 'remote-drawer#open'
+
+      content_tag('a', name || url, html_options, &block)
+    end
+
     # Adds the submit-button stimulus controller so that the Submit button
     # displays a spinner when clicked.
     #
