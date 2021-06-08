@@ -14,4 +14,8 @@ import { RemoteModalController } from './remote-modal-controller'
  *   </div>
  * </section>
  */
-export class RemoteDrawerController extends RemoteModalController {}
+export class RemoteDrawerController extends RemoteModalController {
+  hello () {
+    console.log('hello')
+  }
+}
