@@ -292,6 +292,14 @@ module IconComponents
     </svg>
   )
 
+  TRASH = %(
+    <svg viewBox="0 0 448 512" class="svg-inline">
+      <path fill="currentColor"
+        d="M268 416h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12zM432 80h-82.4l-34-56.7A48 48 0 00274.4 0H173.6a48 48 0 00-41.2 23.3L98.4 80H16A16 16 0 000 96v16a16 16 0 0016 16h16v336a48 48 0 0048 48h288a48 48 0 0048-48V128h16a16 16 0 0016-16V96a16 16 0 00-16-16zM171.8 51a6 6 0 015.2-3h94a6 6 0 015.2 3l17.4 29H154.4zM368 464H80V128h288zm-212-48h24a12 12 0 0012-12V188a12 12 0 00-12-12h-24a12 12 0 00-12 12v216a12 12 0 0012 12z"
+        class=""></path>
+    </svg>
+  )
+
   TRUCK = %(
     <svg viewBox="0 0 640 512" class="svg-inline">
       <path fill="currentColor"
@@ -477,6 +485,7 @@ module IconComponents
     'star' => STAR,
     'sticky-note' => STICKY_NOTE,
     'times-circle' => TIMES_CIRCLE,
+    'trash' => TRASH,
     'truck' => TRUCK,
     'upload' => UPLOAD,
     'user' => USER,
