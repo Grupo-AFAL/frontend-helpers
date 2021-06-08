@@ -104,6 +104,7 @@ module FrontendHelpers
         name = block
       end
 
+      html_options ||= {}
       html_options['data-action'] = 'remote-modal#open'
       generate_link_to(name, options, html_options, &block)
     end
@@ -118,6 +119,7 @@ module FrontendHelpers
         name = block
       end
 
+      html_options ||= {}
       html_options['data-action'] = 'remote-drawer#open'
       generate_link_to(name, options, html_options, &block)
     end
