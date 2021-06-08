@@ -24,7 +24,10 @@ export class RemoteModalController extends Controller {
     this.isWide = true
 
     this.backgroundTarget.addEventListener('click', this._closeModal)
-    this.closeBtnTarget.addEventListener('click', this._closeModal)
+
+    if (this.hasCloseBtnTarget) {
+      this.closeBtnTarget.addEventListener('click', this._closeModal)
+    }
 
     document.addEventListener('openModal', e => {
       this.setOptions(e.detail.options)
@@ -34,7 +37,10 @@ export class RemoteModalController extends Controller {
 
   disconnect () {
     this.backgroundTarget.removeEventListener('click', this._closeModal)
-    this.closeBtnTarget.removeEventListener('click', this._closeModal)
+
+    if (this.hasCloseBtnTarget) {
+      this.closeBtnTarget.removeEventListener('click', this._closeModal)
+    }
   }
 
   openModal (content) {
