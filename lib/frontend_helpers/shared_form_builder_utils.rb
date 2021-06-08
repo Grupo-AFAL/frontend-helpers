@@ -254,9 +254,14 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
+      options[:data] ||= {}
+
       if options.delete(:remote_modal)
-        options[:data] ||= {}
         options[:data][:action] = ['remote-modal#submit', options[:data][:action]].join(' ')
+      end
+
+      if options.delete(:remote_drawer)
+        options[:data][:action] = ['remote-drawer#submit', options[:data][:action]].join(' ')
       end
 
       content_tag(:div, class: options.delete(:wrapper_class)) do
@@ -280,6 +285,14 @@ module FrontendHelpers
         cancel_options[:data] ||= {}
         cancel_options[:data][:action] = [
           'remote-modal#close',
+          cancel_options[:data][:action]
+        ].join(' ')
+      end
+
+      if options[:remote_drawer]
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'remote-drawer#close',
           cancel_options[:data][:action]
         ].join(' ')
       end
