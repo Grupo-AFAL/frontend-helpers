@@ -61,6 +61,21 @@ export class RemoteModalController extends Controller {
     this.backgroundTarget.addEventListener('click', this._closeModal)
   }
 
+  templateTargetAdded () {
+    console.log('t added!!')
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
+  templateTargetRemoved () {
+    console.log('t removed!!')
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
+  templateTargetChanged () {
+    console.log('t changed!!')
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
   openModal (content) {
     this.isWide
       ? this.wrapperTarget.classList.add('wide')
