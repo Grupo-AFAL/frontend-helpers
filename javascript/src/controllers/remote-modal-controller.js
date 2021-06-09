@@ -47,6 +47,17 @@ export class RemoteModalController extends Controller {
   }
 
   backgroundTargetAdded () {
+    console.log('added!!')
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
+  backgroundTargetRemoved () {
+    console.log('removed!!')
+    this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
+  backgroundTargetChanged () {
+    console.log('changed!!')
     this.backgroundTarget.addEventListener('click', this._closeModal)
   }
 
