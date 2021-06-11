@@ -20,11 +20,17 @@ import { autoFocusInput } from '../utils/form'
 export class RemoteModalController extends Controller {
   static targets = ['template', 'background', 'wrapper', 'content', 'closeBtn']
 
-  connect () {
+  async connect () {
+    const { useTargetMutation } = await import('stimulus-use')
+    useTargetMutation(this)
+
     this.isWide = true
 
     this.backgroundTarget.addEventListener('click', this._closeModal)
-    this.closeBtnTarget.addEventListener('click', this._closeModal)
+
+    if (this.hasCloseBtnTarget) {
+      this.closeBtnTarget.addEventListener('click', this._closeModal)
+    }
 
     document.addEventListener('openModal', e => {
       this.setOptions(e.detail.options)
@@ -34,7 +40,14 @@ export class RemoteModalController extends Controller {
 
   disconnect () {
     this.backgroundTarget.removeEventListener('click', this._closeModal)
-    this.closeBtnTarget.removeEventListener('click', this._closeModal)
+
+    if (this.hasCloseBtnTarget) {
+      this.closeBtnTarget.removeEventListener('click', this._closeModal)
+    }
+  }
+
+  templateTargetAdded () {
+    this.backgroundTarget.addEventListener('click', this._closeModal)
   }
 
   openModal (content) {

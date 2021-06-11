@@ -2,6 +2,12 @@ AllCops:
   TargetRubyVersion: 2.7.2
   NewCops: enable
   Exclude:
+    - 'app/assets/**/*'
+    - 'coverage/**/*'
+    - 'cypress/**/*'
+    - 'javascript/**/*'
+    - 'node_modules/**/*'
+    - 'pkg/**/*'
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/**/*'
@@ -12,6 +18,9 @@ Layout/LineLength:
   Max: 100
 
 Metrics/ClassLength:
+  Max: 150
+
+Metrics/ModuleLength:
   Max: 150
 
 Metrics/AbcSize:
