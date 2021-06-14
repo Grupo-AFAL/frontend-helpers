@@ -439,6 +439,18 @@ module IconComponents
     </svg>
   )
 
+  CHEVRON_LEFT = %(
+    <svg viewBox="0 0 17 30" fill="currentColor" class="svg-inline">
+      <path d="M17 26.3139L14.1716 29.1423L0.0294406 15.0002L14.1716 0.858063L17 3.68649L5.68629 15.0002L17 26.3139Z" />
+    </svg>
+  )
+
+  CHEVRON_RIGHT = %(
+    <svg viewBox="0 0 17 30" fill="currentColor" class="svg-inline">
+      <path d="M0 3.68609L2.82843 0.857666L16.9706 14.9998L2.82843 29.1419L0 26.3135L11.3137 14.9998L0 3.68609Z" />
+    </svg>
+  )
+
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
@@ -449,6 +461,8 @@ module IconComponents
     'chevron-doble-down' => CHEVRON_DOBLE_DOWN,
     'chevron-doble-up' => CHEVRON_DOBLE_UP,
     'chevron-down' => CHEVRON_DOWN,
+    'chevron-left' => CHEVRON_LEFT,
+    'chevron-right' => CHEVRON_RIGHT,
     'cloud-upload-alt' => CLOUD_UPLOAD_ALT,
     'coins' => COINS,
     'comment' => COMMENT,
