@@ -63,6 +63,11 @@ module FrontendHelpers
         'data-datepicker-enable-time': true,
         'data-datepicker-no-calendar': true
       }
+
+      value = object.send(method)
+
+      options[:value] = [Date.current, value].join(' ') unless value.include?(' ')
+
       date_field(method, options)
     end
 
