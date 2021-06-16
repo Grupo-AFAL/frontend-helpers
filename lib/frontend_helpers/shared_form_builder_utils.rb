@@ -180,9 +180,8 @@ module FrontendHelpers
     def custom_select_field(method, values, options = {}, html_options = {})
       options.with_defaults!(add_items: true)
 
-      param_key = object.class.model_name.param_key
-      field_id = "#{param_key}_#{method}"
-      field_name = "#{param_key}[#{method}]"
+      field_id = "#{object_name}_#{method}".gsub(/[\[\]]/, '_').gsub('__', '_')
+      field_name = "#{object_name}[#{method}]"
 
       container = tag.div(data: { 'tags-target': 'container' })
       input = tag.input(id: field_id, type: 'text', placeholder: html_options[:placeholder],
