@@ -23,15 +23,21 @@ module FrontendHelpers
     def render(block)
       field_id = "field-#{@method}"
       class_name = "field #{@field_class}"
-      class_name += ' has-addons' if @addon_left.present? || @addon_right.present?
 
       @template.content_tag(:div, id: field_id, class: class_name, data: @data) do
-        contents = [generate_label_html, addon_left, block.call, addon_right]
-        @template.safe_join(contents.compact)
+        @template.safe_join([generate_label_html, inner_field_div(block)].compact)
       end
     end
 
     private
+
+    def inner_field_div(block)
+      return block.call if addon_left.blank? && addon_right.blank?
+
+      @template.content_tag(:div, class_name: 'field has-addons') do
+        @template.safe_join([addon_left, block.call, addon_right].compact)
+      end
+    end
 
     def addon_left
       return if @addon_left.blank?
