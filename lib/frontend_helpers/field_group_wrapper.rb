@@ -34,7 +34,7 @@ module FrontendHelpers
     def inner_field_div(block)
       return block.call if addon_left.blank? && addon_right.blank?
 
-      @template.content_tag(:div, class_name: 'field has-addons') do
+      @template.content_tag(:div, class: 'field has-addons') do
         @template.safe_join([addon_left, block.call, addon_right].compact)
       end
     end
