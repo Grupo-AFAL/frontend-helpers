@@ -140,7 +140,7 @@ module FrontendHelpers
     def percentage_field_group(method, options = {})
       options.with_defaults!(
         placeholder: 0,
-        addon_right: '%',
+        addon_right: tag.span('%', class: 'button is-static'),
         step: '0.01',
         pattern_type: :number_with_commas
       )
