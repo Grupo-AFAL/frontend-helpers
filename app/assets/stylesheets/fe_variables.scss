@@ -42,3 +42,12 @@ $sharp-box-shadow: 3px 3px 3px rgba(10, 10, 10, 0.1);
 $navbar-height: 3.25rem !default;
 $frame-padding-top: $navbar-height + 3rem;
 $side-menu-width: 14rem;
+
+// z-index
+$z-index-autocomplete-input-results: 10;
+$z-index-choices-list-dropdown: 5;
+$z-index-hovercard: 100;
+$z-index-menu-overlay: 4;
+$z-index-modal: 39;
+$z-index-notification: 10;
+$z-index-side-menu: 5;
