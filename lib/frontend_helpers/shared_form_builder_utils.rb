@@ -66,6 +66,8 @@ module FrontendHelpers
 
       value = object.send(method)
 
+      # Adds a date if already doesn't include one (it will detect the date by an empty space),
+      # so that the time_field_group can display its time value correctly
       options[:value] = [Date.current, value].join(' ') unless value.include?(' ')
 
       date_field(method, options)
