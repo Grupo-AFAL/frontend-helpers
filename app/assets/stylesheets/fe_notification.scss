@@ -5,7 +5,7 @@
     position: fixed;
     top: 4.25rem;
     right: 1rem;
-    z-index: 10;
+    z-index: $z-index-notification;
   }
 
   &.fadeOutRight {

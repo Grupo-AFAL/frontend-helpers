@@ -1,6 +1,6 @@
 .hovercard {
   max-width: 205px;
-  z-index: 100;
+  z-index: $z-index-hovercard;
   overflow: visible;
 
   .card-content {

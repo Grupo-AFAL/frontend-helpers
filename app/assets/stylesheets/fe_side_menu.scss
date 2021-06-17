@@ -6,7 +6,7 @@
   left: -$side-menu-width;
   padding: 1rem;
   background: $white;
-  z-index: 5;
+  z-index: $z-index-side-menu;
   box-shadow: $box-shadow;
 
   &.is-active {
@@ -49,7 +49,7 @@
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 4;
+  z-index: $z-index-menu-overlay;
   display: none;
 }
 

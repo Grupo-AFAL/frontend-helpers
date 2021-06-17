@@ -21,7 +21,7 @@
   display: block;
   opacity: 0;
   pointer-events: none;
-  z-index: 39;
+  z-index: $z-index-drawer;
 
   .modal-close {
     display: none;
