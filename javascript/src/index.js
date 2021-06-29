@@ -6,6 +6,7 @@ import * as time from './utils/time'
 import * as url from './utils/url'
 
 export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
+export { AutocompleteAddressController } from './controllers/autocomplete-address-controller'
 export { ChartController } from './controllers/chart-controller'
 export { DatepickerController } from './controllers/datepicker-controller'
 export { DropdownController } from './controllers/dropdown-controller'
