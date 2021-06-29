@@ -153,10 +153,11 @@ module FrontendHelpers
       end
     end
     
-    def timeago_tag(time)
+    def timeago_tag(time, include_seconds = false)
       data = {
         'data-controller': 'timeago',
         'data-timeago-datetime-value': time,
+        'data-timeago-include-seconds-value': include_seconds,
         'data-timeago-refresh-interval-value': '1000'
       }
       content_tag(:time, time.to_s, data: data) if time
