@@ -63,5 +63,8 @@
       "CustomEvent",
       "Event"
     ]
+  },
+  "dependencies": {
+    "stimulus-timeago": "^3.0.0"
   }
 }
