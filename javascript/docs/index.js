@@ -1,7 +1,7 @@
 import './index.scss'
 
 import { Application } from 'stimulus'
-import Timeago from "stimulus-timeago"
+import Timeago from 'stimulus-timeago'
 
 import { ChartController } from '../src/controllers/chart-controller'
 import { DatepickerController } from '../src/controllers/datepicker-controller'
@@ -27,4 +27,4 @@ application.register('select', SelectController)
 application.register('submit-on-change', SubmitOnChangeController)
 application.register('tabs', TabsController)
 application.register('tags', TagsController)
-application.register("timeago", Timeago)
+application.register('timeago', Timeago)
