@@ -152,5 +152,14 @@ module FrontendHelpers
                  fill: 'white'
       end
     end
+    
+    def timeago_tag(time)
+      data = {
+        'data-controller': 'timeago',
+        'data-timeago-datetime-value': time,
+        'data-timeago-refresh-interval-value': '1000'
+      }
+      content_tag(:time, time.to_s, data: data) if time
+    end
   end
 end

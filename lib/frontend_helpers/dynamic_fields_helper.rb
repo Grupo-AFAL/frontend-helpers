@@ -42,14 +42,5 @@ module FrontendHelpers
       content_tag(:a, name, html_options) +
         form.hidden_field(:_destroy, class: 'destroy-flag')
     end
-
-    def timeago_tag(time)
-      data = {
-        'data-controller': 'timeago',
-        'data-timeago-datetime-value': time,
-        'data-timeago-refresh-interval-value': '1000'
-      }
-      content_tag(:time, time.to_s, data: data) if time
-    end
   end
 end
