@@ -56,7 +56,7 @@ export function onInputChange () {
 }
 
 export function onItemsMouseDown (event) {
-  this.addNewItem(event.target.textContent)
+  this.addNewItem(event.target.innerHTML)
 }
 
 export function onItemsHover (event) {

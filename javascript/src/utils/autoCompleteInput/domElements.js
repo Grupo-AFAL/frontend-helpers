@@ -21,11 +21,14 @@ export const availableItemTag = item => {
   const [name, value, info] = item
   div.dataset.value = value
   div.classList.add('dropdown-item')
-  div.append(name)
+  
   if (info) {
+    div.append(stringToDOMNode('<span class="info-left">' + name + "</span>"));
     div.append(stringToDOMNode('<span class="info-right">' + info + '</span>'))
+  } else {
+    div.append(name);
   }
-
+  
   return div
 }
 
