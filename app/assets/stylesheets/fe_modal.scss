@@ -13,7 +13,7 @@
 
 .modal-content.wide {
   @include tablet {
-    width: $modal-content-width + $modal-content-width/4;
+    width: $modal-content-width + calc($modal-content-width/4);
   }
 }
 
