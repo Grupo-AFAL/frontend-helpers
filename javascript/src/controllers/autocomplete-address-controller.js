@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import GoogleMapsLoader from './utils/google-maps-loader'
+import GoogleMapsLoader from '../utils/google-maps-loader'
 
 export class AutocompleteAddressController extends Controller {
   static values = { apiKey: String }
@@ -46,7 +46,7 @@ export class AutocompleteAddressController extends Controller {
 
     for (const component of place.address_components) {
       const componentType = component.types[0]
-
+      
       switch (componentType) {
         case 'street_number':
           this.streetNumberTarget.value = component.short_name
