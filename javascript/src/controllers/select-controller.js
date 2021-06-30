@@ -26,7 +26,7 @@ export class SelectController extends Controller {
     this.items = this.options
       .filter(o => o.value.length > 0)
       .map(o => [o.text, o.value, o.dataset.info])
-    
+
     this.itemsByValue = this.items.reduce((accumulator, item) => {
       const [name, value] = item
       accumulator[value] = name
