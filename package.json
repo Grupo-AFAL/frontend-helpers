@@ -44,7 +44,8 @@
     "markdown-it": "^12.0.4",
     "snowpack": "^3.0.13",
     "standard": "^16.0.3",
-    "start-server-and-test": "^1.12.0"
+    "start-server-and-test": "^1.12.0",
+    "stimulus-use": "^0.25.3"
   },
   "standard": {
     "parser": "@babel/eslint-parser",
