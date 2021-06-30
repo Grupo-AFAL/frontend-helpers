@@ -25,7 +25,7 @@ export const availableItemTag = item => {
   if (info) {
     div.append(stringToDOMNode('<span class="info-right">' + info + '</span>'))
   }
-  
+
   return div
 }
 
