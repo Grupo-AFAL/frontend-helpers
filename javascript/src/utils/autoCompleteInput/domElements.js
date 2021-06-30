@@ -18,10 +18,14 @@ export const unvailableItemTag = (searchText, addItems = false) => {
 
 export const availableItemTag = item => {
   const div = document.createElement('div')
-  const [name, value] = item
+  const [name, value, info] = item
   div.dataset.value = value
   div.classList.add('dropdown-item')
   div.append(name)
+  if (info) {
+    div.append(stringToDOMNode('<span class="info-right">' + info + '</span>'))
+  }
+  
   return div
 }
 
