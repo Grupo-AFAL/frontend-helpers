@@ -63,8 +63,5 @@
       "CustomEvent",
       "Event"
     ]
-  },
-  "dependencies": {
-    "hotkeys-js": "^3.8.7"
   }
 }
