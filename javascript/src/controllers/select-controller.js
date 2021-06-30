@@ -9,6 +9,7 @@ import autoCompleteInput from '../utils/autoCompleteInput'
  */
 export class SelectController extends Controller {
   static values = { searchPlaceholder: String }
+
   static classes = ['container']
 
   async connect () {
@@ -23,6 +24,7 @@ export class SelectController extends Controller {
   initializeItems () {
     this.selectedValue = this.selectField.selectedOptions[0].value
     this.options = Array.from(this.selectField.options)
+
     this.items = this.options
       .filter(o => o.value.length > 0)
       .map(o => [o.text, o.value])
