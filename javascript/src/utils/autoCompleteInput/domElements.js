@@ -21,7 +21,7 @@ export const availableItemTag = item => {
   const [name, value] = item
   div.dataset.value = value
   div.classList.add('dropdown-item')
-  div.append(stringToDOMNode(name))
+  div.append(name)
   return div
 }
 
