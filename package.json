@@ -63,9 +63,5 @@
       "CustomEvent",
       "Event"
     ]
-  },
-  "dependencies": {
-    "frontend-helpers": "/Users/rafaeldelgado/Documents/Customers/GrupoAFAL/frontend-helpers",
-    "hotkeys-js": "^3.8.7"
   }
 }
