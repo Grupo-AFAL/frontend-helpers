@@ -83,7 +83,5 @@ context('SelectController', () => {
         .should('have.value', 'Four')
       cy.get('select').should('have.value', '4')
     })
-
-    //it('displays options with ')
   })
 })
