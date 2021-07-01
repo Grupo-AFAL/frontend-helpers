@@ -23,7 +23,7 @@ export const availableItemTag = item => {
   div.classList.add('dropdown-item')
 
   if (info) {
-    div.append(stringToDOMNode('<span class="info-left">' + name + '</span>'))
+    div.append(name)
     div.append(stringToDOMNode('<span class="info-right">' + info + '</span>'))
   } else {
     div.append(name)
