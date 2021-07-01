@@ -33,6 +33,12 @@ $dropdown-items-height: calc(
       &:hover {
         background-color: lighten($grey-lighter, 10%);
       }
+
+      .info-right {
+        font-style: italic;
+        font-weight: 600;
+        float: right;
+      }
     }
   }
 

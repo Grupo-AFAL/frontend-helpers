@@ -1,3 +1,5 @@
+import { findItemText } from './search'
+
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideItems)
   document.addEventListener('click', ctrl.hideItems)
@@ -56,7 +58,7 @@ export function onInputChange () {
 }
 
 export function onItemsMouseDown (event) {
-  this.addNewItem(event.target.textContent)
+  this.addNewItem(findItemText(event.target))
 }
 
 export function onItemsHover (event) {
