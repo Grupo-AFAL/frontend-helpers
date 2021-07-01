@@ -34,13 +34,14 @@ Select a single item from a list with custom text on right
   class="autocomplete-input-container"
   data-select-search-placeholder-value="Filtrar..."
   data-select-container-class="is-fullwidth"
+  id="second-select"
 >
   <select name="field">
     <option value>Select an option</option>
-    <option data-info="Text on right 1" value="One">One</option>
-    <option data-info="2 days ago" value="Two">Two</option>
-    <option data-info="15 in stock" value="Three" selected>Three</option>
-    <option data-info="Last purchase 15 days ago" value="Four">Four</option>
-    <option data-info="Custom data info" value="Five">Five</option>
+    <option data-info="Text on right 1" value="One">Item One</option>
+    <option data-info="2 days ago" value="Two">Item Two</option>
+    <option data-info="15 in stock" value="Three">Item Three</option>
+    <option data-info="Last purchase 15 days ago" value="Four">Item Four</option>
+    <option data-info="Custom data info" value="Five" selected>Custom Value</option>
   </select>
 </div>
