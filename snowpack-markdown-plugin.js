@@ -47,6 +47,7 @@ module.exports = function (snowpackConfig, pluginOptions) {
 
       const { data: frontmatter, content: markdown } = grayMatter(source)
       const html = markdownIt.render(markdown)
+      const apiKey = process.env.GOOGLE_MAPS_API_KEY
 
       return `
       <!DOCTYPE html>
@@ -58,6 +59,7 @@ module.exports = function (snowpackConfig, pluginOptions) {
         <meta name="description" content="Frontend Helpers" />
         <title>${frontmatter.title}: Frontend Helpers</title>
         <script type="module" src="/docs/index.js"></script>
+        <script>window.GOOGLE_MAPS_API_KEY = '${apiKey}'</script>
       </head>
 
       <body>

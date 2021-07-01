@@ -16,6 +16,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         env:
+          GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
           NODE_ENV: test
         with:
           browser: chrome

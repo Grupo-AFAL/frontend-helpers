@@ -21,7 +21,7 @@ export class AutocompleteAddressController extends Controller {
       this.googleMaps = await GoogleMapsLoader({
         libraries: ['places'],
         language: 'es',
-        key: this.apiKeyValue
+        key: this.apiKeyValue || window.GOOGLE_MAPS_API_KEY
       })
       this.initializeAddressListener()
     } catch (error) {
