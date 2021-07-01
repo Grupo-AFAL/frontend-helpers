@@ -1,8 +1,8 @@
 import {
   unvailableItemTag,
   availableItemTag,
-  findItemText,
-} from "./domElements"
+  findItemText
+} from './domElements'
 import { availableItems, findItemToAdd } from './search'
 
 export function renderAvailableItems (searchText = null) {
@@ -48,7 +48,7 @@ export function addNewItem (itemName = null) {
     findItemText(this.highlightedItem),
     this.searchInput,
     this.items
-  );
+  )
 
   if (item) {
     this.addSelectedItem(item[1])

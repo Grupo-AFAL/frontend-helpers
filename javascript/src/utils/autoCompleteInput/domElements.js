@@ -23,7 +23,7 @@ export const availableItemTag = item => {
   div.classList.add('dropdown-item')
 
   if (info) {
-    div.append(stringToDOMNode('<span>' + name + "</span>"));
+    div.append(stringToDOMNode('<span>' + name + '</span>'))
     div.append(stringToDOMNode('<span class="info-right">' + info + '</span>'))
   } else {
     div.append(name)
@@ -57,15 +57,13 @@ export const inputContainerTag = ({
 
 export const findItemText = (item) => {
   if (item == null) return
-  
+
   switch (item.tagName) {
     case 'SPAN':
       return item.parentElement.firstChild.textContent
-      break
     case 'DIV':
       return item.firstChild.textContent
-      break
     default:
-      item.textContent
+      return item.textContent
   }
 }

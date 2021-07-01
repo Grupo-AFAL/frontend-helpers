@@ -26,7 +26,7 @@ context('SelectController', () => {
     cy.get('#first-select .dropdown-container .dropdown-items div').should('have.length', 6)
 
     cy.get('#first-select .dropdown-container .search-input').type('Fou')
-    cy.get('#first-select .dropdown-container .dropdown-items div').should('have.length',1)
+    cy.get('#first-select .dropdown-container .dropdown-items div').should('have.length', 1)
   })
 
   it('clears the search input after filtering', () => {
@@ -83,5 +83,7 @@ context('SelectController', () => {
         .should('have.value', 'Four')
       cy.get('select').should('have.value', '4')
     })
+
+    //it('displays options with ')
   })
 })
