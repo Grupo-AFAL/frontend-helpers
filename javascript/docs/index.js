@@ -2,6 +2,7 @@ import './index.scss'
 
 import { Application } from 'stimulus'
 
+import { AutocompleteAddressController } from '../src/controllers/autocomplete-address-controller'
 import { ChartController } from '../src/controllers/chart-controller'
 import { DatepickerController } from '../src/controllers/datepicker-controller'
 import { DropdownController } from '../src/controllers/dropdown-controller'
@@ -15,6 +16,7 @@ import { TabsController } from '../src/controllers/tabs-controller'
 import { TagsController } from '../src/controllers/tags-controller'
 
 const application = Application.start()
+application.register('autocomplete-address', AutocompleteAddressController)
 application.register('chart', ChartController)
 application.register('datepicker', DatepickerController)
 application.register('dropdown', DropdownController)
