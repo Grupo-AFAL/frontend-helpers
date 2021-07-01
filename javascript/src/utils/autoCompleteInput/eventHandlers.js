@@ -1,3 +1,5 @@
+import { findItemText } from "./domElements"
+
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideItems)
   document.addEventListener('click', ctrl.hideItems)
@@ -26,8 +28,8 @@ export function onKeydown (event) {
     case 'Enter':
     case ',':
       if (this.searchInput.value || this.highlightedItem) {
-        this.addNewItem()
-        event.preventDefault()
+        this.addNewItem(findItemText(this.highlightedItem))
+        event.preventDefault();
       }
       break
     case 'ArrowDown':
@@ -56,7 +58,7 @@ export function onInputChange () {
 }
 
 export function onItemsMouseDown (event) {
-  this.addNewItem(event.target.textContent)
+  this.addNewItem(findItemText(event.target));
 }
 
 export function onItemsHover (event) {
