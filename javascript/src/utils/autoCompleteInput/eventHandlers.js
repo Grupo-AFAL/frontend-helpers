@@ -1,4 +1,4 @@
-import { findItemText } from './domElements'
+import { findItemText } from './search'
 
 export function setupListeners (ctrl) {
   document.addEventListener('scroll', ctrl.hideItems)
@@ -28,7 +28,7 @@ export function onKeydown (event) {
     case 'Enter':
     case ',':
       if (this.searchInput.value || this.highlightedItem) {
-        this.addNewItem(findItemText(this.highlightedItem))
+        this.addNewItem()
         event.preventDefault()
       }
       break

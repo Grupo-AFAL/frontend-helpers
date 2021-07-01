@@ -1,5 +1,18 @@
+export const findItemText = item => {
+  if (item == null) return
+
+  switch (item.tagName) {
+    case 'SPAN':
+      return item.parentElement.firstChild.textContent
+    case 'DIV':
+      return item.firstChild.textContent
+    default:
+      return item.textContent
+  }
+}
+
 export function findItemToAdd (itemName, highlightedItem, searchInput, items) {
-  const highlightedText = highlightedItem ? highlightedItem.textContent : ''
+  const highlightedText = findItemText(highlightedItem)
   const searchText = itemName || highlightedText || searchInput.value
   return items.find(searchFunction(searchText))
 }
