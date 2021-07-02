@@ -9,6 +9,7 @@ export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
 export { AutocompleteAddressController } from './controllers/autocomplete-address-controller'
 export { ChartController } from './controllers/chart-controller'
 export { DatepickerController } from './controllers/datepicker-controller'
+export { DisappearController } from './controllers/disappear-controller'
 export { DropdownController } from './controllers/dropdown-controller'
 export { DynamicFieldsController } from './controllers/dynamic-fields-controller'
 export { FileInputController } from './controllers/file-input-controller'
