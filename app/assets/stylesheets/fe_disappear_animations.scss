@@ -3,7 +3,7 @@
   animation-duration: 1s;
   animation-fill-mode: both;
 }
-  
+
 @keyframes fadeOutRight {
 	0% {
 		opacity: 1;
@@ -14,4 +14,5 @@
 		transform: translate3d(100%, 0, 0);
 	}
 }
+
   
