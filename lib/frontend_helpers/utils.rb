@@ -46,5 +46,20 @@ module FrontendHelpers
     def app_module
       controller.class.module_parents[-2]
     end
+
+    def active_path?(path, match_option)
+      path_without_parmms = path.split('?').first
+
+      case match_option
+      when :partial
+        request.path.include?(path)
+      when String
+        request.path.include?(match_option)
+      when Array
+        match_option.any? { |p| request.path.include?(p) }
+      else
+        path_without_parmms == request.path
+      end
+    end
   end
 end
