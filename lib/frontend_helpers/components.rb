@@ -49,19 +49,8 @@ module FrontendHelpers
         path = name
       end
 
-      path_without_parmms = path.split('?').first
       html_options ||= {}
-
-      is_active = case html_options[:match]
-                  when :partial
-                    request.path.include?(path)
-                  when String
-                    request.path.include?(html_options[:match])
-                  when Array
-                    html_options[:match].any? { |p| request.path.include?(p) }
-                  else
-                    path_without_parmms == request.path
-                  end
+      is_active = active_path?(path, html_options[:match])
 
       html_options[:class] = class_names(html_options[:class], 'is-active': is_active)
 
@@ -71,6 +60,14 @@ module FrontendHelpers
         end
       else
         link_to name, path, html_options
+      end
+    end
+
+    def active_li_link(name, path, html_options = {})
+      is_active = active_path?(path, html_options[:match])
+
+      tag.li class: class_names('is-active': is_active) do
+        link_to name, path
       end
     end
 
