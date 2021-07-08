@@ -1,17 +1,16 @@
 import { Controller } from 'stimulus'
 
 /**
- * Disappear Controller
- * Automatically hides the element after 3 seconds
+ * DelaySetClass Controller
+ * Automatically sets a class attribute to the element after 3 seconds
  * Defaults:
  *  --delay: 3 seconds
- *  --disappearAnimation: fadeOutRight
+ *  --class: fadeOutRight
  */
-export class DisappearController extends Controller {
-  static classes = { disappearAnimation: String }
-
+export class DelaySetClassController extends Controller {
   static values = {
-    delay: Number
+    delay: Number,
+    class: String
   }
 
   connect () {
@@ -25,7 +24,7 @@ export class DisappearController extends Controller {
   }
 
   close () {
-    this.element.classList.add(this.disappearAnimationClass || 'fadeOutRight')
+    this.element.classList.add(this.classValue || 'fadeOutRight')
     this.element.addEventListener('animationend', () => {
       this.closed = true
       this.element.remove()

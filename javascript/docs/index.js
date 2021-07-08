@@ -6,7 +6,7 @@ import { AutoPlayAudioController } from '../src/controllers/auto-play-audio-cont
 import { AutocompleteAddressController } from '../src/controllers/autocomplete-address-controller'
 import { ChartController } from '../src/controllers/chart-controller'
 import { DatepickerController } from '../src/controllers/datepicker-controller'
-import { DisappearController } from '../src/controllers/disappear-controller'
+import { DelaySetClassController } from '../src/controllers/delay-set-class-controller'
 import { DropdownController } from '../src/controllers/dropdown-controller'
 import { DynamicFieldsController } from '../src/controllers/dynamic-fields-controller'
 import { HovercardController } from '../src/controllers/hovercard-controller'
@@ -22,7 +22,7 @@ application.register('auto-play-audio', AutoPlayAudioController)
 application.register('autocomplete-address', AutocompleteAddressController)
 application.register('chart', ChartController)
 application.register('datepicker', DatepickerController)
-application.register('disappear', DisappearController)
+application.register('delay-set-class', DelaySetClassController)
 application.register('dropdown', DropdownController)
 application.register('dynamic-fields', DynamicFieldsController)
 application.register('hovercard', HovercardController)
