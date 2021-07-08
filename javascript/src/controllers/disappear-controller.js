@@ -8,7 +8,7 @@ import { Controller } from 'stimulus'
  *  --disappearAnimation: fadeOutRight
  */
 export class DisappearController extends Controller {
-  static classes = [ 'animation' ]
+  static classes = ['animation']
 
   static values = {
     delay: Number
