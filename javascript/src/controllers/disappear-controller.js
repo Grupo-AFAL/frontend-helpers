@@ -8,7 +8,7 @@ import { Controller } from 'stimulus'
  *  --disappearAnimation: fadeOutRight
  */
 export class DisappearController extends Controller {
-  static classes = { disappearAnimation: String }
+  static classes = [ 'animation' ]
 
   static values = {
     delay: Number
@@ -25,7 +25,9 @@ export class DisappearController extends Controller {
   }
 
   close () {
-    this.element.classList.add(this.disappearAnimationClass || 'fadeOutRight')
+    const animationClass = this.hasAnimationClass ? this.animationClass : 'fadeOutRight'
+
+    this.element.classList.add(animationClass)
     this.element.addEventListener('animationend', () => {
       this.closed = true
       this.element.remove()
