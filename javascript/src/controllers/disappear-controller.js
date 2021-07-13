@@ -11,7 +11,8 @@ export class DisappearController extends Controller {
   static classes = ['animation']
 
   static values = {
-    delay: Number
+    delay: Number,
+    remove: Boolean
   }
 
   connect () {
@@ -21,7 +22,7 @@ export class DisappearController extends Controller {
 
   disconnect () {
     if (this.closed) return
-    this.element.remove()
+    this.removeElement()
   }
 
   close () {
@@ -30,7 +31,12 @@ export class DisappearController extends Controller {
     this.element.classList.add(animationClass)
     this.element.addEventListener('animationend', () => {
       this.closed = true
-      this.element.remove()
+      this.removeElement()
     })
+  }
+
+  removeElement () {
+    const mustRemove = this.hasRemoveValue  ? this.removeValue : true
+    if (mustRemove) { this.element.remove() }
   }
 }
