@@ -34,6 +34,13 @@ module IconComponents
     </svg>
   )
 
+  BELL = %(
+    <svg viewBox="0 0 448 512" class="svg-inline">
+      <path fill="currentColor"
+      d="M224 512a64 64 0 0064-64H160a64 64 0 0064 64zm215.4-149.7c-19.3-20.8-55.5-52-55.5-154.3 0-77.7-54.5-139.9-128-155.2V32a32 32 0 10-63.9 0v20.8C118.6 68.1 64 130.3 64 208c0 102.3-36 133.5-55.4 154.3A32 32 0 0032.1 416h383.8a32 32 0 0023.5-53.7z" class=""></path>
+    </svg>
+  )
+
   CHECK_CIRCLE = %(
     <svg viewBox="0 0 512 512" class="svg-inline">
       <path fill="currentColor"
@@ -461,6 +468,7 @@ module IconComponents
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
     'attachment' => ATTACHMENT,
+    'bell' => BELL,
     'calendar-alt' => CALENDAR_ALT,
     'check-circle' => CHECK_CIRCLE,
     'checklist' => CHECKLIST,
