@@ -36,7 +36,7 @@ export class DisappearController extends Controller {
   }
 
   removeElement () {
-    const mustRemove = this.hasRemoveValue  ? this.removeValue : true
+    const mustRemove = this.hasRemoveValue ? this.removeValue : true
     if (mustRemove) { this.element.remove() }
   }
 }
