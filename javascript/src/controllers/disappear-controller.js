@@ -5,13 +5,15 @@ import { Controller } from 'stimulus'
  * Automatically hides the element after 3 seconds
  * Defaults:
  *  --delay: 3 seconds
- *  --disappearAnimation: fadeOutRight
+ *  --animation: fadeOutRight
+ *  --remove: true (The element will be removed if removeValue is assigned)
  */
 export class DisappearController extends Controller {
   static classes = ['animation']
 
   static values = {
-    delay: Number
+    delay: Number,
+    remove: Boolean
   }
 
   connect () {
@@ -21,7 +23,7 @@ export class DisappearController extends Controller {
 
   disconnect () {
     if (this.closed) return
-    this.element.remove()
+    this.removeElement()
   }
 
   close () {
@@ -30,7 +32,11 @@ export class DisappearController extends Controller {
     this.element.classList.add(animationClass)
     this.element.addEventListener('animationend', () => {
       this.closed = true
-      this.element.remove()
+      this.removeElement()
     })
+  }
+
+  removeElement () {
+    if (!this.hasRemoveValue) { this.element.remove() }
   }
 }
