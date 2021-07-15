@@ -8,7 +8,7 @@ module FrontendHelpers
     def icon_tag(name, options = {})
       options[:class] = class_names(['icon', options[:class]])
 
-      tag.span(options) do
+      tag.span(**options) do
         icon_svgs(name)
       end
     end
