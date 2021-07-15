@@ -17,7 +17,7 @@ module FrontendHelpers
       conditional_names.each do |key, condition|
         classes.push(key) if condition
       end
-      classes.join(' ')
+      classes.join(' ').strip
     end
 
     def current_relative_url
