@@ -41,3 +41,26 @@ description: Datepicker component that uses the flatpicker library
   data-datepicker-no-calendar="true"
 />
 ```
+
+### 24 hr time with seconds
+
+<input
+  type="text"
+  data-controller="datepicker" data-datepicker-enable-time="true" 
+  data-datepicker-enable-seconds="true"
+  data-datepicker-no-calendar="true"
+  data-datepicker-time-24hr="true"
+/>
+
+**Code**
+
+```html
+<input
+  type="text"
+  data-controller="datepicker"
+  data-datepicker-enable-time="true"
+  data-datepicker-enable-seconds="true"
+  data-datepicker-no-calendar="true"
+  data-datepicker-24hr="true"
+/>
+```
