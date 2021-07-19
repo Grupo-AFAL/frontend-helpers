@@ -104,6 +104,12 @@ module FrontendHelpers
       end
     end
 
+    def alltime_field_group(method, options = {})
+      FieldGroupWrapper.render @template, self, method, options do
+        alltime_field(method, options)
+      end
+    end
+
     alias datetime_select_group datetime_field_group
 
     def time_field_group(method, options = {})

@@ -54,12 +54,7 @@ module FrontendHelpers
     end
 
     def datetime_field(method, options = {})
-      options[:wrapper_options] = { 
-        'data-datepicker-enable-time': true,
-        'data-datepicker-no-calendar': true,
-        'data-datepicker-enable-seconds': true,
-        'data-datepicker-time-24hr': true
-      }
+      options[:wrapper_options] = { 'data-datepicker-enable-time': true }
       date_field(method, options)
     end
 
@@ -78,11 +73,12 @@ module FrontendHelpers
       date_field(method, options)
     end
 
-    def datetime_field_test(method, options = {})
+    def alltime_field(method, options = {})
       options[:wrapper_options] = { 
         'data-datepicker-enable-time': true,
         'data-datepicker-no-calendar': true,
-        'data-datepicker-time-24hr': true,
+        'data-datepicker-enable-seconds': true,
+        'data-datepicker-time-24hr': true
        }
       date_field(method, options)
     end
@@ -274,10 +270,14 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
-      options = append_data_action(options, 'remote-modal#submit') if options.delete(:remote_modal)
+      options[:data] ||= {}
+
+      if options.delete(:remote_modal)
+        options[:data][:action] = ['remote-modal#submit', options[:data][:action]].join(' ')
+      end
 
       if options.delete(:remote_drawer)
-        options = append_data_action(options, 'remote-drawer#submit')
+        options[:data][:action] = ['remote-drawer#submit', options[:data][:action]].join(' ')
       end
 
       content_tag(:div, class: options.delete(:wrapper_class)) do
@@ -287,7 +287,7 @@ module FrontendHelpers
 
     # TODO: Fix these lint warning
     #
-    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     #
     def submit_actions(value, options = {})
       cancel_path = options.delete(:cancel_path) || ''
@@ -298,15 +298,27 @@ module FrontendHelpers
       field_class = options.delete(:field_class) || 'field is-grouped is-grouped-right'
 
       if options[:remote_modal]
-        cancel_options = append_data_action(cancel_options, 'remote-modal#close')
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'remote-modal#close',
+          cancel_options[:data][:action]
+        ].join(' ')
       end
 
       if options[:remote_drawer]
-        cancel_options = append_data_action(cancel_options, 'remote-drawer#close')
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'remote-drawer#close',
+          cancel_options[:data][:action]
+        ].join(' ')
       end
 
       if options.delete(:modal)
-        cancel_options = append_data_action(cancel_options, 'click->turbo-stream-modal#close')
+        cancel_options[:data] ||= {}
+        cancel_options[:data][:action] = [
+          'click->turbo-stream-modal#close',
+          cancel_options[:data][:action]
+        ].join(' ')
       end
 
       @template.content_tag(:div, id: field_id, class: field_class, data: field_data) do
@@ -326,7 +338,7 @@ module FrontendHelpers
         end
       end
     end
-    # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
   end
 end
 # rubocop:enable Metrics/ModuleLength
