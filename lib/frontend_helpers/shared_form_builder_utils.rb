@@ -260,9 +260,7 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
-      if options.delete(:remote_modal)
-        options = append_data_action(options, 'remote-modal#submit')
-      end
+      options = append_data_action(options, 'remote-modal#submit') if options.delete(:remote_modal)
 
       if options.delete(:remote_drawer)
         options = append_data_action(options, 'remote-drawer#submit')
@@ -275,7 +273,7 @@ module FrontendHelpers
 
     # TODO: Fix these lint warning
     #
-    # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     #
     def submit_actions(value, options = {})
       cancel_path = options.delete(:cancel_path) || ''
@@ -314,7 +312,7 @@ module FrontendHelpers
         end
       end
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+    # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   end
 end
 # rubocop:enable Metrics/ModuleLength

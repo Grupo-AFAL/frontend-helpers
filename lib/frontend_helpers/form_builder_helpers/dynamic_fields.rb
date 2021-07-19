@@ -3,12 +3,12 @@
 module FrontendHelpers
   module FormBuilderHelpers
     module DynamicFields
-      
       # Field helper to add associated records in a form, it generates a label and a link
       # to dynamically add additional associated records.
       #
       #   <%= form_for @product do |f| %>
-      #     <%= f.dynamic_fields_group :items, label: 'Product Items', button_text: 'Add product item' %>
+      #     <%= f.dynamic_fields_group :items,
+      #         label: 'Product Items', button_text: 'Add product item' %>
       #     <%= f.submit %>
       #   <% end %>
       #
@@ -20,8 +20,10 @@ module FrontendHelpers
       #   <% end %>
       #
       # Requirements:
-      # - Partial for the associated fields with the name: "_#{singluar_association_name}_fields.html.erb"
-      #    The template needs to have a top level element with the class: "#{singluar_association_name}-fields"
+      # - Partial for the associated fields with the name:
+      #     "_#{singluar_association_name}_fields.html.erb"
+      # - The template needs to have a top level element with the class:
+      #     "#{singluar_association_name}-fields"
       # - Add "accepts_nested_attributes_for :association, allow_destroy: true"
       # - Allow nested attributes in the controller
       #
