@@ -15,6 +15,5 @@ require 'frontend_helpers/custom_redirect_concern'
 
 module FrontendHelpers
   class Engine < ::Rails::Engine; end
-
   class Error < StandardError; end
 end

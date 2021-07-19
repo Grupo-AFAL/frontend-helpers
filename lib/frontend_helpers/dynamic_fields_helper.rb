@@ -26,7 +26,7 @@ module FrontendHelpers
       html_options['href'] = '#'
       html_options['data-action'] = 'dynamic-fields#addFields'
 
-      content_tag(:div) do
+      content_tag(:div, class: html_options.delete(:wrapper_class)) do
         content_tag(:a, name, html_options) +
           content_tag(:template, fields, data: { 'dynamic-fields-target': 'template' })
       end
@@ -34,10 +34,7 @@ module FrontendHelpers
 
     def link_to_remove_fields(name, form, html_options = {})
       html_options['href'] = '#'
-
-      html_options[:data] ||= {}
-      html_options[:data][:action] ||= ''
-      html_options[:data][:action] = "dynamic-fields#removeFields #{html_options[:data][:action]}"
+      html_options = append_data_action(html_options, 'dynamic-fields#removeFields')
 
       content_tag(:a, name, html_options) +
         form.hidden_field(:_destroy, class: 'destroy-flag')
