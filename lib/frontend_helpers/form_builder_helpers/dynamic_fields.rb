@@ -65,7 +65,7 @@ module FrontendHelpers
 
         # When the form.object is a not an ActiveRecord object the nested attributes
         # don't include the sufix "_attributes", so we need to create a new form
-        # builder with te original ActiveRecord object to get the same results.
+        # builder with the original ActiveRecord object to get the same results.
         if object.respond_to?(:original_object)
           object = self.object.original_object
           form_builder = Bulma::FormBuilder.new(object.model_name.param_key, object, @template, {})
@@ -102,14 +102,17 @@ module FrontendHelpers
       private
 
       def default_header_contents(method, options)
-        label = tag.div(options[:label], class: 'label is-pulled-left')
+        translated_label = I18n.t("activerecord.#{object.model_name.i18n_key}.#{method}")
+        label_text = options[:label] || translated_label
+        label_tag = tag.div(label_text, class: 'label is-pulled-left')
 
+        button_text = options[:button_text] || 'Add'
         add_link_tag = link_to_add_fields(
-          options[:button_text], method,
+          button_text, method,
           { class: 'button is-secondary', wrapper_class: 'is-pulled-right' }
         )
 
-        tag.div { safe_join([label, add_link_tag]) }
+        tag.div { safe_join([label_tag, add_link_tag]) }
       end
     end
   end
