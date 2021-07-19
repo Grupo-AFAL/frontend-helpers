@@ -54,7 +54,12 @@ module FrontendHelpers
     end
 
     def datetime_field(method, options = {})
-      options[:wrapper_options] = { 'data-datepicker-enable-time': true }
+      options[:wrapper_options] = { 
+        'data-datepicker-enable-time': true,
+        'data-datepicker-no-calendar': true,
+        'data-datepicker-enable-seconds': true,
+        'data-datepicker-time-24hr': true
+      }
       date_field(method, options)
     end
 
@@ -70,6 +75,15 @@ module FrontendHelpers
       # so that the time_field_group can display its time value correctly
       options[:value] = [Date.current, value].join(' ') unless value.include?(' ')
 
+      date_field(method, options)
+    end
+
+    def datetime_field_test(method, options = {})
+      options[:wrapper_options] = { 
+        'data-datepicker-enable-time': true,
+        'data-datepicker-no-calendar': true,
+        'data-datepicker-time-24hr': true,
+       }
       date_field(method, options)
     end
 
