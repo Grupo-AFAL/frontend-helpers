@@ -5,5 +5,6 @@ module FrontendHelpers
     include SharedFormBuilderUtils
     include FieldGroupBuilders
     include Utils
+    include FormBuilderHelpers::DynamicFields
   end
 end

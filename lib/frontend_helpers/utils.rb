@@ -61,5 +61,12 @@ module FrontendHelpers
         path_without_parmms == request.path
       end
     end
+
+    def append_data_action(hash, value)
+      hash ||= {}
+      hash[:data] ||= {}
+      hash[:data][:action] = [hash.dig(:data, :action), value].join(' ').strip
+      hash
+    end
   end
 end
