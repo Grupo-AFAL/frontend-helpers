@@ -151,6 +151,14 @@ module IconComponents
     </svg>
   )
 
+  MUTE = %(
+    <svg viewBox="0 0 512 512" class="svg-inline">
+      <path fill="currentColor"
+        d="M215 71l-89 89H24a24 24 0 00-24 24v144a24 24 0 0024 24h102l89 89a24 24 0 0041-17V88a24 24 0 00-41-17zm246.6 185l45.7-45.6a16.1 16.1 0 000-22.9l-22.8-22.8a16.1 16.1 0 00-22.9 0L416 210.4l-45.6-45.7a16.1 16.1 0 00-22.9 0l-22.8 22.8a16.1 16.1 0 000 22.9l45.7 45.6-45.7 45.6a16.1 16.1 0 000 22.8l22.9 22.9a16.1 16.1 0 0022.8 0l45.6-45.7 45.6 45.7a16.1 16.1 0 0022.9 0l22.8-22.8a16.1 16.1 0 000-22.9L461.6 256z"
+        class=""></path>
+    </svg>
+  )
+
   FACEBOOK_SQUARE = %(
     <svg viewBox="0 0 448 512" class="svg-inline">
       <path fill="currentColor"
@@ -498,6 +506,7 @@ module IconComponents
     'long-arrow-alt-left' => LONG_ARROW_ALT_LEFT,
     'map-marked-alt' => MAP_MARKED_ALT,
     'money-bill-wave' => MONEY_BILL_WAVE,
+    'mute' => MUTE,
     'nested-arrow' => NESTED_ARROW,
     'outlook' => OUTLOOK,
     'paypal' => PAYPAL,
