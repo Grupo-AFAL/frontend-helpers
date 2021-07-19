@@ -175,43 +175,5 @@ module FrontendHelpers
         time_zone_select(method, priority_zones, options, html_options)
       end
     end
-
-    def dynamic_fields_group(method, options = {}, &block)
-      object = self.object
-      singular = method.to_s.singularize
-
-      container = tag.div(data: { 'dynamic-fields-target': 'container' }) do
-        safe_join(object.send(method).map do |child_object|
-          fields_for method, child_object do |nested_builder|
-            @template.render "#{singular}_fields", f: nested_builder
-          end
-        end)
-      end
-
-      contents = if block_given?
-                   @template.capture(&block)
-                 else
-                   label = tag.div(options[:label], class: 'label is-pulled-left')
-
-                   add_link_tag = @template.link_to_add_fields(
-                     options[:button_text], self, method,
-                     { class: 'button is-secondary', wrapper_class: 'is-pulled-right' }
-                   )
-
-                   tag.div do
-                     safe_join([label, add_link_tag])
-                   end
-                 end
-
-      tag.div(
-        data: {
-          controller: 'dynamic-fields',
-          'dynamic-fields-size': object.send(method).size,
-          'dynamic-fields-selector': ".#{singular}-fields"
-        }
-      ) do
-        safe_join([contents, container].compact)
-      end
-    end
   end
 end
