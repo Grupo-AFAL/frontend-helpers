@@ -74,12 +74,12 @@ module FrontendHelpers
     end
 
     def alltime_field(method, options = {})
-      options[:wrapper_options] = { 
+      options[:wrapper_options] = {
         'data-datepicker-enable-time': true,
         'data-datepicker-no-calendar': true,
         'data-datepicker-enable-seconds': true,
         'data-datepicker-time-24hr': true
-       }
+      }
       date_field(method, options)
     end
 
