@@ -102,17 +102,31 @@ module FrontendHelpers
       private
 
       def default_header_contents(method, options)
-        translated_label = I18n.t("activerecord.#{object.model_name.i18n_key}.#{method}")
-        label_text = options[:label] || translated_label
-        label_tag = tag.div(label_text, class: 'label is-pulled-left')
+        tag.div do
+          safe_join([
+                      label_tag(method, options),
+                      add_link_tag(method, options)
+                    ])
+        end
+      end
 
+      def label_tag(method, options)
+        translated_label = I18n.t(
+          "activerecord.#{object.model_name.i18n_key}.attributes.#{method}"
+        )
+        label_text = options[:label] || translated_label
+
+        tag.label(label_text, class: 'label is-pulled-left')
+      end
+
+      def add_link_tag(method, options)
         button_text = options[:button_text] || 'Add'
-        add_link_tag = link_to_add_fields(
-          button_text, method,
+
+        link_to_add_fields(
+          button_text,
+          method,
           { class: 'button is-secondary', wrapper_class: 'is-pulled-right' }
         )
-
-        tag.div { safe_join([label_tag, add_link_tag]) }
       end
     end
   end
