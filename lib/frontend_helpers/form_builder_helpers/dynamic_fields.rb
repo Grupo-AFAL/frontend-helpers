@@ -21,9 +21,9 @@ module FrontendHelpers
       #
       # Requirements:
       # - Partial for the associated fields with the name:
-      #     "_#{singluar_association_name}_fields.html.erb"
+      #     "_#{singular_association_name}_fields.html.erb"
       # - The template needs to have a top level element with the class:
-      #     "#{singluar_association_name}-fields"
+      #     "#{singular_association_name}-fields"
       # - Add "accepts_nested_attributes_for :association, allow_destroy: true"
       # - Allow nested attributes in the controller
       #
