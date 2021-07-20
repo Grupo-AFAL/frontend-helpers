@@ -34,8 +34,9 @@ module FrontendHelpers
       def dynamic_fields_group(method, options = {}, &block)
         object = self.object
         singular = method.to_s.singularize
+        container_id = [object.model_name.singular, singular, 'container'].join('_')
 
-        container = tag.div(data: { 'dynamic-fields-target': 'container' }) do
+        container = tag.div(id: container_id, data: { 'dynamic-fields-target': 'container' }) do
           safe_join(object.send(method).map do |child_object|
             fields_for method, child_object do |nested_builder|
               @template.render "#{singular}_fields", f: nested_builder
