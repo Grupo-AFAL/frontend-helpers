@@ -34,6 +34,7 @@ export class DatepickerController extends Controller {
         : this.element.querySelector('input')
 
     this.flatpickr = flatpickr(input, {
+      altInput: true,
       altFormat,
       dateFormat,
       enableTime,
