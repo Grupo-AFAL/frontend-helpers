@@ -112,7 +112,7 @@ module FrontendHelpers
 
       def label_tag(method, options)
         translated_label = I18n.t(
-          "activerecord.#{object.model_name.i18n_key}.attributes.#{method}"
+          "activerecord.attributes.#{object.model_name.i18n_key}.#{method}"
         )
         label_text = options[:label] || translated_label
 
