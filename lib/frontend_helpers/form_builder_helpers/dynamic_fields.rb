@@ -21,9 +21,9 @@ module FrontendHelpers
       #
       # Requirements:
       # - Partial for the associated fields with the name:
-      #     "_#{singluar_association_name}_fields.html.erb"
+      #     "_#{singular_association_name}_fields.html.erb"
       # - The template needs to have a top level element with the class:
-      #     "#{singluar_association_name}-fields"
+      #     "#{singular_association_name}-fields"
       # - Add "accepts_nested_attributes_for :association, allow_destroy: true"
       # - Allow nested attributes in the controller
       #
@@ -34,8 +34,9 @@ module FrontendHelpers
       def dynamic_fields_group(method, options = {}, &block)
         object = self.object
         singular = method.to_s.singularize
+        container_id = [object.model_name.singular, singular, 'container'].join('_')
 
-        container = tag.div(data: { 'dynamic-fields-target': 'container' }) do
+        container = tag.div(id: container_id, data: { 'dynamic-fields-target': 'container' }) do
           safe_join(object.send(method).map do |child_object|
             fields_for method, child_object do |nested_builder|
               @template.render "#{singular}_fields", f: nested_builder
@@ -85,9 +86,9 @@ module FrontendHelpers
         html_options['data-dynamic-fields-target'] = 'button'
         html_options = append_data_action(html_options, 'dynamic-fields#addFields')
 
-        @template.content_tag(:div, class: html_options.delete(:wrapper_class)) do
-          @template.content_tag(:a, name, html_options) +
-            @template.content_tag(:template, fields, data: { 'dynamic-fields-target': 'template' })
+        tag.div(class: html_options.delete(:wrapper_class)) do
+          tag.a(name, **html_options) +
+            tag.template(fields, data: { 'dynamic-fields-target': 'template' })
         end
       end
 
@@ -95,24 +96,43 @@ module FrontendHelpers
         html_options['href'] = '#'
         html_options = append_data_action(html_options, 'dynamic-fields#removeFields')
 
-        @template.content_tag(:a, name, html_options) +
+        tag.a(name, **html_options) +
           hidden_field(:_destroy, class: 'destroy-flag')
       end
 
       private
 
       def default_header_contents(method, options)
-        translated_label = I18n.t("activerecord.#{object.model_name.i18n_key}.#{method}")
-        label_text = options[:label] || translated_label
-        label_tag = tag.div(label_text, class: 'label is-pulled-left')
+        tag.div(class: 'level') do
+          safe_join([
+                      label_tag(method, options),
+                      add_link_tag(method, options)
+                    ])
+        end
+      end
 
-        button_text = options[:button_text] || 'Add'
-        add_link_tag = link_to_add_fields(
-          button_text, method,
-          { class: 'button is-secondary', wrapper_class: 'is-pulled-right' }
+      def label_tag(method, options)
+        translated_label = I18n.t(
+          "activerecord.attributes.#{object.model_name.i18n_key}.#{method}"
         )
+        label_text = options[:label] || translated_label
 
-        tag.div { safe_join([label_tag, add_link_tag]) }
+        tag.div(class: 'level-left') do
+          tag.label(label_text, class: 'label level-item')
+        end
+      end
+
+      def add_link_tag(method, options)
+        button_text = options[:button_text] || 'Add'
+        button_class = options[:button_class] || 'button is-primary'
+
+        tag.div(class: 'level-right') do
+          link_to_add_fields(
+            button_text,
+            method,
+            { class: button_class, wrapper_class: 'level-item' }
+          )
+        end
       end
     end
   end

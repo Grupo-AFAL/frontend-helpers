@@ -58,6 +58,7 @@ export function onInputChange () {
 }
 
 export function onItemsMouseDown (event) {
+  event.preventDefault()
   this.addNewItem(findItemText(event.target))
 }
 
