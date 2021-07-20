@@ -102,7 +102,7 @@ module FrontendHelpers
       private
 
       def default_header_contents(method, options)
-        tag.div do
+        tag.div(class: 'level') do
           safe_join([
                       label_tag(method, options),
                       add_link_tag(method, options)
@@ -116,17 +116,21 @@ module FrontendHelpers
         )
         label_text = options[:label] || translated_label
 
-        tag.label(label_text, class: 'label is-pulled-left')
+        tag.div(class: 'level-left') do
+          tag.label(label_text, class: 'label level-item')
+        end
       end
 
       def add_link_tag(method, options)
         button_text = options[:button_text] || 'Add'
 
-        link_to_add_fields(
-          button_text,
-          method,
-          { class: 'button is-secondary', wrapper_class: 'is-pulled-right' }
-        )
+        tag.div(class: 'level-right') do
+          link_to_add_fields(
+            button_text,
+            method,
+            { class: 'button is-secondary', wrapper_class: 'level-item' }
+          )
+        end
       end
     end
   end
