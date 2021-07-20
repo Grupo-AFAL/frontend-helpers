@@ -123,12 +123,13 @@ module FrontendHelpers
 
       def add_link_tag(method, options)
         button_text = options[:button_text] || 'Add'
+        button_class = options[:button_class] || 'button is-primary'
 
         tag.div(class: 'level-right') do
           link_to_add_fields(
             button_text,
             method,
-            { class: 'button is-secondary', wrapper_class: 'level-item' }
+            { class: button_class, wrapper_class: 'level-item' }
           )
         end
       end
