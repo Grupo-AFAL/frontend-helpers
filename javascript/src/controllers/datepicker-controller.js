@@ -14,10 +14,19 @@ export class DatepickerController extends Controller {
   async connect () {
     const { default: flatpickr } = await import('flatpickr')
 
-    this.enableTime = toBool(this.data.get('enableTime'))
-    this.noCalendar = toBool(this.data.get('noCalendar'))
-    this.enableSeconds = toBool(this.data.get('enableSeconds'))
-    this.time_24hr = toBool(this.data.get('time-24hr'))
+    const enableTime = toBool(this.data.get('enableTime'))
+    const noCalendar = toBool(this.data.get('noCalendar'))
+
+    let altFormat
+    let dateFormat
+
+    if (noCalendar) {
+      altFormat = 'h:i K'
+      dateFormat = 'Y-m-d H:i'
+    } else {
+      altFormat = enableTime ? 'F j, Y h:i K' : 'F j, Y'
+      dateFormat = enableTime ? 'Y-m-d H:i' : 'Y-m-d'
+    }
 
     const input =
       this.element.nodeName === 'INPUT'
@@ -25,13 +34,10 @@ export class DatepickerController extends Controller {
         : this.element.querySelector('input')
 
     this.flatpickr = flatpickr(input, {
-      altInput: true,
-      altFormat: this.altFormat(),
-      dateFormat: this.dateFormat(),
-      enableTime: this.enableTime,
-      noCalendar: this.noCalendar,
-      enableSeconds: this.enableSeconds,
-      time_24hr: this.time_24hr
+      altFormat,
+      dateFormat,
+      enableTime,
+      noCalendar
     })
   }
 
@@ -41,33 +47,5 @@ export class DatepickerController extends Controller {
 
   disconnect () {
     this.flatpickr.destroy()
-  }
-
-  altFormat () {
-    let format = ''
-
-    if (this.noCalendar || this.enableTime) {
-      if (this.enableSeconds) {
-        format = this.time_24hr ? 'H:i:S' : 'h:i:S K'
-      } else {
-        format = this.time_24hr ? 'H:i' : 'h:i K'
-      }
-    }
-
-    if (!this.noCalendar) {
-      format = `F j, Y ${format}`.trim()
-    }
-
-    return format
-  }
-
-  dateFormat () {
-    let format = 'Y-m-d'
-
-    if (this.noCalendar || this.enableTime) {
-      format = `${format} H:i:S`
-    }
-
-    return format
   }
 }
