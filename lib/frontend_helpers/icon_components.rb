@@ -129,6 +129,14 @@ module IconComponents
     </svg>
   )
 
+  SOUND = %(
+    <svg viewBox="0 0 576 512" class="svg-inline">
+      <path fill="currentColor"
+      d="M215 71l-89 89H24a24 24 0 00-24 24v144a24 24 0 0024 24h102l89 89a24 24 0 0041-17V88a24 24 0 00-41-17zm233.3-51a24.2 24.2 0 10-26.5 40.4A233.4 233.4 0 01527.6 256c0 79-39.5 152.1-105.8 195.6a24.2 24.2 0 1026.6 40.4C528.3 439.6 576 351.3 576 256S528.3 72.4 448.4 20zM480 256c0-63.5-32-122-85.8-156.2-11.2-7.2-26-3.9-33 7.4s-3.9 26.2 7.3 33.4a136.5 136.5 0 010 230.8 24.3 24.3 0 00-7.4 33.4 24 24 0 0033.1 7.4A184.6 184.6 0 00480 256zm-141.8-76.9a24 24 0 00-23.2 42c13 7.2 21 20.5 21 34.9 0 14.4-8 27.7-21 34.8a24 24 0 0023.2 42c28.3-15.5 45.8-45 45.8-76.8s-17.5-61.3-45.8-76.9z"
+        class=""></path>
+    </svg>
+  )
+
   STICKY_NOTE = %(
     <svg viewBox="0 0 448 512" class="svg-inline">
       <path fill="currentColor"
@@ -520,6 +528,7 @@ module IconComponents
     'report' => REPORT,
     'search' => SEARCH,
     'shopping-cart' => SHOPPING_CART,
+    'sound' => SOUND,
     'star' => STAR,
     'sticky-note' => STICKY_NOTE,
     'times-circle' => TIMES_CIRCLE,
