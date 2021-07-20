@@ -64,22 +64,19 @@ module FrontendHelpers
         'data-datepicker-no-calendar': true
       }
 
+      if options[:seconds]
+        options[:wrapper_options].merge!(
+          'data-datepicker-enable-seconds': true,
+          'data-datepicker-time-24hr': true
+        )
+      end
+
       value = object.send(method)
 
       # Adds a date if already doesn't include one (it will detect the date by an empty space),
       # so that the time_field_group can display its time value correctly
       options[:value] = [Date.current, value].join(' ') unless value.include?(' ')
 
-      date_field(method, options)
-    end
-
-    def alltime_field(method, options = {})
-      options[:wrapper_options] = {
-        'data-datepicker-enable-time': true,
-        'data-datepicker-no-calendar': true,
-        'data-datepicker-enable-seconds': true,
-        'data-datepicker-time-24hr': true
-      }
       date_field(method, options)
     end
 
