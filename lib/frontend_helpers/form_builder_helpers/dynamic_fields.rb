@@ -87,7 +87,7 @@ module FrontendHelpers
         html_options = append_data_action(html_options, 'dynamic-fields#addFields')
 
         tag.div(class: html_options.delete(:wrapper_class)) do
-          tag.a(name, html_options) +
+          tag.a(name, **html_options) +
             tag.template(fields, data: { 'dynamic-fields-target': 'template' })
         end
       end
@@ -96,7 +96,7 @@ module FrontendHelpers
         html_options['href'] = '#'
         html_options = append_data_action(html_options, 'dynamic-fields#removeFields')
 
-        tag.a(name, html_options) +
+        tag.a(name, **html_options) +
           hidden_field(:_destroy, class: 'destroy-flag')
       end
 
