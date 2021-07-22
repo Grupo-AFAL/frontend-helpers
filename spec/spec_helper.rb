@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+require 'action_view/railtie'
+require 'active_model/railtie'
 require 'frontend_helpers'
 
 RSpec.configure do |config|
