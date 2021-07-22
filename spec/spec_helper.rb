@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+
+SimpleCov.start 'rails' do # <============= 2
+  add_filter 'spec/'
+  add_filter '.github/'
+  add_filter 'lib/frontend_helpers/version'
+end
+
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
+
+ENV['RAILS_ENV'] = 'test'
+
+require_relative '../spec/dummy/config/environment'
+
+ENV['RAILS_ROOT'] ||= "#{File.dirname(__FILE__)}../../../spec/dummy"
+
 require 'bundler/setup'
 require 'action_view/railtie'
 require 'active_model/railtie'
