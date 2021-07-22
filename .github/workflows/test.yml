@@ -9,7 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - run: npm install
       - run: npm run install-peer-deps
 
       # Install NPM dependencies, cache them correctly
