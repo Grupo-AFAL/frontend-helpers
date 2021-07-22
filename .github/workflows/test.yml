@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - run: npm run install-peer-deps
+      # - run: npm run install-peer-deps
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
