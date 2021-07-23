@@ -24,7 +24,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
+
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
@@ -49,6 +57,12 @@ jobs:
         uses: actions/checkout@v2
 
       - run: npm run install-peer-deps
+
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
 
       - name: Cypress run
         # uses: cypress-io/github-action@v2
@@ -75,6 +89,12 @@ jobs:
     needs: [rspec, cypress]
     runs-on: ubuntu-latest
     steps:
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
       - name: Upload coverage results to Code Climate
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
