@@ -1,0 +1,78 @@
+name: Ruby and JS tests
+on: push
+
+jobs:
+  code-climate-setup:
+    name: Download code climate test reporter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download test reporter
+        run: |
+          mkdir -p tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > cc-test-reporter
+          chmod +x cc-test-reporter
+      - name: Save test reporter
+        uses: actions/upload-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: cc-test-reporter
+
+  rspec:
+    name: rspec
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+      - run: bundle install
+      - run: |
+          bundle exec rake spec
+          cc-test-reporter format-coverage -t simplecov -o codeclimate.rspec.json coverage/.resultset.json
+
+      - name: Save rspec coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: rspec-coverage
+          path: coverage/.resultset.json
+
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: npm run install-peer-deps
+
+      - name: Cypress run
+        # uses: cypress-io/github-action@v2
+        env:
+          GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
+          NODE_ENV: test
+        # with:
+        #   browser: chrome
+        #   install: npm install
+        #   start: npm start
+        #   wait-on: 'http://localhost:8080'
+        run: |
+          npm test
+          cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.cypress.json coverage/lcov.info
+
+      - name: Save cypress coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-coverage
+          path: coverage/lcov.info
+
+  upload-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload coverage results to Code Climate
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        run: |
+          cc-test-reporter sum-coverage codeclimate.*.json -p 2 -o codeclimate.total.json
+          cc-test-reporter upload-coverage -i codeclimate.total.json
