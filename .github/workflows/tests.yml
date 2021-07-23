@@ -12,6 +12,7 @@ jobs:
           mkdir -p tmp/
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
           chmod +x ./tmp/cc-test-reporter
+
       - name: Save test reporter
         uses: actions/upload-artifact@v2
         with:
@@ -25,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Download code climate reporter
         uses: actions/download-artifact@v2
@@ -56,13 +57,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - run: npm run install-peer-deps
-
       - name: Download code climate reporter
         uses: actions/download-artifact@v2
         with:
           name: cc-test-reporter
           path: ./tmp
+
+      - run: npm run install-peer-deps
 
       - name: Cypress run
         # uses: cypress-io/github-action@v2
