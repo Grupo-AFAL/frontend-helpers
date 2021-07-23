@@ -64,6 +64,13 @@ module FrontendHelpers
         'data-datepicker-no-calendar': true
       }
 
+      if options[:seconds]
+        options[:wrapper_options].merge!(
+          'data-datepicker-enable-seconds': true,
+          'data-datepicker-time-24hr': true
+        )
+      end
+
       value = object.send(method)
 
       # Adds a date if already doesn't include one (it will detect the date by an empty space),
