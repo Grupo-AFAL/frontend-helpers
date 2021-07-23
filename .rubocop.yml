@@ -12,6 +12,8 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
+    - 'spec/dummy/bin/*'
+    - 'spec/dummy/config/**/*'
   SuggestExtensions: false
 
 Layout/LineLength:
@@ -52,3 +54,7 @@ Metrics/BlockLength:
 
 Naming/VariableNumber:
   EnforcedStyle: 'snake_case'
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/**/*

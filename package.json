@@ -1,6 +1,6 @@
 {
   "name": "frontend-helpers",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
   "main": "javascript/src/index.js",
   "module": "javascript/src/index.js",
@@ -24,9 +24,9 @@
     "choices.js": "^9.0.1",
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
-    "phone": "^2.4.21",
+    "phone": "^2.4.22",
     "stimulus": "^2.0.0",
-    "stimulus-use": "^0.25.3"
+    "stimulus-use": "^0.25.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -63,5 +63,8 @@
       "CustomEvent",
       "Event"
     ]
+  },
+  "dependencies": {
+    "hotkeys-js": "^3.8.7"
   }
 }
