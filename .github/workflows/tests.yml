@@ -19,7 +19,8 @@ jobs:
           path: cc-test-reporter
 
   rspec:
-    name: rspec
+    name: Rspec (ruby) tests
+    needs: code-climate-setup
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +41,8 @@ jobs:
           path: coverage/.resultset.json
 
   cypress:
+    name: Cypress (JS) tests
+    needs: code-climate-setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -68,6 +71,8 @@ jobs:
           path: coverage/lcov.info
 
   upload-coverage:
+    name: Upload Ruby and JS test coverage to Code Climate
+    needs: [rspec, cypress]
     runs-on: ubuntu-latest
     steps:
       - name: Upload coverage results to Code Climate
