@@ -3,10 +3,11 @@
 require 'simplecov'
 require 'simplecov_json_formatter'
 
-SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+formatters = [
   SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::JSONFormatter
-])
+]
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(formatters)
 
 SimpleCov.start 'rails' do # <============= 2
   add_filter 'spec/'

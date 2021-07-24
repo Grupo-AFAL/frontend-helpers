@@ -53,6 +53,7 @@ jobs:
     name: Cypress (JS) tests
     needs: code-climate-setup
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -84,6 +85,7 @@ jobs:
     name: Upload Ruby and JS test coverage to Code Climate
     needs: [rspec, cypress]
     runs-on: ubuntu-latest
+
     steps:
       - name: Download code climate reporter
         uses: actions/download-artifact@v2
