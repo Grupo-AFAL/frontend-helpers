@@ -1,0 +1,112 @@
+name: Ruby and JS tests
+on: push
+
+jobs:
+  code-climate-setup:
+    name: Download code climate test reporter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download test reporter
+        run: |
+          mkdir -p tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+
+      - name: Save test reporter
+        uses: actions/upload-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
+  rspec:
+    name: Rspec (ruby) tests
+    needs: code-climate-setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+      - run: bundle install
+      - run: |
+          bundle exec rake spec
+          chmod +x ./tmp/cc-test-reporter
+          ./tmp/cc-test-reporter format-coverage -t simplecov -o codeclimate.rspec.json coverage/coverage.json
+
+      - name: Save rspec coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: rspec-coverage
+          path: codeclimate.rspec.json
+
+  cypress:
+    name: Cypress (JS) tests
+    needs: code-climate-setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
+      - run: npm run install-peer-deps
+
+      - name: Cypress run
+        env:
+          GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
+          NODE_ENV: test
+        run: |
+          npm test
+          chmod +x ./tmp/cc-test-reporter
+          ./tmp/cc-test-reporter format-coverage -t lcov -o codeclimate.cypress.json coverage/lcov.info
+
+      - name: Save cypress coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-coverage
+          path: codeclimate.cypress.json
+
+  upload-coverage:
+    name: Upload Ruby and JS test coverage to Code Climate
+    needs: [rspec, cypress]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download code climate reporter
+        uses: actions/download-artifact@v2
+        with:
+          name: cc-test-reporter
+          path: ./tmp
+
+      - name: Download Rspec coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: rspec-coverage
+
+      - name: Download Cypress coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: cypress-coverage
+
+      - name: Upload coverage results to Code Climate
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        run: |
+          chmod +x ./tmp/cc-test-reporter
+          ./tmp/cc-test-reporter sum-coverage codeclimate.*.json -p 2 -o codeclimate.total.json
+          ./tmp/cc-test-reporter upload-coverage -i codeclimate.total.json
