@@ -1,0 +1,190 @@
+{
+  "ci_service": {
+    "branch": "upload-ruby-coverage",
+    "build_identifier": "",
+    "build_url": "",
+    "commit_sha": "da5dbef8e0c1317ac4f0c6ff5978eb5e56b193bb",
+    "committed_at": 1627084514,
+    "name": ""
+  },
+  "environment": {
+    "gem_version": "3.1.4",
+    "package_version": "",
+    "pwd": "/Users/fede/code/grupoafal/frontend-helpers",
+    "prefix": "/Users/fede/code/grupoafal/frontend-helpers",
+    "rails_root": "",
+    "reporter_version": "latest",
+    "simplecov_root": ""
+  },
+  "git": {
+    "branch": "upload-ruby-coverage",
+    "head": "da5dbef8e0c1317ac4f0c6ff5978eb5e56b193bb",
+    "committed_at": 1627084514
+  },
+  "covered_percent": 39.32773109243698,
+  "covered_strength": 0,
+  "line_counts": {
+    "missed": 361,
+    "covered": 234,
+    "total": 595
+  },
+  "source_files": [
+    {
+      "blob_id": "7aaa47e5afe3f9a91d75535c264c0b4495c5a30c",
+      "coverage": "[null,null,1,1,1,1,1,1,1,1,1,1,1,1,1,null,1,1,null,1,null]",
+      "covered_percent": 100,
+      "covered_strength": 1,
+      "line_counts": {
+        "missed": 0,
+        "covered": 16,
+        "total": 16
+      },
+      "name": "lib/frontend_helpers.rb"
+    },
+    {
+      "blob_id": "0c464aa1eb23333724f995357ce898439f355869",
+      "coverage": "[null,null,1,1,1,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,null,null,null,null,0,0,0,null,0,0,0,null,null,0,0,null,null,0,null,null,null,null,0,null,null,null,null,null,null,0,0,0,null,null,null,null,1,0,0,null,null,null,1,null,1,0,0,null,null,null,1,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,0,null,null,null,null,null,null,0,0,null,null,null,1,0,null,null,null,null,null,null,0,0,null,null,null,1,0,0,null,null,null,1,0,0,null,null,null,1,null,1,0,0,null,null,null,1,0,0,null,null,null,null]",
+      "covered_percent": 32.5,
+      "covered_strength": 0.325,
+      "line_counts": {
+        "missed": 54,
+        "covered": 26,
+        "total": 80
+      },
+      "name": "lib/frontend_helpers/field_group_builders.rb"
+    },
+    {
+      "blob_id": "d60f1fe995982eb9e93bd22d97d5c715c6c0b63e",
+      "coverage": "[null,null,1,1,1,1,null,1,null,1,1,1,1,null,1,1,null,null,1,1,null,null,1,1,null,null,1,1,null,null,1,4,4,4,null,null,1,0,null,null,1,3,3,null,null,null,1,2,2,null,2,2,null,null,2,2,null,2,null,null,null,null]",
+      "covered_percent": 97.05882352941177,
+      "covered_strength": 1.5588235294117647,
+      "line_counts": {
+        "missed": 1,
+        "covered": 33,
+        "total": 34
+      },
+      "name": "lib/frontend_helpers/filter_form.rb"
+    },
+    {
+      "blob_id": "34a875bb1fd812a52538d600d7a18b1ac3d0711a",
+      "coverage": "[null,null,1,1,1,1,1,1,null,null]",
+      "covered_percent": 100,
+      "covered_strength": 1,
+      "line_counts": {
+        "missed": 0,
+        "covered": 6,
+        "total": 6
+      },
+      "name": "lib/frontend_helpers/form_builder.rb"
+    },
+    {
+      "blob_id": "367582a9a142d2643e6964d358c8a85dfb01ba46",
+      "coverage": "[null,null,null,1,1,1,null,1,0,0,null,null,1,0,null,null,1,0,null,0,null,null,1,0,null,null,1,0,null,null,1,0,null,null,1,0,0,0,0,null,null,null,null,0,null,null,0,null,null,null,0,0,null,null,null,1,0,0,null,null,1,0,null,null,null,null,0,0,null,null,null,null,null,0,null,null,null,0,null,0,null,null,1,0,null,null,1,0,0,null,0,0,null,null,0,null,null,null,null,0,null,null,null,0,0,null,0,null,0,0,0,null,null,0,0,null,null,0,0,0,null,null,0,null,null,null,1,0,0,null,0,null,null,null,null,1,0,0,0,null,0,0,null,null,0,null,null,null,null,1,0,null,0,0,0,0,null,0,null,0,0,null,null,0,0,null,null,0,null,null,null,null,1,0,null,null,0,null,null,null,null,null,null,null,0,0,null,null,0,null,null,null,null,1,0,null,0,0,null,0,0,null,null,null,0,null,null,null,null,null,null,0,0,null,null,0,null,null,null,null,null,0,null,null,1,0,null,0,0,null,null,null,1,0,0,0,null,0,0,0,0,null,0,0,null,null,null,0,0,null,null,1,0,null,0,0,null,null,0,null,null,1,0,null,null,null,null,null,null,0,null,0,0,null,null,0,0,null,null,null,null,null,null,null,1,0,0,null,0,0,0,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,0,null,null,0,0,0,0,null,null,0,null,0,null,null,null,null,null,null,null]",
+      "covered_percent": 16.43835616438356,
+      "covered_strength": 0.1643835616438356,
+      "line_counts": {
+        "missed": 122,
+        "covered": 24,
+        "total": 146
+      },
+      "name": "lib/frontend_helpers/shared_form_builder_utils.rb"
+    },
+    {
+      "blob_id": "a444cc5c1e0732098c63e01f7b0a7ebbd1e2dac9",
+      "coverage": "[null,null,1,1,1,null,1,0,0,null,null,null,0,0,null,null,0,null,null,null]",
+      "covered_percent": 44.44444444444444,
+      "covered_strength": 0.4444444444444444,
+      "line_counts": {
+        "missed": 5,
+        "covered": 4,
+        "total": 9
+      },
+      "name": "lib/frontend_helpers/custom_redirect_concern.rb"
+    },
+    {
+      "blob_id": "bfacbc0d03f3183702c697bdd4b6f9a5ec3891b7",
+      "coverage": "[null,null,1,1,1,0,0,null,null,1,0,0,0,0,null,0,0,0,0,0,null,null,1,0,0,null,0,0,null,null,null,1,null,1,0,null,0,0,null,null,null,1,0,null,0,null,null,1,0,null,0,null,null,1,0,null,0,0,null,null,null,1,0,null,null,null]",
+      "covered_percent": 29.72972972972973,
+      "covered_strength": 0.2972972972972973,
+      "line_counts": {
+        "missed": 26,
+        "covered": 11,
+        "total": 37
+      },
+      "name": "lib/frontend_helpers/field_group_wrapper.rb"
+    },
+    {
+      "blob_id": "969a54876bd906a81cfc34a32362553578eb13e4",
+      "coverage": "[null,null,null,null,1,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,null,null,1,null,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,1,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,1,0,null,0,null,null,null,null]",
+      "covered_percent": 96.82539682539682,
+      "covered_strength": 0.9682539682539683,
+      "line_counts": {
+        "missed": 2,
+        "covered": 61,
+        "total": 63
+      },
+      "name": "lib/frontend_helpers/icon_components.rb"
+    },
+    {
+      "blob_id": "8307c8aecfb13c8ad070992db269550354dd901d",
+      "coverage": "[null,null,1,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,0,0,0,null,0,0,0,0,null,null,null,null,0,0,null,0,null,null,0,null,null,null,null,null,null,0,null,null,null,1,0,null,null,null,null,0,0,0,null,0,0,null,null,null,0,0,0,0,null,null,0,0,0,null,0,0,null,null,null,null,1,0,0,null,0,null,null,null,1,null,1,0,0,null,null,null,null,null,null,1,0,null,null,0,null,0,0,null,null,null,1,0,0,null,0,0,null,null,null,null,null,null,null,null,null]",
+      "covered_percent": 20,
+      "covered_strength": 0.2,
+      "line_counts": {
+        "missed": 40,
+        "covered": 10,
+        "total": 50
+      },
+      "name": "lib/frontend_helpers/form_builder_helpers/dynamic_fields.rb"
+    },
+    {
+      "blob_id": "34be6abb496c6105e0431c5d39bad55a8d670bab",
+      "coverage": "[null,null,1,1,1,1,null,1,0,null,0,0,null,null,null,1,0,0,0,0,null,0,0,0,null,0,null,null,null,0,0,0,null,null,null,0,null,null,null,1,null,1,0,null,null,1,0,0,0,null,null,0,0,null,0,null,0,0,0,null,null,0,null,null,null,1,0,null,0,0,null,null,null,1,0,null,0,0,null,null,null,1,0,null,0,null,0,0,0,null,0,null,null,null,null,null,1,0,0,0,0,null,null,0,0,0,null,null,null,null,null,1,0,0,0,0,null,null,0,0,0,null,null,null,null,null,1,0,0,null,0,null,null,1,0,0,0,null,0,0,null,null,null,1,0,0,null,null,null,null,null,null,null]",
+      "covered_percent": 21.518987341772153,
+      "covered_strength": 0.21518987341772153,
+      "line_counts": {
+        "missed": 62,
+        "covered": 17,
+        "total": 79
+      },
+      "name": "lib/frontend_helpers/components.rb"
+    },
+    {
+      "blob_id": "f7cbe73376acab55270a356463bbecf883cbd291",
+      "coverage": "[null,null,1,1,1,0,null,null,null,0,0,null,0,0,null,null,1,0,0,0,0,null,null,0,null,null,null,0,null,null,1,0,null,0,null,null,1,0,null,null,1,0,null,null,null,null,null,null,1,0,null,null,null,null,1,0,null,null,null,1,0,null,null,1,0,0,null,null,null]",
+      "covered_percent": 35.483870967741936,
+      "covered_strength": 0.3548387096774194,
+      "line_counts": {
+        "missed": 20,
+        "covered": 11,
+        "total": 31
+      },
+      "name": "lib/frontend_helpers/builder_html_utils.rb"
+    },
+    {
+      "blob_id": "a53194e0c2c3434a205bd0a45c6f262a1d4317c0",
+      "coverage": "[null,null,null,null,null,null,1,1,1,null,1,0,0,null,null,1,0,null,null,null]",
+      "covered_percent": 62.5,
+      "covered_strength": 0.625,
+      "line_counts": {
+        "missed": 3,
+        "covered": 5,
+        "total": 8
+      },
+      "name": "lib/frontend_helpers/layout_concern.rb"
+    },
+    {
+      "blob_id": "2f6460d0324624559b7241490ff20303028a1452",
+      "coverage": "[null,null,1,1,1,0,null,null,1,0,0,0,null,0,null,null,0,0,null,0,null,null,1,0,null,null,1,0,null,null,1,0,null,0,null,0,null,0,null,null,0,null,null,null,null,1,0,null,null,1,0,null,0,null,0,null,0,null,0,null,0,null,null,null,1,0,0,0,0,null,null,null]",
+      "covered_percent": 27.77777777777778,
+      "covered_strength": 0.2777777777777778,
+      "line_counts": {
+        "missed": 26,
+        "covered": 10,
+        "total": 36
+      },
+      "name": "lib/frontend_helpers/utils.rb"
+    }
+  ],
+  "repo_token": ""
+}

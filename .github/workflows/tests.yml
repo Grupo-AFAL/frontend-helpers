@@ -41,13 +41,13 @@ jobs:
       - run: |
           bundle exec rake spec
           chmod +x ./tmp/cc-test-reporter
-          ./tmp/cc-test-reporter format-coverage -t simplecov -o codeclimate.rspec.json coverage/.resultset.json
+          ./tmp/cc-test-reporter format-coverage -t simplecov -o codeclimate.rspec.json coverage/coverage.json
 
       - name: Save rspec coverage
         uses: actions/upload-artifact@v2
         with:
           name: rspec-coverage
-          path: coverage/.resultset.json
+          path: codeclimate.rspec.json
 
   cypress:
     name: Cypress (JS) tests
@@ -66,25 +66,19 @@ jobs:
       - run: npm run install-peer-deps
 
       - name: Cypress run
-        # uses: cypress-io/github-action@v2
         env:
           GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
           NODE_ENV: test
-        # with:
-        #   browser: chrome
-        #   install: npm install
-        #   start: npm start
-        #   wait-on: 'http://localhost:8080'
         run: |
           npm test
           chmod +x ./tmp/cc-test-reporter
-          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.cypress.json coverage/lcov.info
+          ./tmp/cc-test-reporter format-coverage -t lcov -o codeclimate.cypress.json coverage/lcov.info
 
       - name: Save cypress coverage
         uses: actions/upload-artifact@v2
         with:
           name: cypress-coverage
-          path: coverage/lcov.info
+          path: codeclimate.cypress.json
 
   upload-coverage:
     name: Upload Ruby and JS test coverage to Code Climate
@@ -96,6 +90,16 @@ jobs:
         with:
           name: cc-test-reporter
           path: ./tmp
+
+      - name: Download Rspec coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: rspec-coverage
+
+      - name: Download Cypress coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: cypress-coverage
 
       - name: Upload coverage results to Code Climate
         env:
