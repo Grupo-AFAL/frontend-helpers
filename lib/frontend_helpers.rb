@@ -20,3 +20,7 @@ module FrontendHelpers
 
   class Error < StandardError; end
 end
+
+ActiveSupport.on_load :active_record do
+  include FrontendHelpers::Types
+end
