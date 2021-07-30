@@ -35,7 +35,7 @@ RSpec.describe FrontendHelpers::Types::TimeValue do
 
   describe 'serialize' do
     it 'returns value if is blank' do
-      expect(subject.serialize("")).to eql("")
+      expect(subject.serialize('')).to eql('')
     end
 
     it 'returns value if is numeric' do
