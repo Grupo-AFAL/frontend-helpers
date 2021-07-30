@@ -4,7 +4,7 @@ module FrontendHelpers
   module Types
     class TimeValue < ActiveRecord::Type::String
       def cast(value)
-        return '2021-01-01 00:00:00' if value.blank?
+        return "#{Date.current} 00:00:00" if value.blank?
         return value if value.is_a?(String)
 
         hours = value / 3600
@@ -15,7 +15,7 @@ module FrontendHelpers
 
         seconds = value
 
-        "2021-01-01 #{format('%<hour>02d', hour: hours)}:"\
+        "#{Date.current} #{format('%<hour>02d', hour: hours)}:"\
                     "#{format('%<mins>02d', mins: minutes)}:"\
                     "#{format('%<sec>02d', sec: seconds)}"
       end
