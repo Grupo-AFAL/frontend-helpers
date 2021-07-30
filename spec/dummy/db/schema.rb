@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_722_221_111) do
+ActiveRecord::Schema.define(version: 20_210_729_212_951) do
   create_table 'characters', force: :cascade do |t|
     t.string 'name'
     t.integer 'movie_id', null: false
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20_210_722_221_111) do
 
   create_table 'tenants', force: :cascade do |t|
     t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'workouts', force: :cascade do |t|
+    t.integer 'workout_start_at'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
   end

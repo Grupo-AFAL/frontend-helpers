@@ -13,9 +13,14 @@ require 'frontend_helpers/form_builder'
 require 'frontend_helpers/layout_concern'
 require 'frontend_helpers/components'
 require 'frontend_helpers/custom_redirect_concern'
+require 'frontend_helpers/types/time_value'
 
 module FrontendHelpers
   class Engine < ::Rails::Engine; end
 
   class Error < StandardError; end
+end
+
+ActiveSupport.on_load :active_record do
+  include FrontendHelpers::Types
 end
