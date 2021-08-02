@@ -19,8 +19,8 @@
   "peerDependencies": {
     "@hotwired/turbo": "^7.0.0-beta.4",
     "bulma": "^0.9.3",
-    "chart.js": "^2.9.4",
-    "chartkick": "^3.2.1",
+    "chart.js": "^3.5.0",
+    "chartkick": "^4.0.5",
     "choices.js": "^9.0.1",
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
