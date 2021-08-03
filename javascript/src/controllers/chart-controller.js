@@ -21,7 +21,7 @@ import { Controller } from 'stimulus'
  *   Cargando...
  * </div>
  */
- export class ChartController extends Controller {
+export class ChartController extends Controller {
   async connect () {
     await import('chartjs-adapter-date-fns')
     const { default: Chartkick } = await import('chartkick')
