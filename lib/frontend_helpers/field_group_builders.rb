@@ -156,9 +156,9 @@ module FrontendHelpers
       end
     end
 
-    def boolean_field_group(method, options = {})
+    def boolean_field_group(method, options = {}, checked_value = '1', unchecked_value = '0')
       @template.content_tag(:div, class: 'field') do
-        boolean_field(method, options)
+        boolean_field(method, options, checked_value, unchecked_value)
       end
     end
 
