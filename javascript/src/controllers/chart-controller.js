@@ -21,21 +21,18 @@ import { Controller } from 'stimulus'
  *   Cargando...
  * </div>
  */
-
- import {Chart} from 'chart.js' // eslint-disable-line
-
  export class ChartController extends Controller {
   async connect () {
-    // const { default: Chart } = await import('chart.js') // eslint-disable-line
+    await import('chartjs-adapter-date-fns')
     const { default: Chartkick } = await import('chartkick')
-    console.log(Chart)
-    Chartkick.adapters.push(Chart)
+    const { default: Chart } = await import('chart.js/auto') // eslint-disable-line
+
+    Chartkick.use(Chart)
 
     const chartType = this.data.get('type')
     const data = JSON.parse(this.data.get('data'))
     const elementId = this.element.id
 
-    console.log(Chartkick.adapters);
     this.chart = new Chartkick[chartType](elementId, data, {})
   }
 }

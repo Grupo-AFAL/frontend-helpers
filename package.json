@@ -21,6 +21,8 @@
     "bulma": "^0.9.3",
     "chart.js": "^3.5.0",
     "chartkick": "^4.0.5",
+    "chartjs-adapter-date-fns": "^2.0.0",
+    "date-fns": "^2.23.0",
     "choices.js": "^9.0.1",
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
