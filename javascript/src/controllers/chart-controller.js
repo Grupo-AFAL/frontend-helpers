@@ -23,8 +23,11 @@ import { Controller } from 'stimulus'
  */
 export class ChartController extends Controller {
   async connect () {
+    await import('chartjs-adapter-date-fns')
     const { default: Chartkick } = await import('chartkick')
-    const { default: Chart } = await import('chart.js') // eslint-disable-line
+    const { default: Chart } = await import('chart.js/auto') // eslint-disable-line
+
+    Chartkick.use(Chart)
 
     const chartType = this.data.get('type')
     const data = JSON.parse(this.data.get('data'))
