@@ -3,10 +3,10 @@ import { get } from '@rails/request.js'
 
 /**
  * InputOnChange Controller
- * Updates content based on a get request on input change
+ * It notifies the server when there is some change in the input
  *
- * <div data-controller="input-on-change" data-input-on-change-url-value="url_path">
- *   <input data-action="input-on-change#change">
+ * <div data-controller="input-on-change" data-input-on-change-url-value="/url/path">
+ *   <input data-action="input-on-change#change" name="some-name" value="hello">
  * </div>
  */
 export class InputOnChangeController extends Controller {
