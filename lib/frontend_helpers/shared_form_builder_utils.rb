@@ -48,8 +48,8 @@ module FrontendHelpers
         data: { controller: 'datepicker' }
       }.merge!(options.delete(:wrapper_options) || {})
 
-      if options[:minDate].present?
-        wrapper_options.merge!('data-datepicker-min-date': options[:minDate])
+      if options[:min_date].present?
+        wrapper_options.merge!('data-datepicker-min-date': options[:min_date])
       end
 
       content_tag(:div, wrapper_options) do
@@ -75,16 +75,22 @@ module FrontendHelpers
         )
       end
 
-      if options[:defaultTime].present?
-        options[:wrapper_options].merge!('data-datepicker-default-date': options[:defaultTime])
+      if options[:default_time].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-default-date': options[:default_time]
+        )
       end
 
-      if options[:minTime].present?
-        options[:wrapper_options].merge!('data-datepicker-min-time': options[:minTime])
+      if options[:min_time].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-min-time': options[:min_time]
+        )
       end
 
-      if options[:maxTime].present?
-        options[:wrapper_options].merge!('data-datepicker-max-time': options[:maxTime])
+      if options[:max_time].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-max-time': options[:max_time]
+        )
       end
 
       value = object.send(method)
