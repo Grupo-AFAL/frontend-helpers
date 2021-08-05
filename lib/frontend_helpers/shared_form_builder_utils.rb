@@ -48,6 +48,12 @@ module FrontendHelpers
         data: { controller: 'datepicker' }
       }.merge!(options.delete(:wrapper_options) || {})
 
+      if options[:minDate].present?
+        wrapper_options.merge!(
+          'data-datepicker-min-date': options[:minDate]
+        )
+      end
+
       content_tag(:div, wrapper_options) do
         text_field(method, options) + clear_btn
       end
@@ -68,6 +74,24 @@ module FrontendHelpers
         options[:wrapper_options].merge!(
           'data-datepicker-enable-seconds': true,
           'data-datepicker-time-24hr': true
+        )
+      end
+
+      if options[:defaultTime].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-default-date': options[:defaultTime]
+        )
+      end
+
+      if options[:minTime].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-min-time': options[:minTime]
+        )
+      end
+
+      if options[:maxTime].present?
+        options[:wrapper_options].merge!(
+          'data-datepicker-max-time': options[:maxTime]
         )
       end
 
