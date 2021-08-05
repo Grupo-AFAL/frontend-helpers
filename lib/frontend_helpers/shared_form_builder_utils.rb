@@ -75,9 +75,9 @@ module FrontendHelpers
         )
       end
 
-      if options[:default_time].present?
+      if options[:default_date].present?
         options[:wrapper_options].merge!(
-          'data-datepicker-default-date': options[:default_time]
+          'data-datepicker-default-date': options[:default_date]
         )
       end
 
