@@ -31,7 +31,11 @@ export class DatepickerController extends Controller {
       enableTime: this.enableTime,
       noCalendar: this.noCalendar,
       enableSeconds: this.enableSeconds,
-      time_24hr: this.time_24hr
+      time_24hr: this.time_24hr,
+      defaultDate: this.data.get('defaultDate'),
+      minDate: this.data.get('minDate'),
+      minTime: this.data.get('minTime'),
+      maxTime: this.data.get('maxTime')
     })
   }
 
