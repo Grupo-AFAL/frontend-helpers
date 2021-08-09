@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.5] - 2021-08-09
 
-- Adding Print Controller
+- Adding Print Controller, that allows to print the current page
 
 ## [0.3.4] - 2021-08-05
 

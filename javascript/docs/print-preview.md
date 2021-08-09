@@ -1,5 +1,5 @@
 ---
-title: Print
+title: Print preview
 description: This controller allows to print the current page
 ---
 

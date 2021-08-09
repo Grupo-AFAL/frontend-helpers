@@ -5,7 +5,7 @@ description: This controller allows to print the current page when Print Control
 
 ### Print Dialog from Anchor (HTML A tag)
 
-Click print and Print Dialog will comes in.
+Click on Print and a Print Dialog will appear
 
 <div>
   <a href="print-preview.html" target="_blank" class="button is-primary">Print</a>
