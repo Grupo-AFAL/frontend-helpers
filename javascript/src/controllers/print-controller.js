@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from 'stimulus'
 
 /*
  * Print Controller
@@ -7,9 +7,8 @@ import { Controller } from "stimulus";
  */
 
 export class PrintController extends Controller {
-  
-  connect() {
-    window.print();
+  connect () {
+    window.print()
     window.onfocus = window.close
   }
 }
