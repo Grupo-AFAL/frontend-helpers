@@ -7,8 +7,9 @@ import { Controller } from "stimulus";
  */
 
 export class PrintController extends Controller {
+  
   connect() {
     window.print();
-    window.onfocus = window.close;
+    window.onfocus = window.close
   }
 }
