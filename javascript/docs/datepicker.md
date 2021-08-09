@@ -64,3 +64,29 @@ description: Datepicker component that uses the flatpicker library
   data-datepicker-24hr="true"
 />
 ```
+
+### Time with a minimum, maximum and default values
+
+<input
+  type="text"
+  data-controller="datepicker"
+  data-datepicker-enable-time="true"
+  data-datepicker-no-calendar="true"
+  data-datepicker-min-time="10:00"
+  data-datepicker-max-time="14:00"
+  data-datepicker-default-date="2021-08-05 12:00"
+/>
+
+**Code**
+
+```html
+<input
+  type="text"
+  data-controller="datepicker"
+  data-datepicker-enable-time="true"
+  data-datepicker-no-calendar="true"
+  data-datepicker-min-time="10:00"
+  data-datepicker-max-time="14:00"
+  data-datepicker-default-date="2021-08-05 12:00"
+/>
+```
