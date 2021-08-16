@@ -52,7 +52,7 @@ export class AutocompleteAddressController extends Controller {
           this.streetNumberTarget.value = component.short_name
           break
         case 'route':
-          this.streetTarget.value = component.short_name
+          this.streetTarget.value = component.long_name
           break
         case 'sublocality_level_1':
           this.neighbourhoodTarget.value = component.short_name
