@@ -12,6 +12,7 @@ import { DynamicFieldsController } from '../src/controllers/dynamic-fields-contr
 import { HovercardController } from '../src/controllers/hovercard-controller'
 import { NavbarController } from '../src/controllers/navbar-controller'
 import { NotificationController } from '../src/controllers/notification-controller'
+import { RadioToggleController } from '../src/controllers/radio-toggle-controller'
 import { PrintController } from '../src/controllers/print-controller'
 import { SelectController } from '../src/controllers/select-controller'
 import { SubmitOnChangeController } from '../src/controllers/submit-on-change-controller'
@@ -30,6 +31,7 @@ application.register('hovercard', HovercardController)
 application.register('navbar', NavbarController)
 application.register('notification', NotificationController)
 application.register('print', PrintController)
+application.register('radio-toggle', RadioToggleController)
 application.register('select', SelectController)
 application.register('submit-on-change', SubmitOnChangeController)
 application.register('tabs', TabsController)
