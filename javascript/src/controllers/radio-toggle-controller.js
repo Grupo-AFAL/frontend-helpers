@@ -1,16 +1,19 @@
 import { Controller } from 'stimulus'
 
 /**
- * Toggles ON and OFF different elements based on the state of a checkbox
+ * Shows different elements based on the value of a radio button
  *
- * <div data-controller="toggle" data-toggle-checked-value="true">
- *   <input data-action="toggle#change" type="checkbox">
- *   <div data-toggle-target="off">
- *     Off content
+ * <div data-controller="toggle-radio" data-toggle-radio-current-value="one">
+ *   <input type="radio" data-action="toggle-radio#change" value="one">
+ *   <input type="radio" data-action="toggle-radio#change" value="two">
+ *
+ *   <div data-radio-toggle-target="element" data-radio-toggle-value="one">
+ *     <h1 class="title is-1">One</h1>
  *   </div>
- *  <div data-toggle-target="on">
- *    On content
- *  </div>
+ *
+ *   <div data-radio-toggle-target="element" data-radio-toggle-value="two">
+ *     <h1 class="title is-1">Two</h1>
+ *   </div>
  * </div>
  */
 export class RadioToggleController extends Controller {
