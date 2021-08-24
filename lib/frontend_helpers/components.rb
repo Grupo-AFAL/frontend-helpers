@@ -131,6 +131,13 @@ module FrontendHelpers
       super(**options, &block)
     end
 
+    def form_for(record, **options, &block)
+      options[:data] ||= {}
+      options[:data][:controller] = "#{options.dig(:data, :controller)} submit-button".strip
+
+      super(record, **options, &block)
+    end
+
     def hovercard(&block)
       html_content = capture(&block)
       card_content = tag.div class: 'card-content' do
