@@ -22,6 +22,22 @@ module IconComponents
     </svg>
   )
 
+  ARROW_BACK = %(
+    <svg viewBox="0 0 13 20" class="svg-inline">
+      <path
+        d="M12.5098 1.86961L10.7298 0.0996094L0.839844 9.99961L10.7398 19.8996L12.5098 18.1296L4.37984 9.99961L12.5098 1.86961Z"
+        fill="white" />
+    </svg>
+  )
+
+  ARROW_FORWARD = %(
+    <svg viewBox="0 0 13 20" class="svg-inline">
+      <path
+        d="M0.490234 18.1296L2.26023 19.8996L12.1602 9.99961L2.26023 0.0996094L0.490234 1.86961L8.62023 9.99961L0.490234 18.1296Z"
+        fill="white" />
+    </svg>
+  )
+
   ATTACHMENT = %(
     <svg viewBox="0 0 448 512" class="svg-inline">
       <path fill="currentColor"
@@ -491,6 +507,8 @@ module IconComponents
   MAP = {
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
+    'arrow-back' => ARROW_BACK,
+    'arrow-forward' => ARROW_FORWARD,
     'attachment' => ATTACHMENT,
     'bell' => BELL,
     'calendar-alt' => CALENDAR_ALT,
