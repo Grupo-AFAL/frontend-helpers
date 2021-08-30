@@ -4,7 +4,7 @@
 # rubocop:disable Metrics/ModuleLength
 module IconComponents
   ALERT = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path d="M10.2898 3.85996L1.81978 18C1.64514 18.3024 1.55274 18.6453 1.55177
             18.9945C1.55079 19.3437 1.64127 19.6871 1.8142 19.9905C1.98714 20.2939
             2.2365 20.5467 2.53748 20.7238C2.83847 20.9009 3.18058 20.9961 3.52978
@@ -187,7 +187,7 @@ module IconComponents
   )
 
   NOTIFICATION = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12
             2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3
             17 3 17H21C21 17 18 15 18 8Z" stroke="currentColor" stroke-width="2"
@@ -420,7 +420,7 @@ module IconComponents
   )
 
   SUCCESS = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path d="M22 11.0801V12.0001C21.9988 14.1565 21.3005 16.2548 20.0093 17.9819C18.7182
             19.7091 16.9033 20.9726 14.8354 21.584C12.7674 22.1954 10.5573 22.122 8.53447
             21.3747C6.51168 20.6274 4.78465 19.2462 3.61096 17.4372C2.43727 15.6281 1.87979
