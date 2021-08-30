@@ -3,6 +3,25 @@
 # rubocop:disable Layout/LineLength
 # rubocop:disable Metrics/ModuleLength
 module IconComponents
+  ALERT = %(
+    <svg viewBox="0 0 24 24" class="svg-inline">
+      <path d="M10.2898 3.85996L1.81978 18C1.64514 18.3024 1.55274 18.6453 1.55177
+            18.9945C1.55079 19.3437 1.64127 19.6871 1.8142 19.9905C1.98714 20.2939
+            2.2365 20.5467 2.53748 20.7238C2.83847 20.9009 3.18058 20.9961 3.52978
+            21H20.4698C20.819 20.9961 21.1611 20.9009 21.4621 20.7238C21.7631 20.5467 22.0124
+            20.2939 22.1854 19.9905C22.3583 19.6871 22.4488 19.3437 22.4478 18.9945C22.4468
+            18.6453 22.3544 18.3024 22.1798 18L13.7098 3.85996C13.5315 3.56607 13.2805
+            3.32308 12.981 3.15444C12.6814 2.98581 12.3435 2.89722 11.9998 2.89722C11.656
+            2.89722 11.3181 2.98581 11.0186 3.15444C10.7191 3.32308 10.468 3.56607 10.2898
+            3.85996V3.85996Z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 9V13" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 16V16.5" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    )
+
   ARROW_LEFT = %(
     <svg viewBox="0 0 448 512" class="svg-inline">
       <path fill="currentColor"
@@ -164,6 +183,19 @@ module IconComponents
   NESTED_ARROW = %(
     <svg width="99" height="93" viewBox="0 0 99 93" fill="none">
       <path d="M1 57.9623V6C1 3.23858 3.23858 1 6 1H15V50.3579C15 53.01 16.0536 55.5536 17.929 57.429L18.5 58C18.7969 58.2969 19.1133 58.5937 19.4299 58.8789C21.0376 60.3271 23.1696 61 25.3333 61H69C70.1046 61 71 60.1046 71 59V45.6433C71 43.8884 73.0988 42.9843 74.374 44.19L97.0188 65.5996C97.8322 66.3687 97.8561 67.6556 97.0717 68.4543L74.4269 91.5108C73.1723 92.7882 71 91.8999 71 90.1094V77.5C71 76.3954 70.1046 75.5 69 75.5H18.7574C16.3351 75.5 13.9921 74.626 12.2044 72.9916C10.9045 71.8031 9.35088 70.3509 8 69C6.84337 67.8434 5.53809 66.6124 4.37071 65.5364C2.25043 63.582 1 60.8459 1 57.9623Z" fill="#E0E0E0" stroke="BDBDBD"/>
+    </svg>
+  )
+
+  NOTIFICATION = %(
+    <svg viewBox="0 0 24 24" class="svg-inline">
+      <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12
+            2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3
+            17 3 17H21C21 17 18 15 18 8Z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044
+            12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982
+            21.5547 10.4458 21.3031 10.27 21" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   )
 
@@ -387,6 +419,20 @@ module IconComponents
     </svg>
   )
 
+  SUCCESS = %(
+    <svg viewBox="0 0 24 24" class="svg-inline">
+      <path d="M22 11.0801V12.0001C21.9988 14.1565 21.3005 16.2548 20.0093 17.9819C18.7182
+            19.7091 16.9033 20.9726 14.8354 21.584C12.7674 22.1954 10.5573 22.122 8.53447
+            21.3747C6.51168 20.6274 4.78465 19.2462 3.61096 17.4372C2.43727 15.6281 1.87979
+            13.4882 2.02168 11.3364C2.16356 9.18467 2.99721 7.13643 4.39828 5.49718C5.79935
+            3.85793 7.69279 2.71549 9.79619 2.24025C11.8996 1.76502 14.1003 1.98245 16.07
+            2.86011"stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )
+
   CHEVRON_DOWN = %(
     <svg viewBox="0 0 512 512" class="svg-inline">
       <path fill="currentColor"
@@ -505,6 +551,7 @@ module IconComponents
   )
 
   MAP = {
+    'alert' => ALERT,
     'arrow-left' => ARROW_LEFT,
     'arrow-right' => ARROW_RIGHT,
     'arrow-back' => ARROW_BACK,
@@ -542,6 +589,7 @@ module IconComponents
     'money-bill-wave' => MONEY_BILL_WAVE,
     'mute' => MUTE,
     'nested-arrow' => NESTED_ARROW,
+    'notification' => NOTIFICATION,
     'outlook' => OUTLOOK,
     'paypal' => PAYPAL,
     'pen' => PEN,
@@ -554,6 +602,7 @@ module IconComponents
     'report' => REPORT,
     'search' => SEARCH,
     'snowflake' => SNOWFLAKE,
+    'success' => SUCCESS,
     'shopping-cart' => SHOPPING_CART,
     'sound' => SOUND,
     'star' => STAR,
