@@ -395,6 +395,13 @@ module IconComponents
     </svg>
   )
 
+  TIMES = %(
+    <svg viewBox="0 0 24 24" class="svg-inline">
+      <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )
+
   TIMES_CIRCLE = %(
     <svg viewBox="0 0 512 512" class="svg-inline">
       <path fill="currentColor"
@@ -608,6 +615,7 @@ module IconComponents
     'star' => STAR,
     'sticky-note' => STICKY_NOTE,
     'times-circle' => TIMES_CIRCLE,
+    'times' => TIMES,
     'trash' => TRASH,
     'truck' => TRUCK,
     'upload' => UPLOAD,
