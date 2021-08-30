@@ -44,7 +44,7 @@ module FrontendHelpers
       end
     end
 
-    def result
+    def result(options = {})
       @result ||= begin
         records = tenant.send(self.class._relationship)
 
@@ -55,7 +55,7 @@ module FrontendHelpers
         records = records.order(self.class._default_order) if self.class._default_order
         records = records.send(self.class._default_scope) if self.class._default_scope
 
-        records.ransack(query_params).result
+        records.ransack(query_params).result(**options)
       end
     end
   end
