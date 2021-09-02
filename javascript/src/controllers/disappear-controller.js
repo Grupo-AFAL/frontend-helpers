@@ -13,7 +13,7 @@ export class DisappearController extends Controller {
 
   static values = {
     delay: Number,
-    remove: Boolean,
+    remove: Boolean
   }
 
   connect () {
