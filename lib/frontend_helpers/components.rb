@@ -149,7 +149,7 @@ module FrontendHelpers
     end
 
     def card_notch
-      tag.svg width: 20, height: 8, viewBox: '0 0 20 8', fill: 'none' do
+      tag.svg width: 20, height: 8, viewBox: '0 0 20 8', fill: 'none', id: 'svg', class: 'svg' do
         tag.path 'fill-rule': 'evenodd',
                  'clip-rule': 'evenodd',
                  d: 'M10 8C13 8 15.9999 0 20 0H0C3.9749 0 7 8 10 8Z',
