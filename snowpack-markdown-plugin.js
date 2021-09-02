@@ -63,13 +63,9 @@ module.exports = function (snowpackConfig, pluginOptions) {
       </head>
 
       <body>
-        <section class="section">
-          <div class="container">
-            <div class="content">
-              ${html}
-            </div>
-          </div>
-        </section>
+        
+            ${html}
+          
       </body>
 
       </html>

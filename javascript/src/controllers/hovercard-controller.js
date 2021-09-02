@@ -26,12 +26,21 @@ export class HovercardController extends Controller {
   }
 
   insertHoverCard (html) {
-    console.log('insertHoverCard')
     const node = stringToDOMNode(html).querySelector('.hovercard')
-    const anode = document.getElementsByTagName('a')[0]
-    const anode_width = anode.offsetWidth
     node.setAttribute('id', this.urlValue)
     document.body.appendChild(node)
+    const aNode = document.getElementsByTagName('a')[0]
+    const aNodeWidth = aNode.offsetWidth
+    // get position on the top of the hovercard
+    const nodeTop = node.offsetHeight * 2 + 24
+    // ideal space to the right screen side in pixeles
+    const idealSpaceToRight = 15
+    // Real space to the right side of the anchor
+    const differenceRight =
+      this.calculateRightDistance(aNode.offsetLeft) - aNodeWidth
+    // initial right adjust
+    let rightAdjustment = 0
+    const hovercardWidth = 210
     var svgNode = document.getElementById('svg')
     const {
       hoverCardTop,
@@ -40,23 +49,21 @@ export class HovercardController extends Controller {
       isLeft,
       isRight
     } = this.hoverCardDimensions(node)
+    // adjust svg tag down
     if (isDown) {
-      const nodeTop = node.offsetHeight * 2 + 24
       svgNode.setAttribute('height', String(nodeTop))
       svgNode.setAttribute('transform', 'rotate(180)')
     }
+    // adjust svg tag to the left
     if (isLeft) {
-      svgNode.style.left = String(anode_width / 2 - 18) + 'px'
+      svgNode.style.left = String(aNodeWidth / 2 - 18) + 'px'
     }
+    // adjust svg tag to the right
     if (isRight) {
-      const idealSpaceToRight = 15
-      const differenceRight =
-        this.calculateRightDistance(anode.offsetLeft) - anode_width
-      var right_adjustment = 0
       if (differenceRight > idealSpaceToRight) {
-        right_adjustment = differenceRight - idealSpaceToRight
+        rightAdjustment = differenceRight - idealSpaceToRight
       }
-      const newSpaceRight = 210 - right_adjustment - anode_width / 2
+      const newSpaceRight = hovercardWidth - rightAdjustment - aNodeWidth / 2
       svgNode.style.left = String(newSpaceRight) + 'px'
     }
     node.setAttribute(
@@ -68,45 +75,48 @@ export class HovercardController extends Controller {
   elementDimensions () {
     const rect = this.element.getBoundingClientRect()
     const top = rect.top + window.pageYOffset
-    var left = rect.left + window.pageXOffset
+    const left = rect.left + window.pageXOffset
     const width = rect.width
 
     return { top, left, width }
   }
 
   calculateRightDistance (positionLeft) {
-    const window_width = window.innerWidth
-    const diff = window_width - positionLeft
+    const windowWidth = window.innerWidth
+    const diff = windowWidth - positionLeft
     return diff
   }
 
   hoverCardDimensions (node) {
     const { top, left, width } = this.elementDimensions()
     const hoverRect = node.getBoundingClientRect()
-    var isRight = false
-    var hoverCardTop = top - hoverRect.height - 10
-    var isDown = false
-    var isLeft = false
+    // ideal difference to the right screen side
+    const idealDifference = 235
+    // adjust top of the hovercard
+    const topAdjust = 40
+    let isRight = false
+    let hoverCardTop = top - hoverRect.height - 10
+    let isDown = false
+    let isLeft = false
+    // check is the hovercar is near to the top
     if (hoverCardTop < 0) {
-      hoverCardTop = top + 40
+      hoverCardTop = top + topAdjust
       isDown = true
     }
-    var hoverCardLeft = left - hoverRect.width / 2 + width / 2
-    //check if hovercar is near of the left side
+    let hoverCardLeft = left - hoverRect.width / 2 + width / 2
+    // check if hovercar is near of the left side
     if (hoverCardLeft < 0) {
       hoverCardLeft = 8
       isLeft = true
     }
-    //ideal difference to the right
-    const idealDifference = 235
-    const diff = this.calculateRightDistance(hoverCardLeft) //window_width - hoverCardLeft
+    // check if hovercar is near of the right side
+    const diff = this.calculateRightDistance(hoverCardLeft)
     if (diff < idealDifference) {
       hoverCardLeft += diff - idealDifference
       isRight = true
     }
     return { hoverCardTop, hoverCardLeft, isDown, isLeft, isRight }
   }
-
   hide () {
     this.cardNode = document.getElementById(this.urlValue)
     if (this.cardNode) {
