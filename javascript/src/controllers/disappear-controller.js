@@ -13,11 +13,14 @@ export class DisappearController extends Controller {
 
   static values = {
     delay: Number,
-    remove: Boolean
+    remove: Boolean,
+    manualClose: Boolean,
   }
 
   connect () {
     this.closed = false
+    if (this.hasManualCloseValue && this.manualCloseValue) { return }
+
     setTimeout(() => this.close(), this.delayValue || 3000)
   }
 

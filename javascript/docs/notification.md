@@ -23,3 +23,10 @@ description: Bulma notification component
   <button data-action="notification#close" class="delete"></button>
   Custom delay of 10 seconds
 </div>
+
+### Custom delay of 10 seconds
+
+<div data-controller="notification" data-notification-delay-value="3000" data-notification-manual-close-value="true" class="notification is-success">
+  <button data-action="notification#close" class="delete"></button>
+  Manual closing
+</div>
