@@ -41,7 +41,7 @@ export class HovercardController extends Controller {
     // initial right adjust
     let rightAdjustment = 0
     const hovercardWidth = 210
-    var svgNode = document.getElementById('svg')
+    const svgNode = document.getElementById('svg')
     const {
       hoverCardTop,
       hoverCardLeft,
@@ -117,6 +117,7 @@ export class HovercardController extends Controller {
     }
     return { hoverCardTop, hoverCardLeft, isDown, isLeft, isRight }
   }
+
   hide () {
     this.cardNode = document.getElementById(this.urlValue)
     if (this.cardNode) {
