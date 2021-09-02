@@ -7,13 +7,13 @@ import { DisappearController } from './disappear-controller'
  */
 export class NotificationController extends DisappearController {
 	static values = {
-		manualClose: Boolean,
+	  manualClose: Boolean
 	}
-	
-	connect () {
-		this.closed = false
-		if (this.hasManualCloseValue && this.manualCloseValue) { return }
 
-		setTimeout(() => this.close(), this.delayValue || 3000)
+	connect () {
+	  this.closed = false
+	  if (this.hasManualCloseValue && this.manualCloseValue) { return }
+
+	  setTimeout(() => this.close(), this.delayValue || 3000)
 	}
 }
