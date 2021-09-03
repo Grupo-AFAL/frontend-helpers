@@ -65,11 +65,21 @@ module.exports = function (snowpackConfig, pluginOptions) {
       <body>
         <section class="section">
           <div class="container">
-            ${html}
+            <a href="/">Back to home</a>
+            <hr />
+            <h1 class="title is-1">
+              ${frontmatter.title}
+            </h1>
+            <p class="subtitle">
+              ${frontmatter.description}
+            </p>
+            <div class="content">
+              ${html}
+            </div>
           </div>
         </section>
       </body>
-
+      
       </html>
       `
     }

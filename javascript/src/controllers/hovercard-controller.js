@@ -28,10 +28,9 @@ export class HovercardController extends Controller {
   insertHoverCard (html) {
     const node = stringToDOMNode(html).querySelector('.hovercard')
     node.setAttribute('id', this.urlValue)
-    document.body.appendChild(node)
-    const aNode = document.querySelector('a[data-controller="hovercard"]')
+    const aNode = this.element
     const aNodeParent = aNode.parentNode
-    //aNodeParent.appendChild(node)
+    aNodeParent.appendChild(node)
     const aNodeWidth = aNode.offsetWidth
     const aNodeLeftDistance = aNode.getBoundingClientRect().left
     // get position on the top of the hovercard
@@ -44,7 +43,7 @@ export class HovercardController extends Controller {
     // initial right adjust
     let rightAdjustment = 0
     const hovercardWidth = 210
-    const svgNode = document.getElementById('svg')
+    const svgNode = document.querySelector('svg.svg-hover-card') // document.getElementById('svg')
     const {
       hoverCardTop,
       hoverCardLeft,
@@ -101,12 +100,13 @@ export class HovercardController extends Controller {
     let hoverCardTop = top - hoverRect.height - 10
     let isDown = false
     let isLeft = false
+    let hoverCardLeft = left - hoverRect.width / 2 + width / 2
+
     // check is the hovercar is near to the top
     if (hoverCardTop < 0) {
       hoverCardTop = top + topAdjust
       isDown = true
     }
-    let hoverCardLeft = left - hoverRect.width / 2 + width / 2
     // check if hovercar is less than 8 pixeles near of the lef side
     if (hoverCardLeft < 8) {
       hoverCardLeft = 8
