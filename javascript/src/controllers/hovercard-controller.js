@@ -16,9 +16,7 @@ export class HovercardController extends Controller {
   }
 
   show () {
-    if (this.cardNode) {
-      this.cardNode.classList.remove('is-hidden')
-    } else {
+    if (!this.cardNode) {
       fetch(this.urlValue)
         .then(r => r.text())
         .then(html => this.insertHoverCard(html))
@@ -28,22 +26,20 @@ export class HovercardController extends Controller {
   insertHoverCard (html) {
     const node = stringToDOMNode(html).querySelector('.hovercard')
     node.setAttribute('id', this.urlValue)
-    const aNode = this.element
-    const aNodeParent = aNode.parentNode
-    aNodeParent.appendChild(node)
-    const aNodeWidth = aNode.offsetWidth
-    const aNodeLeftDistance = aNode.getBoundingClientRect().left
+    document.body.appendChild(node)
+    const aNodeWidth = this.element.offsetWidth
+    const aNodeLeftDistance = this.element.getBoundingClientRect().left
     // get position on the top of the hovercard
     const nodeTop = node.offsetHeight * 2 + 24
     // ideal space to the right screen side in pixeles
     const idealSpaceToRight = 15
     // Real space to the right side of the anchor
     const differenceRight =
-      this.calculateRightDistance(aNode.offsetLeft) - aNodeWidth
+      this.calculateRightDistance(this.element.offsetLeft) - aNodeWidth
     // initial right adjust
     let rightAdjustment = 0
     const hovercardWidth = 210
-    const svgNode = document.querySelector('svg.svg-hover-card') // document.getElementById('svg')
+    const svgNode = document.querySelector('svg.svg-hover-card')
     const {
       hoverCardTop,
       hoverCardLeft,
@@ -101,7 +97,6 @@ export class HovercardController extends Controller {
     let isDown = false
     let isLeft = false
     let hoverCardLeft = left - hoverRect.width / 2 + width / 2
-
     // check is the hovercar is near to the top
     if (hoverCardTop < 0) {
       hoverCardTop = top + topAdjust
@@ -124,7 +119,8 @@ export class HovercardController extends Controller {
   hide () {
     this.cardNode = document.getElementById(this.urlValue)
     if (this.cardNode) {
-      this.cardNode.classList.add('is-hidden')
+      this.cardNode.remove()
+      this.cardNode = null
     }
   }
 
