@@ -47,11 +47,11 @@ context('AutocompleteAddressController', () => {
       )
       cy.get('[data-autocomplete-address-target="latitude"]').should(
         'have.value',
-        '32.5296089'
+        '32.5304425'
       )
       cy.get('[data-autocomplete-address-target="longitude"]').should(
         'have.value',
-        '-117.024577'
+        '-117.0223297'
       )
     })
   })
