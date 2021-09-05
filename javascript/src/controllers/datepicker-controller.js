@@ -34,20 +34,9 @@ export class DatepickerController extends Controller {
       time_24hr: this.time_24hr,
       defaultDate: this.data.get('defaultDate'),
       minDate: this.data.get('minDate'),
-      onChange: this.validateMinAndMaxTimes
+      minTime: this.data.get('minTime'),
+      maxTime: this.data.get('maxTime')
     })
-  }
-
-  validateMinAndMaxTimes = selectedDates => {
-    const selectedDate = selectedDates[0]
-    const minTime = this.minTime(selectedDate)
-    const maxTime = this.maxTime(selectedDate)
-
-    if (maxTime && selectedDate > maxTime) {
-      this.flatpickr.setDate(maxTime)
-    } else if (minTime && selectedDate < minTime) {
-      this.flatpickr.setDate(minTime)
-    }
   }
 
   clear () {
@@ -84,29 +73,5 @@ export class DatepickerController extends Controller {
     }
 
     return format
-  }
-
-  minTime (baseDate) {
-    if (!this.enableTime || !this.noCalendar) return
-
-    return this.normalizeTime(baseDate, this.data.get('minTime'))
-  }
-
-  maxTime (baseDate) {
-    if (!this.enableTime || !this.noCalendar) return
-
-    return this.normalizeTime(baseDate, this.data.get('maxTime'))
-  }
-
-  normalizeTime (baseDate, dateTime) {
-    if (!dateTime || dateTime.length === 0) return
-
-    const time = new Date(dateTime)
-    time.setFullYear(
-      baseDate.getFullYear(),
-      baseDate.getMonth(),
-      baseDate.getDate()
-    )
-    return time
   }
 }
