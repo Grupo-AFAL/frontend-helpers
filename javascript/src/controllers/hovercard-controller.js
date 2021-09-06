@@ -75,8 +75,8 @@ export class HovercardController extends Controller {
     const top = rect.top + window.pageYOffset
     const left = rect.left + window.pageXOffset
     const width = rect.width
-
-    return { top, left, width }
+    const height = rect.height
+    return { top, left, width, height }
   }
 
   calculateRightDistance (positionLeft) {
@@ -86,12 +86,12 @@ export class HovercardController extends Controller {
   }
 
   hoverCardDimensions (node) {
-    const { top, left, width } = this.elementDimensions()
+    const { top, left, width, height } = this.elementDimensions()
     const hoverRect = node.getBoundingClientRect()
     // ideal difference to the right screen side
     const idealDifference = 235
     // adjust top of the hovercard
-    const topAdjust = 40
+    const topAdjust = height
     let isRight = false
     let hoverCardTop = top - hoverRect.height - 10
     let isDown = false
