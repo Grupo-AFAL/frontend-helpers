@@ -1,22 +1,36 @@
 import { Controller } from 'stimulus'
 import { stringToDOMNode } from '../utils/domHelpers'
 
+const SPACE_BETWEEN_NODE_AND_ELEMENT = 10
+const SPACE_TO_RIGHT_EDGE = 30
+const MIN_LEFT_POSITION = 8
+
+const CONTAINER_SELECTOR = '.hovercard'
+const SVG_SELECTOR = 'svg.svg-hover-card'
+
 /*
   Hovercard controller:
     It generates a hovercard component to show some content
     obtained via a fetch request.
 */
-
 export class HovercardController extends Controller {
   static values = { url: String }
 
   connect () {
+    this.isActive = false
+
     this.element.addEventListener('mouseenter', this.show.bind(this))
     this.element.addEventListener('mouseleave', this.hide.bind(this))
+    document.addEventListener('scroll', () => this.removeCardNode())
+    window.addEventListener('resize', () => this.removeCardNode())
   }
 
   show () {
-    if (!this.cardNode) {
+    this.isActive = true
+
+    if (this.cardNode) {
+      this.cardNode.classList.remove('is-hidden')
+    } else {
       fetch(this.urlValue)
         .then(r => r.text())
         .then(html => this.insertHoverCard(html))
@@ -24,106 +38,96 @@ export class HovercardController extends Controller {
   }
 
   insertHoverCard (html) {
-    const node = stringToDOMNode(html).querySelector('.hovercard')
-    node.setAttribute('id', this.urlValue)
-    document.body.appendChild(node)
-    const aNodeWidth = this.element.offsetWidth
-    const aNodeLeftDistance = this.element.getBoundingClientRect().left
-    // ideal space to the right screen side in pixeles
-    const idealSpaceToRight = 15
-    // Real space to the right side of the anchor
-    const differenceRight =
-      this.calculateRightDistance(this.element.offsetLeft) - aNodeWidth
-    // initial right adjust
-    let rightAdjustment = 0
-    const hovercardWidth = 210
-    const svgNode = document.querySelector('svg.svg-hover-card')
+    if (!this.isActive) return
+
+    this.cardNode = stringToDOMNode(html).querySelector(CONTAINER_SELECTOR)
+    document.body.appendChild(this.cardNode)
+
+    this.positionHovercard()
+  }
+
+  positionHovercard () {
+    const svgNode = this.cardNode.querySelector(SVG_SELECTOR)
     const {
       hoverCardTop,
       hoverCardLeft,
       isDown,
       isLeft,
       isRight
-    } = this.hoverCardDimensions(node)
-    // adjust svg tag down
+    } = this.hoverCardDimensions()
+
     if (isDown) {
-      svgNode.style.bottom = node.offsetHeight
+      svgNode.style.bottom = this.cardNode.offsetHeight
       svgNode.setAttribute('transform', 'rotate(180)')
     }
-    // adjust svg tag to the left
+
+    const { left, width } = this.element.getBoundingClientRect()
+
     if (isLeft) {
-      svgNode.style.left = String(aNodeLeftDistance + aNodeWidth / 3) + 'px'
+      svgNode.style.left = `${left + width / 2}px`
+    } else if (isRight) {
+      svgNode.style.left = left - hoverCardLeft + width / 2
     }
-    // adjust svg tag to the right
-    if (isRight) {
-      if (differenceRight > idealSpaceToRight) {
-        rightAdjustment = differenceRight - idealSpaceToRight
-      }
-      const newSpaceRight = hovercardWidth - rightAdjustment - aNodeWidth / 2
-      svgNode.style.left = String(newSpaceRight) + 'px'
-    }
-    node.setAttribute(
+
+    this.cardNode.setAttribute(
       'style',
       `top:${hoverCardTop}px; left:${hoverCardLeft}px; position:fixed`
     )
   }
 
-  elementDimensions () {
-    const rect = this.element.getBoundingClientRect()
-    const top = rect.top + window.pageYOffset
-    const left = rect.left + window.pageXOffset
-    const width = rect.width
-    const height = rect.height
-    return { top, left, width, height }
-  }
-
-  calculateRightDistance (positionLeft) {
-    const windowWidth = window.innerWidth
-    const diff = windowWidth - positionLeft
-    return diff
-  }
-
-  hoverCardDimensions (node) {
-    const { top, left, width, height } = this.elementDimensions()
-    const hoverRect = node.getBoundingClientRect()
-    // ideal difference to the right screen side
-    const idealDifference = 235
+  hoverCardDimensions () {
+    const { top, left, width, height } = this.element.getBoundingClientRect()
+    const {
+      height: nodeHeight,
+      width: nodeWidth
+    } = this.cardNode.getBoundingClientRect()
 
     let isRight = false
-    let hoverCardTop = top - hoverRect.height - 10
     let isDown = false
     let isLeft = false
-    let hoverCardLeft = left - hoverRect.width / 2 + width / 2
-    // check is the hovercar is near to the top
+
+    let hoverCardTop = top - nodeHeight - SPACE_BETWEEN_NODE_AND_ELEMENT
+    let hoverCardLeft = left - nodeWidth / 2 + width / 2
+
+    // check is the hovercar is near the top
     if (hoverCardTop < 0) {
-      hoverCardTop = top + height
+      hoverCardTop = top + height + SPACE_BETWEEN_NODE_AND_ELEMENT
       isDown = true
     }
-    // check if hovercar is less than 8 pixeles near of the lef side
-    if (hoverCardLeft < 8) {
-      hoverCardLeft = 8
+
+    // check if hovercar is less than the minimun left position to the left
+    if (hoverCardLeft < MIN_LEFT_POSITION) {
+      hoverCardLeft = MIN_LEFT_POSITION
       isLeft = true
     }
-    // check if hovercar is near of the right side
-    const diff = this.calculateRightDistance(hoverCardLeft)
-    if (diff < idealDifference) {
-      hoverCardLeft += diff - idealDifference
+
+    // check if hovercar is near the right side
+    const minSpaceRequired = nodeWidth + SPACE_TO_RIGHT_EDGE
+    const spaceAvailable = window.innerWidth - hoverCardLeft
+    if (spaceAvailable < minSpaceRequired) {
+      hoverCardLeft += spaceAvailable - minSpaceRequired
       isRight = true
     }
+
     return { hoverCardTop, hoverCardLeft, isDown, isLeft, isRight }
   }
 
   hide () {
-    this.cardNode = document.getElementById(this.urlValue)
+    this.isActive = false
+
     if (this.cardNode) {
-      this.cardNode.remove()
-      this.cardNode = null
+      this.cardNode.classList.add('is-hidden')
     }
   }
 
   disconnect () {
+    this.removeCardNode()
+  }
+
+  removeCardNode () {
     if (this.cardNode) {
       this.cardNode.remove()
+      this.cardNode = null
     }
   }
 }
