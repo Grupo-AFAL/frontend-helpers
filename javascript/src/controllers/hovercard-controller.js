@@ -62,11 +62,25 @@ export class HovercardController extends Controller {
     }
 
     const { left, width } = this.element.getBoundingClientRect()
-
+    const elementPadding =
+      parseFloat(
+        window
+          .getComputedStyle(this.element, null)
+          .getPropertyValue('padding-right')
+          .replace('px', '')
+      ) +
+      parseFloat(
+        window
+          .getComputedStyle(this.element, null)
+          .getPropertyValue('padding-left')
+          .replace('px', '')
+      )
     if (isLeft) {
-      svgNode.style.left = `${left + width / 2}px`
+      svgNode.style.left = `${left + (width - elementPadding) / 2}px`
     } else if (isRight) {
-      svgNode.style.left = left - hoverCardLeft + width / 2
+      svgNode.style.left = `${left -
+        hoverCardLeft +
+        (width - elementPadding) / 2}`
     }
 
     this.cardNode.setAttribute(
