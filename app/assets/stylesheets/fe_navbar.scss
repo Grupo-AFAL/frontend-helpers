@@ -1,5 +1,10 @@
 .navbar {
   box-shadow: $box-shadow;
+
+  &.transparent {
+    background: transparent;
+    box-shadow: none;
+  }
 }
 
 .navbar-link.navbar-link-with-contents {
