@@ -48,5 +48,9 @@ export class NavbarController extends Controller {
 
   toggleMenu (event) {
     event.preventDefault()
+    this.menuTarget.classList.toggle('is-active')
+    if (this.hasBurgerTarget) {
+      this.burgerTarget.classList.toggle('is-active')
+    }
   }
 }
