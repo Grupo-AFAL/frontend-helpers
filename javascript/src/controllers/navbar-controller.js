@@ -1,20 +1,29 @@
 import { Controller } from 'stimulus'
 
-export class NavbarController extends Controller {
-  static values = { allowTransparency: Boolean }
+ export class NavbarController extends Controller {
+  static values = { allowTransparency: Boolean, throttleInterval: Number }
   static targets = ['menu', 'burger']
 
   connect () {
-    if (this.allowTransparencyValue === false) return
+    if (!this.allowTransparencyValue) return
 
-    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor)
+    this.isTransparent = true;
+    this.element.classList.add('is-transparent')
+    document.addEventListener('scroll', () => {
+      this.throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
+    })
   }
 
-  disconnect () {
-    if (!this.requestId) return
+  throttle = (callback, time) => {
+    if (this.throttleWait) return;
+    this.throttleWait = true;
 
-    window.cancelAnimationFrame(this.requestId)
+    setTimeout(() => {
+      callback();
+      this.throttleWait = false;
+    }, time);
   }
+
 
   updateBackgroundColor = () => {
     if (window.scrollY > this.element.offsetHeight) {
@@ -22,15 +31,6 @@ export class NavbarController extends Controller {
     } else {
       this.setIsTransparent()
     }
-
-    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor)
-  }
-
-  removeIsTransparent () {
-    if (!this.isTransparent) return
-
-    this.isTransparent = false
-    this.element.classList.remove('is-transparent')
   }
 
   setIsTransparent () {
@@ -40,12 +40,14 @@ export class NavbarController extends Controller {
     this.element.classList.add('is-transparent')
   }
 
+  removeIsTransparent () {
+    if (!this.isTransparent) return
+
+    this.isTransparent = false;
+    this.element.classList.remove('is-transparent')
+  }
+
   toggleMenu (event) {
     event.preventDefault()
-    this.menuTarget.classList.toggle('is-active')
-
-    if (this.hasBurgerTarget) {
-      this.burgerTarget.classList.toggle('is-active')
-    }
   }
 }
