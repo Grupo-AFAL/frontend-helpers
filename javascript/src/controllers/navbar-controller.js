@@ -7,9 +7,9 @@ export class NavbarController extends Controller {
   connect () {
     if (this.allowTransparencyValue === false) return
 
-    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor);
+    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor)
   }
-  
+
   disconnect () {
     if (!this.requestId) return
 
@@ -17,13 +17,13 @@ export class NavbarController extends Controller {
   }
 
   updateBackgroundColor = () => {
-    if (window.scrollY > this.element.offsetHeight) { 
+    if (window.scrollY > this.element.offsetHeight) {
       this.removeIsTransparent()
     } else {
       this.setIsTransparent()
     }
 
-    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor);
+    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor)
   }
 
   removeIsTransparent () {

@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.15] - 2021-08-29
 
-- Add `toggleable class on scroll functionality` on navbar.
+- Add `transparency funcionality` to navbar.
 ## [0.3.14] - 2021-08-29
 
 - Add `facebook, instagram, pinterest, linkedin, mail, phone, map_marker_alt` icons.
