@@ -60,7 +60,7 @@ description: The navbar component is a responsive and versatile horizontal navig
   </nav>
 
 ### Changes background on scroll
-  <nav class="navbar" data-controller="navbar" data-navbar-allow-transparency-value="true">
+  <nav class="navbar" data-controller="navbar" data-navbar-allow-transparency-value="true" data-navbar-throttle-interval-value="100">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         LOGO
