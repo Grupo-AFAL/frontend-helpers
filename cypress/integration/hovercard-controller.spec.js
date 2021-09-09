@@ -1,7 +1,7 @@
-// import { cy, it } from 'date-fns/locale'
 // These test were done with the viewport 1000x660
 context('HovercardController', () => {
   beforeEach(() => {
+    cy.viewport(1000, 660)
     cy.visit('/docs/hovercard-testing.html')
     // hide title and subtitle
     cy.get('h1.title.is-1').invoke('attr', 'class', 'is-hidden')
