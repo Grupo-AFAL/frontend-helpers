@@ -1,43 +1,44 @@
 import { Controller } from 'stimulus'
 
 export class NavbarController extends Controller {
-  static values = { allowTransparency: Boolean, throttleInterval: Number }
+  static values = { allowTransparency: Boolean }
   static targets = ['menu', 'burger']
 
   connect () {
-    if (!this.allowTransparencyValue) return
+    if (this.allowTransparencyValue === false) return
 
-    this.isTransparent = true;
-    this.element.classList.add('is-transparent')
-    document.addEventListener('scroll', () => {
-      this.throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
-    })
+    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor);
+  }
+  
+  disconnect () {
+    if (!this.requestId) return
+
+    window.cancelAnimationFrame(this.requestId)
   }
 
   updateBackgroundColor = () => {
-    if (window.scrollY > this.element.offsetHeight) {
-      if (!this.isTransparent) return
-
-      this.isTransparent = false;
-      this.element.classList.remove('is-transparent')
+    if (window.scrollY > this.element.offsetHeight) { 
+      this.removeIsTransparent()
     } else {
-      if (this.isTransparent) return
-
-      this.isTransparent = true
-      this.element.classList.add('is-transparent')
+      this.setIsTransparent()
     }
+
+    this.requestId = window.requestAnimationFrame(this.updateBackgroundColor);
   }
 
+  removeIsTransparent () {
+    if (!this.isTransparent) return
 
-throttle = (callback, time) => {
-  if (this.throttleWait) return;
-  this.throttleWait = true;
+    this.isTransparent = false
+    this.element.classList.remove('is-transparent')
+  }
 
-  setTimeout(() => {
-    callback();
-    this.throttleWait = false;
-  }, time);
-}
+  setIsTransparent () {
+    if (this.isTransparent) return
+
+    this.isTransparent = true
+    this.element.classList.add('is-transparent')
+  }
 
   toggleMenu (event) {
     event.preventDefault()
