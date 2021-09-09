@@ -1,13 +1,13 @@
 import { Controller } from 'stimulus'
 
- export class NavbarController extends Controller {
+export class NavbarController extends Controller {
   static values = { allowTransparency: Boolean, throttleInterval: Number }
   static targets = ['menu', 'burger']
 
   connect () {
     if (!this.allowTransparencyValue) return
 
-    this.isTransparent = true;
+    this.isTransparent = true
     this.element.classList.add('is-transparent')
     document.addEventListener('scroll', () => {
       this.throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
@@ -15,15 +15,14 @@ import { Controller } from 'stimulus'
   }
 
   throttle = (callback, time) => {
-    if (this.throttleWait) return;
-    this.throttleWait = true;
+    if (this.throttleWait) return
+    this.throttleWait = true
 
     setTimeout(() => {
-      callback();
-      this.throttleWait = false;
-    }, time);
+      callback()
+      this.throttleWait = false
+    }, time)
   }
-
 
   updateBackgroundColor = () => {
     if (window.scrollY > this.element.offsetHeight) {
@@ -43,7 +42,7 @@ import { Controller } from 'stimulus'
   removeIsTransparent () {
     if (!this.isTransparent) return
 
-    this.isTransparent = false;
+    this.isTransparent = false
     this.element.classList.remove('is-transparent')
   }
 
