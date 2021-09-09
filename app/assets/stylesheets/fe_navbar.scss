@@ -1,5 +1,12 @@
 .navbar {
   box-shadow: $box-shadow;
+  transition: background-color 1s;
+
+  &.is-transparent {
+    background: transparent;
+    box-shadow: none;
+    transition: background-color 1s;
+  }
 }
 
 .navbar-link.navbar-link-with-contents {
