@@ -1,4 +1,3 @@
-// These test were done with the viewport 1000x660
 context('HovercardController', () => {
   beforeEach(() => {
     cy.visit('/docs/hovercard-testing.html')

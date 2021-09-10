@@ -64,7 +64,7 @@ export class HovercardController extends Controller {
     }
 
     const { left, width } = this.element.getBoundingClientRect()
-    const elementPadding = this.calculateWidthWithOutPadding(this.element)
+    const elementPadding = this.calculateInnerWidth(this.element)
 
     if (isLeft) {
       svgNode.style.left = `${left + (width - elementPadding) / 2}px`
@@ -80,7 +80,7 @@ export class HovercardController extends Controller {
     )
   }
 
-  calculateWidthWithOutPadding (element) {
+  calculateInnerWidth (element) {
     return (
       parseFloat(
         window
