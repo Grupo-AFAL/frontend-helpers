@@ -6,9 +6,7 @@ context('HovercardController', () => {
         cy.get('h1.title.is-1').invoke('attr', 'class', 'is-hidden')
         cy.get('p.subtitle').invoke('attr', 'class', 'is-hidden')
         cy.get('a[href="/"]').invoke('attr', 'class', 'is-hidden')
-
-        cy.log('----------------- viewport size ------------')
-        cy.log(window.innerWidth)
+        cy.viewport(1000, 660)
     })
 
     context('anchor is 0 to left of the viewport', () => {
