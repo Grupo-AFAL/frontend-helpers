@@ -22,7 +22,7 @@ export class HovercardController extends Controller {
     this.isActive = false
 
     this.element.addEventListener('mouseenter', this.show.bind(this))
-    // this.element.addEventListener('mouseleave', this.hide.bind(this))
+    this.element.addEventListener('mouseleave', this.hide.bind(this))
     // document.addEventListener('scroll', () => this.removeCardNode())
     // window.addEventListener('resize', () => this.removeCardNode())
   }

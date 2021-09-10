@@ -34,4 +34,30 @@
   hr {
     display: none;
   }
+
+  .container:not(.is-max-desktop):not(.is-max-widescreen) {
+    max-width: 100%;
+  }
+
+  .container:not(.is-max-desktop):not(.is-max-widescreen) {
+    max-width: 100%;
+  }
+
+  .container:not(.is-max-desktop) {
+    max-width: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .content p:not(:last-child),
+  .content dl:not(:last-child),
+  .content ol:not(:last-child),
+  .content ul:not(:last-child),
+  .content blockquote:not(:last-child),
+  .content pre:not(:last-child),
+  .content table:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
