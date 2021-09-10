@@ -138,6 +138,7 @@ export class HovercardController extends Controller {
       // check if hovercar is near the right side
       const minSpaceRequired = nodeWidth + SPACE_TO_RIGHT_EDGE
       const spaceAvailable = window.innerWidth - hoverCardLeft
+
       if (spaceAvailable < minSpaceRequired) {
         hoverCardLeft += spaceAvailable - minSpaceRequired
         isRight = true
