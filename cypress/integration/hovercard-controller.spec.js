@@ -1,8 +1,10 @@
 // These test were done with the viewport 1000x660
 context('HovercardController', () => {
     beforeEach(() => {
+        cy.log('lsfjhhlkjsdhfkjhsdlkjfhoih')
         cy.visit('/docs/hovercard-testing.html')
-            // hide title and subtitle
+
+        // hide title and subtitle
         cy.get('h1.title.is-1').invoke('attr', 'class', 'is-hidden')
         cy.get('p.subtitle').invoke('attr', 'class', 'is-hidden')
         cy.get('a[href="/"]').invoke('attr', 'class', 'is-hidden')
@@ -50,8 +52,9 @@ context('HovercardController', () => {
             cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
 
             cy.get('@hovercard').should($hovercard => {
-                expect($hovercard).to.have.css('left', '435.586px')
-                expect($hovercard).to.have.css('top', '110px')
+                expect(window.innerWidth).to.equal(10)
+                    // expect($hovercard).to.have.css('left', '435.586px')
+                    // expect($hovercard).to.have.css('top', '110px')
             })
             cy.get('div.hovercard:not(.is-hidden) svg').should($svg => {
                 expect($svg).to.have.css('left', '92.5px')
