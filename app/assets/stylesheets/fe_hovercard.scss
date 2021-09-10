@@ -19,3 +19,19 @@
     display: block;
   }
 }
+
+.hovercard-testing {
+  .back-home,
+  .title,
+  .subtitle {
+    display: none;
+  }
+
+  .section {
+    padding: 0;
+  }
+
+  hr {
+    display: none;
+  }
+}

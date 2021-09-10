@@ -1,3 +1,9 @@
+---
+title: Hovercard
+description: Hovercard component
+class_name: hovercard-testing
+---
+
 <a
   data-controller="hovercard"
   data-hovercard-url-value="/docs/hovercard/content.html"

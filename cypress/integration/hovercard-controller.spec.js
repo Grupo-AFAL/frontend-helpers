@@ -2,11 +2,6 @@
 context('HovercardController', () => {
   beforeEach(() => {
     cy.visit('/docs/hovercard-testing.html')
-
-    // hide title and subtitle
-    cy.get('h1.title.is-1').invoke('attr', 'class', 'is-hidden')
-    cy.get('p.subtitle').invoke('attr', 'class', 'is-hidden')
-    cy.get('a[href="/"]').invoke('attr', 'class', 'is-hidden')
   })
 
   context('anchor is 0 to left of the viewport', () => {
