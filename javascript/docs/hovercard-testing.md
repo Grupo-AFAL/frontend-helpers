@@ -22,26 +22,26 @@ class_name: hovercard-testing
   data-controller="hovercard"
   data-hovercard-url-value="/docs/hovercard/content.html"
   class="button has-text-danger is-text" disabled
-  style="position: absolute; left: 50%; top: 0" id="third">Eliminar
+  style="position: absolute; left: 50%; margin-top: 100px" id="third">Eliminar
 </a>
 
 <a
   data-controller="hovercard"
   data-hovercard-url-value="/docs/hovercard/content.html"
   class="button has-text-danger is-text" disabled
-  style="position: absolute; left: 50%; margin-top: 100px" id="fourth">Eliminar
+  style="position: absolute; left: 50%; top: 0" id="fourth">Eliminar
 </a>
 
 <a
   data-controller="hovercard"
   data-hovercard-url-value="/docs/hovercard/content.html"
   class="button has-text-danger is-text" disabled
-  style="position: absolute; right: 0; top: 0" id="fifth">Eliminar
+  style="position: absolute; right: 0; margin-top: 100px" id="fifth">Eliminar
 </a>
 
 <a
   data-controller="hovercard"
   data-hovercard-url-value="/docs/hovercard/content.html"
   class="button has-text-danger is-text" disabled
-  style="position: absolute; right: 0; margin-top: 100px" id="sixth">Eliminar
+  style="position: absolute; right: 0; top: 0" id="sixth">Eliminar
 </a>
