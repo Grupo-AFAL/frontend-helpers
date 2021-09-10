@@ -5,18 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.16] - 2021-09-10
+
+- Updated `link_to_remove_fields` method to optionally receive soft_delete attribute.
+
+## [0.3.15] - 2021-08-29
+
+- Add `transparency funcionality` to navbar.
+
 ## [0.3.14] - 2021-08-29
 
 - Add `facebook, instagram, pinterest, linkedin, mail, phone, map_marker_alt` icons.
+
 ## [0.3.13] - 2021-08-29
 
 - Add `manual closing` to notifications
+
 ## [0.3.12] - 2021-08-29
 
 - Add times icon
+
 ## [0.3.11] - 2021-08-29
 
 - Add notification (alert, success, notification) icons
+
 ## [0.3.10] - 2021-08-29
 
 - Pass options to ransack result method
