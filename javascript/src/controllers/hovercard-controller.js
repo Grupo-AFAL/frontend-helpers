@@ -111,19 +111,19 @@ export class HovercardController extends Controller {
     let hoverCardTop = top - nodeHeight - SPACE_BETWEEN_NODE_AND_ELEMENT
     let hoverCardLeft = left - nodeWidth / 2 + width / 2
 
-    // check is the hovercar is near the top
+    // check is the hovercard is near the top
     if (hoverCardTop < 0) {
       hoverCardTop = top + height + SPACE_BETWEEN_NODE_AND_ELEMENT
       isDown = true
     }
 
-    // check if hovercar is less than the minimun left position to the left
+    // check if hovercard is less than the minimun left position to the left
     if (hoverCardLeft < MIN_LEFT_POSITION) {
       hoverCardLeft = MIN_LEFT_POSITION
       isLeft = true
     }
 
-    // check if hovercar is near the right side
+    // check if hovercard is near the right side
     const minSpaceRequired = nodeWidth + SPACE_TO_RIGHT_EDGE
     const spaceAvailable = window.innerWidth - hoverCardLeft
 

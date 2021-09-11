@@ -4,11 +4,11 @@ context('HovercardController', () => {
   })
 
   context('anchor is 0 to left of the viewport', () => {
-    it('hovercard is at top of the anchor', () => {
-      cy.get('#first').as('anchor')
+    it('hovercard is at the top of the anchor', () => {
+      cy.get('#bottomLeft').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
-      let anchorTop, widthHovercard, leftHovercard, leftSvg
+      let anchorTop, hovercardWidth, hovercardLeft, svgLeft
 
       cy.get('@anchor').then($anchor => {
         anchorTop = $anchor[0].getBoundingClientRect().top
@@ -19,46 +19,46 @@ context('HovercardController', () => {
           $hovercard[0].getBoundingClientRect().top +
             $hovercard[0].getBoundingClientRect().height
         ).to.be.lessThan(anchorTop)
-        widthHovercard = $hovercard[0].getBoundingClientRect().width
-        leftHovercard = $hovercard[0].getBoundingClientRect().left
+        hovercardWidth = $hovercard[0].getBoundingClientRect().width
+        hovercardLeft = $hovercard[0].getBoundingClientRect().left
       })
 
       cy.get('div.hovercard:not(.is-hidden) svg').then($svg => {
-        leftSvg = $svg[0].getBoundingClientRect().left
-        expect(leftSvg - leftHovercard).to.be.lessThan(widthHovercard / 2)
+        svgLeft = $svg[0].getBoundingClientRect().left
+        expect(svgLeft - hovercardLeft).to.be.lessThan(hovercardWidth / 2)
       })
     })
 
-    it('hovercard is at botttom of the anchor', () => {
-      cy.get('#second').as('anchor')
+    it('hovercard is at the botttom of the anchor', () => {
+      cy.get('#topLeft').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
-      let anchorTop, widthHovercard, leftHovercard, leftSvg
+      let anchorBottom, hovercardWidth, hovercardLeft, svgLeft
 
       cy.get('@anchor').then($anchor => {
-        anchorTop =
+        anchorBottom =
           $anchor[0].getBoundingClientRect().top +
           $anchor[0].getBoundingClientRect().height
       })
 
       cy.get('@hovercard').then($hovercard => {
         expect($hovercard[0].getBoundingClientRect().top).to.be.greaterThan(
-          anchorTop
+          anchorBottom
         )
-        widthHovercard = $hovercard[0].getBoundingClientRect().width
-        leftHovercard = $hovercard[0].getBoundingClientRect().left
+        hovercardWidth = $hovercard[0].getBoundingClientRect().width
+        hovercardLeft = $hovercard[0].getBoundingClientRect().left
       })
 
       cy.get('div.hovercard:not(.is-hidden) svg').then($svg => {
-        leftSvg = $svg[0].getBoundingClientRect().left
-        expect(leftSvg - leftHovercard).to.be.lessThan(widthHovercard / 2)
+        svgLeft = $svg[0].getBoundingClientRect().left
+        expect(svgLeft - hovercardLeft).to.be.lessThan(hovercardWidth / 2)
       })
     })
   })
 
   context('anchor is in the middle of the viewport', () => {
     it('hovercard is at top of the anchor', () => {
-      cy.get('#third').as('anchor')
+      cy.get('#bottomCenter').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
       let anchorTop
@@ -75,32 +75,32 @@ context('HovercardController', () => {
       })
     })
 
-    it('hovercard is at botttom of the anchor', () => {
-      cy.get('#fourth').as('anchor')
+    it('hovercard is at the botttom of the anchor', () => {
+      cy.get('#topCenter').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
-      let anchorTop
+      let anchorBottom
 
       cy.get('@anchor').then($anchor => {
-        anchorTop =
+        anchorBottom =
           $anchor[0].getBoundingClientRect().top +
           $anchor[0].getBoundingClientRect().height
       })
 
       cy.get('@hovercard').then($hovercard => {
         expect($hovercard[0].getBoundingClientRect().top).to.be.greaterThan(
-          anchorTop
+          anchorBottom
         )
       })
     })
   })
 
   context('anchor is 0 to right of the viewport', () => {
-    it('hovercard is at top of the anchor', () => {
-      cy.get('#fifth').as('anchor')
+    it('hovercard is at the top of the anchor', () => {
+      cy.get('#bottomRight').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
-      let anchorTop, widthHovercard, leftHovercard, leftSvg
+      let anchorTop, hovercardWidth, hovercardLeft, svgLeft
 
       cy.get('@anchor').then($anchor => {
         anchorTop = $anchor[0].getBoundingClientRect().top
@@ -111,39 +111,39 @@ context('HovercardController', () => {
           $hovercard[0].getBoundingClientRect().top +
             $hovercard[0].getBoundingClientRect().height
         ).to.be.lessThan(anchorTop)
-        widthHovercard = $hovercard[0].getBoundingClientRect().width
-        leftHovercard = $hovercard[0].getBoundingClientRect().left
+        hovercardWidth = $hovercard[0].getBoundingClientRect().width
+        hovercardLeft = $hovercard[0].getBoundingClientRect().left
       })
 
       cy.get('div.hovercard:not(.is-hidden) svg').then($svg => {
-        leftSvg = $svg[0].getBoundingClientRect().left
-        expect(leftSvg - leftHovercard).to.be.greaterThan(widthHovercard / 2)
+        svgLeft = $svg[0].getBoundingClientRect().left
+        expect(svgLeft - hovercardLeft).to.be.greaterThan(hovercardWidth / 2)
       })
     })
 
-    it('hovercard is at bottom of the anchor', () => {
-      cy.get('#sixth').as('anchor')
+    it('hovercard is at the bottom of the anchor', () => {
+      cy.get('#topRight').as('anchor')
       cy.get('@anchor').trigger('mouseenter')
       cy.get('div.hovercard:not(.is-hidden)').as('hovercard')
-      let anchorTop, widthHovercard, leftHovercard, leftSvg
+      let anchorBottom, hovercardWidth, hovercardLeft, svgLeft
 
       cy.get('@anchor').then($anchor => {
-        anchorTop =
+        anchorBottom =
           $anchor[0].getBoundingClientRect().top +
           $anchor[0].getBoundingClientRect().height
       })
 
       cy.get('@hovercard').then($hovercard => {
         expect($hovercard[0].getBoundingClientRect().top).to.be.greaterThan(
-          anchorTop
+          anchorBottom
         )
-        widthHovercard = $hovercard[0].getBoundingClientRect().width
-        leftHovercard = $hovercard[0].getBoundingClientRect().left
+        hovercardWidth = $hovercard[0].getBoundingClientRect().width
+        hovercardLeft = $hovercard[0].getBoundingClientRect().left
       })
 
       cy.get('div.hovercard:not(.is-hidden) svg').then($svg => {
-        leftSvg = $svg[0].getBoundingClientRect().left
-        expect(leftSvg - leftHovercard).to.be.greaterThan(widthHovercard / 2)
+        svgLeft = $svg[0].getBoundingClientRect().left
+        expect(svgLeft - hovercardLeft).to.be.greaterThan(hovercardWidth / 2)
       })
     })
   })
