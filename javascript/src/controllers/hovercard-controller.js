@@ -42,7 +42,6 @@ export class HovercardController extends Controller {
   insertHoverCard (html) {
     if (!this.isActive) return
 
-    html = html.replace(/<\!--.*?-->/g, '')
     this.cardNode = stringToDOMNode(this.buildHtml(html)).querySelector(
       CONTAINER_SELECTOR
     )
