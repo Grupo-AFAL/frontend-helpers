@@ -42,10 +42,26 @@ export class HovercardController extends Controller {
   insertHoverCard (html) {
     if (!this.isActive) return
 
-    this.cardNode = stringToDOMNode(html).querySelector(CONTAINER_SELECTOR)
+    html = html.replace(/<\!--.*?-->/g, '')
+    this.cardNode = stringToDOMNode(this.buildHtml(html)).querySelector(
+      CONTAINER_SELECTOR
+    )
     document.body.appendChild(this.cardNode)
 
     this.positionHovercard()
+  }
+
+  buildHtml (html) {
+    return `<div class="hovercard card">
+              <div class="card-content">
+                <div class="content">
+                  ${html}
+                </div>
+              </div>
+              <svg width="20" height="8" viewBox="0 0 20 8" fill="none" class="svg-hover-card">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 8C13 8 15.9999 0 20 0H0C3.9749 0 7 8 10 8Z" fill="white"></path>
+              </svg>
+            </div`
   }
 
   positionHovercard () {
