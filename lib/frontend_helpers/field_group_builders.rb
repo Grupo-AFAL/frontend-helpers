@@ -2,7 +2,7 @@
 
 module FrontendHelpers
   module FieldGroupBuilders
-    include IconComponents
+    include Components
 
     def text_field_group(method, options = {})
       FieldGroupWrapper.render @template, self, method, options do
@@ -121,6 +121,17 @@ module FrontendHelpers
     def step_number_field_group(method, options = {})
       FieldGroupWrapper.render @template, self, method, options do
         step_number_field(method, options)
+      end
+    end
+
+    def search_field_group(method, options = {})
+      options.with_defaults!(
+        placeholder: 'Search...',
+        addon_right: tag.button(icon_tag('search'), type: 'submit', class: 'button is-info')
+      )
+
+      FieldGroupWrapper.render @template, self, method, options do
+        text_field(method, options)
       end
     end
 
