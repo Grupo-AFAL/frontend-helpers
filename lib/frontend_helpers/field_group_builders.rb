@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ModuleLength
 module FrontendHelpers
+  # rubocop:disable Metrics/ModuleLength
   module FieldGroupBuilders
     include Components
 
@@ -192,5 +192,5 @@ module FrontendHelpers
       end
     end
   end
+  # rubocop:enable Metrics/ModuleLength
 end
-# rubocop:enable Metrics/ModuleLength
