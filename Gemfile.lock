@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frontend_helpers (0.3.17)
+    frontend_helpers (0.3.18)
       rails (~> 6.1)
       ransack
 
@@ -205,4 +205,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   2.1.4
+   2.2.24
