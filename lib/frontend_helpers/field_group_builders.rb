@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module FrontendHelpers
   module FieldGroupBuilders
     include Components
@@ -127,7 +128,11 @@ module FrontendHelpers
     def search_field_group(method, options = {})
       options.with_defaults!(
         placeholder: 'Search...',
-        addon_right: tag.button(icon_tag('search'), type: 'submit', class: 'button is-info')
+        addon_right: tag.button(
+          icon_tag('search'),
+          type: 'submit',
+          class: options.delete(:addon_class) || 'button is-info'
+        )
       )
 
       FieldGroupWrapper.render @template, self, method, options do
@@ -188,3 +193,4 @@ module FrontendHelpers
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength
