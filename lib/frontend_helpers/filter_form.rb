@@ -5,37 +5,44 @@ module FrontendHelpers
     include ActiveModel::Model
     include ActiveModel::Attributes
 
-    attr_accessor :tenant
+    attr_reader :scope
 
-    class_attribute :_relationship
-    class_attribute :_included_relationships
-    class_attribute :_default_order
-    class_attribute :_default_scope
+    # Ransack attribute for receiving the sort parameters
+    attribute :s
 
-    def self.relationship(relationship)
-      self._relationship = relationship
-    end
-
-    def self.included_relationships(*relationships)
-      self._included_relationships = relationships
-    end
-
-    def self.default_order(order)
-      self._default_order = order
-    end
-
-    def self.default_scope(scope)
-      self._default_scope = scope
-    end
-
-    def initialize(tenant, params = {})
-      @tenant = tenant
-      attributes = params.fetch(:q, {}).permit(self.class._default_attributes.keys)
+    def initialize(scope, params = {})
+      @scope = scope
+      attributes = params.fetch(:q, {}).permit(permitted_attributes)
       super(attributes)
+    end
+
+    def permitted_attributes
+      scalar_attributes + array_attributes.map { |a| { a => [] } }
+    end
+
+    # To define array attributes the user needs to specify an array as
+    # it's default value.
+    #
+    # e.g.
+    # attribute :vendors_id_in, default: []
+    #
+    def array_attributes
+      @array_attributes ||= self.class._default_attributes.keys.filter do |key|
+        default_value = self.class._default_attributes[key].value_before_type_cast
+        default_value.is_a?(Array)
+      end
+    end
+
+    def scalar_attributes
+      self.class._default_attributes.keys - array_attributes
     end
 
     def model_name
       @model_name ||= ActiveModel::Name.new(self, nil, 'q')
+    end
+
+    def active_filters?
+      query_params.values.filter(&:present?).any?
     end
 
     def query_params
@@ -45,18 +52,11 @@ module FrontendHelpers
     end
 
     def result(options = {})
-      @result ||= begin
-        records = tenant.send(self.class._relationship)
+      @result ||= ransack_search.result(**options)
+    end
 
-        if self.class._included_relationships.present?
-          records = records.includes(self.class._included_relationships)
-        end
-
-        records = records.order(self.class._default_order) if self.class._default_order
-        records = records.send(self.class._default_scope) if self.class._default_scope
-
-        records.ransack(query_params).result(**options)
-      end
+    def ransack_search
+      @ransack_search ||= scope.ransack(query_params)
     end
   end
 end

@@ -2,17 +2,16 @@
 
 class MovieFilterForm < FrontendHelpers::FilterForm
   attribute :name_i_cont, :string
+  attribute :genre_in, default: []
 
-  default_order 'UPPER(name) ASC'
-  default_scope :active
-
-  relationship :movies
-  included_relationships :characters
+  def scope
+    @scope.active.order('UPPER(name) ASC')
+  end
 end
 
 RSpec.describe FrontendHelpers::FilterForm do
   let(:tenant) { Tenant.create(name: 'Test') }
-  let(:form) { MovieFilterForm.new(tenant, params({ name_i_cont: 'Iron' })) }
+  let(:form) { MovieFilterForm.new(tenant.movies, params({ name_i_cont: 'Iron' })) }
 
   def params(filter_attributes)
     ActionController::Parameters.new(q: filter_attributes)
@@ -32,9 +31,36 @@ RSpec.describe FrontendHelpers::FilterForm do
     end
   end
 
+  describe '#permitted_attributes' do
+    it 'returns an array of permitted attributes' do
+      expect(form.permitted_attributes).to eql(
+        ['s', 'name_i_cont', { 'genre_in' => [] }]
+      )
+    end
+  end
+
+  describe '#active_filters?' do
+    it 'returns true with movie name filter' do
+      form = MovieFilterForm.new(tenant.movies, params({ name_i_cont: 'Iron' }))
+      expect(form.active_filters?).to be true
+    end
+
+    it 'returns true with movie genre filter' do
+      form = MovieFilterForm.new(tenant.movies, params({ genre_in: ['Action'] }))
+      expect(form.active_filters?).to be true
+    end
+
+    it 'returns false without any filters' do
+      form = MovieFilterForm.new(tenant.movies, params({}))
+      expect(form.active_filters?).to be false
+    end
+  end
+
   describe '#query_params' do
     it 'returns a hash of attributes and values' do
-      expect(form.query_params).to eql({ 'name_i_cont' => 'Iron' })
+      expect(form.query_params).to eql(
+        { 'genre_in' => [], 'name_i_cont' => 'Iron', 's' => nil }
+      )
     end
   end
 
@@ -46,7 +72,7 @@ RSpec.describe FrontendHelpers::FilterForm do
       expect(records.map(&:name)).to include('Iron man 1', 'Iron man 2')
     end
 
-    it 'orders results based on the default order' do
+    it 'orders results based on the scope order' do
       expect(records.first).to eql(@iron_man_1)
       expect(records.last).to eql(@iron_man_2)
     end
