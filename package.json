@@ -29,7 +29,8 @@
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
     "phone": "^2.4.22",
-    "stimulus-use": "^0.50.0-2"
+    "stimulus": "^2.0.0",
+    "stimulus-use": "^0.41.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -69,7 +70,6 @@
   },
   "dependencies": {
     "@rails/request.js": "^0.0.5",
-    "hotkeys-js": "^3.8.7",
-    "stimulus": "^3.0.0"
+    "hotkeys-js": "^3.8.7"
   }
 }
