@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "@rails/request.js": "^0.0.5",
-    "hotkeys-js": "^3.8.7"
+    "hotkeys-js": "^3.8.7",
+    "stimulus": "^3.0.0"
   }
 }
