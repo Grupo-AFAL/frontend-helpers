@@ -1,6 +1,6 @@
 import './index.scss'
 
-import { Application } from 'stimulus'
+import { Application } from '@hotwired/stimulus'
 
 import { AutoPlayAudioController } from '../src/controllers/auto-play-audio-controller'
 import { AutocompleteAddressController } from '../src/controllers/autocomplete-address-controller'
