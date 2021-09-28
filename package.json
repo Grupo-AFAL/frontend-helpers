@@ -17,6 +17,8 @@
     "cy:open": "cypress open"
   },
   "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo": "^7.0.0-beta.4",
     "bulma": "^0.9.3",
     "chart.js": "^3.5.0",
@@ -67,9 +69,7 @@
     ]
   },
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.0",
     "@rails/request.js": "^0.0.5",
-    "hotkeys-js": "^3.8.7",
-    "stimulus": "^2.0.0"
+    "hotkeys-js": "^3.8.7"
   }
 }
