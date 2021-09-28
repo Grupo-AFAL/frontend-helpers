@@ -4,6 +4,8 @@ export class NavbarController extends Controller {
   static values = { allowTransparency: Boolean, throttleInterval: Number }
   static targets = ['menu', 'burger']
 
+  touchScreenThreshold = 1023; // bulma touch screen threshold
+
   connect () {
     if (!this.allowTransparencyValue) return
 
@@ -25,7 +27,8 @@ export class NavbarController extends Controller {
   }
 
   updateBackgroundColor = () => {
-    if (window.scrollY > this.element.offsetHeight) {
+    const targetHeight = this.burgerTarget?.offsetHeight || this.element.offsetHeight
+    if (window.scrollY > targetHeight) {
       this.removeIsTransparent()
     } else {
       this.setIsTransparent()
@@ -33,7 +36,8 @@ export class NavbarController extends Controller {
   }
 
   setIsTransparent () {
-    if (this.isTransparent) return
+    const isMenuActive = this.menuTarget.classList.contains('is-active')
+    if (this.isTransparent || (isMenuActive && this.isOnTouchDevice())) return
 
     this.isTransparent = true
     this.element.classList.add('is-transparent')
@@ -51,7 +55,16 @@ export class NavbarController extends Controller {
     this.menuTarget.classList.toggle('is-active')
 
     if (this.hasBurgerTarget) {
+      if (this.isOnTouchDevice() && window.scrollY < this.burgerTarget.offsetHeight) {
+        this.isTransparent = !this.isTransparent
+        this.element.classList.toggle('is-transparent')
+      }
+
       this.burgerTarget.classList.toggle('is-active')
     }
+  }
+
+  isOnTouchDevice () {
+    return window.innerWidth <= this.touchScreenThreshold
   }
 }
