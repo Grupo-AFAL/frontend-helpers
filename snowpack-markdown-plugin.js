@@ -62,27 +62,24 @@ module.exports = function (snowpackConfig, pluginOptions) {
         <script>window.GOOGLE_MAPS_API_KEY = '${apiKey}'</script>
       </head>
 
-      <body>
+      <body class="${frontmatter.class_name}">
         <section class="section">
           <div class="container">
-            <a href="/">Back to home</a>
-
+            <a href="/" class="back-home">Back to home</a>
             <hr />
-      
             <h1 class="title is-1">
               ${frontmatter.title}
             </h1>
             <p class="subtitle">
               ${frontmatter.description}
             </p>
-
             <div class="content">
               ${html}
             </div>
           </div>
         </section>
       </body>
-
+      
       </html>
       `
     }

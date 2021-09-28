@@ -96,8 +96,10 @@ module FrontendHelpers
         html_options['href'] = '#'
         html_options = append_data_action(html_options, 'dynamic-fields#removeFields')
 
+        remove_type = html_options[:soft_delete] ? :_soft_delete : :_destroy
+
         tag.a(name, **html_options) +
-          hidden_field(:_destroy, class: 'destroy-flag')
+          hidden_field(remove_type, class: 'destroy-flag')
       end
 
       private

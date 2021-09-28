@@ -8,21 +8,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.21] - 2021-09-28
 - Improve navbar transparency for tablets and mobile devices.
 
+## [0.3.20] - 2021-09-20
+
+- Improve filter form to support array attributes and remove tenant dependency
+
+## [0.3.19] - 2021-09-19
+
+- Add filter icon
+
+## [0.3.18] - 2021-09-18
+
+- Add search_field_group form tag builder
+
+## [0.3.17] - 2021-09-14
+
+- Updated hovercard controller to improve hovercard positioning
+
+## [0.3.16] - 2021-09-10
+
+- Updated `link_to_remove_fields` method to optionally receive soft_delete attribute.
+
 ## [0.3.15] - 2021-08-29
 
 - Add `transparency funcionality` to navbar.
+
 ## [0.3.14] - 2021-08-29
 
 - Add `facebook, instagram, pinterest, linkedin, mail, phone, map_marker_alt` icons.
+
 ## [0.3.13] - 2021-08-29
 
 - Add `manual closing` to notifications
+
 ## [0.3.12] - 2021-08-29
 
 - Add times icon
+
 ## [0.3.11] - 2021-08-29
 
 - Add notification (alert, success, notification) icons
+
 ## [0.3.10] - 2021-08-29
 
 - Pass options to ransack result method
