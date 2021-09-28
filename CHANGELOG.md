@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.21] - 2021-09-28
 
  - Improve navbar transparency for tablets and mobile devices.
+
 ## [0.3.20] - 2021-09-20
 
 - Improve filter form to support array attributes and remove tenant dependency

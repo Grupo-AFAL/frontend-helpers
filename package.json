@@ -18,6 +18,7 @@
   },
   "peerDependencies": {
     "@hotwired/turbo": "^7.0.0-beta.4",
+    "@hotwired/stimulus": "^3.0.0",
     "bulma": "^0.9.3",
     "chart.js": "^3.5.0",
     "chartjs-adapter-date-fns": "^2.0.0",
@@ -27,7 +28,6 @@
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
     "phone": "^2.4.22",
-    "stimulus": "^2.0.0",
     "stimulus-use": "^0.25.4"
   },
   "devDependencies": {
