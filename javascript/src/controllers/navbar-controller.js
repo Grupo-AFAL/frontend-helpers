@@ -36,7 +36,8 @@ export class NavbarController extends Controller {
   }
 
   setIsTransparent () {
-    if (this.isTransparent || this.menuTarget.classList.contains('is-active')) return
+    const isMenuActive = this.menuTarget.classList.contains('is-active')
+    if (this.isTransparent || (isMenuActive && this.isOnTouchDevice())) return
 
     this.isTransparent = true
     this.element.classList.add('is-transparent')
@@ -54,12 +55,16 @@ export class NavbarController extends Controller {
     this.menuTarget.classList.toggle('is-active')
 
     if (this.hasBurgerTarget) {
-      if (window.innerWidth <= this.touchScreenThreshold &&
-          window.scrollY < this.burgerTarget.offsetHeight) {
+      if (this.isOnTouchDevice() && window.scrollY < this.burgerTarget.offsetHeight) {
+        this.isTransparent = !this.isTransparent
         this.element.classList.toggle('is-transparent')
       }
 
       this.burgerTarget.classList.toggle('is-active')
     }
+  }
+
+  isOnTouchDevice () {
+    return window.innerWidth <= this.touchScreenThreshold
   }
 }
