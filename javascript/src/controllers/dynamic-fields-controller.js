@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { getTimestamp } from '../utils/time'
 import {
   replaceInFragment,

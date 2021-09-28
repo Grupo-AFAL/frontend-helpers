@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 export class NavbarController extends Controller {
   static values = { allowTransparency: Boolean, throttleInterval: Number }

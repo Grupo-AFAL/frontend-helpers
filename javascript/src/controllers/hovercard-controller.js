@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { stringToDOMNode } from '../utils/domHelpers'
 
 const SPACE_BETWEEN_NODE_AND_ELEMENT = 10

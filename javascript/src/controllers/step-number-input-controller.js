@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 export class StepNumberInputController extends Controller {
   static targets = ['input', 'add', 'subtract']
