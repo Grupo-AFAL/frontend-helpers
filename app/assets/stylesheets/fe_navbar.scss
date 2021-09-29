@@ -1,11 +1,33 @@
 .navbar {
+  $background-transition-time: 1s;
+
   box-shadow: $box-shadow;
-  transition: background-color 1s;
+  transition: background-color $background-transition-time;
 
   &.is-transparent {
     background: transparent;
     box-shadow: none;
-    transition: background-color 1s;
+    transition: background-color $background-transition-time;
+  }
+
+  @include touch {
+    &.is-active {
+      background: $yellow;
+      transition: background-color $background-transition-time;
+      box-shadow: none;
+  
+      a,
+      .dropdown-item,
+      .dropdown-link {
+        color: $black;
+      }
+  
+      .navbar-menu {
+        background: $yellow;
+        transition: background-color $background-transition-time;
+      }
+  
+    }
   }
 }
 
