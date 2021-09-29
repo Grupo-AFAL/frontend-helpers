@@ -41,8 +41,20 @@ module FrontendHelpers
       @model_name ||= ActiveModel::Name.new(self, nil, 'q')
     end
 
+    def id
+      scope.cache_key
+    end
+
+    def active_attributes_count
+      (active_filters.keys & attribute_names).size
+    end
+
     def active_filters?
-      query_params.values.filter(&:present?).any?
+      active_filters.any?
+    end
+
+    def active_filters
+      @active_filters || query_params.except('s').filter { |_k, v| v.present? }
     end
 
     def query_params
