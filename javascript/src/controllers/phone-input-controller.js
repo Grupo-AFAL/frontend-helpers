@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 import phone from 'phone'
 
 export class PhoneInputController extends Controller {

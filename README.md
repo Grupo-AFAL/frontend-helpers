@@ -42,7 +42,7 @@ yarn add https://github.com/Grupo-AFAL/frontend-helpers.git
 All controllers have dependency on StimulusJS which is a peerDependency of this package.
 
 ```js
-import { Application } from '@hotwired/stimulus'
+import { Application } from 'stimulus'
 import { DropdownController } from 'frontend-helpers'
 
 const application = Application.start()

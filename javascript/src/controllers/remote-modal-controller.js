@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 import camelCase from 'lodash.camelcase'
 import { autoFocusInput } from '../utils/form'
 

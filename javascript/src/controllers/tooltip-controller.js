@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 
 export class TooltipController extends Controller {
   static targets = ['subject']

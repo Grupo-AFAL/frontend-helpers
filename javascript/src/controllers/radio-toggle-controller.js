@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 
 /**
  * Shows different elements based on the value of a radio button

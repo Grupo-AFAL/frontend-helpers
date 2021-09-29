@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 
 const notAvailableMessage = 'No hay opciones disponibles'
 

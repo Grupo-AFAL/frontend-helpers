@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from 'stimulus'
 
 /**
  * Toggles ON and OFF different elements based on the state of a checkbox
