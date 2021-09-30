@@ -39,6 +39,19 @@ RSpec.describe FrontendHelpers::FilterForm do
     end
   end
 
+  describe '#array_attributes' do
+    it 'returns an array of array attributes' do
+      expect(form.array_attributes).to eql(['genre_in'])
+    end
+  end
+
+  describe '#active_filters_count' do
+    it 'returns the number of active filters' do
+      form = MovieFilterForm.new(tenant.movies, params({ genre_in: ['Action'] }))
+      expect(form.active_filters_count).to eql(1)
+    end
+  end
+
   describe '#active_filters?' do
     it 'returns true with movie name filter' do
       form = MovieFilterForm.new(tenant.movies, params({ name_i_cont: 'Iron' }))
