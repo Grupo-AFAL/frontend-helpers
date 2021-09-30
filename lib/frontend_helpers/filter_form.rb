@@ -45,7 +45,7 @@ module FrontendHelpers
       scope.cache_key
     end
 
-    def active_attributes_count
+    def active_filters_count
       (active_filters.keys & attribute_names).size
     end
 
