@@ -25,7 +25,8 @@ export class NavbarController extends Controller {
   }
 
   updateBackgroundColor = () => {
-    if (window.scrollY > this.element.offsetHeight) {
+    const targetHeight = this.burgerTarget?.offsetHeight || this.element.offsetHeight
+    if (window.scrollY > targetHeight) {
       this.removeIsTransparent()
     } else {
       this.setIsTransparent()
@@ -48,6 +49,7 @@ export class NavbarController extends Controller {
 
   toggleMenu (event) {
     event.preventDefault()
+    this.element.classList.toggle('is-active')
     this.menuTarget.classList.toggle('is-active')
 
     if (this.hasBurgerTarget) {
