@@ -162,7 +162,11 @@ export class RemoteModalController extends Controller {
 
     if (enableTurbo) {
       options.headers = {
-        Accept: 'text/html; turbo-stream, text/html, application/xhtml+xml'
+        Accept: 'text/vnd.turbo-stream.html, text/html, application/xhtml+xml'
+      }
+    } else {
+      options.headers = {
+        Accept: 'text/html, application/xhtml+xml'
       }
     }
 
