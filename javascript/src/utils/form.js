@@ -1,67 +1,60 @@
-export const serialize = form => {
-  const elements = Array.from(form.elements)
+import { FetchRequest } from '@rails/request.js'
 
-  const data = elements
-    .flatMap(element => {
-      if (element.type === 'checkbox' && !element.checked) return null
-      if (element.name.length === 0) return null
+export const formQueryParams = formElement => {
+  const formData = new FormData(formElement)
+  const formEntries = [...formData].reduce((entries, [name, value]) => {
+    return entries.concat(typeof value === 'string' ? [[name, value]] : [])
+  }, [])
 
-      return getFormElementData(element)
-    })
-    .filter(Boolean)
+  const params = new URLSearchParams()
 
-  return data
-    .map(e => `${encodeURI(e.name)}=${encodeURIComponent(e.value)}`)
-    .join('&')
-}
-
-export const getFormElementData = element => {
-  if (element.type === 'select-multiple') {
-    return Array.from(element.selectedOptions).map(option => {
-      return { name: element.name, value: option.value }
-    })
+  for (const [name, value] of formEntries) {
+    if (value.length > 0) {
+      params.append(name, value)
+    }
   }
 
-  if (element.type === 'checkbox') {
-    const value = element.checked ? element.value : false
-    return [{ name: element.name, value }]
-  }
-
-  if (element.type === 'radio') {
-    if (!element.checked) return []
-    return [{ name: element.name, value: element.value }]
-  }
-
-  return [{ name: element.name, value: element.value }]
+  return params
 }
 
 /**
- * Submits a Form with JavaScript and returns the response text
- * and status.
+ * Submits a Form with JavaScript using request.js
+ * Can optionally set the HTTP Method and response type.
  *
  * @param {HTMLFormElement} formElement - Form element to be submitted
  * @returns {Promise} Promise resolves to an Object with { responseText, ok }
  */
-export const submitForm = async formElement => {
+export const submitForm = async (formElement, { method, responseKind }) => {
   const formURL = formElement.getAttribute('action')
+
+  let url
   const options = {
-    method: 'POST',
-    mode: 'same-origin',
-    redirect: 'follow',
-    credentials: 'include',
-    body: new FormData(formElement)
+    method: method || extractFormMethod(),
+    responseKind: responseKind || 'turbo-stream'
   }
 
-  return new Promise((resolve, reject) => {
-    let ok
+  if (options.method === 'get') {
+    const query = formQueryParams(formElement).toString()
+    url = formURL + '?' + query
+  } else {
+    url = formURL
+    options.body = new FormData(formElement)
+  }
 
-    fetch(formURL, options)
-      .then(response => {
-        ok = response.ok
-        return response.text()
-      })
-      .then(responseText => resolve({ responseText, ok }))
-  })
+  const request = new FetchRequest(method, url, options)
+  return request.perform()
+}
+
+const extractFormMethod = formElement => {
+  let method = formElement.getAttribute('method')
+  if (method === 'get') return method
+
+  const methodNode = formElement.querySelector('[name="_method"]')
+  if (methodNode) {
+    method = methodNode.getAttribute('value')
+  }
+
+  return method
 }
 
 /**
