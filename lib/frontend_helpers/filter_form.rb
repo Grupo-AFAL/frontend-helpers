@@ -34,15 +34,19 @@ module FrontendHelpers
     end
 
     def scalar_attributes
-      self.class._default_attributes.keys - array_attributes
+      @scalar_attributes ||= self.class._default_attributes.keys - array_attributes
     end
 
     def model_name
       @model_name ||= ActiveModel::Name.new(self, nil, 'q')
     end
 
+    def inspect
+      "<#{self.class.name} attributes=[#{attribute_names.join(',')}]>"
+    end
+
     def id
-      scope.cache_key
+      @id ||= scope.cache_key
     end
 
     def active_filters_count
@@ -58,7 +62,7 @@ module FrontendHelpers
     end
 
     def query_params
-      attribute_names.index_with do |attr_name|
+      @query_params ||= attribute_names.index_with do |attr_name|
         send(attr_name.to_sym)
       end
     end
