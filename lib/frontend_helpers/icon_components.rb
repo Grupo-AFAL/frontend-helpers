@@ -565,12 +565,6 @@ module IconComponents
     </svg>
   )
 
-  MINUS = %(
-    <svg viewBox="0 0 14 2" class="svg-inline" fill="none">
-      <path d="M0.599609 0H13.3996V1.60001H0.599609V0Z" fill="currentColor"/>
-    </svg>
-  )
-
   PHONE = %(
     <svg viewBox="0 0 12 12" class="svg-inline" fill="currentColor">
       <path d="M2.41333 5.19333C3.37333 7.08 4.92 8.62 6.80667 9.58667L8.27333 8.12C8.45333 7.94 8.72 7.88 8.95333 7.96C9.7 8.20667 10.5067 8.34 11.3333 8.34C11.7 8.34 12 8.64 12 9.00667V11.3333C12 11.7 11.7 12 11.3333 12C5.07333 12 0 6.92667 0 0.666667C0 0.3 0.3 0 0.666667 0H3C3.36667 0 3.66667 0.3 3.66667 0.666667C3.66667 1.5 3.8 2.3 4.04667 3.04667C4.12 3.28 4.06667 3.54 3.88 3.72667L2.41333 5.19333Z" fill="white"/>
@@ -848,6 +842,12 @@ module IconComponents
     </svg>
   )
 
+  EXCLAMATION_CIRCLE = %(
+    <svg viewBox="0 0 512 512" class="svg-inline--fa fa-exclamation-circle fa-w-16 fa-2x">
+      <path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm42-104c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42zm-81.37-211.401l6.8 136c.319 6.387 5.591 11.401 11.985 11.401h41.17c6.394 0 11.666-5.014 11.985-11.401l6.8-136c.343-6.854-5.122-12.599-11.985-12.599h-54.77c-6.863 0-12.328 5.745-11.985 12.599z" class=""></path>
+    </svg>
+  )
+
   MAP = {
     'alert' => ALERT,
     'arrow-left' => ARROW_LEFT,
@@ -892,7 +892,6 @@ module IconComponents
     'map-marked-alt' => MAP_MARKED_ALT,
     'mail' => MAIL,
     'mexico-flag' => MEXICO_FLAG,
-    'minus' => MINUS,
     'money-bill-wave' => MONEY_BILL_WAVE,
     'mute' => MUTE,
     'nested-arrow' => NESTED_ARROW,
