@@ -1,6 +1,7 @@
 import { FetchRequest } from '@rails/request.js'
 
-export const formQueryParams = formElement => {
+// Build a URLSearchParam object from the Form inputs
+export const queryParams = formElement => {
   const formData = new FormData(formElement)
   const formEntries = [...formData].reduce((entries, [name, value]) => {
     return entries.concat(typeof value === 'string' ? [[name, value]] : [])
@@ -25,23 +26,18 @@ export const formQueryParams = formElement => {
  * @returns {Promise} Promise resolves to an Object with { responseText, ok }
  */
 export const submitForm = async (formElement, { method, responseKind }) => {
-  const formURL = formElement.getAttribute('action')
+  let url = formElement.getAttribute('action')
 
-  let url
-  const options = {
-    method: method || extractFormMethod(),
-    responseKind: responseKind || 'turbo-stream'
-  }
+  const requestMethod = method || extractFormMethod(formElement)
+  const options = { responseKind: responseKind || 'turbo-stream' }
 
-  if (options.method === 'get') {
-    const query = formQueryParams(formElement).toString()
-    url = formURL + '?' + query
+  if (requestMethod === 'get') {
+    url += '?' + queryParams(formElement).toString()
   } else {
-    url = formURL
     options.body = new FormData(formElement)
   }
 
-  const request = new FetchRequest(method, url, options)
+  const request = new FetchRequest(requestMethod, url, options)
   return request.perform()
 }
 
