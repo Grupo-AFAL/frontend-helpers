@@ -29,7 +29,7 @@ export const submitForm = async (formElement, { method, responseKind }) => {
   let url = formElement.getAttribute('action')
 
   const requestMethod = method || extractFormMethod(formElement)
-  const options = { responseKind: responseKind || 'turbo-stream' }
+  const options = { responseKind: responseKind || 'html' }
 
   if (requestMethod === 'get') {
     url += '?' + queryParams(formElement).toString()

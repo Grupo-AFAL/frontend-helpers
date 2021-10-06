@@ -30,6 +30,6 @@ export class SubmitOnChangeController extends Controller {
       options.responseKind = this.responseKindValue
     }
 
-    submitForm(this.element, options)
+    return submitForm(this.element, options)
   }
 }
