@@ -27,17 +27,16 @@ export const queryParams = formElement => {
  */
 export const submitForm = async (formElement, { method, responseKind }) => {
   let url = formElement.getAttribute('action')
-
   const requestMethod = method || extractFormMethod(formElement)
-  const options = { responseKind: responseKind || 'html' }
 
   if (requestMethod === 'get') {
-    url += '?' + queryParams(formElement).toString()
-  } else {
-    options.body = new FormData(formElement)
+    return window.Turbo.visit(url + '?' + queryParams(formElement).toString())
   }
 
-  const request = new FetchRequest(requestMethod, url, options)
+  const request = new FetchRequest(requestMethod, url, {
+    responseKind: responseKind || 'html',
+    body: new FormData(formElement)
+  })
   return request.perform()
 }
 

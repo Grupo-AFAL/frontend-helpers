@@ -20,7 +20,7 @@ export class SubmitOnChangeController extends Controller {
     responseKind: String
   }
 
-  submit () {
+  async submit () {
     const options = {}
     if (this.hasMethodValue) {
       options.method = this.hasMethodValue
