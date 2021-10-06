@@ -26,7 +26,7 @@ export class SubmitOnChangeController extends Controller {
       options.method = this.hasMethodValue
     }
 
-    if (this.hasResponseKind) {
+    if (this.hasResponseKindValue) {
       options.responseKind = this.responseKindValue
     }
 
