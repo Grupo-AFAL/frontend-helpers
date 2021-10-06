@@ -22,6 +22,21 @@ export const queryParams = formElement => {
  * Submits a Form with JavaScript using request.js
  * Can optionally set the HTTP Method and response type.
  *
+ * 3 Different scenarios:
+ *
+ * 1. Submit a form with GET method and html responseKind.
+ *    In this scenario the FromData is converted into a query string and
+ *    submitted using Turbo.visit (which updates the URL)
+ *
+ * 2. Submit a form with GET and turbo-stream responseKind.
+ *    In this scenario we also use the FormData to generate a query string
+ *    but use request.js to send the request with the turbo-stream responseKind
+ *    and also need to manually update the URL.
+ *
+ * 3. Submit a form with POST/PATCH with either html or turbo-stream
+ *    responseKind. In this case we just send the formData as part of the body
+ *    using request.js. No need to update the URL or serialize the formData
+ *
  * @param {HTMLFormElement} formElement - Form element to be submitted
  * @returns {Promise} Promise resolves to an Object with { responseText, ok }
  */

@@ -13,6 +13,8 @@ import { submitForm } from '../utils/form'
  *    <option value="2">Two</option>
  *  </select>
  * </form>
+ *
+ * Optionally you can specify the method and responseKind as values to the controller.
  */
 export class SubmitOnChangeController extends Controller {
   static values = {
