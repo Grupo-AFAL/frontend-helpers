@@ -52,7 +52,7 @@ export const submitForm = async (
 }
 
 const generateURL = (formElement, method) => {
-  let url = formElement.getAttribute('action')
+  const url = formElement.getAttribute('action')
 
   if (method !== 'get') return url
 
