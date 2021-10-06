@@ -25,19 +25,32 @@ export const queryParams = formElement => {
  * @param {HTMLFormElement} formElement - Form element to be submitted
  * @returns {Promise} Promise resolves to an Object with { responseText, ok }
  */
-export const submitForm = async (formElement, { method, responseKind }) => {
-  let url = formElement.getAttribute('action')
+export const submitForm = async (
+  formElement,
+  { method, responseKind = 'html' } = {}
+) => {
   const requestMethod = method || extractFormMethod(formElement)
+  const url = generateURL(formElement, requestMethod)
 
-  if (requestMethod === 'get') {
-    return window.Turbo.visit(url + '?' + queryParams(formElement).toString())
+  if (requestMethod === 'get' && responseKind === 'html') {
+    return window.Turbo.visit(url)
   }
 
-  const request = new FetchRequest(requestMethod, url, {
-    responseKind: responseKind || 'html',
-    body: new FormData(formElement)
-  })
+  const options = { responseKind }
+  if (requestMethod !== 'get') {
+    options.body = new FormData(formElement)
+  }
+
+  const request = new FetchRequest(requestMethod, url, options)
   return request.perform()
+}
+
+const generateURL = (formElement, method) => {
+  let url = formElement.getAttribute('action')
+
+  if (method !== 'get') return url
+
+  return url + '?' + queryParams(formElement).toString()
 }
 
 const extractFormMethod = formElement => {
