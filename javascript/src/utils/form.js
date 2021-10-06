@@ -42,7 +42,13 @@ export const submitForm = async (
   }
 
   const request = new FetchRequest(requestMethod, url, options)
-  return request.perform()
+  const response = request.perform()
+
+  if (requestMethod === 'get') {
+    window.history.pushState({}, '', url)
+  }
+
+  return response
 }
 
 const generateURL = (formElement, method) => {
