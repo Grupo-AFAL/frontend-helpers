@@ -5,13 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.25] - 2021-10-07
+
+- Add icons for daycare application
+
+## [0.3.24] - 2021-10-06
+
+- Allow to specify method and responseKind on SubmitOnChangeController
+
 ## [0.3.23] - 2021-10-01
 
- - Repalace '-', '+' for icons in step number field.
+- Repalace '-', '+' for icons in step number field.
 
 ## [0.3.22] - 2021-09-30
 
- - Improve navbar transparency for tablets and mobile devices.
+- Improve navbar transparency for tablets and mobile devices.
 
 ## [0.3.21] - 2021-09-29
 

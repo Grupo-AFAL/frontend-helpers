@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import { navigator } from '@hotwired/turbo'
+import { submitForm } from '../utils/form'
 
 /**
  * SubmitOnChange Controller
@@ -13,9 +13,25 @@ import { navigator } from '@hotwired/turbo'
  *    <option value="2">Two</option>
  *  </select>
  * </form>
+ *
+ * Optionally you can specify the method and responseKind as values to the controller.
  */
 export class SubmitOnChangeController extends Controller {
-  submit () {
-    navigator.submitForm(this.element)
+  static values = {
+    method: String,
+    responseKind: String
+  }
+
+  async submit () {
+    const options = {}
+    if (this.hasMethodValue) {
+      options.method = this.hasMethodValue
+    }
+
+    if (this.hasResponseKindValue) {
+      options.responseKind = this.responseKindValue
+    }
+
+    return submitForm(this.element, options)
   }
 }
