@@ -35,6 +35,6 @@ export class SubmitOnChangeController extends Controller {
     }
 
     // return submitForm(this.element, options)
-    return debounce(()=>{ submitForm(this.element, options) }, this.delayValue || 0)
+    return debounce(() => { submitForm(this.element, options) }, this.delayValue || 0)
   }
 }
