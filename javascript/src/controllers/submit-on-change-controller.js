@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus'
 import { submitForm } from '../utils/form'
+import debounce from 'lodash.debounce'
 
 /**
  * SubmitOnChange Controller
@@ -18,12 +19,20 @@ import { submitForm } from '../utils/form'
  */
 export class SubmitOnChangeController extends Controller {
   static values = {
+    delay: Number,
     method: String,
     responseKind: String
   }
 
+  connect () {
+    if (this.hasDelayValue && this.delayValue > 0) {
+      this.submit = debounce(this.submit, this.delayValue)
+    }
+  }
+
   async submit () {
     const options = {}
+
     if (this.hasMethodValue) {
       options.method = this.hasMethodValue
     }
@@ -32,6 +41,6 @@ export class SubmitOnChangeController extends Controller {
       options.responseKind = this.responseKindValue
     }
 
-    return submitForm(this.element, options)
+    submitForm(this.element, options)
   }
 }

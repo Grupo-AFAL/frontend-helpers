@@ -1,6 +1,6 @@
 {
   "name": "frontend-helpers",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
   "main": "javascript/src/index.js",
   "module": "javascript/src/index.js",
@@ -69,6 +69,7 @@
   "dependencies": {
     "@rails/request.js": "^0.0.5",
     "hotkeys-js": "^3.8.7",
+    "lodash.debounce": "^4.0.8",
     "stimulus": "^2.0.0"
   }
 }
