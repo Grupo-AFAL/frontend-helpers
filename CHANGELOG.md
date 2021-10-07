@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.25] - 2021-10-06
+
+- Allow to specify delay to make the request on SubmitOnChangeController
+
 ## [0.3.24] - 2021-10-06
 
 - Allow to specify method and responseKind on SubmitOnChangeController
