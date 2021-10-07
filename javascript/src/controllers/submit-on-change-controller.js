@@ -18,6 +18,8 @@ import { submitForm } from '../utils/form'
  * Optionally you can specify the method and responseKind as values to the controller.
  */
 export class SubmitOnChangeController extends Controller {
+  timeoutId = undefined;
+
   static values = {
     delay: Number,
     method: String,
@@ -34,7 +36,10 @@ export class SubmitOnChangeController extends Controller {
       options.responseKind = this.responseKindValue
     }
 
-    // return submitForm(this.element, options)
-    return debounce(() => { submitForm(this.element, options) }, this.delayValue || 0)
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    this.timeoutId = setTimeout(() => { submitForm(this.element, options) }, this.delayValue || 0)
   }
 }
