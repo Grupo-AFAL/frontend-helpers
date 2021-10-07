@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Allow to specify delay to make the request on SubmitOnChangeController
 
+## [0.3.25] - 2021-10-07
+
+- Add icons for daycare application
+
 ## [0.3.24] - 2021-10-06
 
 - Allow to specify method and responseKind on SubmitOnChangeController
