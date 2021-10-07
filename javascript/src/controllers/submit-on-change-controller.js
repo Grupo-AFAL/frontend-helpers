@@ -1,5 +1,4 @@
 import { Controller } from 'stimulus'
-import { debounce } from 'lodash'
 import { submitForm } from '../utils/form'
 
 /**
@@ -36,9 +35,7 @@ export class SubmitOnChangeController extends Controller {
       options.responseKind = this.responseKindValue
     }
 
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
-    }
+    if (this.timeoutId) { clearTimeout(this.timeoutId) }
 
     this.timeoutId = setTimeout(() => { submitForm(this.element, options) }, this.delayValue || 0)
   }
