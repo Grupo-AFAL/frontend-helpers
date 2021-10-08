@@ -43,7 +43,7 @@ module FrontendHelpers
       value ? icon_tag('check-circle') : icon_tag('times-circle')
     end
 
-    def active_link(name, path, html_options = nil, &block)
+    def active_link(name, path = nil, html_options = nil, &block)
       if block_given?
         html_options = path
         path = name
