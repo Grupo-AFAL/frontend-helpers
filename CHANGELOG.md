@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.28] - 2021-10-11
 
-- Adjust size of icons for the daycare application
+- Adjust size of icons
 
 ## [0.3.27] - 2021-10-08
 
