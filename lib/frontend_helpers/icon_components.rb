@@ -101,7 +101,7 @@ module IconComponents
   )
 
   BUSINESS = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7H22V21H2V3H12V7ZM4 19H6V17H4V19ZM6 15H4V13H6V15ZM4 11H6V9H4V11ZM6 7H4V5H6V7ZM8 19H10V17H8V19ZM10 15H8V13H10V15ZM8 11H10V9H8V11ZM10 7H8V5H10V7ZM20 19V9H12V11H14V13H12V15H14V17H12V19H20ZM18 11H16V13H18V11ZM16 15H18V17H16V15Z" fill="#008D74"/>
     </svg>
   )
@@ -233,7 +233,7 @@ module IconComponents
   )
 
   CREDIT_CARD_ALT = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM4 8H20V6H4V8Z" fill="#008D74"/>
     </svg>
   )
@@ -245,14 +245,14 @@ module IconComponents
   )
 
   CUTLERY_ALT = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M9 9H11V2H13V9C13 11.21 11.21 13 9 13V22H7V13C4.79 13 3 11.21 3 9V2H5V9H7V2H9V9ZM16 14V6C16 4.24 18.24 2 21 2V22H19V14H16Z" fill="white"/>
     </svg>
 
   )
 
   DASHBOARD = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13H3V3H11V13ZM11 21H3V15H11V21ZM13 21H21V11H13V21ZM13 9V3H21V9H13Z" fill="#008D74"/>
     </svg>
   )
@@ -323,7 +323,7 @@ module IconComponents
   )
 
   FACE_PROFILE = %(
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg viewBox="0 0 24 24" class="svg-inline">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7.75 13C7.75 12.31 8.31 11.75 9 11.75C9.69 11.75 10.25 12.31 10.25 13C10.25 13.69 9.69 14.25 9 14.25C8.31 14.25 7.75 13.69 7.75 13ZM13.75 13C13.75 12.31 14.31 11.75 15 11.75C15.69 11.75 16.25 12.31 16.25 13C16.25 13.69 15.69 14.25 15 14.25C14.31 14.25 13.75 13.69 13.75 13ZM4 12C4 16.41 7.59 20 12 20C16.41 20 20 16.41 20 12C20 11.21 19.88 10.45 19.67 9.74C18.95 9.91 18.2 10 17.42 10C14.05 10 11.07 8.33 9.26 5.77C8.28 8.16 6.41 10.09 4.05 11.14C4.02 11.42 4 11.71 4 12Z" fill="#008D74"/>
     </svg>
   )
