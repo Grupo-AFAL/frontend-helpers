@@ -83,10 +83,10 @@ module FrontendHelpers
       is_active = active_path?(path, options[:match])
       icon = icon_tag(icon_name, class: options.delete(:icon_class))
 
-      tag.div class: class_names('is-active': is_active) do
-        link_to path, options do
-          icon + tag.span(name)
-        end
+      options[:class] = class_names(options[:class], 'is-active': is_active)
+
+      link_to path, options do
+        icon + tag.span(name)
       end
     end
 
