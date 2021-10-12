@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.30] - 2021-10-11
 
-- Add active_link_with_icon method and modify icon filling
+- Add active_link_with_icon method and modify icons filling
 
 ## [0.3.29] - 2021-10-11
 
