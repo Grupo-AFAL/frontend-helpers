@@ -24,13 +24,13 @@ export class FilterFormController extends Controller {
   }
 
   activeFilters () {
-    const queryParams = queryParams(this.element)
+    const qParams = queryParams(this.element)
 
     // Don't consider the textField or the opened parameter active filters
-    queryParams.delete(`q[${this.textFieldValue}]`)
-    queryParams.delete('opened')
+    qParams.delete(`q[${this.textFieldValue}]`)
+    qParams.delete('opened')
 
-    const filterNames = [...queryParams.entries()].map(entry => entry[0])
+    const filterNames = [...qParams.entries()].map(entry => entry[0])
 
     // Return unique values
     return [...new Set(filterNames)]
