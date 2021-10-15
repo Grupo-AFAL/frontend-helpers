@@ -1,12 +1,12 @@
 import { Controller } from 'stimulus'
-import { form } from 'frontend-helpers'
+import { submitForm, queryParams } from '../utils/form'
 
 export class FilterFormController extends Controller {
   static values = { textField: String }
   static targets = ['removeButton', 'filterCounter']
 
   submit () {
-    form.submitForm(this.element, { responseKind: 'turbo-stream' })
+    submitForm(this.element, { responseKind: 'turbo-stream' })
     this.updateButtons()
   }
 
@@ -24,7 +24,7 @@ export class FilterFormController extends Controller {
   }
 
   activeFilters () {
-    const queryParams = form.queryParams(this.element)
+    const queryParams = queryParams(this.element)
 
     // Don't consider the textField or the opened parameter active filters
     queryParams.delete(`q[${this.textFieldValue}]`)
