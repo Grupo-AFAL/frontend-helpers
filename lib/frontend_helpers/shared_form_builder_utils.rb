@@ -245,10 +245,7 @@ module FrontendHelpers
     end
 
     def slim_select_field(method, values, options = {}, html_options = {})
-      html_options.with_defaults!(
-        multiple: false,
-        data: {}
-      )
+      html_options.with_defaults!(multiple: false, data: {})
 
       options.with_defaults!(
         add_items: false,
