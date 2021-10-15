@@ -16,6 +16,12 @@
         font-size: 1rem;
       }
     }
+
+    &.is-shorter {
+      .ss-content .ss-list {
+        max-height: 160px;
+      }
+    }
   }
 
   .select {

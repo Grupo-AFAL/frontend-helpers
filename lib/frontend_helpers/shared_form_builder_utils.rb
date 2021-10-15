@@ -250,17 +250,31 @@ module FrontendHelpers
         data: {}
       )
 
+      options.with_defaults!(
+        add_items: false,
+        show_content: 'auto',
+        show_search: true,
+        search_placeholder: 'Buscar',
+        add_to_body: false
+      )
+
       html_options[:class] = class_names(
         "select #{html_options[:class]}".strip, 'is-multiple': html_options[:multiple]
       )
-      html_options[:data][:controller] = 'slim-select'
-      html_options[:data]['slim-select-placeholder-value'] = html_options[:placeholder]
 
-      html_options[:data]['slim-select-add-items-value'] = true if options[:add_items]
+      html_options[:data].merge!(
+        controller: 'slim-select',
+        'slim-select-placeholder-value': html_options[:placeholder],
+        'slim-select-add-items-value': options[:add_items],
+        'slim-select-show-content-value': options[:show_content],
+        'slim-select-show-search-value': options[:show_search],
+        'slim-select-search-placeholder-value': options[:search_placeholder],
+        'slim-select-add-to-body-value': options[:add_to_body]
+      )
 
       field_options = {
         id: "#{method}_select_div",
-        class: 'slim-select'
+        class: "slim-select #{html_options.delete(:select_class)}".strip
       }
 
       field = content_tag(:div, field_options) do
