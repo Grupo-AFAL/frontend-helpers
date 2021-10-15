@@ -70,6 +70,7 @@
     "@rails/request.js": "^0.0.5",
     "hotkeys-js": "^3.8.7",
     "lodash.debounce": "^4.0.8",
+    "slim-select": "^1.27.0",
     "stimulus": "^2.0.0"
   }
 }

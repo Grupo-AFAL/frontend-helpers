@@ -244,6 +244,32 @@ module FrontendHelpers
       field_helper(method, field, html_options)
     end
 
+    def slim_select_field(method, values, options = {}, html_options = {})
+      html_options.with_defaults!(
+        multiple: false,
+        data: {}
+      )
+
+      html_options[:class] = class_names(
+        "select #{html_options[:class]}".strip, 'is-multiple': html_options[:multiple]
+      )
+      html_options[:data][:controller] = 'slim-select'
+      html_options[:data]['slim-select-placeholder-value'] = html_options[:placeholder]
+
+      html_options[:data]['slim-select-add-items-value'] = true if options[:add_items]
+
+      field_options = {
+        id: "#{method}_select_div",
+        class: 'slim-select'
+      }
+
+      field = content_tag(:div, field_options) do
+        select(method, values, options, html_options)
+      end
+
+      field_helper(method, field, html_options)
+    end
+
     def boolean_field(method, options = {}, checked_value = '1', unchecked_value = '0')
       label_text = options.delete(:label) || translate_attribute(method)
 
