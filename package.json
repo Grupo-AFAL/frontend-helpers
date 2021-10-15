@@ -1,6 +1,6 @@
 {
   "name": "frontend-helpers",
-  "version": "0.3.33",
+  "version": "0.3.32",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
   "main": "javascript/src/index.js",
   "module": "javascript/src/index.js",
