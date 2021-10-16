@@ -15,6 +15,7 @@ import { NotificationController } from '../src/controllers/notification-controll
 import { RadioToggleController } from '../src/controllers/radio-toggle-controller'
 import { PrintController } from '../src/controllers/print-controller'
 import { SelectController } from '../src/controllers/select-controller'
+import { SlimSelectController } from '../src/controllers/slim-select-controller'
 import { SubmitOnChangeController } from '../src/controllers/submit-on-change-controller'
 import { TabsController } from '../src/controllers/tabs-controller'
 import { TagsController } from '../src/controllers/tags-controller'
@@ -33,6 +34,7 @@ application.register('notification', NotificationController)
 application.register('print', PrintController)
 application.register('radio-toggle', RadioToggleController)
 application.register('select', SelectController)
+application.register('slim-select', SlimSelectController)
 application.register('submit-on-change', SubmitOnChangeController)
 application.register('tabs', TabsController)
 application.register('tags', TagsController)

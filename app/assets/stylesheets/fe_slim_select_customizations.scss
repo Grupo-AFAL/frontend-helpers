@@ -1,0 +1,32 @@
+.slim-select {
+  .ss-main {
+    .ss-single-selected,
+    .ss-multi-selected {
+      min-height: 2.5em;
+    }
+
+    .ss-multi-selected {
+      .ss-add {
+        margin: auto 1rem;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ss-values .ss-value {
+        font-size: 1rem;
+      }
+    }
+
+    &.is-shorter {
+      .ss-content .ss-list {
+        max-height: 160px;
+      }
+    }
+  }
+
+  .select {
+    &:after {
+      display: none !important;
+    }
+  }
+}
