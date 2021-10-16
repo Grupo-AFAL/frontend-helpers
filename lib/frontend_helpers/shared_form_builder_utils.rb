@@ -130,7 +130,8 @@ module FrontendHelpers
                                   data: { controller: 'step-number-input' }) do
         addon_left = @template.content_tag(:div, class: 'control') do
           @template.link_to icon_tag('minus'), '', class: button_class, disabled: disabled,
-                                                   data: disabled ? {} : subtract_button_data
+                                                   data: disabled ? {} : subtract_button_data,
+                                                   title: 'subtract'
         end
 
         input = @template.content_tag(:div, class: 'control') do
@@ -139,7 +140,8 @@ module FrontendHelpers
 
         addon_right = @template.content_tag(:div, class: 'control') do
           @template.link_to icon_tag('plus'), '', class: button_class, disabled: disabled,
-                                                  data: disabled ? {} : add_button_data
+                                                  data: disabled ? {} : add_button_data,
+                                                  title: 'add'
         end
 
         @template.safe_join([addon_left, input, addon_right])
