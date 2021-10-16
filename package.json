@@ -1,6 +1,6 @@
 {
   "name": "frontend-helpers",
-  "version": "0.3.33",
+  "version": "0.4.0",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
   "main": "javascript/src/index.js",
   "module": "javascript/src/index.js",
@@ -11,7 +11,7 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "install-peer-deps": "npm install @hotwired/turbo bulma chart.js chartkick choices.js flatpickr lodash.camelcase phone stimulus stimulus-use hotkeys-js",
+    "install-peer-deps": "npm install @hotwired/turbo bulma chart.js chartkick flatpickr lodash.camelcase phone stimulus stimulus-use",
     "test": "start-server-and-test start http://localhost:8080 cy:run",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
@@ -22,7 +22,6 @@
     "chart.js": "^3.5.0",
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartkick": "^4.0.5",
-    "choices.js": "^9.0.1",
     "date-fns": "^2.23.0",
     "flatpickr": "^4.6.9",
     "lodash.camelcase": "^4.3.0",
