@@ -86,7 +86,7 @@ module FrontendHelpers
       options[:class] = class_names(options[:class], 'is-active': is_active)
 
       link_to path, options do
-        icon + tag.span(name)
+        icon + tag.span(name, class: 'name')
       end
     end
 

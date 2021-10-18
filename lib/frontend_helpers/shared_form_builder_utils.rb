@@ -292,9 +292,10 @@ module FrontendHelpers
         end
 
         if cancel_path.present? || cancel_options.present?
+          cancel_label = cancel_options.delete(:label) || I18n.t(:cancel, default: 'Cancel')
           cancel_options.with_defaults!(class: 'button is-secondary')
           cancel = @template.content_tag(:div, class: 'control') do
-            @template.link_to(I18n.t(:cancel, default: 'Cancel'), cancel_path, cancel_options)
+            @template.link_to(cancel_label, cancel_path, cancel_options)
           end
 
           cancel + submit
