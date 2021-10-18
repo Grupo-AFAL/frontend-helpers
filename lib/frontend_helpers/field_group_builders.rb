@@ -53,6 +53,12 @@ module FrontendHelpers
       end
     end
 
+    def slim_select_group(method, values, options = {}, html_options = {})
+      FieldGroupWrapper.render @template, self, method, options do
+        slim_select_field(method, values, options, html_options)
+      end
+    end
+
     def file_field_group(method, options = {})
       options.with_defaults!(
         class: 'file-input',

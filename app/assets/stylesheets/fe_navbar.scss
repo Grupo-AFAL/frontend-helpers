@@ -11,7 +11,7 @@
   }
 
   @include touch {
-    &.is-active {
+    &.is-transparent.is-active {
       background: $yellow;
       transition: background-color $background-transition-time;
       box-shadow: none;
