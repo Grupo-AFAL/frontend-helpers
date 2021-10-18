@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.35] - 2021-10-18
+
+- Modify submit_actions to accepts `label` in cancel_options params
+
 ## [0.3.34] - 2021-10-18
 
 - Modified active_link_with_icon to add a class to 'name' attribute.
