@@ -30,6 +30,10 @@ export class SlimSelectController extends Controller {
     this.select = new SlimSelect(options)
   }
 
+  disconnect () {
+    this.select.destroy()
+  }
+
   addable () {
     if (!this.addItemsValue) return
 

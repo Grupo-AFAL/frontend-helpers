@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module FrontendHelpers
-  # rubocop:disable Metrics/ModuleLength
   module FieldGroupBuilders
     include Components
 
@@ -32,24 +31,6 @@ module FrontendHelpers
     def select_group(method, values, options = {}, html_options = {})
       FieldGroupWrapper.render @template, self, method, options do
         select_field(method, values, options, html_options)
-      end
-    end
-
-    def select_single_group(method, values, options = {}, html_options = {})
-      FieldGroupWrapper.render @template, self, method, options do
-        select_single_field(method, values, options, html_options)
-      end
-    end
-
-    def select_multiple_group(method, values, options = {}, html_options = {})
-      FieldGroupWrapper.render @template, self, method, options do
-        select_multiple_field(method, values, options, html_options)
-      end
-    end
-
-    def custom_select_field_group(method, values, options = {}, html_options = {})
-      FieldGroupWrapper.render @template, self, method, options do
-        custom_select_field(method, values, options, html_options)
       end
     end
 
@@ -198,5 +179,4 @@ module FrontendHelpers
       end
     end
   end
-  # rubocop:enable Metrics/ModuleLength
 end
