@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.34] - 2021-10-18
+
+- Modified active_link_with_icon to add a class to 'name' attribute.
+
+
 ## [0.3.33] - 2021-10-15
 
 - Create new slim_select_field/slim_select_group to replace other JS based select helpers
