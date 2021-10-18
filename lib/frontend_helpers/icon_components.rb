@@ -401,6 +401,12 @@ module FrontendHelpers
       </svg>
     )
 
+    IMAGES = %(
+      <svg viewBox="0 0 576 512" class="svg-inline--fa">
+        <path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v208c0 44.112 35.888 80 80 80h336zm96-80V80c0-26.51-21.49-48-48-48H144c-26.51 0-48 21.49-48 48v256c0 26.51 21.49 48 48 48h384c26.51 0 48-21.49 48-48zM256 128c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-96 144l55.515-55.515c4.686-4.686 12.284-4.686 16.971 0L272 256l135.515-135.515c4.686-4.686 12.284-4.686 16.971 0L512 208v112H160v-48z" class=""></path>
+      </svg>
+    )
+
     INSTAGRAM_SQUARE = %(
       <svg viewBox="0 0 448 512" class="svg-inline">
         <path fill="currentColor"
@@ -616,6 +622,12 @@ module FrontendHelpers
         <path fill="currentColor"
           d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
           class=""></path>
+      </svg>
+    )
+
+    POO = %(
+      <svg viewBox="0 0 512 512" class="svg-inline--fa">
+        <path fill="currentColor" d="M451.4 369.1C468.7 356 480 335.4 480 312c0-39.8-32.2-72-72-72h-14.1c13.4-11.7 22.1-28.8 22.1-48 0-35.3-28.7-64-64-64h-5.9c3.6-10.1 5.9-20.7 5.9-32 0-53-43-96-96-96-5.2 0-10.2.7-15.1 1.5C250.3 14.6 256 30.6 256 48c0 44.2-35.8 80-80 80h-16c-35.3 0-64 28.7-64 64 0 19.2 8.7 36.3 22.1 48H104c-39.8 0-72 32.2-72 72 0 23.4 11.3 44 28.6 57.1C26.3 374.6 0 404.1 0 440c0 39.8 32.2 72 72 72h368c39.8 0 72-32.2 72-72 0-35.9-26.3-65.4-60.6-70.9zM192 256c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm159.5 139C341 422.9 293 448 256 448s-85-25.1-95.5-53c-2-5.3 2-11 7.8-11h175.4c5.8 0 9.8 5.7 7.8 11zM320 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z" class=""></path>
       </svg>
     )
 
@@ -1040,6 +1052,7 @@ module FrontendHelpers
       'gift' => GIFT,
       'grin-wink' => GRIN_WINK,
       'image' => IMAGE,
+      'images' => IMAGES,
       'instagram-square' => INSTAGRAM_SQUARE,
       'instagram' => INSTAGRAM,
       'linkedin' => LINKEDIN,
@@ -1062,6 +1075,7 @@ module FrontendHelpers
       'phone-plus' => PHONE_PLUS,
       'plus' => PLUS,
       'plus-circle' => PLUS_CIRCLE,
+      'poo' => POO,
       'print' => PRINT,
       'project-diagram' => PROJECT_DIAGRAM,
       'receipt' => RECEIPT,
