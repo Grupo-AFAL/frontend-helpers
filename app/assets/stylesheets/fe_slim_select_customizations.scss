@@ -25,29 +25,31 @@
     }
   }
 
-  .ss-content {
-    border-radius: 0 0 4px 4px;
-    box-shadow: 3px 12px 12px 0px rgba(10, 10, 10, 0.1);
-
-    .ss-search {
-      input:focus {
-        box-shadow: 0 0 3px $primary;
-      }
-    }
-
-    .ss-list {
-      .ss-option {
-        &:hover,
-        .ss-highlighted {
-          background-color: $primary;
-        }
-      }
-    }
-  }
-
   .select {
     &:after {
       display: none !important;
+    }
+  }
+}
+
+// Needs to be outside because when the select is appended to the body,
+// it won't be within the .slim-select selector
+.ss-content {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 3px 12px 12px 0px rgba(10, 10, 10, 0.1);
+
+  .ss-search {
+    input:focus {
+      box-shadow: 0 0 3px $primary;
+    }
+  }
+
+  .ss-list {
+    .ss-option {
+      &:hover,
+      &.ss-highlighted {
+        background-color: $primary;
+      }
     }
   }
 }
