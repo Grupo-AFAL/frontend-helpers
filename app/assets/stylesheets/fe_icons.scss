@@ -6,3 +6,13 @@
   overflow: visible;
   vertical-align: -0.125em;
 }
+
+span.icon.is-large svg {
+  height: 3em;
+  width: 3em;
+}
+
+span.icon.is-medium svg {
+  height: 2em;
+  width: 2em;
+}
