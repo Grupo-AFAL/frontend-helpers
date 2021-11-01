@@ -54,7 +54,7 @@ module FrontendHelpers
       when :partial
         request.path.include?(path)
       when String
-        request.path.include?(match_option)
+        request.path.include?(match_option) && request.path.include?(path)
       when Array
         match_option.any? { |p| request.path.include?(p) }
       else
