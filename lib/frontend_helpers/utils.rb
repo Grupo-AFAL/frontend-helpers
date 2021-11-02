@@ -48,17 +48,20 @@ module FrontendHelpers
     end
 
     def active_path?(path, match_option)
-      path_without_parmms = path.split('?').first
+      path_without_params = path.split('?').first
+
+      path = path.gsub(/\.html$/, '')
+      current_request_path = request.path.gsub(/\.html$/, '')
 
       case match_option
       when :partial
-        request.path.include?(path)
+        current_request_path.include?(path)
       when String
-        request.path.include?(match_option) && request.path.include?(path)
+        current_request_path.include?(match_option)
       when Array
-        match_option.any? { |p| request.path.include?(p) }
+        match_option.any? { |p| current_request_path.include?(p) }
       else
-        path_without_parmms == request.path
+        path_without_params == current_request_path
       end
     end
 

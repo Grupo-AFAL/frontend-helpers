@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.5] - 2021-11-01
 
-- Modifief 'active_path?' method to match paths with current request
+- Modify 'active_path?' method to ignore .html extension on the request
 
 ## [0.4.4] - 2021-10-27
 
