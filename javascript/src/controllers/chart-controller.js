@@ -31,8 +31,9 @@ export class ChartController extends Controller {
 
     const chartType = this.data.get('type')
     const data = JSON.parse(this.data.get('data'))
+    const options = JSON.parse(this.data.get('options'))
     const elementId = this.element.id
 
-    this.chart = new Chartkick[chartType](elementId, data, {})
+    this.chart = new Chartkick[chartType](elementId, data, options)
   }
 }
