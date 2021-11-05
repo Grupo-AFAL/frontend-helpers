@@ -4,6 +4,7 @@ import { Application } from 'stimulus'
 
 import { AutoPlayAudioController } from '../src/controllers/auto-play-audio-controller'
 import { AutocompleteAddressController } from '../src/controllers/autocomplete-address-controller'
+import { CarouselController } from '../src/controllers/carousel-controller'
 import { ChartController } from '../src/controllers/chart-controller'
 import { DatepickerController } from '../src/controllers/datepicker-controller'
 import { DisappearController } from '../src/controllers/disappear-controller'
@@ -21,6 +22,7 @@ import { TabsController } from '../src/controllers/tabs-controller'
 const application = Application.start()
 application.register('auto-play-audio', AutoPlayAudioController)
 application.register('autocomplete-address', AutocompleteAddressController)
+application.register('carousel', CarouselController)
 application.register('chart', ChartController)
 application.register('datepicker', DatepickerController)
 application.register('disappear', DisappearController)
