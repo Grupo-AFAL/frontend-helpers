@@ -3,11 +3,11 @@ context('CarouselController', () => {
     cy.visit('/docs/carousel.html')
   })
 
-  it('Carousel start at second slide', () => {
+  it('Carousel start at the second slide', () => {
     cy.get('.glide__slide--active').should('have.class', 'second')
   })
 
-  it('Change slide', () => {
+  it('Changes slide', () => {
     cy.get('.second')
       .not('.glide__slide--clone')
       .should('have.class', 'glide__slide--active')
