@@ -3,15 +3,15 @@ title: Carousel
 description: Carousel component
 ---
 
-  <div class="glide" data-controller="carousel">
+  <div class="glide" data-controller="carousel" data-carousel-index-value="1">
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides">
-        <li class="glide__slide">
+        <li class="glide__slide first">
           <figure class="image is-3by2">
               <image src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2064&q=80">
             </figure>
         </li>
-        <li class="glide__slide">
+        <li class="glide__slide second">
           <figure class="image is-3by2" style="">
             <image src="https://images.unsplash.com/photo-1636105143566-ee660d4c5933?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80">
           </figure>
