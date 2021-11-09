@@ -3,7 +3,7 @@ context('CarouselController', () => {
     cy.visit('/docs/carousel.html')
   })
 
-  it('Carousel start at the second slide', () => {
+  it('Starts carousel on the second slide', () => {
     cy.get('.glide__slide--active').should('have.class', 'second')
   })
 

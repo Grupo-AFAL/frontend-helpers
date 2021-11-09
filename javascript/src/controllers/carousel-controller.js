@@ -1,5 +1,4 @@
 import { Controller } from 'stimulus'
-import Glide from '@glidejs/glide'
 
 export class CarouselController extends Controller {
   static values = {
@@ -12,7 +11,8 @@ export class CarouselController extends Controller {
     peek: Object
   }
 
-  connect () {
+  async connect () {
+    const { default: Glide } = await import('@glidejs/glide')
     const options = {
       type: this.typeValue || 'carousel',
       startAt: this.indexValue || 0,
