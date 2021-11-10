@@ -73,7 +73,7 @@ module.exports = function (snowpackConfig, pluginOptions) {
             <p class="subtitle">
               ${frontmatter.description}
             </p>
-            <div class="content">
+            <div class="main-content">
               ${html}
             </div>
           </div>

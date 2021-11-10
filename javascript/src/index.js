@@ -8,6 +8,7 @@ import * as url from './utils/url'
 export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
 export { AutoPlayAudioController } from './controllers/auto-play-audio-controller'
 export { AutocompleteAddressController } from './controllers/autocomplete-address-controller'
+export { CarouselController } from './controllers/carousel-controller'
 export { ChartController } from './controllers/chart-controller'
 export { DatepickerController } from './controllers/datepicker-controller'
 export { DisappearController } from './controllers/disappear-controller'

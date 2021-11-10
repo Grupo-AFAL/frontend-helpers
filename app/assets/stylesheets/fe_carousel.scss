@@ -1,0 +1,71 @@
+.glide {
+  .glide__arrow--left {
+    left: 1rem;
+  }
+
+  .glide__arrow--right {
+    right: 1rem;
+  }
+
+  .glide__arrow {
+    border-radius: 50%;
+    padding: 0.188rem;
+  }
+
+  .glide__expand-link {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 1;
+    border-radius: 50%;
+
+    path {
+      fill: $white;
+    }
+  }
+
+  .glide__slide--active {
+    z-index: 1;
+  }
+}
+
+.carousel-modal {
+  overflow: visible;
+
+  @include mobile {
+    background-color: transparent;
+    li {
+      margin-top: 12.5rem;
+    }
+
+    .glide__arrow {
+      margin-top: 6.875rem;
+    }
+  }
+
+  @include tablet {
+    width: 45rem;
+    padding: 0;
+  }
+
+  @include widescreen {
+    width: 67.5rem;
+    padding: 0;
+  }
+
+  .glide {
+    .glide__track {
+      overflow: hidden;
+    }
+
+    @media screen and (min-width: 52.5rem), print {
+      .glide__arrow--left {
+        left: -4rem;
+      }
+
+      .glide__arrow--right {
+        right: -4rem;
+      }
+    }
+  }
+}
