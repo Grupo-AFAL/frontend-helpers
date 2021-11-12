@@ -26,12 +26,10 @@ export class ElementsOverlapController extends Controller {
     this.minWindowWidth = this.minWindowWidthValue || 1023 // 1023 - touch device threshold
     this.fixedElementBottom = fixedElementPositionProperties.bottom + this.gap
 
-    document.addEventListener('scroll',
-      throttle(this.preventOverlaping, this.throttleIntervalValue || 10)
-    )
-    window.addEventListener('resize',
-      throttle(this.preventOverlaping, this.throttleIntervalValue || 10)
-    )
+    this.throttledPreventOverlap = throttle(this.preventOverlaping, this.throttleIntervalValue || 10)
+
+    document.addEventListener('scroll', this.throttledPreventOverlap)
+    window.addEventListener('resize', this.throttledPreventOverlap)
   }
 
   preventOverlaping = () => {
