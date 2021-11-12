@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus'
+import throttle from 'lodash.throttle'
 
 export class NavbarController extends Controller {
   static values = { allowTransparency: Boolean, throttleInterval: Number }
@@ -9,19 +10,9 @@ export class NavbarController extends Controller {
 
     this.isTransparent = true
     this.element.classList.add('is-transparent')
-    document.addEventListener('scroll', () => {
-      this.throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
-    })
-  }
-
-  throttle = (callback, time) => {
-    if (this.throttleWait) return
-    this.throttleWait = true
-
-    setTimeout(() => {
-      callback()
-      this.throttleWait = false
-    }, time)
+    document.addEventListener('scroll',
+      throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
+    )
   }
 
   updateBackgroundColor = () => {
