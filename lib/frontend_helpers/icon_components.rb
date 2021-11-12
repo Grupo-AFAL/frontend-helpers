@@ -1217,7 +1217,7 @@ module FrontendHelpers
       'grin-wink' => GRIN_WINK,
       'image' => IMAGE,
       'images' => IMAGES,
-      'info-cricle' => INFO_CIRCLE,
+      'info-circle' => INFO_CIRCLE,
       'instagram-square' => INSTAGRAM_SQUARE,
       'instagram' => INSTAGRAM,
       'linkedin' => LINKEDIN,
