@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus'
 import throttle from 'lodash.throttle'
+
 export class NavbarController extends Controller {
   static values = { allowTransparency: Boolean, throttleInterval: Number }
   static targets = ['menu', 'burger']
