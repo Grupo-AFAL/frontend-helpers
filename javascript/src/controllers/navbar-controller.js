@@ -9,7 +9,7 @@ export class NavbarController extends Controller {
 
     this.isTransparent = true
     this.element.classList.add('is-transparent')
-    document.addEventListener('scroll', 
+    document.addEventListener('scroll',
       throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
     )
   }
