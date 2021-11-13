@@ -9,6 +9,8 @@ import { toBool } from '../utils/formatters'
  * How to use:
  *
  * <input type="text" data-controller="datepicker">
+ *
+ * Default language: Spanish
  */
 export class DatepickerController extends Controller {
   async connect () {
@@ -18,6 +20,7 @@ export class DatepickerController extends Controller {
     this.noCalendar = toBool(this.data.get('noCalendar'))
     this.enableSeconds = toBool(this.data.get('enableSeconds'))
     this.time_24hr = toBool(this.data.get('time-24hr'))
+    this.locale = await this.setLocale(this.data.get('locale'))
 
     const input =
       this.element.nodeName === 'INPUT'
@@ -35,8 +38,17 @@ export class DatepickerController extends Controller {
       defaultDate: this.data.get('defaultDate'),
       minDate: this.data.get('minDate'),
       minTime: this.data.get('minTime'),
-      maxTime: this.data.get('maxTime')
+      maxTime: this.data.get('maxTime'),
+      locale: this.locale
     })
+  }
+
+  async setLocale (countryCode) {
+    if (countryCode === 'en') {
+      return 'default'
+    } else {
+      return (await import('flatpickr/dist/l10n/es.js')).default.es
+    }
   }
 
   clear () {

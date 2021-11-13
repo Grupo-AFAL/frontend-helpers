@@ -5,7 +5,9 @@ description: Datepicker component that uses the flatpicker library
 
 ### Basic
 
-<input type="text" data-controller="datepicker">
+<div class="default-datepicker">
+  <input type="text" data-controller="datepicker">
+</div>
 
 **Code**
 
@@ -89,4 +91,15 @@ description: Datepicker component that uses the flatpicker library
   data-datepicker-max-time="14:00"
   data-datepicker-default-date="2021-08-05 12:00"
 />
+```
+
+### Calendar using English language
+
+<div class="english-datepicker">
+  <input type="text" data-controller="datepicker" data-datepicker-locale="en"/>
+</div>
+**Code**
+
+```html
+<input type="text" data-controller="datepicker" data-datepicker-locale="en" />
 ```
