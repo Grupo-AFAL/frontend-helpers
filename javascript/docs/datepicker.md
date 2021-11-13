@@ -6,7 +6,7 @@ description: Datepicker component that uses the flatpicker library
 ### Basic
 
 <div class="default-datepicker">
-  <input type="text" data-controller="datepicker" id="default">
+  <input type="text" data-controller="datepicker">
 </div>
 
 **Code**
