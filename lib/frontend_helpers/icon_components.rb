@@ -29,6 +29,22 @@ module FrontendHelpers
       </svg>
     )
 
+    ANGLE_DOUBLE_DOWN = %(
+      <svg viewBox="0 0 320 512" class="svg-inline">
+        <path fill="currentColor"
+          d="M143 256.3L7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192l136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z"
+          class=""></path>
+      </svg>
+    )
+
+    ANGLE_DOUBLE_UP = %(
+      <svg viewBox="0 0 320 512" class="svg-inline">
+        <path fill="currentColor"
+          d="M177 255.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 351.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 425.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1zm-34-192L7 199.7c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l96.4-96.4 96.4 96.4c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9l-136-136c-9.2-9.4-24.4-9.4-33.8 0z"
+          class=""></path>
+      </svg>
+    )
+
     AMERICAN_EXPRESS = %(
       <svg viewBox="0 0 30 23" fill="none" class="svg-inline">
         <path d="M16.9339 6.97188C16.9339 6.12991 16.1999 6.02723 15.5076 6.02723L13.4722
@@ -785,6 +801,22 @@ module FrontendHelpers
       </svg>
     )
 
+    SEARCH_MINUS = %(
+      <svg viewBox="0 0 512 512" class="svg-inline">
+        <path fill="currentColor"
+          d="M304 192v32c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
+          class=""></path>
+      </svg>
+    )
+
+    SEARCH_PLUS = %(
+      <svg viewBox="0 0 512 512" class="svg-inline">
+        <path fill="currentColor"
+          d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
+          class=""></path>
+      </svg>
+    )
+
     SNOWFLAKE = %(
       <svg viewBox="0 0 448 512" class="svg-inline">
         <path fill="currentColor"
@@ -1164,6 +1196,8 @@ module FrontendHelpers
     MAP = {
       'address-book' => ADDRESS_BOOK,
       'alert' => ALERT,
+      'angle-double-down' => ANGLE_DOUBLE_DOWN,
+      'angle-double-up' => ANGLE_DOUBLE_UP,
       'american-express' => AMERICAN_EXPRESS,
       'arrow-left' => ARROW_LEFT,
       'arrow-right' => ARROW_RIGHT,
@@ -1250,6 +1284,8 @@ module FrontendHelpers
       'report' => REPORT,
       'running' => RUNNING,
       'search' => SEARCH,
+      'search-minus' => SEARCH_MINUS,
+      'search-plus' => SEARCH_PLUS,
       'shapes' => SHAPES,
       'snowflake' => SNOWFLAKE,
       'success' => SUCCESS,
