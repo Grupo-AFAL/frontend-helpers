@@ -11,10 +11,23 @@
   }
 }
 
+.modal-content.small {
+  @include tablet {
+    width: 408px;
+  }
+}
+
 .modal-content.wide {
   @include tablet {
-    width: $modal-content-width + $modal-content-width/4;
+    width: 812px;
   }
+}
+
+.modal-content.extra-wide {
+  @include tablet {
+    width: 1109px;
+  }
+
 }
 
 @include tablet {
