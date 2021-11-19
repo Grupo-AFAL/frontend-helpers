@@ -6,5 +6,6 @@ module FrontendHelpers
     include FieldGroupBuilders
     include Utils
     include FormBuilderHelpers::DynamicFields
+    include FormBuilderHelpers::SwitchField
   end
 end
