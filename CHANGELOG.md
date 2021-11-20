@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.16] - 2021-11-17
 
-- Added new sizes for the modal (small, wide and extra-wide)
+- Added new sizes for the modal (small, wide and extra-wide) and an alternative icon to info_circle
 
 ## [0.4.15] - 2021-11-14
 

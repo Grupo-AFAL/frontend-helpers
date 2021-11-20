@@ -1,3 +1,8 @@
+$narrow-size: 25rem;
+$medium-size: 40rem;
+$wide-size: 50rem;
+$extra-wide-size: 70rem;
+
 .modal {
   .box.is-loading {
     display: flex;
@@ -11,23 +16,13 @@
   }
 }
 
-.modal-content.small {
+.modal-content {  
   @include tablet {
-    width: 408px;
+     &.narrow { width: $narrow-size;}
+     &.medium { width: $medium-size;}
+     &.wide { width: $wide-size;}
+     &.extra-wide { width: $extra-wide-size;}
   }
-}
-
-.modal-content.wide {
-  @include tablet {
-    width: 812px;
-  }
-}
-
-.modal-content.extra-wide {
-  @include tablet {
-    width: 1109px;
-  }
-
 }
 
 @include tablet {

@@ -512,6 +512,12 @@ module FrontendHelpers
       </svg>
     )
 
+    INFO_CIRCLE_ALT = %(
+      <svg viewBox="0 0 16 16" fill="none" class="svg-inline">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00065 1.33398C4.32065 1.33398 1.33398 4.32065 1.33398 8.00065C1.33398 11.6807 4.32065 14.6673 8.00065 14.6673C11.6807 14.6673 14.6673 11.6807 14.6673 8.00065C14.6673 4.32065 11.6807 1.33398 8.00065 1.33398ZM8.6676 11.3343H7.33427V7.33431H8.6676V11.3343ZM7.33427 6.00098H8.6676V4.66764H7.33427V6.00098Z" fill="#008D74"/>
+      </svg>
+    )
+
     INSTAGRAM_SQUARE = %(
       <svg viewBox="0 0 448 512" class="svg-inline">
         <path fill="currentColor"
@@ -1252,6 +1258,7 @@ module FrontendHelpers
       'image' => IMAGE,
       'images' => IMAGES,
       'info-circle' => INFO_CIRCLE,
+      'info-circle-alt' => INFO_CIRCLE_ALT,
       'instagram-square' => INSTAGRAM_SQUARE,
       'instagram' => INSTAGRAM,
       'linkedin' => LINKEDIN,

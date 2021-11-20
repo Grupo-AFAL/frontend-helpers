@@ -49,7 +49,6 @@ export class RemoteModalController extends Controller {
   }
 
   openModal(content) {
-    this.wrapperTarget.classList.add(this.isClass)
     this.wrapperTarget.classList.add(this.wrapperClass)
 
     this.templateTarget.classList.add('is-active')
@@ -107,7 +106,6 @@ export class RemoteModalController extends Controller {
     const target = event.currentTarget
 
     this.wrapperClass = target.getAttribute('data-wrapper-class')
-    this.isClass = target.getAttribute('data-class')
     this.redirectTo = target.getAttribute('data-redirect-to')
     this.skipRender = Boolean(target.getAttribute('data-skip-render'))
     this.extraProps = JSON.parse(target.getAttribute('data-extra-props'))
