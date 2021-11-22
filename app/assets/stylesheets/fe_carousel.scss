@@ -31,15 +31,21 @@
 
 .carousel-modal {
   overflow: visible;
+  background-color: transparent;
+  box-shadow: none !important;
+
+  .image-center {
+    display: block;
+    margin: auto;
+  }
+
+  li.glide__slide {
+    margin: auto;
+  }
 
   @include mobile {
-    background-color: transparent;
     li {
       margin-top: 12.5rem;
-    }
-
-    .glide__arrow {
-      margin-top: 6.875rem;
     }
   }
 
