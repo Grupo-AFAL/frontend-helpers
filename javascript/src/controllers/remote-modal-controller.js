@@ -48,7 +48,7 @@ export class RemoteModalController extends Controller {
     this.backgroundTarget.addEventListener('click', this._closeModal)
   }
 
-  openModal(content) {
+  openModal (content) {
     this.wrapperTarget.classList.add(this.wrapperClass)
 
     this.templateTarget.classList.add('is-active')
