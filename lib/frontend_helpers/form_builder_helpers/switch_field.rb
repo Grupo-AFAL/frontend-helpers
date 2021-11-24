@@ -3,7 +3,8 @@
 module FrontendHelpers
   module FormBuilderHelpers
     module SwitchField
-      def switch_field_group(method, options = {}, checked_value = '1', unchecked_value = '0', &block)
+      def switch_field_group(method, options = {},
+                             checked_value = '1', unchecked_value = '0', &block)
         control_class = options.delete(:control_class)
         label_class = options.delete(:label_class)
         label = if block_given?
