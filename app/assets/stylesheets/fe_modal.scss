@@ -18,10 +18,25 @@ $extra-wide-size: 70rem;
 
 .modal-content {  
   @include tablet {
-     &.narrow { width: $narrow-size;}
-     &.medium { width: $medium-size;}
-     &.wide { width: $wide-size;}
-     &.extra-wide { width: $extra-wide-size;}
+    &.narrow { 
+      max-width: $narrow-size;
+      width: 100%;
+    }
+
+    &.medium {
+      max-width: $medium-size;
+      width: 100%;
+    }
+
+    &.wide { 
+      max-width: $wide-size;
+      width: 100%;
+    }
+
+    &.extra-wide { 
+      max-width: $extra-wide-size;
+      width: 100%;
+    }
   }
 }
 
