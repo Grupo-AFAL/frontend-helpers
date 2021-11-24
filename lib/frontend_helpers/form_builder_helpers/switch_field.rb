@@ -3,14 +3,18 @@
 module FrontendHelpers
   module FormBuilderHelpers
     module SwitchField
-      def switch_field_group(method, options = {}, checked_value = '1', unchecked_value = '0')
+      def switch_field_group(method, options = {}, checked_value = '1', unchecked_value = '0', &block)
         control_class = options.delete(:control_class)
         label_class = options.delete(:label_class)
-        label = options.delete(:label)
+        label = if block_given?
+                  @template.capture(&block)
+                else
+                  tag.p(options.delete(:label), class: label_class)
+                end
 
         tag.div(class: "control #{control_class}") do
           safe_join([
-                      tag.p(label, class: label_class),
+                      label,
                       switch_field(method, options, checked_value, unchecked_value)
                     ])
         end
