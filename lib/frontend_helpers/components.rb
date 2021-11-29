@@ -64,10 +64,16 @@ module FrontendHelpers
     end
 
     def active_li_link(name, path, html_options = {})
+      active_li(path, html_options) do
+        link_to name, path
+      end
+    end
+
+    def active_li(path, html_options = {}, &block)
       is_active = active_path?(path, html_options[:match])
 
       tag.li class: class_names('is-active': is_active) do
-        link_to name, path
+        block.call
       end
     end
 

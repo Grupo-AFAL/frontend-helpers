@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frontend_helpers (0.4.21)
+    frontend_helpers (0.4.22)
       rails (~> 6.1)
       ransack
 
@@ -75,7 +75,7 @@ GEM
     diff-lcs (1.4.4)
     docile (1.3.5)
     erubi (1.10.0)
-    globalid (0.5.2)
+    globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -176,9 +176,9 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.2)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
+    sprockets-rails (3.4.1)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     thor (1.1.0)
@@ -205,4 +205,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   2.2.24
+   2.2.31
