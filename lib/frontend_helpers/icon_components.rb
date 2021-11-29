@@ -195,6 +195,12 @@ module FrontendHelpers
       </svg>
     )
 
+    CAMERA = %(
+      <svg viewBox="0 0 512 512" class="svg-inline">
+        <path fill="currentColor" d="M342.7 144H464v288H48V144h121.3l24-64h125.5l23.9 64zM324.3 32h-131c-20 0-37.9 12.4-44.9 31.1L136 96H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48h-88l-14.3-38c-5.8-15.7-20.7-26-37.4-26zM256 408c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-192c-39.7 0-72 32.3-72 72s32.3 72 72 72 72-32.3 72-72-32.3-72-72-72z" class=""></path>
+      </svg>
+    )
+
     CAPSULES = %(
       <svg viewBox="0 0 544 512" class="svg-inline">
         <path fill="currentColor" d="M529 296.8l-111.5-193C386.8 50.4 318.6 32.2 265.3 63c-21.2 12.3-36.6 30.5-45.8 51.3C206.4 67 163.5 32 112 32 50.1 32 0 82.1 0 144v224c0 61.9 50.1 112 112 112s112-50.1 112-112V214c.2.4.3.8.5 1.2l111.5 193c30.8 53.3 98.9 71.6 152.3 40.8s71.5-98.9 40.7-152.2zM176 256H48V144c0-84.7 128-84.7 128 0v112zm89.9-64.7c-42.1-73 68.2-136.7 110.3-63.7l43.8 75.8-110.3 63.7-43.8-75.8z" class=""></path>
@@ -1250,6 +1256,7 @@ module FrontendHelpers
       'books' => BOOKS,
       'business' => BUSINESS,
       'calendar-alt' => CALENDAR_ALT,
+      'camera' => CAMERA,
       'capsules' => CAPSULES,
       'chart-line' => CHART_LINE,
       'check-circle' => CHECK_CIRCLE,
