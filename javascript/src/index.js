@@ -38,3 +38,4 @@ export { SubmitOnChangeController } from './controllers/submit-on-change-control
 export { TabsController } from './controllers/tabs-controller'
 export { ToggleController } from './controllers/toggle-controller'
 export { TooltipController } from './controllers/tooltip-controller'
+export { ImagePreviewController } from './controllers/image-preview-controller'
