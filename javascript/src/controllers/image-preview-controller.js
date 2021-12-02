@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 
 /*
   Image Preview Controller
-  Remplaces image from img tag with the target output so that a preview of the image can be seen
+  Replaces image from img tag with the target output so that a preview of the image can be seen
 
   It expects the following structure:
 

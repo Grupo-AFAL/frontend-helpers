@@ -1,6 +1,6 @@
 ---
 title: Image Preview
-description: Bulma tabs component
+description: Image Preview component
 ---
 
 <div data-controller="image-preview" class="image-content">
