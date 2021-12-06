@@ -22,6 +22,7 @@ module FrontendHelpers
 
       def serialize(value)
         return value if value.blank? || value.is_a?(Numeric)
+        return value.to_i if value.match(/\A\d+\Z/).present?
 
         hours, minutes, seconds = value.scan(/\d+:\d+:\d+/)[0].split(':')
         (hours.to_i * 3600) + (minutes.to_i * 60) + seconds.to_i
