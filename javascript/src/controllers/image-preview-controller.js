@@ -19,7 +19,7 @@ export class ImagePreviewController extends Controller {
     const file = this.inputTarget.files[0]
     if (file) {
       this.outputTarget.src = URL.createObjectURL(file)
-      this.outputTarget.classList.add('cover-fill')
+      this.outputTarget.style.objectFit = 'cover'
     }
   }
 }
