@@ -24,6 +24,7 @@ export class RemoteModalController extends Controller {
     const { useTargetMutation } = await import('stimulus-use')
     useTargetMutation(this)
 
+    this.wrapperClass = this.wrapperTarget.getAttribute('data-wrapper-class')
     this.backgroundTarget.addEventListener('click', this._closeModal)
 
     if (this.hasCloseBtnTarget) {
@@ -66,7 +67,7 @@ export class RemoteModalController extends Controller {
 
   _closeModal = () => {
     this.templateTarget.classList.remove('is-active')
-    this.wrapperTarget.classList.remove(this.wrapperClass)
+    if (this.wrapperClass) { this.wrapperTarget.classList.remove(this.wrapperClass) }
     this.contentTarget.innerHTML = ''
   }
 
