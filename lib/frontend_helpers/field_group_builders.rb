@@ -153,12 +153,6 @@ module FrontendHelpers
       end
     end
 
-    def phone_field_group(method, options = {})
-      FieldGroupWrapper.render @template, self, method, options do
-        phone_field(method, options)
-      end
-    end
-
     def boolean_field_group(method, options = {}, checked_value = '1', unchecked_value = '0')
       @template.content_tag(:div, class: 'field') do
         boolean_field(method, options, checked_value, unchecked_value)

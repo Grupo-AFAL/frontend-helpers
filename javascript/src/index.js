@@ -22,7 +22,6 @@ export { InputOnChangeController } from './controllers/input-on-change-controlle
 export { LocalModalController } from './controllers/local-modal-controller'
 export { NavbarController } from './controllers/navbar-controller'
 export { NotificationController } from './controllers/notification-controller'
-export { PhoneInputController } from './controllers/phone-input-controller'
 export { PopupController } from './controllers/popup-controller'
 export { PrintController } from './controllers/print-controller'
 export { RadioGroupController } from './controllers/radio-group-controller'

@@ -25,8 +25,9 @@ export class ChartController extends Controller {
   async connect () {
     await import('chartjs-adapter-date-fns')
     const { default: Chartkick } = await import('chartkick')
-    const { default: Chart } = await import('chart.js/auto') // eslint-disable-line
+    const { Chart, registerables } = await import('chart.js')
 
+    Chart.register(...registerables)
     Chartkick.use(Chart)
 
     const chartType = this.data.get('type')

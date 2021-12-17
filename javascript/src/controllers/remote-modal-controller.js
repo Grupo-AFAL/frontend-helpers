@@ -21,8 +21,8 @@ export class RemoteModalController extends Controller {
   static targets = ['template', 'background', 'wrapper', 'content', 'closeBtn']
 
   async connect () {
-    const { useTargetMutation } = await import('stimulus-use')
-    useTargetMutation(this)
+    // const { useTargetMutation } = await import('stimulus-use')
+    // useTargetMutation(this)
 
     this.backgroundTarget.addEventListener('click', this._closeModal)
 

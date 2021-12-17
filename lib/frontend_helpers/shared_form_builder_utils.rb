@@ -148,13 +148,6 @@ module FrontendHelpers
       end
     end
 
-    def phone_field(method, options = {})
-      options[:data] ||= {}
-      options[:data][:controller] = 'phone-input'
-
-      field_helper(method, super(method, field_options(method, options)), options)
-    end
-
     # Uses the native HTML <select> element.
     #
     def select_field(method, values, options = {}, html_options = {})
