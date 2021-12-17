@@ -64,6 +64,8 @@ jobs:
           name: cc-test-reporter
           path: ./tmp
 
+      - run: npm install
+
       - name: Cypress run
         env:
           GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
