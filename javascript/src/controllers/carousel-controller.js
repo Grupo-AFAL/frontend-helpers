@@ -5,7 +5,7 @@ export class CarouselController extends Controller {
     type: { type: String, default: 'carousel' },
     index: { type: Number, default: 0 },
     perView: { type: Number, default: 1 },
-    autoplay: { type: Boolean, default: false },
+    autoplay: { type: String, default: 'false' },
     gap: { type: Number, default: 0 },
     focusAt: { type: String, default: 'center' },
     breakpoints: Object,
@@ -14,13 +14,15 @@ export class CarouselController extends Controller {
 
   async connect () {
     const { default: Glide } = await import('@glidejs/glide')
+
     const options = {
       type: this.typeValue,
       startAt: this.indexValue,
-      perView: this.perViewValue || 1,
-      autoplay: this.autoplayValue,
+      perView: this.perViewValue,
+      autoplay: this.autoplayValue === 'false' ? false : this.autoplayValue,
       gap: this.gapValue,
-      focusAt: this.focusAtValue,
+      focusAt:
+        this.focusAtValue === 'center' ? 'center' : parseInt(this.focusAtValue),
       dragThreshold: false,
       swipeThreshold: false
     }
