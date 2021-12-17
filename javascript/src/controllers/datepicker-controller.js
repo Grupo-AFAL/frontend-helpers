@@ -1,5 +1,4 @@
 import { Controller } from '@hotwired/stimulus'
-import { toBool } from '../utils/formatters'
 
 /**
  * Datepicker Controller
