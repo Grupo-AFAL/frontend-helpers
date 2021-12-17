@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { submitForm, queryParams } from '../utils/form'
 
 export class FilterFormController extends Controller {

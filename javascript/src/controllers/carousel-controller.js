@@ -1,12 +1,13 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 export class CarouselController extends Controller {
   static values = {
-    type: String,
-    index: Number,
-    perView: Number,
-    autoplay: Boolean,
-    gap: Number,
+    type: { type: String, default: 'carousel' },
+    index: { type: Number, default: 0 },
+    perView: { type: Number, default: 1 },
+    autoplay: { type: Boolean, default: false },
+    gap: { type: Number, default: 0 },
+    focusAt: { type: String, default: 'center' },
     breakpoints: Object,
     peek: Object
   }
@@ -14,22 +15,22 @@ export class CarouselController extends Controller {
   async connect () {
     const { default: Glide } = await import('@glidejs/glide')
     const options = {
-      type: this.typeValue || 'carousel',
-      startAt: this.indexValue || 0,
+      type: this.typeValue,
+      startAt: this.indexValue,
       perView: this.perViewValue || 1,
-      gap: this.gapValue || 0,
-      autoplay: this.autoplayValue || false,
-      focusAt: 'center',
+      autoplay: this.autoplayValue,
+      gap: this.gapValue,
+      focusAt: this.focusAtValue,
       dragThreshold: false,
       swipeThreshold: false
     }
 
-    if (this.hasPeekValue) {
-      options.peek = this.peekValue
-    }
-
     if (this.hasBreakpointsValue) {
       options.breakpoints = this.breakpointsValue
+    }
+
+    if (this.hasPeekValue) {
+      options.peek = this.peekValue
     }
 
     this.glide = new Glide(this.element, options).mount()

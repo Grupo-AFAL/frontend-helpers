@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 // import { useClickOutside } from 'stimulus-use'
 
 const POPUP_MARGIN = 12

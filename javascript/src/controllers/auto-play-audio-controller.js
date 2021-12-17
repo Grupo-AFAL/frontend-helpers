@@ -1,12 +1,12 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 export class AutoPlayAudioController extends Controller {
   static values = {
-    delay: Number
+    delay: { type: Number, default: 100 }
   }
 
   connect () {
-    setTimeout(() => this.play(), this.delayValue || 100)
+    setTimeout(() => this.play(), this.delayValue)
   }
 
   play () {

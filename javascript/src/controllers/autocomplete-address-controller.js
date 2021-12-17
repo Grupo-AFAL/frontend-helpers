@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import GoogleMapsLoader from '../utils/google-maps-loader'
 
 export class AutocompleteAddressController extends Controller {

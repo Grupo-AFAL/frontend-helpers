@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { submitForm } from '../utils/form'
 import debounce from 'lodash.debounce'
 

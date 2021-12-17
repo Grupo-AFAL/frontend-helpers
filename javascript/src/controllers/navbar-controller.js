@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import throttle from 'lodash.throttle'
 
 export class NavbarController extends Controller {
@@ -10,13 +10,15 @@ export class NavbarController extends Controller {
 
     this.isTransparent = true
     this.element.classList.add('is-transparent')
-    document.addEventListener('scroll',
+    document.addEventListener(
+      'scroll',
       throttle(this.updateBackgroundColor, this.throttleIntervalValue || 100)
     )
   }
 
   updateBackgroundColor = () => {
-    const targetHeight = this.burgerTarget?.offsetHeight || this.element.offsetHeight
+    const targetHeight =
+      this.burgerTarget?.offsetHeight || this.element.offsetHeight
     if (window.scrollY > targetHeight) {
       this.removeIsTransparent()
     } else {
