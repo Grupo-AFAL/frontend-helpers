@@ -71,7 +71,6 @@ module FrontendHelpers
       if options[:seconds]
         options[:wrapper_options].merge!(
           'data-datepicker-enable-seconds': true,
-          'data-datepicker-time-24hr': true
         )
       end
 

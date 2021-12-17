@@ -13,14 +13,19 @@ import { toBool } from '../utils/formatters'
  * Default language: Spanish
  */
 export class DatepickerController extends Controller {
+  static values = {
+    enableTime: { type: Boolean, default: false },
+    noCalendar: { type: Boolean, default: false },
+    enableSeconds: { type: Boolean, default: false },
+    locale: { type: String, default: 'es' },
+    defaultDate: String,
+    minDate: String,
+    minTime: String,
+    maxTime: String
+  }
+
   async connect () {
     const { default: flatpickr } = await import('flatpickr')
-
-    this.enableTime = toBool(this.data.get('enableTime'))
-    this.noCalendar = toBool(this.data.get('noCalendar'))
-    this.enableSeconds = toBool(this.data.get('enableSeconds'))
-    this.time_24hr = toBool(this.data.get('time-24hr'))
-    this.locale = await this.setLocale(this.data.get('locale'))
 
     const input =
       this.element.nodeName === 'INPUT'
@@ -31,15 +36,14 @@ export class DatepickerController extends Controller {
       altInput: true,
       altFormat: this.altFormat(),
       dateFormat: this.dateFormat(),
-      enableTime: this.enableTime,
-      noCalendar: this.noCalendar,
-      enableSeconds: this.enableSeconds,
-      time_24hr: this.time_24hr,
-      defaultDate: this.data.get('defaultDate'),
-      minDate: this.data.get('minDate'),
-      minTime: this.data.get('minTime'),
-      maxTime: this.data.get('maxTime'),
-      locale: this.locale
+      enableTime: this.enableTimeValue,
+      noCalendar: this.noCalendarValue,
+      enableSeconds: this.enableSecondsValue,
+      locale: await this.setLocale(this.localeValue),
+      defaultDate: this.defaultDateValue,
+      minDate: this.minDateValue,
+      minTime: this.minTimeValue,
+      maxTime: this.maxTimeValue
     })
   }
 
@@ -62,15 +66,15 @@ export class DatepickerController extends Controller {
   altFormat () {
     let format = ''
 
-    if (this.noCalendar || this.enableTime) {
-      if (this.enableSeconds) {
+    if (this.noCalendarValue || this.enableTimeValue) {
+      if (this.enableSecondsValue) {
         format = this.time_24hr ? 'H:i:S' : 'h:i:S K'
       } else {
         format = this.time_24hr ? 'H:i' : 'h:i K'
       }
     }
 
-    if (!this.noCalendar) {
+    if (!this.noCalendarValue) {
       format = `F j, Y ${format}`.trim()
     }
 
@@ -80,7 +84,7 @@ export class DatepickerController extends Controller {
   dateFormat () {
     let format = 'Y-m-d'
 
-    if (this.noCalendar || this.enableTime) {
+    if (this.noCalendarValue || this.enableTimeValue) {
       format = `${format} H:i:S`
     }
 
