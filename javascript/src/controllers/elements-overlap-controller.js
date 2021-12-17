@@ -21,6 +21,7 @@ export class ElementsOverlapController extends Controller {
     gap: Number,
     minWindowWidth: Number
   }
+
   static targets = ['dynamicElement', 'fixedElement']
 
   connect () {
