@@ -6,6 +6,7 @@ export class NavbarController extends Controller {
     allowTransparency: Boolean,
     throttleInterval: { type: Number, default: 1000 }
   }
+
   static targets = ['menu', 'burger']
 
   connect () {
