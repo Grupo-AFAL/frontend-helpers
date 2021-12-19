@@ -49,7 +49,7 @@ module FrontendHelpers
       }.merge!(options.delete(:wrapper_options) || {})
 
       if options[:min_date].present?
-        wrapper_options.merge!('data-datepicker-min-date': options[:min_date])
+        wrapper_options.merge!('data-datepicker-min-date-value': options[:min_date])
       end
 
       content_tag(:div, wrapper_options) do
@@ -58,37 +58,37 @@ module FrontendHelpers
     end
 
     def datetime_field(method, options = {})
-      options[:wrapper_options] = { 'data-datepicker-enable-time': true }
+      options[:wrapper_options] = { 'data-datepicker-enable-time-value': true }
       date_field(method, options)
     end
 
     def time_field(method, options = {})
       options[:wrapper_options] = {
-        'data-datepicker-enable-time': true,
-        'data-datepicker-no-calendar': true
+        'data-datepicker-enable-time-value': true,
+        'data-datepicker-no-calendar-value': true
       }
 
       if options[:seconds]
         options[:wrapper_options].merge!(
-          'data-datepicker-enable-seconds': true
+          'data-datepicker-enable-seconds-value': true
         )
       end
 
       if options[:default_date].present?
         options[:wrapper_options].merge!(
-          'data-datepicker-default-date': options[:default_date]
+          'data-datepicker-default-date-value': options[:default_date]
         )
       end
 
       if options[:min_time].present?
         options[:wrapper_options].merge!(
-          'data-datepicker-min-time': options[:min_time]
+          'data-datepicker-min-time-value': options[:min_time]
         )
       end
 
       if options[:max_time].present?
         options[:wrapper_options].merge!(
-          'data-datepicker-max-time': options[:max_time]
+          'data-datepicker-max-time-value': options[:max_time]
         )
       end
 
