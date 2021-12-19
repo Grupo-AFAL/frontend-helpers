@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2021-12-19
+
+#### Upgrade to Stimulus 3 for:
+
+- New Values API with defaults
+- Target changes callbacks
+- Action Parameters
+- Reference new @hotwired/stimulus package
+
+#### Other changes
+
+- Remove phone_input (it wasn't being used)
+- Remove stimulus-use and create a utility for useOutsideClick. (it was the only stimulus-use utility we were using, since we don't need the useTargetMutation anymore)
+- Move all Peer Dependencies to Dependencies
+- Add isElementInViewport function required for useOutsideClick
+
 ## [0.4.29] - 2021-12-16
 
 - Relax Rails version to be able to install Rails 7
