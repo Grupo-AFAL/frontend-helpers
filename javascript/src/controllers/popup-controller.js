@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-// import { useClickOutside } from 'stimulus-use'
+import useClickOutside from '../utils/use-click-outside'
 
 const POPUP_MARGIN = 12
 
@@ -8,7 +8,7 @@ export class PopupController extends Controller {
   static values = { opened: Boolean }
 
   connect () {
-    // useClickOutside(this)
+    useClickOutside(this)
     this.opened = this.openedValue
     this.positionPopup()
   }

@@ -2,10 +2,19 @@ import * as domHelpers from './utils/domHelpers'
 import * as formatters from './utils/formatters'
 import * as form from './utils/form'
 import GoogleMapsLoader from './utils/google-maps-loader'
+import useClickOutside from './utils/use-click-outside'
 import * as time from './utils/time'
 import * as url from './utils/url'
 
-export { domHelpers, form, formatters, GoogleMapsLoader, time, url }
+export {
+  domHelpers,
+  form,
+  formatters,
+  GoogleMapsLoader,
+  time,
+  url,
+  useClickOutside
+}
 export { AutoPlayAudioController } from './controllers/auto-play-audio-controller'
 export { AutocompleteAddressController } from './controllers/autocomplete-address-controller'
 export { CarouselController } from './controllers/carousel-controller'
