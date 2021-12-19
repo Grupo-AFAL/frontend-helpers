@@ -12,13 +12,13 @@ export class DisappearController extends Controller {
   static classes = ['animation']
 
   static values = {
-    delay: Number,
+    delay: { type: Number, default: 3000 },
     remove: Boolean
   }
 
   connect () {
     this.closed = false
-    setTimeout(() => this.close(), this.delayValue || 3000)
+    setTimeout(() => this.close(), this.delayValue)
   }
 
   disconnect () {

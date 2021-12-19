@@ -3,7 +3,7 @@ title: Dynamic Fields
 description: Dynamic Fields component
 ---
 
-<div data-controller="dynamic-fields" data-dynamic-fields-size="1" data-dynamic-fields-selector=".fields" data-dynamic-fields-remove-duplicates="true">
+<div data-controller="dynamic-fields" data-dynamic-fields-size-value="1" data-dynamic-fields-fields-selector-value=".fields" data-dynamic-fields-remove-duplicates-value="true">
 	<a class="button is-primary" data-dynamic-fields-target="button" href=# data-action="dynamic-fields#addFields">Add</a>
 	<template data-dynamic-fields-target="template">
 		<div class="columns fields">
