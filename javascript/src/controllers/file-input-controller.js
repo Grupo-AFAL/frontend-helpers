@@ -26,12 +26,15 @@ import { Controller } from '@hotwired/stimulus'
 
 export class FileInputController extends Controller {
   static targets = ['value', 'input']
+  static values = {
+    nonSelectedText: String
+  }
 
   onChange (event) {
     let fileName
 
     if (event.target.value.length === 0) {
-      fileName = this.data.get('nonSelectedText')
+      fileName = this.nonSelectedTextValue
     } else {
       fileName = event.target.value.split('\\').pop()
     }

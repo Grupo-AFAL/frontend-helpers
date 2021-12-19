@@ -67,7 +67,7 @@ module FrontendHelpers
         class: 'field file has-name',
         data: {
           controller: 'file-input',
-          'file-input-non-selected-text': non_selected_text
+          'file-input-non-selected-text-value': non_selected_text
         }
       }
 

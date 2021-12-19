@@ -17,6 +17,7 @@ export { DynamicFieldsController } from './controllers/dynamic-fields-controller
 export { ElementsOverlapController } from './controllers/elements-overlap-controller'
 export { FileInputController } from './controllers/file-input-controller'
 export { FilterFormController } from './controllers/filter-form-controller'
+export { FocusOnConnectController } from './controllers/focus-on-connect-controller'
 export { HovercardController } from './controllers/hovercard-controller'
 export { InputOnChangeController } from './controllers/input-on-change-controller'
 export { LocalModalController } from './controllers/local-modal-controller'

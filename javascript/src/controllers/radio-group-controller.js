@@ -1,12 +1,15 @@
 import { Controller } from '@hotwired/stimulus'
 
 export class RadioGroupController extends Controller {
+  static values = {
+    containersSelector: String
+  }
+
   connect () {
     this.lowestValue = parseInt(this.element.dataset.start) || 0
 
-    this.containersSelector = this.data.get('containers')
     this.radioButtonContainers = Array.from(
-      this.element.querySelectorAll(this.containersSelector)
+      this.element.querySelectorAll(this.containersSelectorValue)
     )
     this.radioButtons = Array.from(
       this.element.querySelectorAll('input[type=radio]')
@@ -21,7 +24,7 @@ export class RadioGroupController extends Controller {
       container.classList.remove('selected')
     })
 
-    event.target.closest(this.containersSelector).classList.add('selected')
+    event.target.closest(this.containersSelectorValue).classList.add('selected')
 
     this.element.dataset.selected =
       parseInt(event.target.value) - this.lowestValue

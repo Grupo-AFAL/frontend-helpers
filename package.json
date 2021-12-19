@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.5",
+    "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo": "^7.1.0",
     "@rails/request.js": "^0.0.6",
     "bulma": "^0.9.3",
@@ -29,8 +30,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
-    "slim-select": "^1.27.0",
-    "@hotwired/stimulus": "^3.0.1"
+    "slim-select": "^1.27.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16",
