@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 6.1'
+  spec.add_dependency 'rails', '> 6.1'
   spec.add_dependency 'ransack'
 
   spec.add_development_dependency 'rspec'
