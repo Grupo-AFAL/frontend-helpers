@@ -15,18 +15,17 @@
       background: $yellow;
       transition: background-color $background-transition-time;
       box-shadow: none;
-  
+
       a,
       .dropdown-item,
       .dropdown-link {
         color: $black;
       }
-  
+
       .navbar-menu {
         background: $yellow;
         transition: background-color $background-transition-time;
       }
-  
     }
   }
 }
@@ -42,7 +41,7 @@ $user-icon-padding: 0.815rem;
   width: $user-icon-size;
   height: $user-icon-size;
   border-radius: $user-icon-size;
-  margin-right: $user-icon-size / 2;
+  margin-right: calc($user-icon-size / 2);
   background-color: $purple;
   text-align: center;
 

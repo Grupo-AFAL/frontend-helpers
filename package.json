@@ -42,7 +42,7 @@
     "@snowpack/plugin-babel": "^2.1",
     "@snowpack/plugin-sass": "^1.4.0",
     "babel-plugin-istanbul": "^6.1.1",
-    "cypress": "^7",
+    "cypress": "^8",
     "cypress-file-upload": "^5.0.8",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.3.1",
