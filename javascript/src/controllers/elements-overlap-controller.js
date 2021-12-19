@@ -17,9 +17,9 @@ import throttle from 'lodash.throttle'
  */
 export class ElementsOverlapController extends Controller {
   static values = {
-    throttleInterval: Number,
-    gap: Number,
-    minWindowWidth: Number
+    throttleInterval: { type: Number, default: 10 },
+    minWindowWidth: { type: Number, default: 1023 }, // 1023 - touch device threshold
+    gap: { type: Number, default: 16 }
   }
 
   static targets = ['dynamicElement', 'fixedElement']
@@ -27,13 +27,12 @@ export class ElementsOverlapController extends Controller {
   connect () {
     const fixedElementPositionProperties = this.fixedElementTarget.getBoundingClientRect()
 
-    this.gap = this.gapValue || 16
-    this.minWindowWidth = this.minWindowWidthValue || 1023 // 1023 - touch device threshold
-    this.fixedElementBottom = fixedElementPositionProperties.bottom + this.gap
+    this.fixedElementBottom =
+      fixedElementPositionProperties.bottom + this.gapValue
 
     this.throttledPreventOverlap = throttle(
       this.preventOverlaping,
-      this.throttleIntervalValue || 10
+      this.throttleIntervalValue
     )
 
     document.addEventListener('scroll', this.throttledPreventOverlap)
@@ -41,7 +40,7 @@ export class ElementsOverlapController extends Controller {
   }
 
   preventOverlaping = () => {
-    if (window.innerWidth <= this.minWindowWidth) {
+    if (window.innerWidth <= this.minWindowWidthValue) {
       return
     }
 
@@ -51,7 +50,7 @@ export class ElementsOverlapController extends Controller {
     if (areElementsOverlaping) {
       this.fixedElementTarget.style.bottom = `${window.innerHeight -
         top +
-        this.gap}px`
+        this.gapValue}px`
     } else {
       this.fixedElementTarget.style.bottom = 'unset'
     }
