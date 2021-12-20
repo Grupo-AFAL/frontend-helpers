@@ -53,8 +53,8 @@ module FrontendHelpers
         tag.div(
           data: {
             controller: 'dynamic-fields',
-            'dynamic-fields-size': object.send(method).size,
-            'dynamic-fields-selector': ".#{singular}-fields"
+            'dynamic-fields-size-value': object.send(method).size,
+            'dynamic-fields-fields-selector-value': ".#{singular}-fields"
           }
         ) do
           safe_join([contents, container].compact)

@@ -17,7 +17,7 @@ description: Datepicker component that uses the flatpicker library
 
 ### Date and Time
 
-<input type="text" data-controller="datepicker" data-datepicker-enable-time="true">
+<input type="text" data-controller="datepicker" data-datepicker-enable-time-value="true">
 
 **Code**
 
@@ -25,13 +25,18 @@ description: Datepicker component that uses the flatpicker library
 <input
   type="text"
   data-controller="datepicker"
-  data-datepicker-enable-time="true"
+  data-datepicker-enable-time-value="true"
 />
 ```
 
 ### Only Time
 
-<input type="text" data-controller="datepicker" data-datepicker-enable-time="true" data-datepicker-no-calendar="true">
+<input
+  type="text"
+  data-controller="datepicker"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-no-calendar-value="true"
+/>
 
 **Code**
 
@@ -39,19 +44,19 @@ description: Datepicker component that uses the flatpicker library
 <input
   type="text"
   data-controller="datepicker"
-  data-datepicker-enable-time="true"
-  data-datepicker-no-calendar="true"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-no-calendar-value="true"
 />
 ```
 
-### 24 hr time with seconds
+### Time with seconds
 
 <input
   type="text"
-  data-controller="datepicker" data-datepicker-enable-time="true" 
-  data-datepicker-enable-seconds="true"
-  data-datepicker-no-calendar="true"
-  data-datepicker-time-24hr="true"
+  data-controller="datepicker"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-enable-seconds-value="true"
+  data-datepicker-no-calendar-value="true"
 />
 
 **Code**
@@ -60,10 +65,9 @@ description: Datepicker component that uses the flatpicker library
 <input
   type="text"
   data-controller="datepicker"
-  data-datepicker-enable-time="true"
-  data-datepicker-enable-seconds="true"
-  data-datepicker-no-calendar="true"
-  data-datepicker-24hr="true"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-enable-seconds-value="true"
+  data-datepicker-no-calendar-value="true"
 />
 ```
 
@@ -72,11 +76,11 @@ description: Datepicker component that uses the flatpicker library
 <input
   type="text"
   data-controller="datepicker"
-  data-datepicker-enable-time="true"
-  data-datepicker-no-calendar="true"
-  data-datepicker-min-time="10:00"
-  data-datepicker-max-time="14:00"
-  data-datepicker-default-date="2021-08-05 12:00"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-no-calendar-value="true"
+  data-datepicker-min-time-value="10:00"
+  data-datepicker-max-time-value="14:00"
+  data-datepicker-default-date-value="2021-08-05 12:00"
 />
 
 **Code**
@@ -85,21 +89,25 @@ description: Datepicker component that uses the flatpicker library
 <input
   type="text"
   data-controller="datepicker"
-  data-datepicker-enable-time="true"
-  data-datepicker-no-calendar="true"
-  data-datepicker-min-time="10:00"
-  data-datepicker-max-time="14:00"
-  data-datepicker-default-date="2021-08-05 12:00"
+  data-datepicker-enable-time-value="true"
+  data-datepicker-no-calendar-value="true"
+  data-datepicker-min-time-value="10:00"
+  data-datepicker-max-time-value="14:00"
+  data-datepicker-default-date-value="2021-08-05 12:00"
 />
 ```
 
 ### Calendar using English language
 
 <div class="english-datepicker">
-  <input type="text" data-controller="datepicker" data-datepicker-locale="en"/>
+  <input type="text" data-controller="datepicker" data-datepicker-locale-value="en"/>
 </div>
 **Code**
 
 ```html
-<input type="text" data-controller="datepicker" data-datepicker-locale="en" />
+<input
+  type="text"
+  data-controller="datepicker"
+  data-datepicker-locale-value="en"
+/>
 ```

@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import camelCase from 'lodash.camelcase'
 import { autoFocusInput } from '../utils/form'
 
@@ -21,9 +21,6 @@ export class RemoteModalController extends Controller {
   static targets = ['template', 'background', 'wrapper', 'content', 'closeBtn']
 
   async connect () {
-    const { useTargetMutation } = await import('stimulus-use')
-    useTargetMutation(this)
-
     this.wrapperClass = this.wrapperTarget.getAttribute('data-wrapper-class')
     this.backgroundTarget.addEventListener('click', this._closeModal)
 
@@ -45,8 +42,12 @@ export class RemoteModalController extends Controller {
     }
   }
 
-  templateTargetAdded () {
+  templateTargetConnected () {
     this.backgroundTarget.addEventListener('click', this._closeModal)
+  }
+
+  templateTargetDisconnected () {
+    this.backgroundTarget.removeEventListener('click', this._closeModal)
   }
 
   openModal (content) {
@@ -67,7 +68,9 @@ export class RemoteModalController extends Controller {
 
   _closeModal = () => {
     this.templateTarget.classList.remove('is-active')
-    if (this.wrapperClass) { this.wrapperTarget.classList.remove(this.wrapperClass) }
+    if (this.wrapperClass) {
+      this.wrapperTarget.classList.remove(this.wrapperClass)
+    }
     this.contentTarget.innerHTML = ''
   }
 

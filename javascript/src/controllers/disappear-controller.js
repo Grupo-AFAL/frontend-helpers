@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 /**
  * Disappear Controller
@@ -12,13 +12,13 @@ export class DisappearController extends Controller {
   static classes = ['animation']
 
   static values = {
-    delay: Number,
+    delay: { type: Number, default: 3000 },
     remove: Boolean
   }
 
   connect () {
     this.closed = false
-    setTimeout(() => this.close(), this.delayValue || 3000)
+    setTimeout(() => this.close(), this.delayValue)
   }
 
   disconnect () {
@@ -27,7 +27,9 @@ export class DisappearController extends Controller {
   }
 
   close () {
-    const animationClass = this.hasAnimationClass ? this.animationClass : 'fadeOutRight'
+    const animationClass = this.hasAnimationClass
+      ? this.animationClass
+      : 'fadeOutRight'
 
     this.element.classList.add(animationClass)
     this.element.addEventListener('animationend', () => {
@@ -37,6 +39,8 @@ export class DisappearController extends Controller {
   }
 
   removeElement () {
-    if (!this.hasRemoveValue) { this.element.remove() }
+    if (!this.hasRemoveValue) {
+      this.element.remove()
+    }
   }
 }

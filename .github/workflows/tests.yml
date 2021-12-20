@@ -64,7 +64,7 @@ jobs:
           name: cc-test-reporter
           path: ./tmp
 
-      - run: npm run install-peer-deps
+      - run: npm install
 
       - name: Cypress run
         env:

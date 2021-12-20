@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 /**
  * Dropdown Controller
@@ -28,15 +28,19 @@ export class DropdownController extends Controller {
   connect () {
     document.addEventListener('click', this.closeDropdowns)
 
-    if (!(this.hasHoverableValue && this.hoverableValue)) { return }
-    this.element.addEventListener('mouseenter', (event) => this.toggleMenu(event))
+    if (!(this.hasHoverableValue && this.hoverableValue)) {
+      return
+    }
+    this.element.addEventListener('mouseenter', event => this.toggleMenu(event))
     this.element.addEventListener('mouseleave', this.closeDropdowns)
   }
 
   disconnect () {
     document.removeEventListener('click', this.closeDropdowns)
 
-    if (!(this.hasHoverableValue && this.hoverableValue)) { return }
+    if (!(this.hasHoverableValue && this.hoverableValue)) {
+      return
+    }
     this.element.removeEventListener('mouseenter', this.closeDropdowns)
     this.element.removeEventListener('mouseleave', this.closeDropdowns)
   }

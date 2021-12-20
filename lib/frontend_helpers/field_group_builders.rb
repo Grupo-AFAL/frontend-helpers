@@ -67,7 +67,7 @@ module FrontendHelpers
         class: 'field file has-name',
         data: {
           controller: 'file-input',
-          'file-input-non-selected-text': non_selected_text
+          'file-input-non-selected-text-value': non_selected_text
         }
       }
 
@@ -150,12 +150,6 @@ module FrontendHelpers
 
       FieldGroupWrapper.render @template, self, method, options do
         text_field(method, options)
-      end
-    end
-
-    def phone_field_group(method, options = {})
-      FieldGroupWrapper.render @template, self, method, options do
-        phone_field(method, options)
       end
     end
 
