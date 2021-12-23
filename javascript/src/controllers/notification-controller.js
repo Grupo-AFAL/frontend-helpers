@@ -6,14 +6,12 @@ import { DisappearController } from './disappear-controller'
  * The user can chose to close the notification by clicking the close button.
  */
 export class NotificationController extends DisappearController {
-  
   static values = {
-    delay: { type: Number },
+    delay: Number,
     remove: Boolean
   }
 
   connect () {
-
     this.closed = false
     if (!this.hasDelayValue) { return }
 
