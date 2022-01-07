@@ -15,17 +15,17 @@ export class PopupController extends Controller {
         {
           name: 'offset',
           options: {
-            offset: [0, 8],
-          },
+            offset: [0, 8]
+          }
         },
         {
           name: 'preventOverflow',
           options: {
-            padding: 16,
-          },
+            padding: 16
+          }
         }
-      ],
-    });
+      ]
+    })
   }
 
   disconnect () {
@@ -37,7 +37,7 @@ export class PopupController extends Controller {
     this.containerTarget.classList.add('popin')
     this.buttonTarget.classList.add('is-selected')
     this.openedInputTarget.value = true
-    this.popperInstance.update();
+    this.popperInstance.update()
     this.updateHistory(true)
     this.opened = true
   }
