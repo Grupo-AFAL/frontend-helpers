@@ -1,7 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
+import { createPopper } from '@popperjs/core'
 import useClickOutside from '../utils/use-click-outside'
-
-const POPUP_MARGIN = 12
 
 export class PopupController extends Controller {
   static targets = ['container', 'button', 'openedInput']
@@ -10,7 +9,27 @@ export class PopupController extends Controller {
   connect () {
     useClickOutside(this)
     this.opened = this.openedValue
-    this.positionPopup()
+    this.popperInstance = createPopper(this.buttonTarget, this.containerTarget, {
+      placement: 'bottom',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8]
+          }
+        },
+        {
+          name: 'preventOverflow',
+          options: {
+            padding: 16
+          }
+        }
+      ]
+    })
+  }
+
+  disconnect () {
+    this.popperInstance.destroy()
   }
 
   open () {
@@ -18,7 +37,7 @@ export class PopupController extends Controller {
     this.containerTarget.classList.add('popin')
     this.buttonTarget.classList.add('is-selected')
     this.openedInputTarget.value = true
-    this.positionPopup()
+    this.popperInstance.update()
     this.updateHistory(true)
     this.opened = true
   }
@@ -42,12 +61,6 @@ export class PopupController extends Controller {
 
   clickOutside () {
     this.close()
-  }
-
-  positionPopup () {
-    const { height } = this.buttonTarget.getBoundingClientRect()
-    this.containerTarget.style.left = '0px'
-    this.containerTarget.style.top = `${height + POPUP_MARGIN}px`
   }
 
   updateHistory (opened = false) {
