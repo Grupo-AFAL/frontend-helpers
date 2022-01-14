@@ -29,6 +29,15 @@ module FrontendHelpers
       </svg>
     )
 
+    ALERT_ALT = %(
+      <svg viewBox="0 0 576 512" class="svg-inline">
+        <path fill="currentColor" d="M569.52 440.01c18.46 32-4.71 71.99-41.58 71.99H48.05c-36.93
+         0-60-40.05-41.57-71.99L246.42 24c18.47-32.01 64.72-31.96 83.16 0L569.52 440zM288 354a46
+          46 0 1 0 0 92 46 46 0 0 0 0-92zm-43.67-165.35 7.41 136A12 12 0 0 0 263.74 336h48.54a12 
+          12 0 0 0 11.98-11.35l7.42-136A12 12 0 0 0 319.7 176h-63.38a12 12 0 0 0-11.98 12.65z"/>
+      </svg>
+    )
+
     ANGLE_DOUBLE_DOWN = %(
       <svg viewBox="0 0 320 512" class="svg-inline">
         <path fill="currentColor"
@@ -1256,6 +1265,7 @@ module FrontendHelpers
     MAP = {
       'address-book' => ADDRESS_BOOK,
       'alert' => ALERT,
+      'alert-alt' => ALERT_ALT,
       'angle-double-down' => ANGLE_DOUBLE_DOWN,
       'angle-double-up' => ANGLE_DOUBLE_UP,
       'american-express' => AMERICAN_EXPRESS,
