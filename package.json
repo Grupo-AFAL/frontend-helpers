@@ -47,7 +47,7 @@
     "cypress-file-upload": "^5.0.8",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.3.1",
-    "markdown-it": "^12.3.0",
+    "markdown-it": "^12.3.2",
     "snowpack": "^3.8.8",
     "standard": "^16.0.4",
     "start-server-and-test": "^1.14.0"
