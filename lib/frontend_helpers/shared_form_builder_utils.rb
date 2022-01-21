@@ -169,7 +169,9 @@ module FrontendHelpers
         show_content: 'auto',
         show_search: true,
         search_placeholder: 'Buscar',
-        add_to_body: false
+        add_to_body: false,
+        close_on_select: true,
+        allow_deselect: false
       )
 
       html_options[:class] = class_names(
@@ -183,7 +185,9 @@ module FrontendHelpers
         'slim-select-show-content-value': options[:show_content],
         'slim-select-show-search-value': options[:show_search],
         'slim-select-search-placeholder-value': options[:search_placeholder],
-        'slim-select-add-to-body-value': options[:add_to_body]
+        'slim-select-add-to-body-value': options[:add_to_body],
+        'slim-select-close-on-select-value': options[:close_on_select],
+        'slim-select-allow-deselect-option-value': options[:allow_deselect]
       )
 
       field_options = {

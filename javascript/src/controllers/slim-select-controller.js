@@ -7,7 +7,9 @@ export class SlimSelectController extends Controller {
     showContent: String,
     showSearch: Boolean,
     searchPlaceholder: String,
-    addToBody: Boolean
+    addToBody: Boolean,
+    closeOnSelect: Boolean,
+    allowDeselectOption: Boolean
   }
 
   async connect () {
@@ -20,6 +22,8 @@ export class SlimSelectController extends Controller {
       showSearch: this.showSearchValue,
       searchPlaceholder: this.searchPlaceholderValue,
       addToBody: this.addToBodyValue,
+      closeOnSelect: this.closeOnSelectValue,
+      allowDeselectOption: this.allowDeselectOptionValue,
       addable: this.addable()
     }
 
