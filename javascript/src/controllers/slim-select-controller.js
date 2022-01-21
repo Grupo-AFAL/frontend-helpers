@@ -9,10 +9,12 @@ export class SlimSelectController extends Controller {
     searchPlaceholder: String,
     addToBody: Boolean,
     closeOnSelect: Boolean,
-    allowDeselectOption: Boolean
+    allowDeselectOption: Boolean,
+    selectAllText: String,
+    deselectAllText: String
   }
 
-  static targets = ['select']
+  static targets = ['select', 'selectAll']
 
   async connect () {
     const { default: SlimSelect } = await import('slim-select')
@@ -72,5 +74,13 @@ export class SlimSelectController extends Controller {
     })
 
     this.select.set(all_values)
+    this.selectAllTarget.setAttribute('data-action', 'slim-select#deselectAll')
+    this.selectAllTarget.innerHTML = this.deselectAllTextValue
+  }
+
+  deselectAll () {
+    this.select.set([])
+    this.selectAllTarget.setAttribute('data-action', 'slim-select#selectAll')
+    this.selectAllTarget.innerHTML = this.selectAllTextValue
   }
 }

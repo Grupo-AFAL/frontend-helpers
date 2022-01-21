@@ -161,8 +161,11 @@ When select an option, of you click it again, it will be deselected
 
 Option to select all
 
-<div class="slim-select" id="select-all" data-controller="slim-select">
-  <button data-action="slim-select#selectAll">click to select all</button>
+<div class="slim-select" id="select-all" data-controller="slim-select"
+data-slim-select-select-all-text-value="Select all"
+data-slim-select-deselect-all-text-value="Deselect all">
+  <button data-action="slim-select#selectAll"
+  data-slim-select-target="selectAll">Select all</button>
   <select name="field" data-slim-select-target="select"  multiple>
     <option value="1">One</option>
     <option value="2">Two</option>
