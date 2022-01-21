@@ -171,7 +171,7 @@ module FrontendHelpers
         search_placeholder: 'Buscar',
         add_to_body: false,
         close_on_select: true,
-        allow_deselect: false
+        allow_deselect_option: false
       )
 
       html_options[:class] = class_names(
@@ -187,7 +187,7 @@ module FrontendHelpers
         'slim-select-search-placeholder-value': options[:search_placeholder],
         'slim-select-add-to-body-value': options[:add_to_body],
         'slim-select-close-on-select-value': options[:close_on_select],
-        'slim-select-allow-deselect-option-value': options[:allow_deselect]
+        'slim-select-allow-deselect-option-value': options[:allow_deselect_option]
       )
 
       field_options = {

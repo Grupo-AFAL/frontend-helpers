@@ -12,11 +12,13 @@ export class SlimSelectController extends Controller {
     allowDeselectOption: Boolean
   }
 
+  static targets = ['select']
+
   async connect () {
     const { default: SlimSelect } = await import('slim-select')
 
     const options = {
-      select: this.element,
+      select: this.selectTarget,
       placeholder: this.hasPlaceholderValue && this.placeholderValue,
       showContent: this.showContentValue,
       showSearch: this.showSearchValue,
@@ -47,7 +49,7 @@ export class SlimSelectController extends Controller {
   }
 
   dataWithHTML () {
-    return Array.from(this.element.children).map(option => {
+    return Array.from(this.selectTarget.children).map(option => {
       return {
         text: option.text,
         value: option.value,
@@ -59,7 +61,16 @@ export class SlimSelectController extends Controller {
   }
 
   hasInnerHTML () {
-    const firstOption = this.element.children[0]
+    const firstOption = this.selectTarget.children[0]
     return firstOption && !!firstOption.dataset.innerHtml
+  }
+
+  selectAll () {
+    var all_values = []
+    Array.from(this.selectTarget.children).forEach(option => {
+      all_values.push(option.value)
+    })
+
+    this.select.set(all_values)
   }
 }
