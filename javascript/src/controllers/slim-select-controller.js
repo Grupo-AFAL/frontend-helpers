@@ -22,7 +22,8 @@ export class SlimSelectController extends Controller {
     const options = {
       select: this.selectTarget,
       placeholder: this.hasPlaceholderValue && this.placeholderValue,
-      showContent: this.showContentValue,
+      showContent:
+        this.showContentValue === 'undefined' ? this.showContent : 'down',
       showSearch: this.showSearchValue,
       searchPlaceholder: this.searchPlaceholderValue,
       addToBody: this.addToBodyValue,
