@@ -190,7 +190,7 @@ module FrontendHelpers
           content_tag(:a,
                       { 'data-action': 'slim-select#selectAll',
                         'data-slim-select-target': 'selectAll',
-                        class: 'button button-all is-small' }) do
+                        class: 'button is-small' }) do
             options[:select_all_text]
           end + select(method, values, options, html_options)
         else
