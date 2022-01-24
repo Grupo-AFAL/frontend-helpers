@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.5] - 2022-01-20
 
-- Add new properties `close_on_select` and `allow_deselect` to `slim_select_field` method.
+- Add new properties `close_on_select` and `allow_deselect_option` to `slim_select_field` method.
 
 ## [0.5.4] - 2022-01-07
 
