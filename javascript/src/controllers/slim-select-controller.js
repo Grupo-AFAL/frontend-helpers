@@ -68,12 +68,12 @@ export class SlimSelectController extends Controller {
   }
 
   selectAll () {
-    var all_values = []
+    const allValues = []
     Array.from(this.selectTarget.children).forEach(option => {
-      all_values.push(option.value)
+      allValues.push(option.value)
     })
 
-    this.select.set(all_values)
+    this.select.set(allValues)
     this.selectAllTarget.setAttribute('data-action', 'slim-select#deselectAll')
     this.selectAllTarget.innerHTML = this.deselectAllTextValue
   }
