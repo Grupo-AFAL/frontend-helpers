@@ -171,7 +171,10 @@ module FrontendHelpers
         search_placeholder: 'Buscar',
         add_to_body: false,
         close_on_select: true,
-        allow_deselect_option: false
+        allow_deselect_option: false,
+        select_all: false,
+        select_all_text: 'Select all',
+        deselect_all_text: 'Deselect all'
       )
 
       html_options[:class] = class_names(
@@ -179,24 +182,36 @@ module FrontendHelpers
       )
 
       html_options[:data].merge!(
-        controller: 'slim-select',
-        'slim-select-placeholder-value': html_options[:placeholder],
-        'slim-select-add-items-value': options[:add_items],
-        'slim-select-show-content-value': options[:show_content],
-        'slim-select-show-search-value': options[:show_search],
-        'slim-select-search-placeholder-value': options[:search_placeholder],
-        'slim-select-add-to-body-value': options[:add_to_body],
-        'slim-select-close-on-select-value': options[:close_on_select],
-        'slim-select-allow-deselect-option-value': options[:allow_deselect_option]
+        'slim-select-target': 'select'
       )
 
       field_options = {
         id: "#{method}_select_div",
-        class: "slim-select #{html_options.delete(:select_class)}".strip
+        class: "slim-select #{html_options.delete(:select_class)}".strip,
+        'data-controller': 'slim-select',
+        'data-slim-select-close-on-select-value': options[:close_on_select],
+        'data-slim-select-allow-deselect-option-value': options[:allow_deselect_option],
+        'data-slim-select-placeholder-value': html_options[:placeholder],
+        'data-slim-select-add-items-value': options[:add_items],
+        'data-slim-select-show-content-value': options[:show_content],
+        'data-slim-select-show-search-value': options[:show_search],
+        'data-slim-select-search-placeholder-value': options[:search_placeholder],
+        'data-slim-select-add-to-body-value': options[:add_to_body],
+        'data-slim-select-select-all-text-value': options[:select_all_text],
+        'data-slim-select-deselect-all-text-value': options[:deselect_all_text]
       }
 
       field = content_tag(:div, field_options) do
-        select(method, values, options, html_options)
+        if options[:select_all]
+          content_tag(:a,
+                      { 'data-action': 'slim-select#selectAll',
+                        'data-slim-select-target': 'selectAll',
+                        class: 'button button-all is-small' }) do
+            options[:select_all_text]
+          end + select(method, values, options, html_options)
+        else
+          select(method, values, options, html_options)
+        end
       end
 
       field_helper(method, field, html_options)

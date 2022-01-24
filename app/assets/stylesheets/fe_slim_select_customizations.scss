@@ -1,4 +1,12 @@
 .slim-select {
+  position: relative;
+
+  .button-all {
+    position: absolute !important;
+    top: -2.4rem;
+    right: 0;
+  }
+
   .ss-main {
     .ss-single-selected,
     .ss-multi-selected {
