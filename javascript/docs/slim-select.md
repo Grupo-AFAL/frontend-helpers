@@ -119,7 +119,7 @@ Select single item and position the options list on top of the input
 
 ### Close on select
 
-When select an option, the select won't close if the closeOnSelect is false
+When selecting an option, the slim-select won't close if closeOnSelect is false
 
 <div
   class="slim-select"
