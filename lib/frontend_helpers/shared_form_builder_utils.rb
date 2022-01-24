@@ -185,7 +185,24 @@ module FrontendHelpers
         'slim-select-target': 'select'
       )
 
-      field_options = {
+      field = content_tag(:div, slim_select_field_options(method, html_options, options)) do
+        if options[:select_all]
+          content_tag(:a,
+                      { 'data-action': 'slim-select#selectAll',
+                        'data-slim-select-target': 'selectAll',
+                        class: 'button button-all is-small' }) do
+            options[:select_all_text]
+          end + select(method, values, options, html_options)
+        else
+          select(method, values, options, html_options)
+        end
+      end
+
+      field_helper(method, field, html_options)
+    end
+
+    def slim_select_field_options(method, html_options, options)
+      {
         id: "#{method}_select_div",
         class: "slim-select #{html_options.delete(:select_class)}".strip,
         'data-controller': 'slim-select',
@@ -200,21 +217,6 @@ module FrontendHelpers
         'data-slim-select-select-all-text-value': options[:select_all_text],
         'data-slim-select-deselect-all-text-value': options[:deselect_all_text]
       }
-
-      field = content_tag(:div, field_options) do
-        if options[:select_all]
-          content_tag(:a,
-                      { 'data-action': 'slim-select#selectAll',
-                        'data-slim-select-target': 'selectAll',
-                        class: 'button button-all is-small' }) do
-            options[:select_all_text]
-          end + select(method, values, options, html_options)
-        else
-          select(method, values, options, html_options)
-        end
-      end
-
-      field_helper(method, field, html_options)
     end
 
     def boolean_field(method, options = {}, checked_value = '1', unchecked_value = '0')
