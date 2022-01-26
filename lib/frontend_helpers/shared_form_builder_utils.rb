@@ -161,7 +161,6 @@ module FrontendHelpers
       field_helper(method, field, field_options(method, html_options))
     end
 
-    # rubocop:disable Metrics/MethodLength
     def slim_select_field(method, values, options = {}, html_options = {})
       html_options.with_defaults!(multiple: false, data: {})
 
@@ -188,16 +187,9 @@ module FrontendHelpers
 
       field = content_tag(:div, slim_select_field_options(method, html_options, options)) do
         if options[:select_all]
-          content_tag(:a, { 'data-action': 'slim-select#selectAll',
-                            'data-slim-select-target': 'selectAllButton',
-                            class: 'button is-small' }) do
-            options[:select_all_text]
-          end +
-            content_tag(:a, { 'data-action': 'slim-select#deselectAll',
-                              'data-slim-select-target': 'deselectAllButton',
-                              class: 'button is-small', style: 'display: none;' }) do
-              options[:deselect_all_text]
-            end +
+          anchor_button('slim-select#selectAll', 'selectAllButton', options[:select_all_text]) +
+            anchor_button('slim-select#deselectAll', 'deselectAllButton',
+                          options[:deselect_all_text], 'display: none;') +
             select(method, values, options, html_options)
         else
           select(method, values, options, html_options)
@@ -206,7 +198,13 @@ module FrontendHelpers
 
       field_helper(method, field, html_options)
     end
-    # rubocop:enable Metrics/MethodLength
+
+    def anchor_button(action, target, text, style = nil)
+      content_tag(:a, { 'data-action': action, 'data-slim-select-target': target,
+                        class: 'button is-small', style: style }) do
+                          text
+                        end
+    end
 
     def slim_select_field_options(method, html_options, options)
       {
