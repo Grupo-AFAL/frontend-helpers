@@ -14,6 +14,7 @@ const SVG_SELECTOR = 'svg.svg-hover-card'
     obtained via a fetch request.
 */
 export class HovercardController extends Controller {
+  static targets = ['template']
   static values = {
     url: String
   }
@@ -30,12 +31,14 @@ export class HovercardController extends Controller {
   show () {
     this.isActive = true
 
-    if (this.cardNode) {
-      this.cardNode.classList.remove('is-hidden')
-    } else {
+    if (this.cardNode) { return this.cardNode.classList.remove('is-hidden') }
+
+    if (this.urlValue) {
       fetch(this.urlValue)
         .then(r => r.text())
         .then(html => this.insertHoverCard(html))
+    } else if (this.hasTemplateTarget) {
+      this.insertHoverCard(this.templateTarget.innerHTML)
     }
   }
 
