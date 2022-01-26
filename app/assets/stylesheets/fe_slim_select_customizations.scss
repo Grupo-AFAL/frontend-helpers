@@ -36,7 +36,7 @@
   .field_with_errors {
     .ss-main.select.is-multiple {
       .ss-multi-selected {
-        border-color: #d56d58;
+        border-color: $error;
       }
     }
   }

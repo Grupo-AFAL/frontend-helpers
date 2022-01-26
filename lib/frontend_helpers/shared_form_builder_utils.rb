@@ -196,10 +196,8 @@ module FrontendHelpers
     end
 
     def anchor_button(action, target, text, style = nil)
-      content_tag(:a, { 'data-action': action, 'data-slim-select-target': target,
-                        class: 'button is-small', style: style }) do
-                          text
-                        end
+      data = { action: action, 'slim-select-target': target }
+      tag.a text, class: 'button is-small', style: style, data: data
     end
 
     def slim_select_field_options(method, html_options, options)

@@ -70,7 +70,7 @@ Select a single item from a list with custom HTML
   id="custom-select"
   data-controller="slim-select"
 >
-  <select name="field" data-slim-select-target="select" \>
+  <select name="field" data-slim-select-target="select">
     <option data-inner-html="<strong>Strong:<strong> Item one" value="One">Item One</option>
     <option data-inner-html="<i>Italics:<i> Item two" value="Two">Item Two</option>
     <option data-inner-html="<img src='https://via.placeholder.com/150 /> Con imagen" value="Three">Con imagen</option>
@@ -87,7 +87,7 @@ Select multiple items from a list with a placeholder
   data-controller="slim-select"
   data-slim-select-placeholder-value="Select options.."
 >
-  <select name="field" data-slim-select-target="select"   multiple>
+  <select name="field" data-slim-select-target="select" multiple>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
@@ -107,7 +107,7 @@ Select single item and position the options list on top of the input
   data-controller="slim-select"
   data-slim-select-show-content-value="up"
 >
-  <select name="field" data-slim-select-target="select"  >
+  <select name="field" data-slim-select-target="select">
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
