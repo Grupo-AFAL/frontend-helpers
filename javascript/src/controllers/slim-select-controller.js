@@ -7,19 +7,26 @@ export class SlimSelectController extends Controller {
     showContent: String,
     showSearch: Boolean,
     searchPlaceholder: String,
-    addToBody: Boolean
+    addToBody: Boolean,
+    closeOnSelect: Boolean,
+    allowDeselectOption: Boolean
   }
+
+  static targets = ['select', 'selectAllButton', 'deselectAllButton']
 
   async connect () {
     const { default: SlimSelect } = await import('slim-select')
 
     const options = {
-      select: this.element,
+      select: this.selectTarget,
       placeholder: this.hasPlaceholderValue && this.placeholderValue,
-      showContent: this.showContentValue,
+      showContent:
+        this.showContentValue === 'undefined' ? 'down' : this.showContentValue,
       showSearch: this.showSearchValue,
       searchPlaceholder: this.searchPlaceholderValue,
       addToBody: this.addToBodyValue,
+      closeOnSelect: this.closeOnSelectValue,
+      allowDeselectOption: this.allowDeselectOptionValue,
       addable: this.addable()
     }
 
@@ -43,7 +50,7 @@ export class SlimSelectController extends Controller {
   }
 
   dataWithHTML () {
-    return Array.from(this.element.children).map(option => {
+    return Array.from(this.selectTarget.children).map(option => {
       return {
         text: option.text,
         value: option.value,
@@ -55,7 +62,23 @@ export class SlimSelectController extends Controller {
   }
 
   hasInnerHTML () {
-    const firstOption = this.element.children[0]
+    const firstOption = this.selectTarget.children[0]
     return firstOption && !!firstOption.dataset.innerHtml
+  }
+
+  selectAll () {
+    const allValues = Array.from(this.selectTarget.children).map(
+      option => option.value
+    )
+
+    this.select.set(allValues)
+    this.selectAllButtonTarget.style.display = 'none'
+    this.deselectAllButtonTarget.style.display = 'block'
+  }
+
+  deselectAll () {
+    this.select.set([])
+    this.deselectAllButtonTarget.style.display = 'none'
+    this.selectAllButtonTarget.style.display = 'block'
   }
 }

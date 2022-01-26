@@ -1,4 +1,12 @@
 .slim-select {
+  position: relative;
+
+  .button {
+    position: absolute;
+    top: -2.4rem;
+    right: 0;
+  }
+
   .ss-main {
     .ss-single-selected,
     .ss-multi-selected {
@@ -21,6 +29,14 @@
     &.is-shorter {
       .ss-content .ss-list {
         max-height: 160px;
+      }
+    }
+  }
+
+  .field_with_errors {
+    .ss-main.select.is-multiple {
+      .ss-multi-selected {
+        border-color: $error;
       }
     }
   }

@@ -10,8 +10,9 @@ Select a single item from a list
 <div
   class="slim-select"
   id="single-select"
+  data-controller="slim-select"
 >
-  <select name="field" data-controller="slim-select">
+  <select name="field" data-slim-select-target="select">
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3" selected>Three</option>
@@ -28,8 +29,10 @@ Select a single item from a list with search enabled
 <div
   class="slim-select"
   id="search-select"
+  data-controller="slim-select"
+  data-slim-select-show-search-value="true"
 >
-  <select name="field" data-controller="slim-select" data-slim-select-show-search-value="true">
+  <select name="field" data-slim-select-target="select" >
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3" selected>Three</option>
@@ -46,8 +49,9 @@ Select multiple item from a list
 <div
   class="slim-select"
   id="multi-select"
+  data-controller="slim-select"
 >
-  <select name="field" data-controller="slim-select" multiple>
+  <select name="field" data-slim-select-target="select"  multiple>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3" selected>Three</option>
@@ -64,8 +68,9 @@ Select a single item from a list with custom HTML
 <div
   class="slim-select"
   id="custom-select"
+  data-controller="slim-select"
 >
-  <select name="field" data-controller="slim-select">
+  <select name="field" data-slim-select-target="select">
     <option data-inner-html="<strong>Strong:<strong> Item one" value="One">Item One</option>
     <option data-inner-html="<i>Italics:<i> Item two" value="Two">Item Two</option>
     <option data-inner-html="<img src='https://via.placeholder.com/150 /> Con imagen" value="Three">Con imagen</option>
@@ -79,8 +84,10 @@ Select multiple items from a list with a placeholder
 <div
   class="slim-select"
   id="placeholder-select"
+  data-controller="slim-select"
+  data-slim-select-placeholder-value="Select options.."
 >
-  <select name="field" data-controller="slim-select" data-slim-select-placeholder-value="Select options.." multiple>
+  <select name="field" data-slim-select-target="select" multiple>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
@@ -97,8 +104,69 @@ Select single item and position the options list on top of the input
 <div
   class="slim-select"
   id="show-content-select"
+  data-controller="slim-select"
+  data-slim-select-show-content-value="up"
 >
-  <select name="field" data-controller="slim-select" data-slim-select-show-content-value="up">
+  <select name="field" data-slim-select-target="select">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="4">Four</option>
+    <option value="5">Five</option>
+    <option value="6">Six</option>
+  </select>
+</div>
+
+### Close on select
+
+When selecting an option, the slim-select won't close if closeOnSelect is false
+
+<div
+  class="slim-select"
+  id="close-on-select"
+  data-controller="slim-select"
+  data-slim-select-close-on-select-value="true"
+>
+  <select name="field" data-slim-select-target="select" >
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="4">Four</option>
+    <option value="5">Five</option>
+    <option value="6">Six</option>
+  </select>
+</div>
+
+### Allow deselect option
+
+When select an option, of you click it again, it will be deselected
+
+<div
+  class="slim-select"
+  id="allow-deselect-option"
+  data-controller="slim-select"
+  data-slim-select-allow-deselect-option-value="true"
+>
+  <select name="field" data-slim-select-target="select"  multiple>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="4">Four</option>
+    <option value="5">Five</option>
+    <option value="6">Six</option>
+  </select>
+</div>
+
+### Select all
+
+Option to select all
+
+<div class="slim-select" id="select-all" data-controller="slim-select">
+  <a data-action="slim-select#selectAll"
+  data-slim-select-target="selectAllButton" class="button is-small" id="button-select-all">Select all</a>
+  <a data-action="slim-select#deselectAll" data-slim-select-target="deselectAllButton"
+   class="button is-small" id="button-desselect-all" style="display: none;">Deselect all</a>
+  <select name="field" data-slim-select-target="select"  multiple>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
