@@ -162,7 +162,7 @@ module FrontendHelpers
     end
 
     def slim_select_field(method, values, options = {}, html_options = {})
-      html_options.with_defaults!(multiple: false, data: {})
+      html_options.with_defaults!(multiple: false, 'data-slim-select-target': 'select')
 
       options.with_defaults!(
         add_items: false,
@@ -179,10 +179,6 @@ module FrontendHelpers
 
       html_options[:class] = class_names(
         "select #{html_options[:class]}".strip, 'is-multiple': html_options[:multiple]
-      )
-
-      html_options[:data].merge!(
-        'slim-select-target': 'select'
       )
 
       field = content_tag(:div, slim_select_field_options(method, html_options, options)) do
