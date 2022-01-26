@@ -28,7 +28,7 @@ export class HovercardController extends Controller {
     window.addEventListener('resize', () => this.removeCardNode())
   }
 
-  show() {
+  show () {
     this.isActive = true
 
     if (this.cardNode) { return this.cardNode.classList.remove('is-hidden') }
