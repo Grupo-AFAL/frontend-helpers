@@ -1,0 +1,102 @@
+Arguments: 
+  /usr/local/Cellar/node@16/16.13.1/libexec/node /usr/local/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js install
+
+PATH: 
+  /usr/local/opt/python@3.10/bin:/usr/local/Cellar/node@16/16.13.1/bin:/usr/local/opt/node@16/bin:/Users/fede/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Little Snitch.app/Contents/Components:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/fede/code/flutter/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.13.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: self signed certificate in certificate chain
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+      at TLSSocket.emit (node:events:390:28)
+      at TLSSocket._finishInit (node:_tls_wrap:944:8)
+      at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12)
+
+npm manifest: 
+  {
+    "name": "frontend-helpers",
+    "version": "0.5.7",
+    "description": "Collection of Stimulus controllers and utilities for building web apps",
+    "main": "javascript/src/index.js",
+    "module": "javascript/src/index.js",
+    "sideEffects": false,
+    "files": [
+      "javascript"
+    ],
+    "scripts": {
+      "start": "snowpack dev",
+      "build": "snowpack build",
+      "test": "start-server-and-test start http://localhost:8080 cy:run",
+      "cy:run": "cypress run",
+      "cy:open": "cypress open"
+    },
+    "dependencies": {
+      "@glidejs/glide": "^3.5",
+      "@hotwired/stimulus": "^3.0.1",
+      "@hotwired/turbo": "^7.1.0",
+      "@popperjs/core": "^2.11.2",
+      "@rails/request.js": "^0.0.6",
+      "bulma": "^0.9.3",
+      "chart.js": "^3.6.2",
+      "chartjs-adapter-date-fns": "^2.0.0",
+      "chartkick": "^4.1.1",
+      "date-fns": "^2.27.0",
+      "flatpickr": "^4.6.9",
+      "hotkeys-js": "^3.8.7",
+      "lodash.camelcase": "^4.3.0",
+      "lodash.debounce": "^4.0.8",
+      "lodash.throttle": "^4.1.1",
+      "slim-select": "^1.27.0"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.16",
+      "@babel/core": "^7.16",
+      "@babel/eslint-parser": "^7.16",
+      "@babel/plugin-proposal-class-properties": "^7.16",
+      "@babel/preset-env": "^7.16",
+      "@cypress/code-coverage": "^3.9",
+      "@snowpack/plugin-babel": "^2.1",
+      "@snowpack/plugin-sass": "^1.4.0",
+      "babel-plugin-istanbul": "^6.1.1",
+      "cypress": "^9",
+      "cypress-file-upload": "^5.0.8",
+      "gray-matter": "^4.0.3",
+      "highlight.js": "^11.3.1",
+      "markdown-it": "^12.3.0",
+      "snowpack": "^3.8.8",
+      "standard": "^16.0.4",
+      "start-server-and-test": "^1.14.0"
+    },
+    "standard": {
+      "parser": "@babel/eslint-parser",
+      "globals": [
+        "cy",
+        "it",
+        "xit",
+        "context",
+        "describe",
+        "beforeEach",
+        "Cypress",
+        "expect",
+        "fetch",
+        "history",
+        "FormData",
+        "CustomEvent",
+        "Event"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
