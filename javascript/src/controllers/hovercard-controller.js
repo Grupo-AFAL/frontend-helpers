@@ -34,7 +34,7 @@ export class HovercardController extends Controller {
     this.isActive = true
 
     if (this.contentLoaded) {
-      return this.showAndUpdateHovercardPosition()
+      return this.showAndUpdatePosition()
     }
 
     if (this.urlValue) {
