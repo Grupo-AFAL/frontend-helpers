@@ -26,7 +26,8 @@ export class HovercardController extends Controller {
     this.cardNode = this.element.appendChild(this.buildEmptyNode())
 
     this.popperInstance = createPopper(this.element, this.cardNode, {
-      placement: this.placementValue
+      placement: this.placementValue,
+      modifiers: [{ name: 'eventListeners', enabled: false }]
     })
   }
 
@@ -56,16 +57,7 @@ export class HovercardController extends Controller {
 
   showAndUpdatePosition () {
     this.cardNode.classList.remove('is-hidden')
-
-    // Enable the event listeners
-    this.popperInstance.setOptions(options => ({
-      ...options,
-      modifiers: [
-        ...options.modifiers,
-        { name: 'eventListeners', enabled: true }
-      ]
-    }))
-
+    this.toggleEventListeners(true)
     this.popperInstance.update()
   }
 
@@ -88,18 +80,21 @@ export class HovercardController extends Controller {
   hide () {
     this.isActive = false
     this.cardNode.classList.add('is-hidden')
+    this.toggleEventListeners(false)
+  }
 
-    // Disable the event listeners
+  disconnect () {
+    this.popperInstance.destroy()
+    this.cardNode.remove()
+  }
+
+  toggleEventListeners (value) {
     this.popperInstance.setOptions(options => ({
       ...options,
       modifiers: [
         ...options.modifiers,
-        { name: 'eventListeners', enabled: false }
+        { name: 'eventListeners', enabled: value }
       ]
     }))
-  }
-
-  disconnect () {
-    this.cardNode.remove()
   }
 }
