@@ -23,8 +23,7 @@ export class HovercardController extends Controller {
     this.element.addEventListener('mouseenter', this.show.bind(this))
     this.element.addEventListener('mouseleave', this.hide.bind(this))
 
-    this.cardNode = this.buildCardNode(null)
-    this.element.appendChild(this.cardNode)
+    this.cardNode = this.element.appendChild(this.buildEmptyNode())
 
     this.popperInstance = createPopper(this.element, this.cardNode, {
       placement: this.placementValue
@@ -41,21 +40,21 @@ export class HovercardController extends Controller {
     if (this.urlValue) {
       fetch(this.urlValue)
         .then(r => r.text())
-        .then(html => this.insertHoverCard(html))
+        .then(html => this.insertContent(html))
     } else if (this.hasTemplateTarget) {
-      this.insertHoverCard(this.templateTarget.innerHTML)
+      this.insertContent(this.templateTarget.innerHTML)
     }
   }
 
-  insertHoverCard (html = null) {
+  insertContent (html) {
     if (!this.isActive) return
     this.contentLoaded = true
 
     this.cardNode.querySelector(`.${CONTENT_CLASS_NAME}`).innerHTML = html
-    this.showAndUpdateHovercardPosition()
+    this.showAndUpdatePosition()
   }
 
-  showAndUpdateHovercardPosition () {
+  showAndUpdatePosition () {
     this.cardNode.classList.remove('is-hidden')
 
     // Enable the event listeners
@@ -70,12 +69,11 @@ export class HovercardController extends Controller {
     this.popperInstance.update()
   }
 
-  buildCardNode (html) {
+  buildEmptyNode () {
     return stringToDOMNode(
       `<div class="hovercard card is-hidden">
         <div class="card-content">
           <div class="${CONTENT_CLASS_NAME}">
-            ${html || ''}
           </div>
         </div>
         <span data-popper-arrow class="arrow">
@@ -103,6 +101,5 @@ export class HovercardController extends Controller {
 
   disconnect () {
     this.cardNode.remove()
-    this.cardNode = null
   }
 }
