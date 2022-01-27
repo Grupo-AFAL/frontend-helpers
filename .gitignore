@@ -18,6 +18,7 @@ node_modules
 cypress/videos/
 cypress/screenshots/
 yarn.lock
+yarn-error.log
 cypress/fixtures/example.json
 
 /spec/dummy/db/*.sqlite3
