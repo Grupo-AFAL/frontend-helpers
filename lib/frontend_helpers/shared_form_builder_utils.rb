@@ -33,6 +33,7 @@ module FrontendHelpers
     end
 
     def rich_text_area(method, options = {})
+      options[:class] = "trix-content #{options[:class]}".strip
       field_helper(method, super(method, field_options(method, options)), options)
     end
 
