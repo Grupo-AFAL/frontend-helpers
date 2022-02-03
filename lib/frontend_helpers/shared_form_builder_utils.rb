@@ -32,6 +32,10 @@ module FrontendHelpers
       field_helper(method, super(method, field_options(method, options)), options)
     end
 
+    def rich_text_area(method, options = {})
+      field_helper(method, super(method, field_options(method, options)), options)
+    end
+
     def date_field(method, options = {})
       clear_btn = if options.delete(:clear)
                     content_tag(:div, class: 'control') do

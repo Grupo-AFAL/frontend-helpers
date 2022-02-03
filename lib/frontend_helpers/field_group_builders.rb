@@ -40,6 +40,12 @@ module FrontendHelpers
       end
     end
 
+    def rich_text_area_group(method, options = {})
+      FieldGroupWrapper.render @template, self, method, options do
+        rich_text_area(method, options)
+      end
+    end
+
     def file_field_group(method, options = {})
       options.with_defaults!(
         class: 'file-input',
