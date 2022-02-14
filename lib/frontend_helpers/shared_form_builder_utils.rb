@@ -49,7 +49,7 @@ module FrontendHelpers
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
-        class: 'field has-addons',
+        class: 'field',
         data: { controller: 'datepicker' }
       }.merge!(options.delete(:wrapper_options) || {})
 
