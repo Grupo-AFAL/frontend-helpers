@@ -19,9 +19,8 @@ export class FileSizeLimitController extends Controller {
   }
 
   chekLimit (event) {
-    const trixEditor = document.querySelector('trix-editor')
     let totalSize = 0
-    trixEditor.editor.composition.attachments.forEach(element => {
+    this.trixEditorTarget.editor.composition.attachments.forEach(element => {
       totalSize += element.attributes.values.filesize
     })
     totalSize += event.file.size
