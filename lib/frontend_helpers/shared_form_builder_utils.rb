@@ -33,9 +33,11 @@ module FrontendHelpers
     end
 
     def rich_text_area(method, options = {})
-      @template.content_tag(:div, data: { controller: 'file-size-limit' }) do
+      options.with_defaults!(limit_in_mg: 1, 'data-file-size-limit-target': 'trixEditor')
+      @template.content_tag(:div,
+                            data: { controller: 'file-size-limit',
+                                    'file-size-limit-limit-value': options[:limit_in_mg] }) do
         options[:class] = "trix-content #{options[:class]}".strip
-        options['data-file-size-limit-target'] = 'trixEditor'
         field_helper(method, super(method, field_options(method, options)), options)
       end
     end
