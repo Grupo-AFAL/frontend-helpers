@@ -33,10 +33,12 @@ module FrontendHelpers
     end
 
     def rich_text_area(method, options = {})
-      options.with_defaults!(limit_in_mg: 1, 'data-file-size-limit-target': 'trixEditor')
+      options.with_defaults!(mb_limit: 1, 'data-file-size-limit-target': 'trixEditor')
+      options.with_defaults!(message: "Attachments must not exceed #{options[:mb_limit]} MB!")
       @template.content_tag(:div,
                             data: { controller: 'file-size-limit',
-                                    'file-size-limit-limit-value': options[:limit_in_mg] }) do
+                                    'file-size-limit-limit-value': options[:mb_limit],
+                                    'file-size-limit-message-value': options[:message] }) do
         options[:class] = "trix-content #{options[:class]}".strip
         field_helper(method, super(method, field_options(method, options)), options)
       end

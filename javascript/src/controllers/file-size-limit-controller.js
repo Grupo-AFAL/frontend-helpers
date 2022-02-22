@@ -2,23 +2,23 @@ import { Controller } from '@hotwired/stimulus'
 
 export class FileSizeLimitController extends Controller {
   static targets = ['trixEditor']
-  static values = { limit: Number }
+  static values = { limit: Number, message: String }
 
   connect () {
     this.trixEditorTarget.addEventListener(
       'trix-file-accept',
-      this.chekLimit.bind(this)
+      this.checkLimit.bind(this)
     )
   }
 
   disconnect () {
     this.trixEditorTarget.removeEventListener(
       'trix-file-accept',
-      this.chekLimit
+      this.checkLimit
     )
   }
 
-  chekLimit (event) {
+  checkLimit (event) {
     let totalSize = 0
     this.trixEditorTarget.editor.composition.attachments.forEach(element => {
       totalSize += element.attributes.values.filesize
@@ -29,9 +29,7 @@ export class FileSizeLimitController extends Controller {
 
     if (totalSize > maxFileSize) {
       event.preventDefault()
-      window.alert(
-        `¡Los archivos adjuntos no deben superar ${this.limitValue} MB!`
-      )
+      window.alert(this.messageValue)
     }
   }
 }
