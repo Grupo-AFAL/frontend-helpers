@@ -33,15 +33,18 @@ module FrontendHelpers
     end
 
     def rich_text_area(method, options = {})
-      options.with_defaults!(mb_limit: 1, 'data-file-size-limit-target': 'trixEditor')
-      options.with_defaults!(alert_message: "Attachments must not exceed #{options[:mb_limit]} MB!")
-      @template.content_tag(:div,
-                            data: { controller: 'file-size-limit',
-                                    'file-size-limit-limit-value': options[:mb_limit],
-                                    'file-size-limit-message-value': options[:alert_message] }) do
-        options[:class] = "trix-content #{options[:class]}".strip
-        field_helper(method, super(method, field_options(method, options)), options)
-      end
+      max_attachments_size = options.dig(:attachments, :max_size) || 1
+      default_error_msg = "Attachments must not exceed #{max_attachments_size}MB"
+      error_message = options.dig(:attachments, :error_message) || default_error_msg
+
+      options.with_defaults!(
+        'data-controller': 'trix-attachments',
+        'data-trix-attachments-max-size-value': max_attachments_size,
+        'data-trix-attachments-error-message-value': error_message
+      )
+
+      options[:class] = "trix-content #{options[:class]}".strip
+      field_helper(method, super(method, field_options(method, options)), options)
     end
 
     def date_field(method, options = {})
