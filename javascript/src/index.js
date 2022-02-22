@@ -47,4 +47,5 @@ export { SubmitOnChangeController } from './controllers/submit-on-change-control
 export { TabsController } from './controllers/tabs-controller'
 export { ToggleController } from './controllers/toggle-controller'
 export { TooltipController } from './controllers/tooltip-controller'
+export { TrixAttachmentsController } from './controllers/trix-attachments-controller'
 export { ImagePreviewController } from './controllers/image-preview-controller'
