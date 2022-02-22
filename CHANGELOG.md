@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.11] - 2022-02-21
 
-- Add `file-size-limit` controller.
+- Add `trix-attachments` controller.
 
 ## [0.5.10] - 2022-02-14
 
