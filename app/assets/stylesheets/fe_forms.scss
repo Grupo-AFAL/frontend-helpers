@@ -80,6 +80,29 @@
   margin-right: 0.375rem;
 }
 
+.block-radio {
+  display: block;
+
+  .radio {
+    display: block;
+  }
+
+  .radio + .radio {
+    margin: 0;
+  }
+}
+
+.large-radio-group {
+  .radio {
+    font-size: 1rem;
+    margin-bottom: 1rem !important;
+
+    input {
+      margin-right: 1rem;
+    }
+  }
+}
+
 .field_with_errors {
   width: 100%;
 
