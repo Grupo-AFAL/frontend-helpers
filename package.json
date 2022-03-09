@@ -1,6 +1,6 @@
 {
   "name": "frontend-helpers",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "description": "Collection of Stimulus controllers and utilities for building web apps",
   "main": "javascript/src/index.js",
   "module": "javascript/src/index.js",
@@ -26,7 +26,7 @@
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartkick": "^4.1.1",
     "date-fns": "^2.27.0",
-    "flatpickr": "^4.6.9",
+    "flatpickr": "=4.6.9",
     "hotkeys-js": "^3.8.7",
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",

@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.13] - 2022-03-09
+
+- Fix flatpickr to version 4.6.9, since 4.6.10 introduces a bug on the time selector
+
 ## [0.5.12] - 2022-02-22
 
 - Include radio input tag styles to display them as a list
