@@ -31,7 +31,8 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
-    "slim-select": "^1.27.0"
+    "slim-select": "^1.27.0",
+    "sortablejs": "^1.15.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16",
