@@ -19,13 +19,13 @@ import debounce from 'lodash.debounce'
 export class SubmitOnChangeController extends Controller {
   static values = { delay: Number }
 
-  connect() {
+  connect () {
     if (this.hasDelayValue && this.delayValue > 0) {
       this.submit = debounce(this.submit, this.delayValue)
     }
   }
 
-  async submit() {
+  async submit () {
     this.element.requestSubmit()
   }
 }
