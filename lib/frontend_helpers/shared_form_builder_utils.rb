@@ -56,10 +56,18 @@ module FrontendHelpers
                     end
                   end
 
+      previous_btn = if options[:manual] # pendiente renombrar esta variable
+                       content_tag(:button, icon_tag('arrow-back'), class: 'button is-transparent')
+                     end
+
+      next_btn = if options.delete(:manual)
+                   content_tag(:button, icon_tag('arrow-forward'), class: 'button is-transparent')
+                 end
+
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
-        class: 'field',
+        class: 'field is-horizontal flatpickr',
         data: { controller: 'datepicker' }
       }.merge!(options.delete(:wrapper_options) || {})
 
@@ -68,7 +76,7 @@ module FrontendHelpers
       end
 
       content_tag(:div, wrapper_options) do
-        text_field(method, options) + clear_btn
+        previous_btn + text_field(method, options) + next_btn + clear_btn
       end
     end
 

@@ -27,3 +27,10 @@
   background: $link;
   border-color: $link;
 }
+
+.flatpickr {
+  .is-transparent {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}

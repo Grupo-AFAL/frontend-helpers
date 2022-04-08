@@ -20,7 +20,8 @@ export class DatepickerController extends Controller {
     defaultDate: String,
     minDate: String,
     minTime: String,
-    maxTime: String
+    maxTime: String,
+    altInputClass: String
   }
 
   async connect () {
@@ -42,7 +43,8 @@ export class DatepickerController extends Controller {
       defaultDate: this.defaultDateValue,
       minDate: this.minDateValue,
       minTime: this.minTimeValue,
-      maxTime: this.maxTimeValue
+      maxTime: this.maxTimeValue,
+      altInputClass: this.altInputClassValue
     })
   }
 
