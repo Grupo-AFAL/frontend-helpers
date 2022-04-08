@@ -23,24 +23,29 @@ import { Controller } from '@hotwired/stimulus'
  * </div>
  */
 export class DropdownController extends Controller {
-  static values = { hoverable: Boolean }
+  static values = {
+    hoverable: { type: Boolean, default: false },
+    closeOnClick: { type: Boolean, default: true }
+  }
 
   connect () {
-    document.addEventListener('click', this.closeDropdowns)
-
-    if (!(this.hasHoverableValue && this.hoverableValue)) {
-      return
+    if (this.closeOnClickValue) {
+      document.addEventListener('click', this.closeDropdowns)
     }
+
+    if (!this.hoverableValue) return
+
     this.element.addEventListener('mouseenter', event => this.toggleMenu(event))
     this.element.addEventListener('mouseleave', this.closeDropdowns)
   }
 
   disconnect () {
-    document.removeEventListener('click', this.closeDropdowns)
-
-    if (!(this.hasHoverableValue && this.hoverableValue)) {
-      return
+    if (this.closeOnClickValue) {
+      document.removeEventListener('click', this.closeDropdowns)
     }
+
+    if (!this.hoverableValue) return
+
     this.element.removeEventListener('mouseenter', this.closeDropdowns)
     this.element.removeEventListener('mouseleave', this.closeDropdowns)
   }
