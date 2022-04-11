@@ -93,13 +93,13 @@ export class DatepickerController extends Controller {
   }
 
   getPreviousDay () {
-    let currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
     currentDate.setDate(currentDate.getDate() - 1)
     this.flatpickr.setDate(currentDate)
   }
 
   getNextDay () {
-    let currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
     currentDate.setDate(currentDate.getDate() + 1)
     this.flatpickr.setDate(currentDate)
   }
