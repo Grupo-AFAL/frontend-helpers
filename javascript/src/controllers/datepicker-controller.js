@@ -92,39 +92,43 @@ export class DatepickerController extends Controller {
     return format
   }
 
-  getPreviousDay () {
+  getCustomDate ({ params: { dateBy, add } }) {
     const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setDate(currentDate.getDate() - 1)
+
+    switch (dateBy) {
+      case 'day':
+        currentDate.setDate(
+          add
+            ? this.addDates(currentDate.getDate(), 1)
+            : this.subtractDates(currentDate.getDate(), 1)
+        )
+        break
+      case 'month':
+        currentDate.setMonth(
+          add
+            ? this.addDates(currentDate.getMonth(), 1)
+            : this.subtractDates(currentDate.getMonth(), 1)
+        )
+        break
+      case 'year':
+        currentDate.setFullYear(
+          add
+            ? this.addDates(currentDate.getFullYear(), 1)
+            : this.subtractDates(currentDate.getFullYear(), 1)
+        )
+        break
+      default:
+        return
+    }
+
     this.flatpickr.setDate(currentDate)
   }
 
-  getNextDay () {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setDate(currentDate.getDate() + 1)
-    this.flatpickr.setDate(currentDate)
+  addDates (a, b) {
+    return a + b
   }
 
-  getPreviousMonth () {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setMonth(currentDate.getMonth() - 1)
-    this.flatpickr.setDate(currentDate)
-  }
-
-  getNextMonth () {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setMonth(currentDate.getMonth() + 1)
-    this.flatpickr.setDate(currentDate)
-  }
-
-  getPreviousYear () {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setFullYear(currentDate.getFullYear() - 1)
-    this.flatpickr.setDate(currentDate)
-  }
-
-  getNextYear () {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
-    currentDate.setFullYear(currentDate.getFullYear() + 1)
-    this.flatpickr.setDate(currentDate)
+  subtractDates (a, b) {
+    return a - b
   }
 }

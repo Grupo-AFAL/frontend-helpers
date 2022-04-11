@@ -56,25 +56,9 @@ module FrontendHelpers
                     end
                   end
 
-      previous_btn = if options[:manual] # pendiente renombrar esta variable
-                       content_tag(:button, icon_tag('arrow-back'),
-                                   {
-                                     class: 'button is-transparent',
-                                     data: {
-                                       action: "datepicker#getPrevious#{options[:manual][:date_by].capitalize}"
-                                     }
-                                   })
-                     end
+      previous_btn = (date_field_previous_btn(options) if options[:manual])
 
-      next_btn = if options[:manual]
-                   content_tag(:button, icon_tag('arrow-forward'),
-                               {
-                                 class: 'button is-transparent',
-                                 data: {
-                                   action: "datepicker#getNext#{options[:manual][:date_by].capitalize}"
-                                 }
-                               })
-                 end
+      next_btn = (date_field_next_btn(options) if options[:manual])
 
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
@@ -90,6 +74,30 @@ module FrontendHelpers
       content_tag(:div, wrapper_options) do
         previous_btn + text_field(method, options) + next_btn + clear_btn
       end
+    end
+
+    def date_field_previous_btn(options)
+      content_tag(:button, icon_tag('arrow-back'),
+                  {
+                    class: 'button is-transparent',
+                    data: {
+                      action: 'datepicker#getCustomDate',
+                      'datepicker-date-by-param': options[:manual][:date_by],
+                      'datepicker-add-param': false
+                    }
+                  })
+    end
+
+    def date_field_next_btn(options)
+      content_tag(:button, icon_tag('arrow-forward'),
+                  {
+                    class: 'button is-transparent',
+                    data: {
+                      action: 'datepicker#getCustomDate',
+                      'datepicker-date-by-param': options[:manual][:date_by],
+                      'datepicker-add-param': true
+                    }
+                  })
     end
 
     def datetime_field(method, options = {})
