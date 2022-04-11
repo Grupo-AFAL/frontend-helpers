@@ -60,15 +60,19 @@ module FrontendHelpers
                        content_tag(:button, icon_tag('arrow-back'),
                                    {
                                      class: 'button is-transparent',
-                                     data: { action: 'datepicker#getPreviousDay' }
+                                     data: {
+                                       action: "datepicker#getPrevious#{options[:manual][:date_by].capitalize}"
+                                     }
                                    })
                      end
 
-      next_btn = if options.delete(:manual)
+      next_btn = if options[:manual]
                    content_tag(:button, icon_tag('arrow-forward'),
                                {
                                  class: 'button is-transparent',
-                                 data: { action: 'datepicker#getNextDay' }
+                                 data: {
+                                   action: "datepicker#getNext#{options[:manual][:date_by].capitalize}"
+                                 }
                                })
                  end
 

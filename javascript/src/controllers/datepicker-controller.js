@@ -103,4 +103,28 @@ export class DatepickerController extends Controller {
     currentDate.setDate(currentDate.getDate() + 1)
     this.flatpickr.setDate(currentDate)
   }
+
+  getPreviousMonth () {
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    currentDate.setMonth(currentDate.getMonth() - 1)
+    this.flatpickr.setDate(currentDate)
+  }
+
+  getNextMonth () {
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    currentDate.setMonth(currentDate.getMonth() + 1)
+    this.flatpickr.setDate(currentDate)
+  }
+
+  getPreviousYear () {
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    currentDate.setFullYear(currentDate.getFullYear() - 1)
+    this.flatpickr.setDate(currentDate)
+  }
+
+  getNextYear () {
+    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+    currentDate.setFullYear(currentDate.getFullYear() + 1)
+    this.flatpickr.setDate(currentDate)
+  }
 }
