@@ -57,11 +57,19 @@ module FrontendHelpers
                   end
 
       previous_btn = if options[:manual] # pendiente renombrar esta variable
-                       content_tag(:button, icon_tag('arrow-back'), class: 'button is-transparent')
+                       content_tag(:button, icon_tag('arrow-back'),
+                                   {
+                                     class: 'button is-transparent',
+                                     data: { action: 'datepicker#getPreviousDay' }
+                                   })
                      end
 
       next_btn = if options.delete(:manual)
-                   content_tag(:button, icon_tag('arrow-forward'), class: 'button is-transparent')
+                   content_tag(:button, icon_tag('arrow-forward'),
+                               {
+                                 class: 'button is-transparent',
+                                 data: { action: 'datepicker#getNextDay' }
+                               })
                  end
 
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
