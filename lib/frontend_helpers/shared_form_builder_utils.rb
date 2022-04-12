@@ -72,11 +72,15 @@ module FrontendHelpers
       end
 
       content_tag(:div, wrapper_options) do
-        if previous_btn.nil?
-          text_field(method, options) + clear_btn
-        else
-          previous_btn + text_field(method, options) + next_btn + clear_btn
-        end
+        input_date_field(previous_btn, next_btn, clear_btn, method, options)
+      end
+    end
+
+    def input_date_field(previous_btn, next_btn, clear_btn, method, options)
+      if previous_btn.nil?
+        text_field(method, options) + clear_btn
+      else
+        previous_btn + text_field(method, options) + next_btn + clear_btn
       end
     end
 
