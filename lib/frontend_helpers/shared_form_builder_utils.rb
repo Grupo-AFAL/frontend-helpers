@@ -68,7 +68,7 @@ module FrontendHelpers
       end
 
       content_tag(:div, wrapper_options) do
-        input_date_field(previous_btn, next_btn, clear_btn, method, options)
+        input_date_field(clear_btn, method, options)
       end
     end
 
