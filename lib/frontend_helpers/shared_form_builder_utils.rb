@@ -56,10 +56,6 @@ module FrontendHelpers
                     end
                   end
 
-      previous_btn = date_field_previous_btn if options[:manual]
-
-      next_btn = date_field_next_btn if options[:manual]
-
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
@@ -76,11 +72,11 @@ module FrontendHelpers
       end
     end
 
-    def input_date_field(previous_btn, next_btn, clear_btn, method, options)
-      if previous_btn.nil?
-        text_field(method, options) + clear_btn
+    def input_date_field(clear_btn, method, options)
+      if options[:manual]
+        date_field_previous_btn + text_field(method, options) + date_field_next_btn + clear_btn
       else
-        previous_btn + text_field(method, options) + next_btn + clear_btn
+        text_field(method, options) + clear_btn
       end
     end
 
