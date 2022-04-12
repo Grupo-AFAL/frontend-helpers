@@ -32,6 +32,9 @@ export class DatepickerController extends Controller {
         ? this.element
         : this.element.querySelector('input')
 
+    // this is necesary because `altInputClass` option does not inherit the original classes
+    this.altInputClassValue = `form-control input ${this.altInputClassValue}`
+
     this.flatpickr = flatpickr(input, {
       altInput: true,
       altFormat: this.altFormat(),
