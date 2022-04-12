@@ -33,4 +33,10 @@
     background-color: transparent;
     border-color: transparent;
   }
+
+  &.is-horizontal {
+    @include mobile {
+      display: flex;
+    }
+  }
 }
