@@ -21,7 +21,8 @@ export class DatepickerController extends Controller {
     minDate: String,
     minTime: String,
     maxTime: String,
-    altInputClass: String
+    altInputClass: String,
+    period: String
   }
 
   async connect () {
@@ -95,30 +96,18 @@ export class DatepickerController extends Controller {
     return format
   }
 
-  getCustomDate ({ params: { dateBy, add } }) {
-    const currentDate = new Date(this.flatpickr.input.value.replace('-', '/'))
+  nextDate () {
+    const currentDate = this.flatpickr.selectedDates[0]
 
-    switch (dateBy) {
+    switch (this.periodValue) {
       case 'day':
-        currentDate.setDate(
-          add
-            ? this.addDates(currentDate.getDate(), 1)
-            : this.subtractDates(currentDate.getDate(), 1)
-        )
+        currentDate.setDate(currentDate.getDate() + 1)
         break
       case 'month':
-        currentDate.setMonth(
-          add
-            ? this.addDates(currentDate.getMonth(), 1)
-            : this.subtractDates(currentDate.getMonth(), 1)
-        )
+        currentDate.setMonth(currentDate.getMonth() + 1)
         break
       case 'year':
-        currentDate.setFullYear(
-          add
-            ? this.addDates(currentDate.getFullYear(), 1)
-            : this.subtractDates(currentDate.getFullYear(), 1)
-        )
+        currentDate.setFullYear(currentDate.getFullYear() + 1)
         break
       default:
         return
@@ -127,11 +116,23 @@ export class DatepickerController extends Controller {
     this.flatpickr.setDate(currentDate)
   }
 
-  addDates (a, b) {
-    return a + b
-  }
+  previousDate () {
+    const currentDate = this.flatpickr.selectedDates[0]
 
-  subtractDates (a, b) {
-    return a - b
+    switch (this.periodValue) {
+      case 'day':
+        currentDate.setDate(currentDate.getDate() - 1)
+        break
+      case 'month':
+        currentDate.setMonth(currentDate.getMonth() - 1)
+        break
+      case 'year':
+        currentDate.setFullYear(currentDate.getFullYear() - 1)
+        break
+      default:
+        return
+    }
+
+    this.flatpickr.setDate(currentDate)
   }
 }

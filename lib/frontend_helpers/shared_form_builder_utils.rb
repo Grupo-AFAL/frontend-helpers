@@ -56,15 +56,15 @@ module FrontendHelpers
                     end
                   end
 
-      previous_btn = (date_field_previous_btn(options) if options[:manual])
+      previous_btn = date_field_previous_btn if options[:manual]
 
-      next_btn = (date_field_next_btn(options) if options[:manual])
+      next_btn = date_field_next_btn if options[:manual]
 
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
         class: 'field is-horizontal flatpickr',
-        data: { controller: 'datepicker' }
+        data: { controller: 'datepicker', 'datepicker-period-value': options[:period] }
       }.merge!(options.delete(:wrapper_options) || {})
 
       if options[:min_date].present?
@@ -72,31 +72,27 @@ module FrontendHelpers
       end
 
       content_tag(:div, wrapper_options) do
-        previous_btn + text_field(method, options) + next_btn + clear_btn
+        if previous_btn.nil?
+          text_field(method, options) + clear_btn
+        else
+          previous_btn + text_field(method, options) + next_btn + clear_btn
+        end
       end
     end
 
-    def date_field_previous_btn(options)
+    def date_field_previous_btn
       content_tag(:button, icon_tag('arrow-back'),
                   {
                     class: 'button is-transparent',
-                    data: {
-                      action: 'datepicker#getCustomDate',
-                      'datepicker-date-by-param': options[:manual][:date_by],
-                      'datepicker-add-param': false
-                    }
+                    data: { action: 'datepicker#previousDate' }
                   })
     end
 
-    def date_field_next_btn(options)
+    def date_field_next_btn
       content_tag(:button, icon_tag('arrow-forward'),
                   {
                     class: 'button is-transparent',
-                    data: {
-                      action: 'datepicker#getCustomDate',
-                      'datepicker-date-by-param': options[:manual][:date_by],
-                      'datepicker-add-param': true
-                    }
+                    data: { action: 'datepicker#nextDate' }
                   })
     end
 
