@@ -111,3 +111,27 @@ description: Datepicker component that uses the flatpicker library
   data-datepicker-locale-value="en"
 />
 ```
+
+### datepicker with buttons to go to the previous or next date
+
+<div class="manual-flatpickr">
+  <div class="field is-horizontal flatpickr" data-controller="datepicker" data-datepicker-period-value="day" data-datepicker-alt-input-class-value="form-control input has-text-centered">
+    <button class="button is-transparent" data-action="datepicker#previousDate" id="previous-btn">
+      <span class="icon">
+        <svg viewBox="0 0 13 20" class="svg-inline">
+          <path d="M12.5098 1.86961L10.7298 0.0996094L0.839844 9.99961L10.7398 19.8996L12.5098 18.1296L4.37984 9.99961L12.5098 1.86961Z" fill="currentColor"></path>
+        </svg>
+      </span>
+    </button>
+    <div class="control is-fullwidth ">
+      <input data-action="submit-on-change#submit" value="2022-03-30" manual="date_by day" control_class="is-fullwidth " class="input flatpickr-input" type="hidden" name="date" id="date">
+    </div>
+    <button class="button is-transparent" data-action="datepicker#nextDate" id="next-btn">
+      <span class="icon">
+        <svg viewBox="0 0 13 20" class="svg-inline">
+          <path d="M0.490234 18.1296L2.26023 19.8996L12.1602 9.99961L2.26023 0.0996094L0.490234 1.86961L8.62023 9.99961L0.490234 18.1296Z" fill="currentColor"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>

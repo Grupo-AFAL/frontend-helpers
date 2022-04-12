@@ -20,7 +20,9 @@ export class DatepickerController extends Controller {
     defaultDate: String,
     minDate: String,
     minTime: String,
-    maxTime: String
+    maxTime: String,
+    altInputClass: String,
+    period: String
   }
 
   async connect () {
@@ -30,6 +32,9 @@ export class DatepickerController extends Controller {
       this.element.nodeName === 'INPUT'
         ? this.element
         : this.element.querySelector('input')
+
+    // this is necesary because `altInputClass` option does not inherit the original classes
+    this.altInputClassValue = `form-control input ${this.altInputClassValue}`
 
     this.flatpickr = flatpickr(input, {
       altInput: true,
@@ -42,7 +47,8 @@ export class DatepickerController extends Controller {
       defaultDate: this.defaultDateValue,
       minDate: this.minDateValue,
       minTime: this.minTimeValue,
-      maxTime: this.maxTimeValue
+      maxTime: this.maxTimeValue,
+      altInputClass: this.altInputClassValue
     })
   }
 
@@ -88,5 +94,45 @@ export class DatepickerController extends Controller {
     }
 
     return format
+  }
+
+  nextDate () {
+    const currentDate = this.flatpickr.selectedDates[0]
+
+    switch (this.periodValue) {
+      case 'day':
+        currentDate.setDate(currentDate.getDate() + 1)
+        break
+      case 'month':
+        currentDate.setMonth(currentDate.getMonth() + 1)
+        break
+      case 'year':
+        currentDate.setFullYear(currentDate.getFullYear() + 1)
+        break
+      default:
+        return
+    }
+
+    this.flatpickr.setDate(currentDate)
+  }
+
+  previousDate () {
+    const currentDate = this.flatpickr.selectedDates[0]
+
+    switch (this.periodValue) {
+      case 'day':
+        currentDate.setDate(currentDate.getDate() - 1)
+        break
+      case 'month':
+        currentDate.setMonth(currentDate.getMonth() - 1)
+        break
+      case 'year':
+        currentDate.setFullYear(currentDate.getFullYear() - 1)
+        break
+      default:
+        return
+    }
+
+    this.flatpickr.setDate(currentDate)
   }
 }

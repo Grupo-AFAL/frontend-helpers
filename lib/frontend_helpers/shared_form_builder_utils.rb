@@ -59,8 +59,8 @@ module FrontendHelpers
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
-        class: 'field',
-        data: { controller: 'datepicker' }
+        class: 'field is-horizontal flatpickr',
+        data: { controller: 'datepicker', 'datepicker-period-value': options[:period] }
       }.merge!(options.delete(:wrapper_options) || {})
 
       if options[:min_date].present?
@@ -68,8 +68,32 @@ module FrontendHelpers
       end
 
       content_tag(:div, wrapper_options) do
+        input_date_field(clear_btn, method, options)
+      end
+    end
+
+    def input_date_field(clear_btn, method, options)
+      if options[:manual]
+        date_field_previous_btn + text_field(method, options) + date_field_next_btn + clear_btn
+      else
         text_field(method, options) + clear_btn
       end
+    end
+
+    def date_field_previous_btn
+      content_tag(:button, icon_tag('arrow-back'),
+                  {
+                    class: 'button is-transparent',
+                    data: { action: 'datepicker#previousDate' }
+                  })
+    end
+
+    def date_field_next_btn
+      content_tag(:button, icon_tag('arrow-forward'),
+                  {
+                    class: 'button is-transparent',
+                    data: { action: 'datepicker#nextDate' }
+                  })
     end
 
     def datetime_field(method, options = {})

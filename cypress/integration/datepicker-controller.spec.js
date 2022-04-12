@@ -40,4 +40,18 @@ context('DatepickerController', () => {
       .next()
       .should('have.have', 'Tue')
   })
+
+  it('Set next day', () => {
+    cy.get('#date')
+      .as('input')
+      .should('have.value', '2022-03-30')
+
+    cy.get('#previous-btn').click()
+
+    cy.get('@input').should('have.value', '2022-03-29')
+
+    cy.get('#next-btn').click()
+
+    cy.get('@input').should('have.value', '2022-03-30')
+  })
 })
