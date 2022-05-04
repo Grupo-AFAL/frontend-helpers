@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module FrontendHelpers
-  VERSION = '0.5.22'
+  VERSION = '0.5.23'
 end
