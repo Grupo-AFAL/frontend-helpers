@@ -59,9 +59,11 @@ module FrontendHelpers
       options[:control_class] = "is-fullwidth #{options[:control_class]}"
 
       wrapper_options = {
-        class: 'field is-horizontal flatpickr',
+        class: 'field flatpickr',
         data: { controller: 'datepicker', 'datepicker-period-value': options[:period] }
       }.merge!(options.delete(:wrapper_options) || {})
+
+      wrapper_options[:class] += ' has-addons' if options[:manual]
 
       if options[:min_date].present?
         wrapper_options.merge!('data-datepicker-min-date-value': options[:min_date])
