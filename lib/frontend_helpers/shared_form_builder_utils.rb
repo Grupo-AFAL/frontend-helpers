@@ -60,7 +60,10 @@ module FrontendHelpers
 
       wrapper_options = {
         class: 'field flatpickr',
-        data: { controller: 'datepicker', 'datepicker-period-value': options[:period] }
+        data: {
+          controller: 'datepicker', 'datepicker-period-value': options[:period],
+          'datepicker-locale-value': I18n.locale
+        }
       }.merge!(options.delete(:wrapper_options) || {})
 
       wrapper_options[:class] += ' has-addons' if options[:manual]
