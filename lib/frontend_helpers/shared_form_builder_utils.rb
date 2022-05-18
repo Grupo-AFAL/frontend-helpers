@@ -60,7 +60,7 @@ module FrontendHelpers
 
       wrapper_options = {
         class: 'field flatpickr',
-        data: { 
+        data: {
           controller: 'datepicker', 'datepicker-period-value': options[:period],
           'datepicker-locale-value': I18n.locale
         }
