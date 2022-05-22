@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module FrontendHelpers
   module AutoSubmitSelect
     include Utils
 
-    def auto_submit_select(record, attribute, choices, **options)
+    def auto_submit_select(record:, attribute:, choices:, **options)
       options = prepend_controller(options, 'submit-on-change')
 
       form_with model: record, builder: FrontendHelpers::FormBuilder, **options do |f|

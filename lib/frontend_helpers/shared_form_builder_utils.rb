@@ -309,9 +309,7 @@ module FrontendHelpers
 
       options = prepend_action(options, 'remote-modal#submit') if options.delete(:remote_modal)
 
-      if options.delete(:remote_drawer)
-        options = prepend_action(options, 'remote-drawer#submit')
-      end
+      options = prepend_action(options, 'remote-drawer#submit') if options.delete(:remote_drawer)
 
       content_tag(:div, class: options.delete(:wrapper_class)) do
         content_tag(:button, value, options)

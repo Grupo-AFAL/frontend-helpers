@@ -4,6 +4,7 @@ module FrontendHelpers
   module Components
     include Utils
     include IconComponents
+    include AutoSubmitSelect
 
     def icon_tag(name, options = {})
       options[:class] = class_names(['icon', options[:class]])
