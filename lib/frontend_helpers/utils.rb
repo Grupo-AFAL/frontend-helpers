@@ -65,11 +65,18 @@ module FrontendHelpers
       end
     end
 
-    def append_data_action(hash, value)
-      hash ||= {}
-      hash[:data] ||= {}
-      hash[:data][:action] = [hash.dig(:data, :action), value].join(' ').strip
-      hash
+    def prepend_action(options, action)
+      prepend_data_attribute(options, :action, action)
+    end
+
+    def prepend_controller(options, controller_name)
+      prepend_data_attribute(options, :controller, controller_name)
+    end
+
+    def prepend_data_attribute(options, attr_name, attr_value)
+      options[:data] ||= {}
+      options[:data][attr_name] = "#{attr_value} #{options[:data][attr_name]}".strip
+      options
     end
   end
 end
