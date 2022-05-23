@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { get } from '@rails/request.js'
+import { get, post } from '@rails/request.js'
 import { getTimestamp } from '../utils/time'
 
 /**
@@ -15,9 +15,24 @@ import { getTimestamp } from '../utils/time'
  * <div data-controller="input-on-change" data-input-on-change-url-value="/url/path">
  *   <input data-action="input-on-change#change" name="some-name" value="hello">
  * </div>
+ *
+ * For a multi-select a POST request is required in order to send an array of values
+ *
+ * <div data-controller="input-on-change"
+ *      data-input-on-change-url-value="/url/path"
+ *      data-input-on-change-method-value="post">
+ *   <select multiple="true" data-action="input-on-change#change" name="some-name">
+ *     ....
+ *   </select>
+ * </div>
  */
 export class InputOnChangeController extends Controller {
-  static values = { url: String, queryKey: String }
+  static values = {
+    url: String,
+    queryKey: String,
+    method: { type: String, default: 'get' }
+  }
+
   static targets = ['element']
 
   connect () {
@@ -27,13 +42,30 @@ export class InputOnChangeController extends Controller {
   }
 
   change (event) {
-    get(this.urlValue, {
-      query: {
-        [this.queryKey(event)]: event.target.value,
-        target_id: this.targetId()
-      },
-      responseKind: 'turbo-stream'
-    })
+    let value = event.target.value
+
+    // Extract the value from the SlimSelect instance when available in order to get
+    // all the selected values.
+    if (event.target.slim) {
+      value = event.target.slim.selected()
+    }
+
+    this.performRequest(this.queryKey(event), value)
+  }
+
+  performRequest (key, value) {
+    const params = {
+      [key]: value,
+      target_id: this.targetId()
+    }
+
+    // POST request is needed to send an array of values. With a GET request the multiple
+    // values are sent as a serialized array string, instead of an actual array.
+    if (this.methodValue === 'post') {
+      post(this.urlValue, { body: params, responseKind: 'turbo-stream' })
+    } else {
+      get(this.urlValue, { query: params, responseKind: 'turbo-stream' })
+    }
   }
 
   // Name of the parameter sent to the server.
