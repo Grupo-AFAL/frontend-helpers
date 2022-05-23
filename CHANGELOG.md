@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.29] - 2022-05-22
 
-- Add `auto_select_submit` helper method to automatically send a server request when a select_field
+- Add `auto_submit_select` helper method to automatically send a server request when a select_field
   changes it's value.
 
 ## [0.5.28] - 2022-05-19
