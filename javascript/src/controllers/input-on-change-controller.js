@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { get } from '@rails/request.js'
+import { get, post } from '@rails/request.js'
 import { getTimestamp } from '../utils/time'
 
 /**
