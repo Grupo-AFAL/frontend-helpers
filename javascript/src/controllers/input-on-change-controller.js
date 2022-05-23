@@ -49,7 +49,7 @@ export class InputOnChangeController extends Controller {
       value = event.target.slim.selected()
     }
 
-    performRequest(this.queryKey(event), value)
+    this.performRequest(this.queryKey(event), value)
   }
 
   performRequest (key, value) {
