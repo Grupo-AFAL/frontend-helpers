@@ -16,7 +16,7 @@ import { getTimestamp } from '../utils/time'
  *   <input data-action="input-on-change#change" name="some-name" value="hello">
  * </div>
  *
- * For a multi-select a POST request is required in order an array of values
+ * For a multi-select a POST request is required in order to send an array of values
  *
  * <div data-controller="input-on-change"
  *      data-input-on-change-url-value="/url/path"
