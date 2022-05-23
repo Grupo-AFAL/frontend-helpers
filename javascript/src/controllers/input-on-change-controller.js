@@ -32,6 +32,7 @@ export class InputOnChangeController extends Controller {
     queryKey: String,
     method: { type: String, default: 'get' }
   }
+
   static targets = ['element']
 
   connect () {
@@ -60,7 +61,7 @@ export class InputOnChangeController extends Controller {
 
     // POST request is needed to send an array of values. With a GET request the multiple
     // values are sent as a serialized array string, instead of an actual array.
-    if (this.methodValue == 'post') {
+    if (this.methodValue === 'post') {
       post(this.urlValue, { body: params, responseKind: 'turbo-stream' })
     } else {
       get(this.urlValue, { query: params, responseKind: 'turbo-stream' })
