@@ -84,7 +84,7 @@ module FrontendHelpers
 
         html_options['href'] = '#'
         html_options['data-dynamic-fields-target'] = 'button'
-        html_options = append_data_action(html_options, 'dynamic-fields#addFields')
+        html_options = prepend_action(html_options, 'dynamic-fields#addFields')
 
         tag.div(class: html_options.delete(:wrapper_class)) do
           tag.a(name, **html_options) +
@@ -94,7 +94,7 @@ module FrontendHelpers
 
       def link_to_remove_fields(name, html_options = {})
         html_options['href'] = '#'
-        html_options = append_data_action(html_options, 'dynamic-fields#removeFields')
+        html_options = prepend_action(html_options, 'dynamic-fields#removeFields')
 
         remove_type = html_options[:soft_delete] ? :_soft_delete : :_destroy
 

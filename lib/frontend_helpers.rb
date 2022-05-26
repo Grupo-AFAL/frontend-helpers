@@ -3,6 +3,7 @@
 require 'frontend_helpers/version'
 require 'frontend_helpers/utils'
 require 'frontend_helpers/icon_components'
+require 'frontend_helpers/auto_submit_select'
 require 'frontend_helpers/components'
 require 'frontend_helpers/builder_html_utils'
 require 'frontend_helpers/shared_form_builder_utils'
