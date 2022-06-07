@@ -78,14 +78,6 @@ module FrontendHelpers
       end
     end
 
-    def link_with_icon(name, icon_name, path, options = {})
-      icon = icon_tag(icon_name, class: options.delete(:icon_class))
-
-      link_to path, options do
-        icon + tag.span(name)
-      end
-    end
-
     def active_link_with_icon(name, icon_name, path, options = {})
       is_active = active_path?(path, options[:match])
       icon = icon_tag(icon_name, class: options.delete(:icon_class))
