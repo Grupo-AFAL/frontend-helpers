@@ -328,13 +328,9 @@ module FrontendHelpers
       field_id = options.delete(:field_id)
       field_class = options.delete(:field_class) || 'field is-grouped is-grouped-right'
 
-      if options[:modal]
-        cancel_options = prepend_action(cancel_options, 'modal#close')
-      end
+      cancel_options = prepend_action(cancel_options, 'modal#close') if options[:modal]
 
-      if options[:drawer]
-        cancel_options = prepend_action(cancel_options, 'drawer#close')
-      end
+      cancel_options = prepend_action(cancel_options, 'drawer#close') if options[:drawer]
 
       @template.content_tag(:div, id: field_id, class: field_class, data: field_data) do
         submit = @template.content_tag(:div, class: 'control') do
