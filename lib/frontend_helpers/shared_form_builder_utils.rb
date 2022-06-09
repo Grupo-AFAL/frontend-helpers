@@ -307,9 +307,9 @@ module FrontendHelpers
         class: 'button is-primary'
       )
 
-      options = prepend_action(options, 'remote-modal#submit') if options.delete(:remote_modal)
+      options = prepend_action(options, 'modal#submit') if options.delete(:modal)
 
-      options = prepend_action(options, 'remote-drawer#submit') if options.delete(:remote_drawer)
+      options = prepend_action(options, 'drawer#submit') if options.delete(:drawer)
 
       content_tag(:div, class: options.delete(:wrapper_class)) do
         content_tag(:button, value, options)
@@ -328,16 +328,12 @@ module FrontendHelpers
       field_id = options.delete(:field_id)
       field_class = options.delete(:field_class) || 'field is-grouped is-grouped-right'
 
-      if options[:remote_modal]
-        cancel_options = prepend_action(cancel_options, 'remote-modal#close')
+      if options[:modal]
+        cancel_options = prepend_action(cancel_options, 'modal#close')
       end
 
-      if options[:remote_drawer]
-        cancel_options = prepend_action(cancel_options, 'remote-drawer#close')
-      end
-
-      if options.delete(:modal)
-        cancel_options = prepend_action(cancel_options, 'click->turbo-stream-modal#close')
+      if options[:drawer]
+        cancel_options = prepend_action(cancel_options, 'drawer#close')
       end
 
       @template.content_tag(:div, id: field_id, class: field_class, data: field_data) do
