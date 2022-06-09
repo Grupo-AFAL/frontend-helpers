@@ -39,7 +39,7 @@ module FrontendHelpers
         container = tag.div(id: container_id, data: { 'dynamic-fields-target': 'container' }) do
           safe_join(object.send(method).map do |child_object|
             fields_for method, child_object do |nested_builder|
-              @template.render "#{singular}_fields", f: nested_builder
+              @template.render "#{singular}_fields", f: nested_builder, object: object
             end
           end)
         end
@@ -79,7 +79,7 @@ module FrontendHelpers
         new_object = object.class.reflect_on_association(association).klass.new
         options = { child_index: 'new_record' }
         fields = form_builder.fields_for(association, new_object, options) do |builder|
-          @template.render(partial, f: builder)
+          @template.render(partial, f: builder, object: object)
         end
 
         html_options['href'] = '#'
