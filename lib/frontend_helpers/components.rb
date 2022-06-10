@@ -102,7 +102,7 @@ module FrontendHelpers
     end
 
     # Convinience method to launch a link within a modal.
-    # Appends the data-action="remote-modal#open" to trigger the RemoteModalController
+    # Appends the data-action="modal#open" to trigger the ModalController
     #
     def link_to_modal(name, options = nil, html_options = nil, &block)
       if block_given?
@@ -112,12 +112,12 @@ module FrontendHelpers
       end
 
       html_options ||= {}
-      html_options['data-action'] = 'remote-modal#open'
+      html_options['data-action'] = 'modal#open'
       generate_link_to(name, options, html_options, &block)
     end
 
     # Convinience method to launch a link within a drawer.
-    # Appends the data-action="remote-drawer#open" to trigger the RemoteDrawerController
+    # Appends the data-action="drawer#open" to trigger the DrawerController
     #
     def link_to_drawer(name, options = nil, html_options = nil, &block)
       if block_given?
@@ -127,7 +127,7 @@ module FrontendHelpers
       end
 
       html_options ||= {}
-      html_options['data-action'] = 'remote-drawer#open'
+      html_options['data-action'] = 'drawer#open'
       generate_link_to(name, options, html_options, &block)
     end
 
