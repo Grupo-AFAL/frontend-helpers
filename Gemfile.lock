@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    frontend_helpers (0.8.0)
+    frontend_helpers (0.9.0)
       rails (> 6.1)
       ransack
 
