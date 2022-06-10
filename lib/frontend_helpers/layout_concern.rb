@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Complements the JavaScript RemoteModalController in order to tell
+# Complements the JavaScript ModalController in order to tell
 # Rails that it shouldn't render a layout since the contents of the
 # view will be rendered within a Modal.
 #
