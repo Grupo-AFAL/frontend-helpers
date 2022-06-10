@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0] - 2022-06-10
 
-- `fe_modal.scss`, `RemoteDrawerController`, `RemoteModalController` were removed. Modal helpers were updated to use `DrawerController` and `ModalController` from `Bali View Component`.
+- `fe_modal.scss`, `RemoteDrawerController`, `RemoteModalController` were removed. Methods using `RemoteDrawerController` and `RemoteModalController` were updated to use `DrawerController` and `ModalController`from `Bali View Component`.
 
 ## [0.7.0] - 2022-06-08
 
