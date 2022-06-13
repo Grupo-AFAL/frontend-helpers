@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2022-06-13
 
+- Added `icon-component` css class to `icon_tag` helper method.
+
+## [1.0.0] - 2022-06-13
+
 - Removed unused Icon CSS
 
 ## [0.8.0] - 2022-06-10
