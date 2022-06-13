@@ -7,7 +7,7 @@ module FrontendHelpers
     include AutoSubmitSelect
 
     def icon_tag(name, options = {})
-      options[:class] = class_names(['icon', options[:class]])
+      options[:class] = class_names(['icon', 'icon-component', options[:class]])
 
       tag.span(**options) do
         icon_svgs(name)
