@@ -30,7 +30,6 @@ export { FocusOnConnectController } from './controllers/focus-on-connect-control
 export { HovercardController } from './controllers/hovercard-controller'
 export { InputOnChangeController } from './controllers/input-on-change-controller'
 export { LocalModalController } from './controllers/local-modal-controller'
-export { NavbarController } from './controllers/navbar-controller'
 export { NotificationController } from './controllers/notification-controller'
 export { PopupController } from './controllers/popup-controller'
 export { PrintController } from './controllers/print-controller'

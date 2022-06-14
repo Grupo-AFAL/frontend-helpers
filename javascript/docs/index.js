@@ -11,7 +11,6 @@ import { DisappearController } from '../src/controllers/disappear-controller'
 import { DropdownController } from '../src/controllers/dropdown-controller'
 import { DynamicFieldsController } from '../src/controllers/dynamic-fields-controller'
 import { HovercardController } from '../src/controllers/hovercard-controller'
-import { NavbarController } from '../src/controllers/navbar-controller'
 import { NotificationController } from '../src/controllers/notification-controller'
 import { RadioToggleController } from '../src/controllers/radio-toggle-controller'
 import { PrintController } from '../src/controllers/print-controller'
@@ -31,7 +30,6 @@ application.register('disappear', DisappearController)
 application.register('dropdown', DropdownController)
 application.register('dynamic-fields', DynamicFieldsController)
 application.register('hovercard', HovercardController)
-application.register('navbar', NavbarController)
 application.register('notification', NotificationController)
 application.register('print', PrintController)
 application.register('radio-toggle', RadioToggleController)
