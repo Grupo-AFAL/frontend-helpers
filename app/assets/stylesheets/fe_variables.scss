@@ -40,8 +40,8 @@ $body-background-color: hsl(220, 18%, 97%);
 $box-shadow: 0px 3px 18px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.03);
 $sharp-box-shadow: 3px 3px 3px rgba(10, 10, 10, 0.1);
 
-$side-menu-height: 3.25rem !default;
-$frame-padding-top: $side-menu-height + 3rem;
+$side-menu-top: 3.25rem !default;
+$frame-padding-top: $side-menu-top + 3rem;
 $side-menu-width: 14rem;
 
 // z-index
