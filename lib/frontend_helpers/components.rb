@@ -44,26 +44,6 @@ module FrontendHelpers
       value ? icon_tag('check-circle') : icon_tag('times-circle')
     end
 
-    def active_link(name, path = nil, html_options = nil, &block)
-      if block_given?
-        html_options = path
-        path = name
-      end
-
-      html_options ||= {}
-      is_active = active_path?(path, html_options[:match])
-
-      html_options[:class] = class_names(html_options[:class], 'is-active': is_active)
-
-      if block_given?
-        link_to path, html_options do
-          block.call
-        end
-      else
-        link_to name, path, html_options
-      end
-    end
-
     def active_li_link(name, path, html_options = {})
       active_li(path, html_options) do
         link_to name, path
@@ -76,59 +56,6 @@ module FrontendHelpers
       tag.li class: class_names('is-active': is_active) do
         block.call
       end
-    end
-
-    def active_link_with_icon(name, icon_name, path, options = {})
-      is_active = active_path?(path, options[:match])
-      icon = icon_tag(icon_name, class: options.delete(:icon_class))
-
-      options[:class] = class_names(options[:class], 'is-active': is_active)
-
-      link_to path, options do
-        icon + tag.span(name, class: 'name')
-      end
-    end
-
-    def generate_link_to(name, options, html_options, &block)
-      options ||= {}
-
-      html_options = convert_options_to_data_attributes(options, html_options)
-
-      url = url_for(options)
-      html_options['href'] ||= url
-      html_options['data-redirect-to'] = request.path
-
-      content_tag('a', name || url, html_options, &block)
-    end
-
-    # Convinience method to launch a link within a modal.
-    # Appends the data-action="modal#open" to trigger the ModalController
-    #
-    def link_to_modal(name, options = nil, html_options = nil, &block)
-      if block_given?
-        html_options = options
-        options = name
-        name = block
-      end
-
-      html_options ||= {}
-      html_options['data-action'] = 'modal#open'
-      generate_link_to(name, options, html_options, &block)
-    end
-
-    # Convinience method to launch a link within a drawer.
-    # Appends the data-action="drawer#open" to trigger the DrawerController
-    #
-    def link_to_drawer(name, options = nil, html_options = nil, &block)
-      if block_given?
-        html_options = options
-        options = name
-        name = block
-      end
-
-      html_options ||= {}
-      html_options['data-action'] = 'drawer#open'
-      generate_link_to(name, options, html_options, &block)
     end
 
     # Adds the submit-button stimulus controller so that the Submit button
