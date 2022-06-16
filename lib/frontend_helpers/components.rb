@@ -58,6 +58,48 @@ module FrontendHelpers
       end
     end
 
+    def generate_link_to(name, options, html_options, &block)
+      options ||= {}
+
+      html_options = convert_options_to_data_attributes(options, html_options)
+
+      url = url_for(options)
+      html_options['href'] ||= url
+      html_options['data-redirect-to'] = request.path
+
+      content_tag('a', name || url, html_options, &block)
+    end
+
+    # Convinience method to launch a link within a modal.
+    # Appends the data-action="modal#open" to trigger the ModalController
+    #
+    def link_to_modal(name, options = nil, html_options = nil, &block)
+      if block_given?
+        html_options = options
+        options = name
+        name = block
+      end
+
+      html_options ||= {}
+      html_options['data-action'] = 'remote-modal#open'
+      generate_link_to(name, options, html_options, &block)
+    end
+
+    # Convinience method to launch a link within a drawer.
+    # Appends the data-action="drawer#open" to trigger the DrawerController
+    #
+    def link_to_drawer(name, options = nil, html_options = nil, &block)
+      if block_given?
+        html_options = options
+        options = name
+        name = block
+      end
+
+      html_options ||= {}
+      html_options['data-action'] = 'remote-drawer#open'
+      generate_link_to(name, options, html_options, &block)
+    end
+
     # Adds the submit-button stimulus controller so that the Submit button
     # displays a spinner when clicked.
     #
