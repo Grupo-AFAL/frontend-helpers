@@ -62,7 +62,7 @@ module FrontendHelpers
     end
 
     def translate_attribute(method)
-      model_name = object.model_name.singular
+      model_name = object.model_name.i18n_key
       I18n.t("activerecord.attributes.#{model_name}.#{method}", default: method.to_s.humanize)
     end
   end
